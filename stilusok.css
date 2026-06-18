@@ -1,0 +1,133 @@
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#F7F4EF;--primary:#1A3A5C;--accent:#C4782A;--gold:#F0A855;
+  --card:#FFFFFF;--muted:#6B7280;--border:#E2DDD6;--radius:10px;
+  --shadow:0 2px 12px rgba(26,58,92,.08);--shadow-h:0 8px 28px rgba(26,58,92,.16);
+}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--primary);min-height:100vh}
+
+/* NAV */
+nav{background:var(--primary);padding:0 2rem;display:flex;align-items:center;height:52px;gap:1.5rem;position:sticky;top:0;z-index:1500}
+.nav-logo{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:#fff;cursor:pointer}
+.nav-logo span{color:var(--gold)}
+.nav-links{display:flex;gap:.2rem;margin-left:auto}
+.nav-link{font-size:.8rem;color:rgba(255,255,255,.6);text-decoration:none;padding:.35rem .75rem;border-radius:6px;transition:all .15s;cursor:pointer;background:none;border:none;font-family:inherit}
+.nav-link:hover,.nav-link.active{background:rgba(255,255,255,.1);color:#fff}
+
+/* általános */
+.wave{display:block;width:100%;height:34px}
+.tag{font-size:.68rem;font-weight:600;padding:.17rem .5rem;border-radius:12px;text-transform:uppercase;letter-spacing:.04em}
+.tag-vár{background:#FEF3C7;color:#92400E}.tag-múzeum{background:#EDE9FE;color:#5B21B6}
+.tag-természet{background:#D1FAE5;color:#065F46}.tag-fürdő{background:#DBEAFE;color:#1E40AF}
+.tag-vallási{background:#FCE7F3;color:#9D174D}.tag-örökség{background:#FEE2E2;color:#991B1B}
+.tag-kastély{background:#F0FDF4;color:#14532D}.tag-egyéb{background:#F3F4F6;color:#374151}
+
+/* ───── FŐOLDAL ───── */
+.hero{background:var(--primary);padding:3rem 2rem 0}
+.hero-inner{max-width:1200px;margin:0 auto}
+.hero-eyebrow{font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:.9rem}
+.hero h1{font-family:'Playfair Display',serif;font-size:2.6rem;font-weight:700;line-height:1.1;color:#fff;letter-spacing:-.02em;margin-bottom:1rem}
+.hero h1 em{font-style:italic;color:var(--gold)}
+.hero-desc{font-size:.95rem;color:rgba(255,255,255,.62);line-height:1.7;max-width:600px;margin-bottom:1.6rem}
+.hero-stats{display:flex;gap:2.5rem;margin-bottom:2.2rem;flex-wrap:wrap}
+.hero-stat-val{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:var(--gold);line-height:1}
+.hero-stat-label{font-size:.73rem;color:rgba(255,255,255,.48);margin-top:.2rem;line-height:1.3}
+#homeMap{width:100%;height:440px}
+.map-tooltip{position:absolute;top:14px;left:50%;transform:translateX(-50%);z-index:1000;background:rgba(26,58,92,.92);color:#fff;border-radius:24px;padding:.45rem 1.3rem;font-size:.8rem;pointer-events:none;white-space:nowrap;display:flex;align-items:center;gap:.7rem}
+.map-tooltip-dot{width:8px;height:8px;background:var(--gold);border-radius:50%}
+.map-section{position:relative;width:100%}
+.home-main{max-width:1200px;margin:0 auto;padding:2.8rem 2rem 4rem}
+.section-eyebrow{font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:.6rem}
+.section-title{font-family:'Playfair Display',serif;font-size:1.65rem;font-weight:700;margin-bottom:.45rem}
+.section-desc{font-size:.88rem;color:var(--muted);line-height:1.65;max-width:540px;margin-bottom:1.8rem}
+.regio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.regio-card{background:var(--card);border-radius:12px;border:1px solid var(--border);overflow:hidden;cursor:pointer;box-shadow:var(--shadow);transition:box-shadow .2s,transform .2s;display:flex;flex-direction:column;position:relative;text-align:left}
+.regio-card:hover{box-shadow:var(--shadow-h);transform:translateY(-3px)}
+.regio-card::before{position:absolute;top:10px;right:10px;font-size:.68rem;font-weight:700;padding:.2rem .6rem;border-radius:20px;z-index:2;color:#fff}
+.regio-card.kesz::before{content:"✓ "attr(data-count)" helyszín";background:var(--accent)}
+.regio-header{height:82px;display:flex;align-items:center;justify-content:center;font-size:2.4rem;position:relative}
+.regio-header::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,transparent 50%,rgba(0,0,0,.16) 100%)}
+.regio-body{padding:.9rem 1rem 1rem;flex:1;display:flex;flex-direction:column}
+.regio-nev{font-family:'Playfair Display',serif;font-size:.97rem;font-weight:700;line-height:1.25;margin-bottom:.3rem}
+.regio-desc{font-size:.76rem;color:var(--muted);line-height:1.55;flex:1;margin-bottom:.7rem}
+.regio-meta{display:flex;align-items:center;justify-content:space-between;font-size:.73rem;color:var(--muted)}
+.regio-arrow{font-size:.82rem;color:var(--accent);font-weight:600;transition:transform .15s}
+.regio-card:hover .regio-arrow{transform:translateX(3px)}
+.info-strip{margin-top:2.8rem;background:var(--primary);border-radius:12px;padding:1.8rem 2.2rem;display:grid;grid-template-columns:1fr 1fr 1fr;gap:2rem}
+.info-strip-icon{font-size:1.4rem;margin-bottom:.5rem}
+.info-strip-title{font-family:'Playfair Display',serif;font-size:.97rem;font-weight:700;color:var(--gold);margin-bottom:.35rem}
+.info-strip-text{font-size:.78rem;line-height:1.6;color:rgba(255,255,255,.58)}
+
+/* ───── RÉGIÓOLDAL (SPLIT) ───── */
+.r-header{background:var(--primary);color:#fff;padding:0 2rem}
+.r-header-inner{max-width:1400px;margin:0 auto;padding:1.3rem 0 0}
+.breadcrumb{font-size:.75rem;color:rgba(255,255,255,.55);letter-spacing:.06em;text-transform:uppercase;margin-bottom:.5rem}
+.breadcrumb a{color:rgba(255,255,255,.7);text-decoration:none;cursor:pointer}
+.breadcrumb a:hover{color:#fff}
+.r-header h1{font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:700;line-height:1.15;letter-spacing:-.02em}
+.r-header h1 em{color:var(--gold);font-style:normal}
+.r-sub{font-size:.85rem;color:rgba(255,255,255,.6);margin-top:.35rem;margin-bottom:1rem}
+.controls{max-width:1400px;margin:0 auto;padding:1.1rem 2rem;display:flex;flex-wrap:wrap;gap:.9rem;align-items:center}
+.search-wrap{position:relative;flex:1;min-width:200px;max-width:340px}
+.search-wrap svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none}
+input[type=search]{width:100%;padding:.6rem .9rem .6rem 2.4rem;border:1.5px solid var(--border);border-radius:8px;font-family:inherit;font-size:.88rem;background:var(--card);color:var(--primary);outline:none}
+input[type=search]:focus{border-color:var(--accent)}
+.filters{display:flex;flex-wrap:wrap;gap:.4rem}
+.filter-btn{padding:.35rem .85rem;border-radius:20px;border:1.5px solid var(--border);background:var(--card);font-family:inherit;font-size:.78rem;font-weight:500;color:var(--muted);cursor:pointer;white-space:nowrap}
+.filter-btn:hover{border-color:var(--accent);color:var(--accent)}
+.filter-btn.active{background:var(--primary);border-color:var(--primary);color:#fff}
+.result-count{font-size:.8rem;color:var(--muted);margin-left:auto;white-space:nowrap}
+.split{max-width:1400px;margin:0 auto;padding:0 2rem 3rem;display:grid;grid-template-columns:1fr 420px;gap:1.5rem;align-items:start}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1rem}
+.card{background:var(--card);border-radius:var(--radius);border:1px solid var(--border);overflow:hidden;cursor:pointer;box-shadow:var(--shadow);transition:box-shadow .18s,transform .18s,border-color .15s}
+.card:hover{box-shadow:var(--shadow-h);transform:translateY(-2px)}
+.card.hl{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent)}
+.card-ph{width:100%;height:120px;background:linear-gradient(135deg,#E8E3DB,#D4CFC7);display:flex;align-items:center;justify-content:center;font-size:2.1rem;overflow:hidden;position:relative}
+.card-ph img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s}
+.card:hover .card-ph img{transform:scale(1.04)}
+.card-ph-ikon{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:2.1rem}
+.card-body{padding:.85rem}
+.card-kat{display:flex;flex-wrap:wrap;gap:.3rem;margin-bottom:.45rem}
+.card h3{font-family:'Playfair Display',serif;font-size:.98rem;font-weight:700;line-height:1.25;margin-bottom:.3rem}
+.card-tp{font-size:.76rem;color:var(--muted);margin-bottom:.4rem;display:flex;align-items:center;gap:.3rem}
+.card-leiras{font-size:.81rem;color:#4B5563;line-height:1.55;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.map-sticky{position:sticky;top:68px}
+.map-box{background:var(--card);border-radius:var(--radius);border:1px solid var(--border);overflow:hidden;box-shadow:var(--shadow)}
+.map-label{padding:.7rem 1rem;font-size:.76rem;font-weight:600;color:var(--muted);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:.4rem;text-transform:uppercase;letter-spacing:.06em}
+#regioMap{height:520px}
+.empty-state{grid-column:1/-1;text-align:center;padding:3rem 1rem;color:var(--muted)}
+
+/* MODÁL */
+.modal-ov{display:none;position:fixed;inset:0;background:rgba(26,58,92,.45);z-index:2000;align-items:center;justify-content:center;padding:1rem}
+.modal-ov.open{display:flex}
+.modal{background:var(--card);border-radius:14px;max-width:640px;width:100%;max-height:88vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.2)}
+.modal-ph{width:100%;height:230px;background:linear-gradient(135deg,#E8E3DB,#D4CFC7);display:flex;align-items:center;justify-content:center;font-size:3.4rem;overflow:hidden;position:relative}
+.modal-ph img{width:100%;height:100%;object-fit:cover;display:block}
+.modal-ph-ikon{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:3.4rem}
+.modal-ph-caption{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.5);color:rgba(255,255,255,.8);font-size:.63rem;padding:.28rem .7rem;text-align:right;letter-spacing:.02em}
+.modal-body{padding:1.6rem}
+.modal-kat{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:.9rem}
+.modal-body h2{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;margin-bottom:.3rem}
+.modal-meta{display:flex;flex-wrap:wrap;gap:1rem;font-size:.82rem;color:var(--muted);margin-bottom:1.1rem;padding-bottom:1rem;border-bottom:1px solid var(--border)}
+.modal-meta span{display:flex;align-items:center;gap:.3rem}
+.modal-leiras{font-size:.92rem;line-height:1.7;color:#374151;margin-bottom:1.2rem}
+.modal-info{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;background:var(--bg);border-radius:8px;padding:1rem;margin-bottom:1.2rem}
+.info-item{font-size:.82rem}
+.info-label{color:var(--muted);font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.15rem}
+.info-val{color:var(--primary);font-weight:500}
+.modal-forras{font-size:.72rem;color:var(--muted);border-top:1px solid var(--border);padding-top:.8rem}
+.modal-close{display:flex;justify-content:flex-end;padding:.7rem .9rem 0;position:sticky;top:0;background:var(--card)}
+.modal-close button{background:var(--bg);border:none;border-radius:50%;width:32px;height:32px;cursor:pointer;font-size:1.1rem;color:var(--muted)}
+
+footer{background:var(--primary);color:rgba(255,255,255,.42);text-align:center;padding:1.4rem 2rem;font-size:.73rem;line-height:1.7}
+footer strong{color:rgba(255,255,255,.68)}
+
+@media(max-width:900px){
+  .regio-grid{grid-template-columns:repeat(2,1fr)}
+  .info-strip{grid-template-columns:1fr;gap:1.4rem}
+  .split{grid-template-columns:1fr;padding:0 1rem 2rem}
+  .map-sticky{position:static}
+  #regioMap{height:320px}#homeMap{height:300px}
+  .hero h1{font-size:2rem}.r-header h1{font-size:1.5rem}
+}
+@media(max-width:580px){.regio-grid{grid-template-columns:1fr}nav{padding:0 1rem}.nav-links{display:none}.controls{padding:.9rem 1rem}}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Magyar Turisztikai Atlasz</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
+<link rel="stylesheet" href="stilusok.css">
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo" onclick="location.hash='#/'">Magyar <span>Turisztikai Atlasz</span></div>
+  <div class="nav-links">
+    <button class="nav-link" onclick="location.hash='#/'">Főoldal</button>
+    <button class="nav-link" onclick="location.hash='#/'">Régiók</button>
+  </div>
+</nav>
+
+<div id="app"></div>
+
+<!-- MODÁL -->
+<div class="modal-ov" id="modal" onclick="if(event.target===this)closeModal()">
+  <div class="modal">
+    <div class="modal-close"><button onclick="closeModal()">✕</button></div>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+<!-- Térkép könyvtár -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<!-- TARTALOM: előbb töltődik be (a régiók és nevezetességek adatai) -->
+<script src="adatok.js"></script>
+<!-- MŰKÖDÉS: az adatokra épül, ezért utána jön -->
+<script src="alkalmazas.js"></script>
+
+</body>
+</html>
