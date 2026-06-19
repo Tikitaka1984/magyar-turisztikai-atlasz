@@ -2,7 +2,7 @@
 
 Ingyenes, online tananyag a 13. évfolyamos turisztikai technikus tanulók
 számára. Magyarország mind a 9 turisztikai régióját lefedi, összesen
-157 nevezetességgel, interaktív térképpel és tankönyvi mélységű
+155 nevezetességgel, interaktív térképpel és tankönyvi mélységű
 leírásokkal.
 
 Élő változat: https://rakoczi-turisztikai-atlasz.netlify.app
@@ -19,7 +19,7 @@ magyar-turisztikai-atlasz/
 ├── css/
 │   └── styles.css    Megjelenítés: színek, betűk, elrendezés.
 ├── js/
-│   ├── adatok.js     TARTALOM: a 9 régió és a 157 nevezetesség adatai.
+│   ├── adatok.js     TARTALOM: a 9 régió és a 155 nevezetesség adatai.
 │   └── app.js        MŰKÖDÉS: térkép, kártyák, kereső, képbetöltő.
 ├── kepek/            A jövőbeli saját képtár helye (egyelőre üres).
 ├── README.md         Ez a leírás.

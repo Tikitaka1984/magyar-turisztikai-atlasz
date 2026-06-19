@@ -8,7 +8,7 @@ következetes legyen. (Magyar munkanyelv, formális hangnem.)
 
 A "Magyar Turisztikai Atlasz" egy ingyenes, statikus webes tananyag a
 13. évfolyamos turisztikai technikus képzéshez. Magyarország 9 turisztikai
-régióját és 157 nevezetességét mutatja be interaktív térképen, kereshető
+régióját és 155 nevezetességét mutatja be interaktív térképen, kereshető
 kártyákkal és részletes adatlapokkal.
 
 Élő változat: https://rakoczi-turisztikai-atlasz.netlify.app
@@ -24,7 +24,7 @@ NINCS szerveroldali kód. A böngésző közvetlenül a fájlokat tölti be.
 
 - `index.html` — a váz; betölti a CSS-t és a két JS-fájlt (sorrend számít).
 - `stilusok.css` — minden stílus.
-- `adatok.js` — TARTALOM: a `REGIOK` (9 régió) és a `LATV` (157 nevezetesség)
+- `adatok.js` — TARTALOM: a `REGIOK` (9 régió) és a `LATV` (155 nevezetesség)
   tömbök. Tartalmi bővítés KIZÁRÓLAG itt történik.
 - `alkalmazas.js` — MŰKÖDÉS: router, térkép (Leaflet), kártyák, kereső/szűrő,
   modális ablak, ötszintű képbetöltő. Az `adatok.js` után töltődik be.
