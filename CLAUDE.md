@@ -11,13 +11,23 @@ A "Magyar Turisztikai Atlasz" egy ingyenes, statikus webes tananyag a
 régióját és 157 nevezetességét mutatja be interaktív térképen, kereshető
 kártyákkal és részletes adatlapokkal.
 
-Élő változat: https://rakoczi-turisztikai-atlasz.netlify.app
+Élő változat: https://tikitaka1984.github.io/magyar-turisztikai-atlasz/
 
 ## Architektúra
 
 MEGJEGYZÉS: jelenleg LAPOS szerkezet (minden fájl a gyökérben),
 a böngészős feltöltés egyszerűsége miatt. A Claude Code később
-rendezett mappákba (css/, js/) szervezheti, ha szükséges.
+rendezett mappákba szervezheti, ha szükséges.
+
+A tényleges fájlszerkezet:
+
+- `index.html` — a váz; betölti a CSS-t és a két JS-fájlt.
+- `stilusok.css` — minden stílus.
+- `adatok.js` — TARTALOM: a `REGIOK` és `LATV` tömbök.
+- `alkalmazas.js` — MŰKÖDÉS: a teljes logika.
+- `kepek/` — a jövőbeli saját képtár helye (egyelőre üres).
+- `README.md` — felhasználói/áttekintő leírás.
+- `CLAUDE.md` — ez a projektleírás a Claude Code számára.
 
 Statikus, fordítás nélküli weboldal. NINCS build-lépés, NINCS csomagkezelő,
 NINCS szerveroldali kód. A böngésző közvetlenül a fájlokat tölti be.
@@ -33,7 +43,7 @@ NINCS szerveroldali kód. A böngésző közvetlenül a fájlokat tölti be.
 ## Betöltési sorrend (fontos)
 
 1. Leaflet (CDN) → 2. `adatok.js` → 3. `alkalmazas.js`
-Az `app.js` a `REGIOK` és `LATV` globális tömbökre épül, ezért az
+Az `alkalmazas.js` a `REGIOK` és `LATV` globális tömbökre épül, ezért az
 `adatok.js`-nek előbb kell betöltődnie.
 
 ## Adatséma — egy nevezetesség (LATV elem)
@@ -82,7 +92,7 @@ részesíteni, a Wikipédia csak tartalék marad.
 2. **Statikus marad:** ne vezess be build-lépést vagy szerveroldali
    függőséget, hacsak nincs kifejezett kérés rá.
 3. **Tartalom ≠ működés:** a nevezetességek adatai az `adatok.js`-ben,
-   a logika az `app.js`-ben marad.
+   a logika az `alkalmazas.js`-ben marad.
 4. **Idézőjelek:** a magyar nyitó idézőjel (U+201E) és az egyenes idézőjel
    keveredése korábban törte a JS-stringeket. Kódban következetesen
    egyenes idézőjelet kell használni.
@@ -101,5 +111,6 @@ részesíteni, a Wikipédia csak tartalék marad.
 
 ## Publikálás
 
-Az egész mappa egyben tölthető fel Netlify-ra. A cél a publikálás
-automatizálása (Git-alapú, hogy egy módosítás magától élesedjen).
+Az egész mappa egyben publikálható GitHub Pages-re a `main` ágról.
+Git-alapú, így egy módosítás a beolvasztás után magától élesedik.
+Élő cím: https://tikitaka1984.github.io/magyar-turisztikai-atlasz/

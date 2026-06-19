@@ -5,7 +5,7 @@ számára. Magyarország mind a 9 turisztikai régióját lefedi, összesen
 157 nevezetességgel, interaktív térképpel és tankönyvi mélységű
 leírásokkal.
 
-Élő változat: https://rakoczi-turisztikai-atlasz.netlify.app
+Élő változat: https://tikitaka1984.github.io/magyar-turisztikai-atlasz/
 
 ## A projekt felépítése
 
@@ -16,11 +16,9 @@ működés most külön fájlokba van rendezve. Ez megkönnyíti a karbantartás
 ```
 magyar-turisztikai-atlasz/
 ├── index.html        A váz: ezt nyitja meg a böngésző. Rövid, áttekinthető.
-├── css/
-│   └── styles.css    Megjelenítés: színek, betűk, elrendezés.
-├── js/
-│   ├── adatok.js     TARTALOM: a 9 régió és a 157 nevezetesség adatai.
-│   └── app.js        MŰKÖDÉS: térkép, kártyák, kereső, képbetöltő.
+├── stilusok.css      Megjelenítés: színek, betűk, elrendezés.
+├── adatok.js         TARTALOM: a 9 régió és a 157 nevezetesség adatai.
+├── alkalmazas.js     MŰKÖDÉS: térkép, kártyák, kereső, képbetöltő.
 ├── kepek/            A jövőbeli saját képtár helye (egyelőre üres).
 ├── README.md         Ez a leírás.
 └── CLAUDE.md         Projektleírás a Claude Code fejlesztőeszköz számára.
@@ -28,14 +26,14 @@ magyar-turisztikai-atlasz/
 
 ## Hogyan tegyek hozzá egy új nevezetességet?
 
-Csak a `js/adatok.js` fájlt kell bővíteni. Minden nevezetesség egy
+Csak az `adatok.js` fájlt kell bővíteni. Minden nevezetesség egy
 bejegyzés a `LATV` listában, a meglévők mintájára (egyedi `id`, régió,
 név, vármegye, kategóriák, koordináták, leírások, `kep` mező a Wikipédia
 szócikkcímével).
 
 ## Hogyan publikálom?
 
-Az egész mappa egyben feltölthető a Netlify felületére (ahogy eddig is).
+Az egész mappa egyben publikálható GitHub Pages-re (a `main` ágról).
 Nincs szükség semmilyen telepítésre vagy fordításra: ez egyszerű,
 statikus oldal.
 
