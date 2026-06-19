@@ -47,11 +47,29 @@ Az `app.js` a `REGIOK` és `LATV` globális tömbökre épül, ezért az
 ## Képbetöltés
 
 A `kep` mező jelenleg egy Wikipédia-SZÓCIKKCÍM (nem fájlnév, nem URL).
-Az `app.js` ötszintű kereséssel tölti be a képet:
+Az `alkalmazas.js` ötszintű kereséssel tölti be a képet:
 1. magyar Wiki főkép (pageimages) → 2. angol Wiki főkép →
 3. magyar Wiki bármely valódi fotója → 4. angol Wiki bármely fotója →
 5. Wikimedia Commons közvetlen képkeresés.
 A `_kizart` reguláris kifejezés kiszűri a térképeket, címereket, ikonokat.
+
+### Saját kép megadása egy helyszínhez (`kep_sajat`)
+
+Ha egy helyszínhez jobb képet szeretnél megadni az automata helyett,
+add hozzá a `kep_sajat` mezőt az adott LATV-objektumhoz az `adatok.js`-ben.
+A mező kétféle értéket fogad el:
+
+```js
+// Lokális fájl a kepek/ mappából:
+kep_sajat: 'kepek/egri-var.jpg',
+
+// Közvetlen kép-URL (http/https):
+kep_sajat: 'https://example.com/kep.jpg',
+```
+
+Ha `kep_sajat` meg van adva és nem üres, az alkalmazás azt jeleníti meg
+(és a Wikipédia-keresést kihagyja). Ha üres string vagy hiányzik, az automata
+marad érvényes — semmi sem törik.
 
 A 2. fázisban a saját képtár bevezetésekor a `kep` mező lokális fájlra
 fog mutatni (pl. `kepek/egri-var.jpg`), és a betöltő ezt fogja előnyben

@@ -152,7 +152,7 @@ function renderCards(){
       </div></div>`).join('');
   renderMarkers(lista);
   setTimeout(()=>{
-    lista.forEach(l=>{if(l.kep){betoltKep(l.kep,document.getElementById('cph-'+l.id),400);}});
+    lista.forEach(l=>{kepetMutat(l,document.getElementById('cph-'+l.id),400);});
   },50);
 }
 
@@ -192,7 +192,25 @@ function openModal(id){
       <div class="modal-forras"><strong>Forrás:</strong> ${(l.forras||[]).join(' · ')} · Képek: Wikimedia Commons (CC BY-SA)</div>
     </div>`;
   document.getElementById('modal').classList.add('open');document.body.style.overflow='hidden';
-  if(l.kep){betoltKep(l.kep,document.getElementById('mph-'+l.id),800);}
+  kepetMutat(l,document.getElementById('mph-'+l.id),800);
+}
+
+/* ════════ KÉPBETÖLTŐ — belépési pont ════════ */
+/* Ha a látványosság objektumán van kep_sajat mező (nem üres), azt használja
+   közvetlenül (lokális fájl VAGY http(s) URL egyaránt elfogadott).
+   Egyébként az ötszintű Wikipédia/Commons automatát hívja meg. */
+function kepetMutat(l, elem, meret) {
+  if (l.kep_sajat && l.kep_sajat.trim()) {
+    const img = document.createElement('img');
+    img.src = l.kep_sajat.trim();
+    img.alt = '';
+    img.loading = 'lazy';
+    img.style.cssText = 'width:100%;height:100%;object-fit:cover;display:block';
+    elem.innerHTML = '';
+    elem.appendChild(img);
+  } else if (l.kep) {
+    betoltKep(l.kep, elem, meret);
+  }
 }
 
 /* ════════ WIKIPÉDIA KÉPBETÖLTŐ (pageimages) ════════ */
