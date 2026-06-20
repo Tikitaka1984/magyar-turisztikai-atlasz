@@ -5,7 +5,7 @@ számára. Magyarország mind a 9 turisztikai régióját lefedi, összesen
 157 nevezetességgel, interaktív térképpel és tankönyvi mélységű
 leírásokkal.
 
-Élő változat: https://rakoczi-turisztikai-atlasz.netlify.app
+
 
 ## A projekt felépítése
 
