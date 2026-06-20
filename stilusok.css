@@ -127,7 +127,53 @@ footer strong{color:rgba(255,255,255,.68)}
   .info-strip{grid-template-columns:1fr;gap:1.4rem}
   .split{grid-template-columns:1fr;padding:0 1rem 2rem}
   .map-sticky{position:static}
-  #regioMap{height:320px}#homeMap{height:300px}
+  #regioMap{height:360px}#homeMap{height:320px}
   .hero h1{font-size:2rem}.r-header h1{font-size:1.5rem}
 }
-@media(max-width:580px){.regio-grid{grid-template-columns:1fr}nav{padding:0 1rem}.nav-links{display:none}.controls{padding:.9rem 1rem}}
+
+/* ───── MOBIL (telefon / tablet, ~360–680px) ───── */
+@media(max-width:680px){
+  /* Navigáció: maradjon látható és jól tapintható, ne csússzon szét */
+  nav{padding:0 1rem;gap:.5rem;height:auto;min-height:52px;flex-wrap:nowrap}
+  .nav-logo{font-size:.9rem;line-height:1.2}
+  .nav-links{gap:.25rem;margin-left:auto;flex-shrink:0}
+  .nav-link{font-size:.8rem;padding:.55rem .7rem;min-height:40px;display:flex;align-items:center}
+
+  /* Főoldal */
+  .hero{padding:2.2rem 1.2rem 0}
+  .hero h1{font-size:1.7rem}
+  .hero-desc{font-size:.9rem}
+  .hero-stats{gap:1.5rem;margin-bottom:1.8rem}
+  .hero-stat-val{font-size:1.7rem}
+  .home-main{padding:2.2rem 1.2rem 3rem}
+  .regio-grid{grid-template-columns:1fr}
+  .info-strip{padding:1.5rem 1.4rem}
+  #homeMap{height:300px}
+
+  /* Régióoldal fejléc és vezérlők */
+  .r-header{padding:0 1.2rem}
+  .controls{padding:.9rem 1.2rem;gap:.7rem}
+  /* Kereső: teljes szélesség, 16px betűméret (nincs iOS-zoom) */
+  .search-wrap{flex:1 1 100%;max-width:none;min-width:0}
+  input[type=search]{font-size:16px;padding:.7rem .9rem .7rem 2.4rem}
+  /* Kategória-szűrők: nagyobb érintőfelület, nem lógnak ki */
+  .filters{width:100%;gap:.45rem}
+  .filter-btn{padding:.5rem .95rem;font-size:.8rem}
+  .result-count{margin-left:0;width:100%}
+
+  /* Kártyák: egy oszlop, kényelmes kép (object-fit miatt nem torzul) */
+  .card-grid{grid-template-columns:1fr;gap:.9rem}
+  .card-ph{height:180px}
+  #regioMap{height:340px}
+
+  /* Modális ablak: olvasható, görgethető, könnyen bezárható */
+  .modal-ov{padding:.5rem}
+  .modal{max-height:94vh;max-height:94dvh}
+  .modal-ph{height:200px}
+  .modal-body{padding:1.2rem}
+  .modal-body h2{font-size:1.3rem}
+  .modal-leiras{font-size:.9rem}
+  .modal-info{grid-template-columns:1fr}
+  .modal-close{padding:.6rem .8rem 0}
+  .modal-close button{width:40px;height:40px;font-size:1.25rem}
+}
