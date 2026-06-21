@@ -13,6 +13,12 @@ function helyStr(l){return l.megye==='Budapest'?l.tp:l.tp+' · '+l.megye+' várm
 function regioOf(slug){return REGIOK.find(r=>r.slug===slug)}
 function latvOf(slug){return LATV.filter(l=>l.r===slug)}
 function tagHtml(k){return `<span class="tag tag-${k}">${KAT_LABEL[k]||k}</span>`}
+function normalizaltKeresoszoveg(ertek){return String(ertek||'').toLowerCase().trim().normalize('NFD').replace(/[\u0300-\u036f]/g,'')}
+function kereshetoMezo(ertek){
+  if(Array.isArray(ertek))return ertek.join(' ');
+  if(ertek&&typeof ertek==='object')return Object.values(ertek).join(' ');
+  return ertek||'';
+}
 
 let currentMap=null;
 function clearMap(){if(currentMap){currentMap.remove();currentMap=null}}
@@ -131,8 +137,9 @@ function onSearch(){aktivKereses=document.getElementById('search').value;renderC
 function szurtLista(){
   return latvOf(aktivR.slug).filter(l=>{
     const okK=aktivSzuro==='mind'||l.kat.includes(aktivSzuro);
-    const q=aktivKereses.toLowerCase();
-    const okQ=!q||l.nev.toLowerCase().includes(q)||l.tp.toLowerCase().includes(q)||l.rovid.toLowerCase().includes(q);
+    const q=normalizaltKeresoszoveg(aktivKereses);
+    const kereshetoSzoveg=[l.nev,l.tp,l.rovid,l.megye,l.kategoria,l.kat,l.reszletes,l.info].map(kereshetoMezo).map(normalizaltKeresoszoveg).join(' ');
+    const okQ=!q||kereshetoSzoveg.includes(q);
     return okK&&okQ;
   });
 }
