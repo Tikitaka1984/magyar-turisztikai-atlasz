@@ -20,6 +20,7 @@ function makeIcon(ikon,szin){return L.divIcon({html:`<div style="background:${sz
 
 /* ════════ ÁLLAPOT (régióoldal) ════════ */
 let aktivR=null,aktivSzuro="mind",aktivKereses="";
+let elozoFokusz=null;
 
 /* ════════ ROUTER ════════ */
 function router(){
@@ -142,7 +143,7 @@ function renderCards(){
   const grid=document.getElementById('grid');
   if(!lista.length){grid.innerHTML=`<div class="empty-state"><div style="font-size:2rem">🔍</div><p>Nincs találat erre a keresésre.</p></div>`;renderMarkers([]);return;}
   grid.innerHTML=lista.map(l=>`
-    <div class="card" id="card-${l.id}" onclick="openModal(${l.id});flyTo(${l.id})">
+    <div class="card" id="card-${l.id}" role="button" tabindex="0" onclick="activateCard(${l.id})" onkeydown="onCardKey(event,${l.id})">
       <div class="card-ph" id="cph-${l.id}">${l.kep?`<span class="card-ph-ikon">${ikonOf(l)}</span>`:`<span class="card-ph-ikon">${ikonOf(l)}</span>`}</div>
       <div class="card-body">
         <div class="card-kat">${l.kat.map(tagHtml).join('')}</div>
@@ -168,6 +169,8 @@ function renderMarkers(lista){
   });
   if(lista.length){currentMap.fitBounds(L.latLngBounds(lista.map(l=>[l.koord.lat,l.koord.lng])),{padding:[40,40],maxZoom:12})}
 }
+function activateCard(id){openModal(id);flyTo(id)}
+function onCardKey(e,id){if(e.key==='Enter'||e.key===' '){e.preventDefault();activateCard(id)}}
 function flyTo(id){const l=LATV.find(x=>x.id===id);if(l&&markers[id]&&currentMap){currentMap.flyTo([l.koord.lat,l.koord.lng],12,{duration:.7});setTimeout(()=>markers[id].openPopup(),750)}hlCard(id)}
 function hlCard(id){document.querySelectorAll('.card').forEach(c=>c.classList.remove('hl'));const c=document.getElementById('card-'+id);if(c)c.classList.add('hl')}
 
@@ -182,7 +185,7 @@ function openModal(id){
     <div class="modal-ph" id="mph-${l.id}"><span class="modal-ph-ikon">${ikonOf(l)}</span></div>
     <div class="modal-body">
       <div class="modal-kat">${l.kat.map(tagHtml).join('')}</div>
-      <h2>${l.nev}</h2>
+      <h2 id="modalTitle">${l.nev}</h2>
       <div class="modal-meta">
         <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>${helyStr(l)}</span>
         <span>${reg?reg.ikon+' '+reg.rovid+' régió':''}</span>
@@ -191,8 +194,13 @@ function openModal(id){
       ${rows?`<div class="modal-info">${rows}</div>`:''}
       <div class="modal-forras"><strong>Forrás:</strong> ${(l.forras||[]).join(' · ')} · Képek: Wikimedia Commons (CC BY-SA)</div>
     </div>`;
-  document.getElementById('modal').classList.add('open');document.body.style.overflow='hidden';
+  const modal=document.getElementById('modal');
+  const dialog=modal.querySelector('.modal');
+  const closeButton=modal.querySelector('.modal-close button');
+  elozoFokusz=document.activeElement;
+  modal.classList.add('open');document.body.style.overflow='hidden';
   kepetMutat(l,document.getElementById('mph-'+l.id),800);
+  setTimeout(()=>{(closeButton||dialog)?.focus();},0);
 }
 
 /* ════════ KÉPBETÖLTŐ — belépési pont ════════ */
@@ -203,12 +211,13 @@ function kepetMutat(l, elem, meret) {
   if (l.kep_sajat && l.kep_sajat.trim()) {
     const img = document.createElement('img');
     img.src = l.kep_sajat.trim();
-    img.alt = '';
+    img.alt = l.nev + ' képe';
     img.loading = 'lazy';
     img.style.cssText = 'width:100%;height:100%;object-fit:cover;display:block';
     elem.innerHTML = '';
     elem.appendChild(img);
   } else if (l.kep) {
+    elem.dataset.alt = l.nev + ' képe';
     betoltKep(l.kep, elem, meret);
   }
 }
@@ -284,7 +293,7 @@ function _alkalmazKep(elem,url,meret){
   if(!elem)return;
   const img=document.createElement('img');
   img.src=url;
-  img.alt='';
+  img.alt=elem.dataset.alt||'Látványosság képe';
   img.loading='lazy';
   img.style.cssText='width:100%;height:100%;object-fit:cover;display:block';
   if(meret>400){
@@ -299,7 +308,13 @@ function _alkalmazKep(elem,url,meret){
     elem.appendChild(img);
   }
 }
-function closeModal(){document.getElementById('modal').classList.remove('open');document.body.style.overflow=''}
+function closeModal(){
+  const modal=document.getElementById('modal');
+  const nyitva=modal.classList.contains('open');
+  modal.classList.remove('open');document.body.style.overflow='';
+  if(nyitva&&elozoFokusz&&typeof elozoFokusz.focus==='function'){elozoFokusz.focus()}
+  elozoFokusz=null;
+}
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
 
 function mapHiba(){return '<div style="height:100%;min-height:300px;display:flex;align-items:center;justify-content:center;padding:2rem;text-align:center;background:#EAE5DD;color:#1A3A5C"><div style="max-width:420px"><strong>A térkép nem tölthető be.</strong><br><br>Nyisd meg a fájlt webszerveren keresztül (Netlify Drop vagy <code>python3 -m http.server</code>), ne dupla kattintással.</div></div>'}

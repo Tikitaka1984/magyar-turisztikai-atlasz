@@ -81,6 +81,7 @@ input[type=search]:focus{border-color:var(--accent)}
 .card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1rem}
 .card{background:var(--card);border-radius:var(--radius);border:1px solid var(--border);overflow:hidden;cursor:pointer;box-shadow:var(--shadow);transition:box-shadow .18s,transform .18s,border-color .15s}
 .card:hover{box-shadow:var(--shadow-h);transform:translateY(-2px)}
+.card:focus-visible{outline:3px solid var(--accent);outline-offset:3px;box-shadow:var(--shadow-h)}
 .card.hl{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent)}
 .card-ph{width:100%;height:120px;background:linear-gradient(135deg,#E8E3DB,#D4CFC7);display:flex;align-items:center;justify-content:center;font-size:2.1rem;overflow:hidden;position:relative}
 .card-ph img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s}
@@ -101,6 +102,7 @@ input[type=search]:focus{border-color:var(--accent)}
 .modal-ov{display:none;position:fixed;inset:0;background:rgba(26,58,92,.45);z-index:2000;align-items:center;justify-content:center;padding:1rem}
 .modal-ov.open{display:flex}
 .modal{background:var(--card);border-radius:14px;max-width:640px;width:100%;max-height:88vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.2)}
+.modal:focus-visible,.modal-close button:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
 .modal-ph{width:100%;height:230px;background:linear-gradient(135deg,#E8E3DB,#D4CFC7);display:flex;align-items:center;justify-content:center;font-size:3.4rem;overflow:hidden;position:relative}
 .modal-ph img{width:100%;height:100%;object-fit:cover;display:block}
 .modal-ph-ikon{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:3.4rem}
