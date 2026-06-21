@@ -23,8 +23,8 @@
 
 <!-- MODÁL -->
 <div class="modal-ov" id="modal" onclick="if(event.target===this)closeModal()">
-  <div class="modal">
-    <div class="modal-close"><button onclick="closeModal()">✕</button></div>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" tabindex="-1">
+    <div class="modal-close"><button type="button" aria-label="Modális ablak bezárása" onclick="closeModal()">✕</button></div>
     <div id="modalContent"></div>
   </div>
 </div>
