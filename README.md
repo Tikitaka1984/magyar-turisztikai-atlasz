@@ -101,6 +101,16 @@ Ha a `kep_sajat` létezik és nem üres, az alkalmazás ezt használja, és nem 
 Wikipédia / Commons képkeresést az adott látványossághoz. Ha a mező hiányzik
 vagy üres, marad az automatikus képkeresés a `kep` mező alapján.
 
+Fontos korlátok:
+
+- A `kep_sajat` továbbra is elsőbbséget élvez minden automatikus
+  Wikipédia / Wikimedia / Commons találattal szemben.
+- Az automatikusan lekért képek URL-jeit az alkalmazás csak futás közben,
+  memóriában cache-eli; nincs `localStorage`-os vagy más tartós képcache.
+- A Wikimedia / Commons találatok jelenleg nem képenként auditált
+  licencadatokkal jelennek meg, ezért publikálás előtt külön licenc- és
+  forrásellenőrzés javasolt.
+
 ## Hogyan lehet új nevezetességet felvenni?
 
 Új nevezetességet az `adatok.js` fájlban, a `LATV` tömbben kell felvenni. A

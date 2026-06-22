@@ -87,6 +87,10 @@ térkép, a modális ablak vagy a képrendszer.
 - [ ] Ha egy látványosságnál van nem üres `kep_sajat`, az jelenik meg az automatikus képkeresés helyett.
 - [ ] Üres vagy hiányzó `kep_sajat` esetén a `kep` mező alapján működik az automatikus képkeresés.
 - [ ] Lassú vagy sikertelen képlehívás esetén az oldal többi része tovább használható.
+- [ ] Hibás `kep_sajat` URL esetén nem látszik törött képikon, hanem a kategóriaikonos placeholder és a „Kép nem elérhető” állapot jelenik meg.
+- [ ] Lassú vagy sikertelen Wikimedia API-válasz esetén az oldal használható marad, és nincs összeomlás vagy konzolos JavaScript-hiba.
+- [ ] Ha nincs Wikimedia / Commons találat, a kategóriaikonos placeholder marad látható.
+- [ ] A képhiba-kezelést kártyán és modális ablakban is ellenőrizni kell.
 
 ## Akadálymentességi alapellenőrzés
 

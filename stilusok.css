@@ -87,6 +87,7 @@ input[type=search]:focus{border-color:var(--accent)}
 .card-ph img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s}
 .card:hover .card-ph img{transform:scale(1.04)}
 .card-ph-ikon{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:2.1rem}
+.kep-hiba{position:absolute;right:.45rem;bottom:.4rem;background:rgba(255,255,255,.82);color:var(--muted);font-size:.62rem;font-weight:600;border-radius:999px;padding:.16rem .45rem;box-shadow:0 1px 4px rgba(26,58,92,.12)}
 .card-body{padding:.85rem}
 .card-kat{display:flex;flex-wrap:wrap;gap:.3rem;margin-bottom:.45rem}
 .card h3{font-family:'Playfair Display',serif;font-size:.98rem;font-weight:700;line-height:1.25;margin-bottom:.3rem}
