@@ -3,7 +3,7 @@
    Statikus, kézzel szerkesztett kérdésbank tanórai használathoz.
    ════════════════════════════════════════════════════════════ */
 
-const KVIZ_QUESTIONS = {
+var KVIZ_QUESTIONS = {
   budapest: [
     {
       id: "budapest-01",
@@ -111,3 +111,6 @@ const KVIZ_QUESTIONS = {
 function kvizKerdesek(slug){
   return (KVIZ_QUESTIONS[slug]||[]).slice();
 }
+
+window.KVIZ_QUESTIONS = KVIZ_QUESTIONS;
+window.kvizKerdesek = kvizKerdesek;
