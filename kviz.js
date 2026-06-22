@@ -208,6 +208,108 @@ var KVIZ_QUESTIONS = {
       latvName: "Tapolcai-tavasbarlang"
     }
 
+  ],
+  "eszak-magyarorszag": [
+    {
+      id: "eszak-magyarorszag-01",
+      question: "Melyik látványosság rekordja említi az 1552-es diadalmas várvédelmet és Dobó István várkapitányt?",
+      answers: ["Diósgyőri vár", "Egri vár", "Sárospataki Rákóczi-vár", "Siroki vár"],
+      correctIndex: 1,
+      explanation: "Az Egri vár leírása az 1552-es diadalmas várvédelmet és Dobó István várkapitányt is megnevezi.",
+      regionSlug: "eszak-magyarorszag",
+      latvId: 21,
+      latvName: "Egri vár"
+    },
+    {
+      id: "eszak-magyarorszag-02",
+      question: "Melyik településen található az Oszmán Birodalom legészakibb fennmaradt minaretje az atlasz szerint?",
+      answers: ["Tokaj", "Eger", "Sárospatak", "Szécsény"],
+      correctIndex: 1,
+      explanation: "Az Egri minaret településmezője Eger, leírása pedig az Oszmán Birodalom legészakibb fennmaradt minaretjeként azonosítja.",
+      regionSlug: "eszak-magyarorszag",
+      latvId: 22,
+      latvName: "Egri minaret"
+    },
+    {
+      id: "eszak-magyarorszag-03",
+      question: "Melyik helyszín leírása szerint nem skanzen, hanem valódi, lakott település?",
+      answers: ["Hollókő Ófalu", "Mezőkövesdi Matyó Múzeum", "Szécsényi vár és Forgách-kastély", "Tokaj-Hegyalja borvidék"],
+      correctIndex: 0,
+      explanation: "Hollókő Ófalu leírása hangsúlyozza, hogy nem skanzen, hanem valódi, lakott település.",
+      regionSlug: "eszak-magyarorszag",
+      latvId: 23,
+      latvName: "Hollókő Ófalu"
+    },
+    {
+      id: "eszak-magyarorszag-04",
+      question: "Melyik észak-magyarországi helyszín barlangrendszere több mint 25 kilométer hosszú?",
+      answers: ["Miskolctapolcai Barlangfürdő", "Aggteleki-cseppkőbarlang (Baradla)", "Lillafüred", "Egerszalóki Sódomb"],
+      correctIndex: 1,
+      explanation: "Az Aggteleki-cseppkőbarlang (Baradla) rövid leírása szerint a világörökségi cseppkőbarlang több mint 25 km hosszú.",
+      regionSlug: "eszak-magyarorszag",
+      latvId: 24,
+      latvName: "Aggteleki-cseppkőbarlang (Baradla)"
+    },
+    {
+      id: "eszak-magyarorszag-05",
+      question: "Melyik helyszínhez kapcsolódik a tokaji aszú és a világörökségi történelmi borvidék?",
+      answers: ["Egri Szépasszony-völgy", "Tokaj-Hegyalja borvidék", "Tokaji zsinagóga és Fesztiválkatlan", "Mezőkövesdi Matyó Múzeum"],
+      correctIndex: 1,
+      explanation: "Tokaj-Hegyalja borvidék rövid leírása a világörökségi történelmi borvidéket a tokaji aszú hazájaként mutatja be.",
+      regionSlug: "eszak-magyarorszag",
+      latvId: 25,
+      latvName: "Tokaj-Hegyalja borvidék"
+    },
+    {
+      id: "eszak-magyarorszag-06",
+      question: "Melyik miskolci helyszín jelképe a Palotaszálló és Magyarország legmagasabb vízesése?",
+      answers: ["Lillafüred", "Diósgyőri vár", "Miskolctapolcai Barlangfürdő", "Tokaji zsinagóga és Fesztiválkatlan"],
+      correctIndex: 0,
+      explanation: "Lillafüred leírása a Palotaszállót és Magyarország legmagasabb, mintegy 20 méteres vízesését is említi.",
+      regionSlug: "eszak-magyarorszag",
+      latvId: 26,
+      latvName: "Lillafüred"
+    },
+    {
+      id: "eszak-magyarorszag-07",
+      question: "Melyik látványosság szerepel az atlaszban Miskolc településsel és vár kategóriával?",
+      answers: ["Salgó vára", "Diósgyőri vár", "Füzéri vár", "Siroki vár"],
+      correctIndex: 1,
+      explanation: "A Diósgyőri vár településmezője Miskolc, kategóriája pedig vár.",
+      regionSlug: "eszak-magyarorszag",
+      latvId: 27,
+      latvName: "Diósgyőri vár"
+    },
+    {
+      id: "eszak-magyarorszag-08",
+      question: "Melyik helyszín leírása említi a Fátyol-vízesést és a lipicai ménest?",
+      answers: ["Galyatető – Galyatetői kilátó", "Szilvásvárad – Szalajka-völgy", "Kékestető – Magyarország legmagasabb pontja", "Egerszalóki Sódomb"],
+      correctIndex: 1,
+      explanation: "A Szilvásvárad – Szalajka-völgy rekordja a Fátyol-vízesést és a lipicai ménest is megnevezi.",
+      regionSlug: "eszak-magyarorszag",
+      latvId: 28,
+      latvName: "Szilvásvárad – Szalajka-völgy"
+    },
+    {
+      id: "eszak-magyarorszag-09",
+      question: "Melyik helyszínnél írja az atlasz, hogy rövid ideig itt őrizték a magyar Szent Koronát?",
+      answers: ["Füzéri vár", "Sárospataki Rákóczi-vár", "Szécsényi vár és Forgách-kastély", "Salgó vára"],
+      correctIndex: 0,
+      explanation: "A Füzéri vár leírása szerint a mohácsi vész utáni időkben rövid ideig itt őrizték a magyar Szent Koronát.",
+      regionSlug: "eszak-magyarorszag",
+      latvId: 168,
+      latvName: "Füzéri vár"
+    },
+    {
+      id: "eszak-magyarorszag-10",
+      question: "Melyik helyszín kategóriái között szerepel egyszerre a fürdő és a természet?",
+      answers: ["Egerszalóki Sódomb", "Egri Szépasszony-völgy", "Mezőkövesdi Matyó Múzeum", "Sziráki Teleki-kastély"],
+      correctIndex: 0,
+      explanation: "Az Egerszalóki Sódomb kategóriái az atlaszban: természet és fürdő.",
+      regionSlug: "eszak-magyarorszag",
+      latvId: 166,
+      latvName: "Egerszalóki Sódomb"
+    }
   ]
 };
 
