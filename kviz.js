@@ -310,6 +310,108 @@ var KVIZ_QUESTIONS = {
       latvId: 166,
       latvName: "Egerszalóki Sódomb"
     }
+  ],
+  "del-dunantul": [
+    {
+      id: "del-dunantul-01",
+      question: "Melyik dél-dunántúli helyszín kapcsolódik a római kori Sopianae világörökségi temetőjéhez?",
+      answers: ["Pécs – Ókeresztény sírkamrák", "Gázi Kászim pasa dzsámija", "Pécsi Székesegyház", "Pécs – Zsolnay Kulturális Negyed"],
+      correctIndex: 0,
+      explanation: "A Pécs – Ókeresztény sírkamrák rekordja szerint a helyszín a római kori Sopianae világörökségi temetőjének része.",
+      regionSlug: "del-dunantul",
+      latvId: 92,
+      latvName: "Pécs – Ókeresztény sírkamrák"
+    },
+    {
+      id: "del-dunantul-02",
+      question: "Melyik látványosság áll az atlasz szerint Pécs főterén, a Széchenyi téren?",
+      answers: ["Pécs – Vasarely Múzeum", "Gázi Kászim pasa dzsámija", "Pécsi TV-torony (Misina-tető)", "Pécs – Csontváry Múzeum"],
+      correctIndex: 1,
+      explanation: "A Gázi Kászim pasa dzsámija leírása szerint az épület Pécs főterén, a Széchenyi téren áll.",
+      regionSlug: "del-dunantul",
+      latvId: 93,
+      latvName: "Gázi Kászim pasa dzsámija"
+    },
+    {
+      id: "del-dunantul-03",
+      question: "Melyik településen található a Villányi borvidék rekordja az atlaszban?",
+      answers: ["Szekszárd", "Villány", "Harkány", "Siklós"],
+      correctIndex: 1,
+      explanation: "A Villányi borvidék településmezője az atlaszban Villány.",
+      regionSlug: "del-dunantul",
+      latvId: 94,
+      latvName: "Villányi borvidék"
+    },
+    {
+      id: "del-dunantul-04",
+      question: "Melyik dél-dunántúli látványosság kategóriája az atlaszban vár?",
+      answers: ["Harkányi gyógyfürdő", "Siklósi vár", "Abaligeti-barlang", "Szennai skanzen"],
+      correctIndex: 1,
+      explanation: "A Siklósi vár kategóriája az atlaszban: vár.",
+      regionSlug: "del-dunantul",
+      latvId: 95,
+      latvName: "Siklósi vár"
+    },
+    {
+      id: "del-dunantul-05",
+      question: "Melyik helyszín leírása említi, hogy gyógyvize magas kénhidrogén-tartalmú?",
+      answers: ["Abaligeti-barlang", "Harkányi gyógyfürdő", "Duna–Dráva Nemzeti Park – Gemenci-erdő", "Pécsi TV-torony (Misina-tető)"],
+      correctIndex: 1,
+      explanation: "A Harkányi gyógyfürdő leírása szerint a harkányi gyógyvíz magas kénhidrogén-tartalma a világon is ritka.",
+      regionSlug: "del-dunantul",
+      latvId: 96,
+      latvName: "Harkányi gyógyfürdő"
+    },
+    {
+      id: "del-dunantul-06",
+      question: "Melyik helyszínhez kapcsolódik a világhírű Zsolnay-porcelángyár egykori gyárterülete?",
+      answers: ["Pécs – Zsolnay Kulturális Negyed", "Pécs – Vasarely Múzeum", "Pécs – Csontváry Múzeum", "Szekszárd – belváros és borvidék"],
+      correctIndex: 0,
+      explanation: "A Pécs – Zsolnay Kulturális Negyed rekordja szerint a negyed a világhírű Zsolnay-porcelángyár egykori gyárterületén jött létre.",
+      regionSlug: "del-dunantul",
+      latvId: 141,
+      latvName: "Pécs – Zsolnay Kulturális Negyed"
+    },
+    {
+      id: "del-dunantul-07",
+      question: "Melyik dél-dunántúli emlékhely állít emléket az 1526. augusztus 29-i csata áldozatainak?",
+      answers: ["Szigetvári vár", "Mohácsi Nemzeti Emlékhely", "Dunaföldvári Csonka-torony", "Somogyvári Szent Egyed-apátság romjai"],
+      correctIndex: 1,
+      explanation: "A Mohácsi Nemzeti Emlékhely az 1526. augusztus 29-i mohácsi csata áldozatainak állít emléket.",
+      regionSlug: "del-dunantul",
+      latvId: 145,
+      latvName: "Mohácsi Nemzeti Emlékhely"
+    },
+    {
+      id: "del-dunantul-08",
+      question: "Melyik helyszín leírása említi Zrínyi Miklós 1566-os várvédelmét?",
+      answers: ["Siklósi vár", "Szigetvári vár", "Dunaföldvári Csonka-torony", "Pécsi Székesegyház"],
+      correctIndex: 1,
+      explanation: "A Szigetvári vár leírása szerint 1566-ban Zrínyi Miklós serege legendás várvédelmet vívott itt.",
+      regionSlug: "del-dunantul",
+      latvId: 146,
+      latvName: "Szigetvári vár"
+    },
+    {
+      id: "del-dunantul-09",
+      question: "Melyik településhez kapcsolódik a Rippl-Rónai Múzeum rekordja?",
+      answers: ["Kaposvár", "Szenna", "Szekszárd", "Paks"],
+      correctIndex: 0,
+      explanation: "A Kaposvár – Rippl-Rónai Múzeum településmezője az atlaszban Kaposvár.",
+      regionSlug: "del-dunantul",
+      latvId: 148,
+      latvName: "Kaposvár – Rippl-Rónai Múzeum"
+    },
+    {
+      id: "del-dunantul-10",
+      question: "Melyik dél-dunántúli helyszín nyerte el az atlasz leírása szerint az Europa Nostra-díjat?",
+      answers: ["Szennai skanzen", "Pécs – Csontváry Múzeum", "Abaligeti-barlang", "Duna–Dráva Nemzeti Park – Gemenci-erdő"],
+      correctIndex: 0,
+      explanation: "A Szennai skanzen leírása szerint a gyűjtemény kiemelkedő szakmai értékét az Europa Nostra-díj jelzi.",
+      regionSlug: "del-dunantul",
+      latvId: 149,
+      latvName: "Szennai skanzen"
+    }
   ]
 };
 
