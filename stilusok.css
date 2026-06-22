@@ -133,4 +133,38 @@ footer strong{color:rgba(255,255,255,.68)}
   #regioMap{height:320px}#homeMap{height:300px}
   .hero h1{font-size:2rem}.r-header h1{font-size:1.5rem}
 }
-@media(max-width:580px){.regio-grid{grid-template-columns:1fr}nav{padding:0 1rem}.nav-links{display:none}.controls{padding:.9rem 1rem}}
+@media(max-width:580px){
+  .regio-grid{grid-template-columns:1fr}
+  nav{padding:0 1rem}
+  .nav-links{display:none}
+  .hero{padding:2.4rem 1rem 0}
+  .home-main{padding:2.2rem 1rem 3rem}
+  .map-tooltip{left:1rem;right:1rem;transform:none;max-width:calc(100vw - 2rem);white-space:normal;justify-content:center;text-align:center;line-height:1.35;padding:.5rem .85rem;border-radius:18px}
+  .controls{padding:.9rem 1rem;gap:.75rem;align-items:stretch}
+  .search-wrap{flex:0 0 100%;min-width:0;max-width:none;width:100%}
+  input[type=search]{min-height:44px;font-size:1rem;padding:.72rem .9rem .72rem 2.45rem}
+  .filters{width:100%;gap:.55rem;overflow-x:hidden}
+  .filter-btn{min-height:42px;padding:.55rem .95rem;font-size:.84rem;line-height:1.2;white-space:normal;overflow-wrap:anywhere}
+  .result-count{width:100%;margin-left:0}
+  .card-grid{grid-template-columns:1fr;gap:.9rem}
+  .card-body{padding:1rem}
+  .card-kat{gap:.35rem;margin-bottom:.55rem}
+  .card h3{font-size:1.05rem;line-height:1.3}
+  .card-tp{font-size:.82rem;line-height:1.45;align-items:flex-start}
+  .card-leiras{font-size:.88rem;line-height:1.6;-webkit-line-clamp:4}
+  .regio-card::before{font-size:.66rem;max-width:calc(100% - 1.2rem);white-space:normal;text-align:center}
+  .regio-body{padding:1rem 1.05rem 1.1rem}
+  .regio-nev{font-size:1.05rem}
+  .regio-desc{font-size:.84rem;line-height:1.6}
+  .regio-meta{font-size:.8rem;gap:.75rem;align-items:flex-start}
+  .modal-ov{padding:.7rem}
+  .modal{max-height:92vh}
+  .modal-ph{height:190px}
+  .modal-close{padding:.55rem .65rem 0}
+  .modal-close button{width:44px;height:44px;font-size:1.35rem}
+  .modal-body{padding:1.15rem}
+  .modal-body h2{font-size:1.32rem;line-height:1.25}
+  .modal-meta{gap:.55rem .9rem;font-size:.82rem}
+  .modal-leiras{font-size:.92rem;line-height:1.65}
+  .modal-info{grid-template-columns:1fr;gap:.85rem;padding:.9rem}
+}

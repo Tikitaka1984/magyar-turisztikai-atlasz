@@ -129,7 +129,7 @@ function renderRegio(slug){
 
 function buildFilters(){
   document.getElementById('filters').innerHTML=KAT_LIST.map(k=>
-    `<button class="filter-btn${k===aktivSzuro?' active':''}" onclick="setSzuro('${k}')">${KAT_LABEL[k]}</button>`).join('');
+    `<button class="filter-btn${k===aktivSzuro?' active':''}" aria-pressed="${k===aktivSzuro?'true':'false'}" onclick="setSzuro('${k}')">${KAT_LABEL[k]}</button>`).join('');
 }
 function setSzuro(k){aktivSzuro=k;buildFilters();renderCards()}
 function onSearch(){aktivKereses=document.getElementById('search').value;renderCards()}
