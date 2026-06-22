@@ -412,6 +412,108 @@ var KVIZ_QUESTIONS = {
       latvId: 149,
       latvName: "Szennai skanzen"
     }
+  ],
+  "eszak-alfold": [
+    {
+      id: "eszak-alfold-01",
+      question: "Melyik észak-alföldi látványosság leírása említi a „kálvinista Róma” központját?",
+      answers: ["Déri Múzeum", "Debreceni Református Nagytemplom", "Máriapócsi nemzeti kegyhely", "Csarodai református templom"],
+      correctIndex: 1,
+      explanation: "A Debreceni Református Nagytemplom rövid leírása a magyar reformátusság jelképes templomaként és a „kálvinista Róma” központjaként azonosítja a helyszínt.",
+      regionSlug: "eszak-alfold",
+      latvId: 31,
+      latvName: "Debreceni Református Nagytemplom"
+    },
+    {
+      id: "eszak-alfold-02",
+      question: "Melyik helyszínhez kapcsolódik Povolny Ferenc terve és az 1827–1833 közötti építés az atlasz szerint?",
+      answers: ["Kengyeli szélmalom", "Hortobágyi Nemzeti Park – Kilenclyukú híd", "Tiszadobi Andrássy-kastély", "Tákosi református templom"],
+      correctIndex: 1,
+      explanation: "A Hortobágyi Nemzeti Park – Kilenclyukú híd rövid leírása szerint a Hortobágy jelképe Povolny Ferenc tervei alapján 1827–1833 között épült.",
+      regionSlug: "eszak-alfold",
+      latvId: 32,
+      latvName: "Hortobágyi Nemzeti Park – Kilenclyukú híd"
+    },
+    {
+      id: "eszak-alfold-03",
+      question: "Melyik látványosság található Nyíregyházán és kapcsolódik a Sóstó üdülőövezet tölgyerdei környezetéhez?",
+      answers: ["Nyíregyháza – Sóstó Állatpark", "Sóstói Múzeumfalu", "Máriapócsi nemzeti kegyhely", "Nyírbátori Báthori Várkastély és Panoptikum"],
+      correctIndex: 0,
+      explanation: "A Nyíregyháza – Sóstó Állatpark településmezője Nyíregyháza, leírása pedig a Sóstó üdülőövezet ősi tölgyerdejét említi.",
+      regionSlug: "eszak-alfold",
+      latvId: 33,
+      latvName: "Nyíregyháza – Sóstó Állatpark"
+    },
+    {
+      id: "eszak-alfold-04",
+      question: "Melyik helyszín kategóriája az atlaszban fürdő?",
+      answers: ["Nyíregyházi Állatpark (Sóstó Zoo)", "Hajdúszoboszlói gyógyfürdő", "Sóstói Múzeumfalu", "Déri Múzeum"],
+      correctIndex: 1,
+      explanation: "A Hajdúszoboszlói gyógyfürdő kategóriája az atlaszban: fürdő.",
+      regionSlug: "eszak-alfold",
+      latvId: 34,
+      latvName: "Hajdúszoboszlói gyógyfürdő"
+    },
+    {
+      id: "eszak-alfold-05",
+      question: "Melyik debreceni helyszínhez kapcsolódik Munkácsy Mihály monumentális Krisztus-trilógiája?",
+      answers: ["Debreceni Református Nagytemplom", "Déri Múzeum", "Jász Múzeum – Jászkürt", "Szolnoki RepTár – Repülőmúzeum"],
+      correctIndex: 1,
+      explanation: "A Déri Múzeum rövid leírása és részletes leírása is Munkácsy Mihály monumentális Krisztus-trilógiáját említi.",
+      regionSlug: "eszak-alfold",
+      latvId: 35,
+      latvName: "Déri Múzeum"
+    },
+    {
+      id: "eszak-alfold-06",
+      question: "Melyik településen található a Báthori-templom az atlasz adatai szerint?",
+      answers: ["Máriapócs", "Csaroda", "Nyírbátor", "Tiszadob"],
+      correctIndex: 2,
+      explanation: "A Nyírbátor – Báthori-templom településmezője az atlaszban Nyírbátor.",
+      regionSlug: "eszak-alfold",
+      latvId: 36,
+      latvName: "Nyírbátor – Báthori-templom"
+    },
+    {
+      id: "eszak-alfold-07",
+      question: "Melyik észak-alföldi kastély leírása említi a 365 szobát, 52 tornyot, 12 tornyot és 4 bejáratot?",
+      answers: ["Tiszadobi Andrássy-kastély", "Nyírbátori Báthori Várkastély és Panoptikum", "Debreceni Református Nagytemplom", "Jász Múzeum – Jászkürt"],
+      correctIndex: 0,
+      explanation: "A Tiszadobi Andrássy-kastély leírása szerint a 365 szoba az év napjait, az 52 torony a heteket, a 12 torony a hónapokat, a 4 bejárat pedig az évszakokat jelöli.",
+      regionSlug: "eszak-alfold",
+      latvId: 151,
+      latvName: "Tiszadobi Andrássy-kastély"
+    },
+    {
+      id: "eszak-alfold-08",
+      question: "Melyik nemzeti kegyhely leírása említi az 1696-os és 1715-ös könnyezést?",
+      answers: ["Csarodai református templom", "Tákosi református templom", "Máriapócsi nemzeti kegyhely", "Debreceni Református Nagytemplom"],
+      correctIndex: 2,
+      explanation: "A Máriapócsi nemzeti kegyhely leírása szerint az itt őrzött Mária-ikonon 1696-ban, majd 1715-ben is könnyezést észleltek.",
+      regionSlug: "eszak-alfold",
+      latvId: 153,
+      latvName: "Máriapócsi nemzeti kegyhely"
+    },
+    {
+      id: "eszak-alfold-09",
+      question: "Melyik helyszín a „mosolygó szentek temploma” az atlasz leírása alapján?",
+      answers: ["Csarodai református templom", "Tákosi református templom", "Nyírbátor – Báthori-templom", "Máriapócsi nemzeti kegyhely"],
+      correctIndex: 0,
+      explanation: "A Csarodai református templom rövid leírása a mosolygó szentek templomaként mutatja be a helyszínt.",
+      regionSlug: "eszak-alfold",
+      latvId: 154,
+      latvName: "Csarodai református templom"
+    },
+    {
+      id: "eszak-alfold-10",
+      question: "Melyik szolnoki helyszín mutatja be a hazai repülés és légierő történetét?",
+      answers: ["Jász Múzeum – Jászkürt", "Szolnoki RepTár – Repülőmúzeum", "Kengyeli szélmalom", "Déri Múzeum"],
+      correctIndex: 1,
+      explanation: "A Szolnoki RepTár – Repülőmúzeum leírása szerint a múzeum a hazai repülés és légierő történetét mutatja be.",
+      regionSlug: "eszak-alfold",
+      latvId: 156,
+      latvName: "Szolnoki RepTár – Repülőmúzeum"
+    }
   ]
 };
 
