@@ -168,3 +168,38 @@ footer strong{color:rgba(255,255,255,.68)}
   .modal-leiras{font-size:.92rem;line-height:1.65}
   .modal-info{grid-template-columns:1fr;gap:.85rem;padding:.9rem}
 }
+
+/* ───── PILOT KVÍZMODUL ───── */
+.hero-quiz-btn,.region-quiz-btn,.quiz-start-btn,.quiz-actions button,.quiz-next{min-height:44px;border:0;border-radius:999px;background:var(--accent);color:#fff;font-family:inherit;font-weight:700;cursor:pointer;padding:.7rem 1.1rem;box-shadow:0 4px 14px rgba(0,0,0,.14)}
+.hero-quiz-btn{margin-bottom:2rem}.region-quiz-btn{margin-bottom:1rem;background:var(--gold);color:var(--primary)}
+.hero-quiz-btn:hover,.region-quiz-btn:hover,.quiz-start-btn:hover,.quiz-actions button:hover,.quiz-next:hover{filter:brightness(.96);transform:translateY(-1px)}
+.hero-quiz-btn:focus-visible,.region-quiz-btn:focus-visible,.quiz-start-btn:focus-visible,.quiz-actions button:focus-visible,.quiz-next:focus-visible,.quiz-answer:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.quiz-page{max-width:980px;margin:0 auto;padding:2rem 1rem 3rem}
+.quiz-page .breadcrumb{color:var(--muted);margin-bottom:1rem}.quiz-page .breadcrumb a{color:var(--accent)}
+.quiz-card{background:var(--card);border:1px solid var(--border);border-radius:16px;box-shadow:var(--shadow);padding:1.6rem;margin-bottom:1rem;overflow-wrap:anywhere}
+.quiz-card h1{font-family:'Playfair Display',serif;font-size:1.8rem;line-height:1.2;margin-bottom:.7rem}
+.quiz-intro{color:#4B5563;line-height:1.65;max-width:720px}
+.quiz-progress{display:inline-flex;align-items:center;border-radius:999px;background:#EDE9FE;color:#5B21B6;font-size:.78rem;font-weight:700;padding:.25rem .7rem;margin-bottom:.8rem}
+.quiz-question{font-size:1.08rem;font-weight:700;line-height:1.5;margin:1rem 0;color:var(--primary)}
+.quiz-answers{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin:1rem 0}
+.quiz-answer{min-height:44px;width:100%;border:1.5px solid var(--border);border-radius:10px;background:#fff;color:var(--primary);font-family:inherit;font-weight:600;text-align:left;line-height:1.35;padding:.8rem 1rem;cursor:pointer;white-space:normal;overflow-wrap:anywhere}
+.quiz-answer:hover:not(:disabled){border-color:var(--accent);box-shadow:var(--shadow)}
+.quiz-answer.correct{border-color:#15803D;background:#DCFCE7;color:#14532D}
+.quiz-answer.correct::before{content:"Helyes: ";font-weight:800}
+.quiz-answer.wrong{border-color:#B91C1C;background:#FEE2E2;color:#7F1D1D}
+.quiz-answer.wrong::before{content:"Hibás válasz: ";font-weight:800}
+.quiz-answer:disabled{cursor:default;opacity:1}
+.quiz-feedback{min-height:2rem;margin-top:1rem;border-radius:12px;background:var(--bg);border:1px solid var(--border);padding:1rem;line-height:1.55;color:#374151;display:flex;flex-direction:column;gap:.5rem}
+.quiz-feedback:empty{display:block;background:transparent;border:0;padding:0}
+.quiz-score{font-size:1.3rem;line-height:1.5;margin:1rem 0 1.3rem}.quiz-score strong{color:var(--accent)}
+.quiz-actions{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1rem}.quiz-actions button{background:var(--primary)}
+.quiz-region-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}.quiz-region-card{background:var(--card);border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow);overflow:hidden;display:flex;min-width:0}.quiz-region-card.active{border-color:var(--accent)}
+.quiz-region-icon{flex:0 0 86px;display:flex;align-items:center;justify-content:center;font-size:2rem;color:#fff}.quiz-region-body{padding:1rem;min-width:0}.quiz-region-body h2{font-family:'Playfair Display',serif;font-size:1.05rem;margin-bottom:.35rem}.quiz-region-body p{color:var(--muted);font-size:.85rem;line-height:1.5;margin-bottom:.8rem}.quiz-start-btn:disabled{background:#D1D5DB;color:#6B7280;cursor:not-allowed;box-shadow:none}
+
+@media(max-width:900px){
+  .quiz-region-grid{grid-template-columns:1fr}.quiz-card{padding:1.35rem}.quiz-answers{grid-template-columns:1fr}
+}
+@media(max-width:580px){
+  .hero-quiz-btn,.region-quiz-btn,.quiz-start-btn,.quiz-actions button,.quiz-next{width:100%;white-space:normal;line-height:1.25}
+  .quiz-page{padding:1.25rem .8rem 2rem;max-width:100%;overflow-x:hidden}.quiz-card{padding:1rem;border-radius:12px}.quiz-card h1{font-size:1.45rem}.quiz-question{font-size:1rem}.quiz-answer{min-height:44px;padding:.85rem;font-size:.95rem}.quiz-actions{flex-direction:column}.quiz-region-card{flex-direction:column}.quiz-region-icon{min-height:74px;flex-basis:auto}.quiz-region-body{padding:.95rem}
+}
