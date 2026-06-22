@@ -34,10 +34,11 @@ function router(){
   closeModal();clearMap();
   const h=location.hash.replace(/^#/,'');
   if(h==='/kviz'){renderKvizValaszto()}
-  else if(h==='/kviz/budapest'){renderKviz('budapest')}
   else{
+    const qm=h.match(/^\/kviz\/([^/]+)$/);
     const m=h.match(/^\/regio\/(.+)$/);
-    if(m&&regioOf(m[1])){renderRegio(m[1])}
+    if(qm){renderKviz(qm[1])}
+    else if(m&&regioOf(m[1])){renderRegio(m[1])}
     else{renderHome()}
   }
   window.scrollTo(0,0);
@@ -111,7 +112,7 @@ function renderRegio(slug){
       <div class="breadcrumb"><a onclick="location.hash='#/'">Magyar Turisztikai Atlasz</a> › ${aktivR.rovid}</div>
       <h1>${aktivR.nev.replace(aktivR.rovid,'')||aktivR.nev}<em></em></h1>
       <p class="r-sub">A régió nevezetességei · 13. évfolyamos turisztikai technikusok számára</p>
-      ${slug==='budapest'?`<button class="region-quiz-btn" type="button" onclick="location.hash='#/kviz/budapest'">Kvíz indítása ebben a régióban</button>`:''}
+      ${kvizKerdesek(slug).length?`<button class="region-quiz-btn" type="button" onclick="location.hash='#/kviz/${slug}'">Kvíz indítása ebben a régióban</button>`:''}
     </div></div>
     <div class="controls">
       <div class="search-wrap"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
@@ -190,15 +191,16 @@ function hlCard(id){document.querySelectorAll('.card').forEach(c=>c.classList.re
 
 
 /* ════════ KVÍZMODUL ════════ */
-function renderKvizValaszto(){
+function renderKvizValaszto(uzenet){
   kvizAllapot=null;
   const cards=REGIOK.map(r=>{
-    const aktiv=kvizKerdesek(r.slug).length>0;
+    const kerdesSzam=kvizKerdesek(r.slug).length;
+    const aktiv=kerdesSzam>0;
     return `<div class="quiz-region-card${aktiv?' active':''}">
       <div class="quiz-region-icon" style="background:linear-gradient(135deg,${r.szin},${r.szin}cc)">${r.ikon}</div>
       <div class="quiz-region-body">
         <h2>${r.nev}</h2>
-        <p>${aktiv?'10 kérdéses pilot kvíz érhető el ehhez a régióhoz.':'Ehhez a régióhoz még készül a kérdésbank.'}</p>
+        <p>${aktiv?`${kerdesSzam} kérdéses kvíz érhető el ehhez a régióhoz.`:'Ehhez a régióhoz még készül a kérdésbank.'}</p>
         <button type="button" class="quiz-start-btn" ${aktiv?`onclick="location.hash='#/kviz/${r.slug}'"`:'disabled'}>${aktiv?'Kvíz indítása':'Készül'}</button>
       </div>
     </div>`;
@@ -207,9 +209,10 @@ function renderKvizValaszto(){
     <main class="quiz-page">
       <div class="breadcrumb"><a onclick="location.hash='#/'">Magyar Turisztikai Atlasz</a> › Kvíz</div>
       <section class="quiz-card">
+        ${uzenet?`<p class="quiz-feedback"><strong>${uzenet}</strong></p>`:''}
         <div class="section-eyebrow">Pilot kvízmodul</div>
         <h1>Válassz kvízrégiót</h1>
-        <p class="quiz-intro">Első körben a Budapest és Közép-Duna-vidék régió kérdésbankja aktív. A kvíz nem ment eredményt, nincs időmérő, és billentyűzettel is használható.</p>
+        <p class="quiz-intro">Válassz az aktív régiós kérdésbankok közül. A kvíz nem ment eredményt, nincs időmérő, és billentyűzettel is használható.</p>
       </section>
       <div class="quiz-region-grid">${cards}</div>
       <div class="quiz-actions"><button type="button" onclick="location.hash='#/'">Vissza az atlaszhoz</button></div>
@@ -219,7 +222,7 @@ function renderKvizValaszto(){
 function renderKviz(slug){
   const kerdesek=kvizKerdesek(slug);
   const regio=regioOf(slug);
-  if(!kerdesek.length){renderKvizValaszto();return;}
+  if(!kerdesek.length||!regio){renderKvizValaszto('Ehhez a régióhoz még nincs elérhető kérdésbank. Válassz egy aktív kvízrégiót.');return;}
   kvizAllapot={slug,kerdesek,index:0,pont:0,valaszolt:false};
   document.getElementById('app').innerHTML=`
     <main class="quiz-page">
