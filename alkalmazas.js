@@ -27,14 +27,19 @@ function makeIcon(ikon,szin){return L.divIcon({html:`<div style="background:${sz
 /* ════════ ÁLLAPOT (régióoldal) ════════ */
 let aktivR=null,aktivSzuro="mind",aktivKereses="";
 let elozoFokusz=null;
+let kvizAllapot=null;
 
 /* ════════ ROUTER ════════ */
 function router(){
   closeModal();clearMap();
   const h=location.hash.replace(/^#/,'');
-  const m=h.match(/^\/regio\/(.+)$/);
-  if(m&&regioOf(m[1])){renderRegio(m[1])}
-  else{renderHome()}
+  if(h==='/kviz'){renderKvizValaszto()}
+  else if(h==='/kviz/budapest'){renderKviz('budapest')}
+  else{
+    const m=h.match(/^\/regio\/(.+)$/);
+    if(m&&regioOf(m[1])){renderRegio(m[1])}
+    else{renderHome()}
+  }
   window.scrollTo(0,0);
 }
 window.addEventListener('hashchange',router);
@@ -64,6 +69,7 @@ function renderHome(){
         <div><div class="hero-stat-val">${total}</div><div class="hero-stat-label">látványosság<br>az atlaszban</div></div>
         <div><div class="hero-stat-val">2</div><div class="hero-stat-label">forrás-<br>könyv</div></div>
       </div>
+      <button class="hero-quiz-btn" type="button" onclick="location.hash='#/kviz'">Kvíz indítása</button>
     </div></section>
     <div class="map-section">
       <div class="map-tooltip"><div class="map-tooltip-dot"></div><span>9 régió · kattints egy jelölőre a belépéshez</span></div>
@@ -105,6 +111,7 @@ function renderRegio(slug){
       <div class="breadcrumb"><a onclick="location.hash='#/'">Magyar Turisztikai Atlasz</a> › ${aktivR.rovid}</div>
       <h1>${aktivR.nev.replace(aktivR.rovid,'')||aktivR.nev}<em></em></h1>
       <p class="r-sub">A régió nevezetességei · 13. évfolyamos turisztikai technikusok számára</p>
+      ${slug==='budapest'?`<button class="region-quiz-btn" type="button" onclick="location.hash='#/kviz/budapest'">Kvíz indítása ebben a régióban</button>`:''}
     </div></div>
     <div class="controls">
       <div class="search-wrap"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
@@ -180,6 +187,102 @@ function activateCard(id){openModal(id);flyTo(id)}
 function onCardKey(e,id){if(e.key==='Enter'||e.key===' '){e.preventDefault();activateCard(id)}}
 function flyTo(id){const l=LATV.find(x=>x.id===id);if(l&&markers[id]&&currentMap){currentMap.flyTo([l.koord.lat,l.koord.lng],12,{duration:.7});setTimeout(()=>markers[id].openPopup(),750)}hlCard(id)}
 function hlCard(id){document.querySelectorAll('.card').forEach(c=>c.classList.remove('hl'));const c=document.getElementById('card-'+id);if(c)c.classList.add('hl')}
+
+
+/* ════════ KVÍZMODUL ════════ */
+function renderKvizValaszto(){
+  kvizAllapot=null;
+  const cards=REGIOK.map(r=>{
+    const aktiv=kvizKerdesek(r.slug).length>0;
+    return `<div class="quiz-region-card${aktiv?' active':''}">
+      <div class="quiz-region-icon" style="background:linear-gradient(135deg,${r.szin},${r.szin}cc)">${r.ikon}</div>
+      <div class="quiz-region-body">
+        <h2>${r.nev}</h2>
+        <p>${aktiv?'10 kérdéses pilot kvíz érhető el ehhez a régióhoz.':'Ehhez a régióhoz még készül a kérdésbank.'}</p>
+        <button type="button" class="quiz-start-btn" ${aktiv?`onclick="location.hash='#/kviz/${r.slug}'"`:'disabled'}>${aktiv?'Kvíz indítása':'Készül'}</button>
+      </div>
+    </div>`;
+  }).join('');
+  document.getElementById('app').innerHTML=`
+    <main class="quiz-page">
+      <div class="breadcrumb"><a onclick="location.hash='#/'">Magyar Turisztikai Atlasz</a> › Kvíz</div>
+      <section class="quiz-card">
+        <div class="section-eyebrow">Pilot kvízmodul</div>
+        <h1>Válassz kvízrégiót</h1>
+        <p class="quiz-intro">Első körben a Budapest és Közép-Duna-vidék régió kérdésbankja aktív. A kvíz nem ment eredményt, nincs időmérő, és billentyűzettel is használható.</p>
+      </section>
+      <div class="quiz-region-grid">${cards}</div>
+      <div class="quiz-actions"><button type="button" onclick="location.hash='#/'">Vissza az atlaszhoz</button></div>
+    </main>`;
+}
+
+function renderKviz(slug){
+  const kerdesek=kvizKerdesek(slug);
+  const regio=regioOf(slug);
+  if(!kerdesek.length){renderKvizValaszto();return;}
+  kvizAllapot={slug,kerdesek,index:0,pont:0,valaszolt:false};
+  document.getElementById('app').innerHTML=`
+    <main class="quiz-page">
+      <div class="breadcrumb"><a onclick="location.hash='#/'">Magyar Turisztikai Atlasz</a> › <a onclick="location.hash='#/kviz'">Kvíz</a> › ${regio.nev}</div>
+      <section class="quiz-card" id="quizBox"></section>
+    </main>`;
+  renderKvizKerdes();
+}
+
+function renderKvizKerdes(){
+  const a=kvizAllapot;if(!a)return;
+  if(a.index>=a.kerdesek.length){renderKvizEredmeny();return;}
+  const q=a.kerdesek[a.index];
+  document.getElementById('quizBox').innerHTML=`
+    <div class="quiz-progress">${a.index+1} / ${a.kerdesek.length} kérdés</div>
+    <h1>${regioOf(a.slug).nev} kvíz</h1>
+    <p class="quiz-question">${q.question}</p>
+    <div class="quiz-answers">${q.answers.map((ans,i)=>`<button type="button" class="quiz-answer" onclick="kvizValasz(${i})">${ans}</button>`).join('')}</div>
+    <div class="quiz-feedback" aria-live="polite" id="quizFeedback"></div>
+    <div class="quiz-actions">
+      <button type="button" onclick="location.hash='#/kviz'">Másik régió választása</button>
+      <button type="button" onclick="location.hash='#/'">Vissza az atlaszhoz</button>
+    </div>`;
+}
+
+function kvizValasz(index){
+  const a=kvizAllapot;if(!a||a.valaszolt)return;
+  const q=a.kerdesek[a.index];
+  a.valaszolt=true;
+  const helyes=index===q.correctIndex;
+  if(helyes)a.pont++;
+  document.querySelectorAll('.quiz-answer').forEach((btn,i)=>{
+    btn.disabled=true;
+    if(i===q.correctIndex)btn.classList.add('correct');
+    if(i===index&&!helyes)btn.classList.add('wrong');
+  });
+  document.getElementById('quizFeedback').innerHTML=`
+    <strong>${helyes?'Helyes válasz.':'Hibás válasz.'}</strong>
+    ${helyes?'':`<span>A helyes válasz: ${q.answers[q.correctIndex]}.</span>`}
+    <span>${q.explanation}</span>
+    <button type="button" class="quiz-next" onclick="kvizKovetkezo()">Következő kérdés</button>`;
+  const next=document.querySelector('.quiz-next');if(next)next.focus();
+}
+
+function kvizKovetkezo(){
+  if(!kvizAllapot)return;
+  kvizAllapot.index++;
+  kvizAllapot.valaszolt=false;
+  renderKvizKerdes();
+}
+
+function renderKvizEredmeny(){
+  const a=kvizAllapot;if(!a)return;
+  document.getElementById('quizBox').innerHTML=`
+    <div class="section-eyebrow">Kvíz vége</div>
+    <h1>${regioOf(a.slug).nev} kvíz</h1>
+    <p class="quiz-score">Pontszám: <strong>${a.pont} / ${a.kerdesek.length}</strong></p>
+    <div class="quiz-actions">
+      <button type="button" onclick="renderKviz('${a.slug}')">Újrakezdés</button>
+      <button type="button" onclick="location.hash='#/kviz'">Másik régió választása</button>
+      <button type="button" onclick="location.hash='#/'">Vissza az atlaszhoz</button>
+    </div>`;
+}
 
 /* ════════ MODÁL ════════ */
 function openModal(id){
