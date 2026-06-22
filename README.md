@@ -1,9 +1,9 @@
 # Magyar Turisztikai Atlasz
 
 Ingyenes, online tananyag a 13. évfolyamos turisztikai technikus tanulók
-számára. Magyarország mind a 9 turisztikai régióját lefedi, összesen
-157 nevezetességgel, interaktív térképpel és tankönyvi mélységű
-leírásokkal.
+számára. Magyarországot 9 régiós oktatási/tananyagszerkezeti
+felosztásban mutatja be, összesen 157 nevezetességgel, interaktív térképpel
+és tankönyvi mélységű leírásokkal.
 
 A projekt GitHub Pages alatt futó, statikus HTML/CSS/JS alkalmazás. Nincs
 szükség szerverre, adatbázisra, npm-re, build rendszerre vagy frameworkre:
@@ -39,9 +39,15 @@ támaszkodik:
 
 ## Hogyan működik a régióválasztás?
 
-A főoldalon a 9 turisztikai régió kártyaként és térképes jelölőként jelenik
-meg. Egy régiókártyára vagy térképes régiójelölőre kattintva az alkalmazás
-hash alapú útvonalra navigál, például:
+A projekt 9 régiós oktatási/tananyagszerkezeti felosztást használ. Ez a
+tananyagban alkalmazott régiólogika nem azonos teljesen az aktuális, 11
+turisztikai térséget használó MTÜ-logika egy az egyben való leképezésével.
+A cél az, hogy a látványosságok a tanulók számára áttekinthető, tananyagszerű
+régiós szerkezetben jelenjenek meg.
+
+A főoldalon a 9 oktatási/turisztikai régió kártyaként és térképes jelölőként
+jelenik meg. Egy régiókártyára vagy térképes régiójelölőre kattintva az
+alkalmazás hash alapú útvonalra navigál, például:
 
 ```text
 #/regio/budapest
@@ -49,6 +55,27 @@ hash alapú útvonalra navigál, például:
 
 A régióoldal az adott régióhoz tartozó látványosságokat listázza, és ugyanazt
 a listát térképes markerekkel is megjeleníti.
+
+### Mit jelent a `budapest` régióslug?
+
+A `budapest` régióslug a projektben a „Budapest és Közép-Duna-vidék” régiót
+jelenti. Nem kizárólag Budapest közigazgatási területére vonatkozik, ezért
+Budapest környéki és dunakanyari kiemelt helyszínek is tartozhatnak ide.
+
+Ilyen példák lehetnek többek között:
+
+- Visegrád;
+- Esztergom;
+- Szentendre;
+- Vác;
+- Gödöllő;
+- Zsámbék.
+
+Ezek a települések nem Budapest városrészei. A besorolás oktatási/turisztikai
+régiós logikát követ, nem pedig városrészi vagy kizárólag közigazgatási
+logikát. Későbbi fejlesztésként elképzelhető a 9 oktatási régió és az aktuális
+MTÜ-térségek párhuzamos jelölése, de a jelenlegi dokumentációs pontosítás nem
+vezet be új adatmezőt.
 
 ## Hogyan működik a kategóriaszűrés?
 

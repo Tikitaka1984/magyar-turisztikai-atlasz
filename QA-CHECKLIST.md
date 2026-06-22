@@ -34,6 +34,7 @@ térkép, a modális ablak vagy a képrendszer.
 
 ## Régióválasztás ellenőrzése
 
+- [ ] A régiólogika ellenőrzésekor a `budapest` slug „Budapest és Közép-Duna-vidék”, nem pusztán Budapest városa.
 - [ ] A főoldalon mind a 9 régió megjelenik.
 - [ ] Minden régiókártya kattintható.
 - [ ] Régiókártyára kattintva a megfelelő `#/regio/...` útvonal nyílik meg.
