@@ -215,16 +215,19 @@ function openModal(id){
    közvetlenül (lokális fájl VAGY http(s) URL egyaránt elfogadott).
    Egyébként az ötszintű Wikipédia/Commons automatát hívja meg. */
 function kepetMutat(l, elem, meret) {
+  if(!elem)return;
+  elem.dataset.placeholder = `<span class="${meret>400?'modal':'card'}-ph-ikon">${ikonOf(l)}</span>`;
+  elem.dataset.alt = l.nev + ' képe';
   if (l.kep_sajat && l.kep_sajat.trim()) {
     const img = document.createElement('img');
     img.src = l.kep_sajat.trim();
-    img.alt = l.nev + ' képe';
+    img.alt = elem.dataset.alt;
     img.loading = 'lazy';
+    img.onerror = () => _kepHibaPlaceholder(elem);
     img.style.cssText = 'width:100%;height:100%;object-fit:cover;display:block';
     elem.innerHTML = '';
     elem.appendChild(img);
   } else if (l.kep) {
-    elem.dataset.alt = l.nev + ' képe';
     betoltKep(l.kep, elem, meret);
   }
 }
@@ -234,6 +237,12 @@ function kepetMutat(l, elem, meret) {
    főképét adja vissza, így nincs fájlnév-találgatás. Ha a magyar Wikin nincs
    kép, az angolra esik vissza. */
 const _kepCache={};
+const _FETCH_TIMEOUT_MS=6500;
+function fetchTimeout(url,options={},timeoutMs=_FETCH_TIMEOUT_MS){
+  const controller=new AbortController();
+  const timer=setTimeout(()=>controller.abort(),timeoutMs);
+  return fetch(url,{...options,signal:controller.signal}).finally(()=>clearTimeout(timer));
+}
 /* Ötszintű képkeresés:
    1) magyar Wiki pageimages (kijelölt főkép)
    2) angol Wiki pageimages
@@ -262,7 +271,7 @@ function betoltKep(cim,elElem,meret){
 /* 5. szint: Wikimedia Commons közvetlen képkeresés (File: névtér) */
 function _lekerCommons(cim,meret){
   const url='https://commons.wikimedia.org/w/api.php?action=query&generator=search&gsrsearch='+encodeURIComponent(cim)+'&gsrnamespace=6&gsrlimit=8&prop=imageinfo&iiprop=url&iiurlwidth='+meret+'&format=json&origin=*';
-  return fetch(url).then(r=>r.json()).then(d=>{
+  return fetchTimeout(url).then(r=>r.ok?r.json():null).then(d=>{
     const pages=d?.query?.pages;
     if(!pages)return null;
     const kepek=Object.values(pages)
@@ -276,7 +285,7 @@ function _lekerCommons(cim,meret){
 /* 1-2. szint: kijelölt főkép */
 function _lekerFokep(nyelv,cim,meret){
   const url='https://'+nyelv+'.wikipedia.org/w/api.php?action=query&titles='+encodeURIComponent(cim)+'&prop=pageimages&piprop=thumbnail&pithumbsize='+meret+'&redirects=1&format=json&origin=*';
-  return fetch(url).then(r=>r.json()).then(d=>{
+  return fetchTimeout(url).then(r=>r.ok?r.json():null).then(d=>{
     const pages=d?.query?.pages;
     if(!pages)return null;
     return Object.values(pages)[0]?.thumbnail?.source||null;
@@ -286,7 +295,7 @@ function _lekerFokep(nyelv,cim,meret){
 const _kizart=/(\.svg|flag|coat|wappen|cimer|címer|locator|location|map_|_map|térkép|terkep|icon|logo|symbol|seal|disambig|commons-logo|wiki|edit-|ambox|question_|red_pog|pog\.|crystal|nuvola|gnome-|emblem|star_|arms)/i;
 function _lekerBarmiKep(nyelv,cim,meret){
   const url='https://'+nyelv+'.wikipedia.org/w/api.php?action=query&generator=images&titles='+encodeURIComponent(cim)+'&gimlimit=20&prop=imageinfo&iiprop=url&iiurlwidth='+meret+'&redirects=1&format=json&origin=*';
-  return fetch(url).then(r=>r.json()).then(d=>{
+  return fetchTimeout(url).then(r=>r.ok?r.json():null).then(d=>{
     const pages=d?.query?.pages;
     if(!pages)return null;
     const kepek=Object.values(pages)
@@ -296,12 +305,21 @@ function _lekerBarmiKep(nyelv,cim,meret){
     return kepek[0].info.thumburl||kepek[0].info.url||null;
   }).catch(()=>null);
 }
+function _kepHibaPlaceholder(elem){
+  if(!elem)return;
+  elem.innerHTML=elem.dataset.placeholder||'';
+  const status=document.createElement('span');
+  status.className='kep-hiba';
+  status.textContent='Kép nem elérhető';
+  elem.appendChild(status);
+}
 function _alkalmazKep(elem,url,meret){
   if(!elem)return;
   const img=document.createElement('img');
   img.src=url;
   img.alt=elem.dataset.alt||'Látványosság képe';
   img.loading='lazy';
+  img.onerror=()=>_kepHibaPlaceholder(elem);
   img.style.cssText='width:100%;height:100%;object-fit:cover;display:block';
   if(meret>400){
     const cap=document.createElement('span');
