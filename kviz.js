@@ -514,6 +514,108 @@ var KVIZ_QUESTIONS = {
       latvId: 156,
       latvName: "Szolnoki RepTár – Repülőmúzeum"
     }
+  ],
+  "tisza-to": [
+    {
+      id: "tisza-to-01",
+      question: "Melyik településen található a Tisza-tavi Ökocentrum az atlasz adatai szerint?",
+      answers: ["Tiszafüred", "Poroszló", "Kisköre", "Abádszalók"],
+      correctIndex: 1,
+      explanation: "A Tisza-tavi Ökocentrum településmezője az atlaszban Poroszló.",
+      regionSlug: "tisza-to",
+      latvId: 41,
+      latvName: "Tisza-tavi Ökocentrum"
+    },
+    {
+      id: "tisza-to-02",
+      question: "Melyik tisza-tavi helyszín leírása szerint Európa egyik legnagyobb édesvízi akváriumrendszere és élménycentruma?",
+      answers: ["Poroszlói Vizi Sétány", "Tisza-tavi Ökocentrum", "Kiskörei Hallépső", "Tisza-tavi Madárrezervátum"],
+      correctIndex: 1,
+      explanation: "A Tisza-tavi Ökocentrum rövid leírása Európa egyik legnagyobb édesvízi akváriumrendszereként és élménycentrumaként mutatja be a helyszínt.",
+      regionSlug: "tisza-to",
+      latvId: 41,
+      latvName: "Tisza-tavi Ökocentrum"
+    },
+    {
+      id: "tisza-to-03",
+      question: "Melyik települést emlegeti az atlasz leírása a Tisza-tó „keleti kapujaként”?",
+      answers: ["Abádszalók", "Sarud", "Tiszafüred", "Kisköre"],
+      correctIndex: 2,
+      explanation: "Tiszafüred rövid leírása a Tisza-tó keleti kapujaként említi a települést.",
+      regionSlug: "tisza-to",
+      latvId: 42,
+      latvName: "Tiszafüred"
+    },
+    {
+      id: "tisza-to-04",
+      question: "Melyik létesítmény átadásával jött létre a mintegy 127 négyzetkilométeres Tisza-tó?",
+      answers: ["Kiskörei vízlépcső", "Kiskörei Hallépső", "Poroszlói Vizi Sétány", "Tisza-tavi Ökocentrum"],
+      correctIndex: 0,
+      explanation: "A Kiskörei vízlépcső leírása szerint a duzzasztómű 1973-as átadásával jött létre a mintegy 127 négyzetkilométeres Tisza-tó.",
+      regionSlug: "tisza-to",
+      latvId: 43,
+      latvName: "Kiskörei vízlépcső"
+    },
+    {
+      id: "tisza-to-05",
+      question: "Melyik tisza-tavi település a motoros vízi sportok – jet-ski, wakeboard – egyik kevés engedélyezett helyszíne a tavon?",
+      answers: ["Abádszalók", "Tiszafüred", "Poroszló", "Sarud"],
+      correctIndex: 0,
+      explanation: "Abádszalók leírása szerint a település a motoros vízi sportok egyik kevés engedélyezett helyszíne a Tisza-tavon.",
+      regionSlug: "tisza-to",
+      latvId: 44,
+      latvName: "Abádszalók"
+    },
+    {
+      id: "tisza-to-06",
+      question: "Melyik szigorúan védett helyszín az északi tómedencében a veszélyeztetett madárfajok fontos fészkelőhelye?",
+      answers: ["Sarudi szabadstrand", "Tisza-tavi Madárrezervátum", "Abádszalók", "Kiskörei Hallépső"],
+      correctIndex: 1,
+      explanation: "A Tisza-tavi Madárrezervátum a Tiszavalki-öbölben, az északi tómedencében a veszélyeztetett vizimadarak fontos fészkelőhelye.",
+      regionSlug: "tisza-to",
+      latvId: 201,
+      latvName: "Tisza-tavi Madárrezervátum"
+    },
+    {
+      id: "tisza-to-07",
+      question: "Melyik helyszín üvegfalú folyosója teszi lehetővé a halak biztonságos átúszását a vízlépcsőnél?",
+      answers: ["Kiskörei Hallépső", "Kiskörei vízlépcső", "Tisza-tavi Ökocentrum", "Poroszlói Vizi Sétány"],
+      correctIndex: 0,
+      explanation: "A Kiskörei Hallépső üvegfalú, speciálisan tervezett halcsatornája a halak biztonságos átkelését biztosítja a duzzasztott és a természetes folyószakasz között.",
+      regionSlug: "tisza-to",
+      latvId: 202,
+      latvName: "Kiskörei Hallépső"
+    },
+    {
+      id: "tisza-to-08",
+      question: "Melyik tisza-tavi helyszín a tó nyílt vizére épített pallórendszer, amelyhez csak csónakkal lehet eljutni?",
+      answers: ["Sarudi szabadstrand", "Tiszafüred", "Poroszlói Vizi Sétány", "Tisza-tavi Madárrezervátum"],
+      correctIndex: 2,
+      explanation: "A Poroszlói Vizi Sétány a tó nádasaiba és nyílt vizébe épített pallórendszer, amelyhez csak csónakkal lehet eljutni.",
+      regionSlug: "tisza-to",
+      latvId: 203,
+      latvName: "Poroszlói Vizi Sétány"
+    },
+    {
+      id: "tisza-to-09",
+      question: "Melyik a Tisza-tó nyugati partján fekvő csendes, természetközeli szabadstrand?",
+      answers: ["Sarudi szabadstrand", "Abádszalók", "Tiszafüred", "Kiskörei vízlépcső"],
+      correctIndex: 0,
+      explanation: "A Sarudi szabadstrand a tó nyugati partján fekvő csendes, természetközeli pihenőhely.",
+      regionSlug: "tisza-to",
+      latvId: 45,
+      latvName: "Sarudi szabadstrand"
+    },
+    {
+      id: "tisza-to-10",
+      question: "Melyik tisza-tavi településen őrzi a Kiss Pál Múzeum a híres helyi fazekasság emlékeit?",
+      answers: ["Poroszló", "Tiszafüred", "Kisköre", "Sarud"],
+      correctIndex: 1,
+      explanation: "Tiszafüred leírása szerint a városban működő Kiss Pál Múzeum a térség néprajzi emlékeit, köztük a híres tiszafüredi fazekasság darabjait őrzi.",
+      regionSlug: "tisza-to",
+      latvId: 42,
+      latvName: "Tiszafüred"
+    }
   ]
 };
 
