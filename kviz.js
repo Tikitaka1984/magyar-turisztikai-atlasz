@@ -514,6 +514,158 @@ var KVIZ_QUESTIONS = {
       latvId: 156,
       latvName: "Szolnoki RepTár – Repülőmúzeum"
     }
+  ],
+  "tisza-to": [
+    {
+      id: "tisza-to-01",
+      question: "Mi a Kiskörei Hallépső elsődleges ökológiai szerepe a vízlépcső mellett?",
+      answers: [
+        "Felmelegíti a sekély öböl vizét a strandolók kényelméért",
+        "Tárolja az öntözővizet a környező szántóföldek számára",
+        "Lehetővé teszi a halak átkelését a duzzasztott és a természetes folyószakasz között",
+        "Megszűri a hajóforgalom által felkavart üledéket"
+      ],
+      correctIndex: 2,
+      explanation: "A Kiskörei Hallépső leírása szerint a halak és más vízi élőlények biztonságos átkelését biztosítja a duzzasztott és a természetes folyószakasz között.",
+      regionSlug: "tisza-to",
+      latvId: 202,
+      latvName: "Kiskörei Hallépső"
+    },
+    {
+      id: "tisza-to-02",
+      question: "Melyik állítás IGAZ a Tisza-tavi Madárrezervátumról az atlasz leírása alapján?",
+      answers: [
+        "Bárki szabadon, gyalogosan bejárhatja a fészkelőterületet",
+        "A területre csak evezős hajóval, szervezett körülmények között szabad bemenni",
+        "A rezervátum a tó déli, abádszalóki medencéjében fekszik",
+        "Elsősorban a motoros vízi sportok engedélyezett helyszíne"
+      ],
+      correctIndex: 1,
+      explanation: "A leírás szerint a rezervátumba csak evezős hajóval és csak szervezett körülmények között szabad bemenni; az öböl az északi tómedencében (Tiszavalki-öböl) található.",
+      regionSlug: "tisza-to",
+      latvId: 201,
+      latvName: "Tisza-tavi Madárrezervátum"
+    },
+    {
+      id: "tisza-to-03",
+      question: "Milyen célból épült eredetileg a Tisza-tavat létrehozó duzzasztómű az atlasz szerint?",
+      answers: [
+        "Öntözés, árvízvédelem és energiatermelés céljából",
+        "Nemzetközi hajóverseny-pálya kialakítása céljából",
+        "Budapest ivóvízellátásának biztosítása céljából",
+        "Nagyüzemi haltenyésztő telep létrehozása céljából"
+      ],
+      correctIndex: 0,
+      explanation: "A Kiskörei vízlépcső leírása szerint a létesítmény eredetileg az öntözés, az árvízvédelem és az energiatermelés céljából épült.",
+      regionSlug: "tisza-to",
+      latvId: 43,
+      latvName: "Kiskörei vízlépcső"
+    },
+    {
+      id: "tisza-to-04",
+      question: "Mi a fő különbség Abádszalók és a Sarudi szabadstrand turisztikai jellege között a leírások alapján?",
+      answers: [
+        "Mindkettő a tó keleti partján, Tiszafüred szomszédságában fekszik",
+        "Abádszalók csendes madármegfigyelő hely, Sarud pörgő vízisport-központ",
+        "Egyik sem alkalmas strandolásra, csak horgászatra használják",
+        "Abádszalók pörgő vízisport-központ, Sarud csendes, természetközeli pihenőhely"
+      ],
+      correctIndex: 3,
+      explanation: "Abádszalók a déli medence vízisport-központja (jet-ski, wakeboard), míg a Sarudi szabadstrand a tó nyugati partjának csendes, természetközeli pihenőhelye.",
+      regionSlug: "tisza-to",
+      latvId: 44,
+      latvName: "Abádszalók"
+    },
+    {
+      id: "tisza-to-05",
+      question: "Miért kiemelt célpontja a Tisza-tavi Ökocentrum az iskolai osztálykirándulásoknak?",
+      answers: [
+        "Mert a régió egyetlen vízparti nagyszállodája működik itt",
+        "Környezeti nevelési programjai és interaktív, természetismereti kiállításai miatt",
+        "Mert itt rendezik a tó motorcsónak-versenyeit",
+        "Mert ingyenes termálfürdő is tartozik hozzá"
+      ],
+      correctIndex: 1,
+      explanation: "Az Ökocentrum leírása szerint a helyszín interaktív kiállításai, tanösvénye és környezeti nevelési programjai miatt az osztálykirándulások kedvelt célpontja.",
+      regionSlug: "tisza-to",
+      latvId: 41,
+      latvName: "Tisza-tavi Ökocentrum"
+    },
+    {
+      id: "tisza-to-06",
+      question: "Mi jellemzi a Sarudi szabadstrand környékének természeti környezetét az atlasz szerint?",
+      answers: [
+        "Kiterjedt nádasok és gazdag madárvilág övezi",
+        "Mély, hajózásra használt fő folyómeder szegélyezi",
+        "Sűrűn beépített, nagyvárosi üdülőövezet veszi körül",
+        "Kénhidrogénben gazdag gyógyforrások törnek fel a partján"
+      ],
+      correctIndex: 0,
+      explanation: "Sarud leírása szerint az öblöt kiterjedt nádasok és gazdag madárvilág övezi, ezért a természetjárás és a madármegfigyelés kedvelt helyszíne.",
+      regionSlug: "tisza-to",
+      latvId: 45,
+      latvName: "Sarudi szabadstrand"
+    },
+    {
+      id: "tisza-to-07",
+      question: "Mi teszi különlegessé a Poroszlói Vizi Sétányt a tó többi partszakaszához képest?",
+      answers: [
+        "Termálvizes élményfürdő tartozik hozzá",
+        "Autóval körbejárható tanösvény vezet rajta a tó körül",
+        "A nyílt vízbe épített pallórendszer csak csónakkal érhető el, és szárazföldről megszerezhetetlen élményt ad",
+        "Üvegfalú folyosójából a vándorló halak mozgása figyelhető meg"
+      ],
+      correctIndex: 2,
+      explanation: "A Vizi Sétány a tó nádasaiba és nyílt vizébe épített pallórendszer, amelyhez csak csónakkal lehet eljutni, és olyan élményt nyújt, amelyet szárazföldről nem lehetne megkapni.",
+      regionSlug: "tisza-to",
+      latvId: 203,
+      latvName: "Poroszlói Vizi Sétány"
+    },
+    {
+      id: "tisza-to-08",
+      question: "Mit őriz a tiszafüredi Kiss Pál Múzeum az atlasz leírása szerint?",
+      answers: [
+        "A Tisza-tó vízimadarainak preparált gyűjteményét",
+        "A kiskörei vízlépcső eredeti gépészeti berendezéseit",
+        "A tó vízisport-emlékeit és egykori versenyhajóit",
+        "A térség néprajzi emlékeit, köztük a híres tiszafüredi fazekasság darabjait"
+      ],
+      correctIndex: 3,
+      explanation: "Tiszafüred leírása szerint a Kiss Pál Múzeum a térség néprajzi emlékeit, köztük a híres tiszafüredi fazekasság darabjait őrzi.",
+      regionSlug: "tisza-to",
+      latvId: 42,
+      latvName: "Tiszafüred"
+    },
+    {
+      id: "tisza-to-09",
+      question: "Melyik település tölti be az atlasz szerint a tó keleti medencéjének turisztikai és közlekedési csomóponti szerepét?",
+      answers: [
+        "Kisköre",
+        "Tiszafüred",
+        "Poroszló",
+        "Abádszalók"
+      ],
+      correctIndex: 1,
+      explanation: "Tiszafüred leírása szerint a város a Tisza-tó keleti medencéjének turisztikai és közlekedési csomópontja.",
+      regionSlug: "tisza-to",
+      latvId: 42,
+      latvName: "Tiszafüred"
+    },
+    {
+      id: "tisza-to-10",
+      question: "Az atlasz leírása szerint a tóméretet tekintve hányadik helyen áll a Tisza-tó az ország tavai között?",
+      answers: [
+        "Az ország legnagyobb tava",
+        "Az ország második legnagyobb tava",
+        "Az ország harmadik legnagyobb tava",
+        "Az ország ötödik legnagyobb tava"
+      ],
+      correctIndex: 1,
+      explanation: "A Kiskörei vízlépcső leírása szerint a duzzasztással létrejött mintegy 127 négyzetkilométeres Tisza-tó Magyarország második legnagyobb tava.",
+      regionSlug: "tisza-to",
+      latvId: 43,
+      latvName: "Kiskörei vízlépcső"
+    }
   ]
 };
 
