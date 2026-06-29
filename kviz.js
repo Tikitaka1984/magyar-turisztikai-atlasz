@@ -666,6 +666,158 @@ var KVIZ_QUESTIONS = {
       latvId: 43,
       latvName: "Kiskörei vízlépcső"
     }
+  ],
+  "nyugat-dunantul": [
+    {
+      id: "nyugat-dunantul-01",
+      question: "Az atlasz leírása alapján miért tekinthető a Pannonhalmi Főapátság a magyar kereszténység bölcsőjének?",
+      answers: [
+        "Mert itt koronázták meg Szent István királyt az államalapításkor",
+        "Mert a Könnyező Szűzanya kegyképét itt őrzik zarándokhelyként",
+        "Mert falai között nyomtatták az első magyar nyelvű könyvet",
+        "Mert 996-ban, még az államalapítás előtt alapították, az ország legrégebbi szerzetesi közösségeként"
+      ],
+      correctIndex: 3,
+      explanation: "A Pannonhalmi Főapátság leírása szerint az apátságot 996-ban, még az államalapítás előtt alapították bencés szerzetesek, és ez Magyarország legrégebbi szerzetesi közössége.",
+      regionSlug: "nyugat-dunantul",
+      latvId: 81,
+      latvName: "Pannonhalmi Főapátság"
+    },
+    {
+      id: "nyugat-dunantul-02",
+      question: "Mi volt az atlasz szerint a kőszegi Jurisics-vár 1532-es ostromának nagy történelmi jelentősége?",
+      answers: [
+        "A védők kiverték az országból a teljes oszmán sereget",
+        "Az ostrom után a várban írták alá a törökökkel kötött békét",
+        "A maroknyi védősereg feltartóztatta Szulejmán seregét, és így megakadályozta Bécs ostromát",
+        "A vár visszafoglalásával indult meg a török kiűzése Magyarországról"
+      ],
+      correctIndex: 2,
+      explanation: "A Kőszeg – Jurisics-vár leírása szerint Jurisics Miklós maroknyi védőserege 1532-ben verte vissza Szulejmán szultán hatalmas seregét, amelynek feltartóztatása megakadályozta Bécs ostromát.",
+      regionSlug: "nyugat-dunantul",
+      latvId: 84,
+      latvName: "Kőszeg – Jurisics-vár"
+    },
+    {
+      id: "nyugat-dunantul-03",
+      question: "Az atlasz leírása szerint milyen művelődéstörténeti eseményről nevezetes a sárvári Nádasdy-vár?",
+      answers: [
+        "Itt alapították az ország első egyetemét",
+        "Itt nyomtatták 1541-ben az első, teljes egészében magyar nyelvű könyvet",
+        "Itt állították össze az első magyar nyelvű szótárt",
+        "Itt rendezték az első magyar nyelvű színházi előadást"
+      ],
+      correctIndex: 1,
+      explanation: "A Sárvár – Nádasdy-vár leírása szerint a várban működött Sylvester János nyomdája, ahol 1541-ben elkészült az első, teljes egészében magyar nyelvű nyomtatott könyv, az Újszövetség magyar fordítása.",
+      regionSlug: "nyugat-dunantul",
+      latvId: 86,
+      latvName: "Sárvár – Nádasdy-vár"
+    },
+    {
+      id: "nyugat-dunantul-04",
+      question: "Melyik építészeti korszak kiemelkedő, kéttornyú emléke a jáki apátsági templom az atlasz szerint?",
+      answers: [
+        "A gótikus építészet",
+        "A reneszánsz építészet",
+        "A barokk építészet",
+        "A románkori (román) építészet"
+      ],
+      correctIndex: 3,
+      explanation: "A Jáki apátsági templom leírása szerint a 13. század közepén emelt, kéttornyú bencés templom a magyar románkori építészet egyik legszebb és legépebben fennmaradt alkotása.",
+      regionSlug: "nyugat-dunantul",
+      latvId: 87,
+      latvName: "Jáki apátsági templom"
+    },
+    {
+      id: "nyugat-dunantul-05",
+      question: "Az atlasz szerint melyik természeti jellemző teszi különlegessé a Fertő-tavat?",
+      answers: [
+        "Európa legnyugatibb sztyepptava, sekély, nádasokkal sűrűn övezett szikes tó",
+        "Magyarország legnagyobb és legmélyebb hegyi tava",
+        "Az ország egyetlen tengerszint alatti karsztforrása",
+        "A világ egyik legnagyobb biológiailag aktív termáltava"
+      ],
+      correctIndex: 0,
+      explanation: "A Fertő-tó kultúrtáj leírása szerint a Fertő-tó Európa legnyugatibb sztyepptava: sekély, nádasokkal sűrűn övezett szikes tó, amely határon átnyúló világörökségi kultúrtáj.",
+      regionSlug: "nyugat-dunantul",
+      latvId: 83,
+      latvName: "Fertő-tó kultúrtáj"
+    },
+    {
+      id: "nyugat-dunantul-06",
+      question: "Az atlasz szerint mi történt 1989. augusztus 19-én a Páneurópai Piknik helyszínén?",
+      answers: [
+        "Aláírták a szovjet csapatok kivonásáról szóló egyezményt",
+        "Itt kiáltották ki a Magyar Köztársaságot",
+        "Rövid időre kinyitották a vasfüggöny kapuját, és több száz kelet-német állampolgár jutott át Ausztriába",
+        "Lebontották a teljes magyar–osztrák határkerítést"
+      ],
+      correctIndex: 2,
+      explanation: "A Páneurópai Piknik Emlékhely leírása szerint 1989. augusztus 19-én itt nyitották ki rövid időre a vasfüggöny kapuját, és több száz kelet-német állampolgárnak sikerült átjutnia Ausztriába – ez volt az első tömegszökés a vasfüggöny mögül.",
+      regionSlug: "nyugat-dunantul",
+      latvId: 226,
+      latvName: "Páneurópai Piknik Emlékhely"
+    },
+    {
+      id: "nyugat-dunantul-07",
+      question: "Melyik világhírű zeneszerző élt és alkotott évtizedeken át udvari karmesterként a fertődi Esterházy-kastélyban?",
+      answers: [
+        "Liszt Ferenc",
+        "Erkel Ferenc",
+        "Wolfgang Amadeus Mozart",
+        "Joseph Haydn"
+      ],
+      correctIndex: 3,
+      explanation: "A Fertődi Esterházy-kastély leírása szerint Joseph Haydn 1766 és 1790 között élt és alkotott Eszterházán az Esterházy-udvar karmestereként és zeneszerzőjeként.",
+      regionSlug: "nyugat-dunantul",
+      latvId: 191,
+      latvName: "Fertődi Esterházy-kastély"
+    },
+    {
+      id: "nyugat-dunantul-08",
+      question: "Az atlasz szerint miért viseli Sopron a „leghűségesebb város” (Civitas Fidelissima) címet?",
+      answers: [
+        "Mert lakói 1921-ben népszavazáson Magyarország mellett döntöttek",
+        "Mert a város a hódoltság idején sosem került török kézre",
+        "Mert hű maradt a királyhoz a Rákóczi-szabadságharc alatt",
+        "Mert elsőként csatlakozott a reformáció ügyéhez"
+      ],
+      correctIndex: 0,
+      explanation: "A Sopron – Tűztorony leírása szerint a torony alatti Hűség kapuja arra emlékeztet, hogy Sopron lakói 1921-ben népszavazáson Magyarország mellett döntöttek, ezért viseli a város a „leghűségesebb város” (Civitas Fidelissima) címet.",
+      regionSlug: "nyugat-dunantul",
+      latvId: 82,
+      latvName: "Sopron – Tűztorony"
+    },
+    {
+      id: "nyugat-dunantul-09",
+      question: "Mi a fő különbség a fertődi Esterházy-kastély és a nagycenki Széchenyi-kastély atlaszbeli jellemzése között?",
+      answers: [
+        "Mindkettő gótikus stílusú középkori végvár volt",
+        "A fertődi az ország legnagyobb rokokó kastélya, a nagycenki Széchenyi István szülőkastélya és emlékhelye",
+        "A fertődi Széchenyi István szülőkastélya, a nagycenki rokokó zenei központ",
+        "A fertődi ma gyógyfürdőként, a nagycenki bencés kolostorként működik"
+      ],
+      correctIndex: 1,
+      explanation: "A Fertődi Esterházy-kastély az ország legnagyobb rokokó kastélyegyüttese („Magyar Versailles”), míg a Nagycenki Széchenyi-kastély Széchenyi István gróf szülőkastélya és nemzeti emlékhelye.",
+      regionSlug: "nyugat-dunantul",
+      latvId: 192,
+      latvName: "Nagycenki Széchenyi-kastély"
+    },
+    {
+      id: "nyugat-dunantul-10",
+      question: "Melyik állítás IGAZ a szombathelyi Iseumról az atlasz leírása alapján?",
+      answers: [
+        "Egy középkori bencés kolostor fennmaradt romja",
+        "A török hódoltság korának fennmaradt dzsámija",
+        "Az egyiptomi istennő, Isis tiszteletére emelt ókori római szentély rekonstruált együttese",
+        "Egy 19. század eleji eklektikus zsinagóga"
+      ],
+      correctIndex: 2,
+      explanation: "A Szombathely – Iseum leírása szerint az Iseum az egyiptomi istennő, Isis tiszteletére emelt ókori szentély rekonstruált együttese a római Savaria városában.",
+      regionSlug: "nyugat-dunantul",
+      latvId: 88,
+      latvName: "Szombathely – Iseum"
+    }
   ]
 };
 
