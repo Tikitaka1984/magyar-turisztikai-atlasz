@@ -818,6 +818,158 @@ var KVIZ_QUESTIONS = {
       latvId: 88,
       latvName: "Szombathely – Iseum"
     }
+  ],
+  "del-alfold": [
+    {
+      id: "del-alfold-01",
+      question: "Az atlasz leírása szerint melyik esemény után, a város újjáépítésekor emelték fogadalomból Szeged jelképét, a Fogadalmi templomot (szegedi dómot)?",
+      answers: [
+        "Az 1848–49-es szabadságharc szegedi harcai",
+        "Az 1879-es nagy szegedi árvíz",
+        "Az első világháború szegedi áldozatainak emléke",
+        "A török hódoltság alóli felszabadulás"
+      ],
+      correctIndex: 1,
+      explanation: "A szegedi dóm leírása szerint a kéttornyú, neoromán Fogadalmi templomot az 1879-es nagy szegedi árvíz után, a város újjáépítésekor, fogadalomból emelték.",
+      regionSlug: "del-alfold",
+      latvId: 51,
+      latvName: "Szegedi Dóm (Fogadalmi templom)"
+    },
+    {
+      id: "del-alfold-02",
+      question: "Melyik 20. század eleji építészeti irányzat pompás, virág- és szívmotívumokkal díszített alkotása a kecskeméti Cifrapalota az atlasz szerint?",
+      answers: [
+        "A barokk",
+        "A neoreneszánsz",
+        "A magyar szecesszió",
+        "A románkori építészet"
+      ],
+      correctIndex: 2,
+      explanation: "A Cifrapalota leírása szerint az 1902-ben, Márkus Géza tervei alapján emelt, Zsolnay-majolikával borított épület a magyar szecesszió egyik legpompásabb alkotása.",
+      regionSlug: "del-alfold",
+      latvId: 52,
+      latvName: "Kecskemét – Cifrapalota"
+    },
+    {
+      id: "del-alfold-03",
+      question: "Melyik állítás IGAZ a szegedi Új Zsinagógáról az atlasz leírása alapján?",
+      answers: [
+        "A középkorban, gótikus stílusban épült, eredetileg keresztény templomnak",
+        "Ma már nem működő épület, kizárólag múzeumként látogatható",
+        "Ybl Miklós tervei alapján, neoromán stílusban épült",
+        "Magyarország második legnagyobb zsinagógája, a magyar szecesszió kiemelkedő alkotása"
+      ],
+      correctIndex: 3,
+      explanation: "A leírás szerint az 1903-ban, Baumhorn Lipót tervei alapján emelt Új Zsinagóga Magyarország második legnagyobb zsinagógája, a magyar szecesszió kiemelkedő, ma is működő alkotása.",
+      regionSlug: "del-alfold",
+      latvId: 134,
+      latvName: "Szegedi Új Zsinagóga"
+    },
+    {
+      id: "del-alfold-04",
+      question: "Mit ábrázol az Ópusztaszeri Nemzeti Történeti Emlékpark fő látványossága, a monumentális Feszty-körkép az atlasz szerint?",
+      answers: [
+        "A magyarok bejövetelét, vagyis a honfoglalást",
+        "Az 1848–49-es szabadságharc csatáit",
+        "A mohácsi csata tragédiáját",
+        "Szent István államalapítását és koronázását"
+      ],
+      correctIndex: 0,
+      explanation: "A Feszty-körkép Feszty Árpád 120 méter hosszú és 15 méter magas festménye, amely a magyarok bejövetelét, a honfoglalás drámáját ábrázolja.",
+      regionSlug: "del-alfold",
+      latvId: 53,
+      latvName: "Ópusztaszeri Nemzeti Történeti Emlékpark"
+    },
+    {
+      id: "del-alfold-05",
+      question: "Melyik állítás IGAZ a gyulai várról az atlasz leírása alapján?",
+      answers: [
+        "Magyarország legmagasabban fekvő hegyi vára",
+        "A 19. században, romantikus stílusban épült kastélyvár",
+        "Közép-Európa egyetlen épségben fennmaradt síkvidéki téglavára",
+        "A hódoltság idején sosem került török kézre"
+      ],
+      correctIndex: 2,
+      explanation: "A gyulai vár leírása szerint Közép-Európa egyetlen épségben fennmaradt síkvidéki téglavára; a 15. században, gótikus stílusban épült, és a törökök csak hosszú ostrom után tudták elfoglalni.",
+      regionSlug: "del-alfold",
+      latvId: 54,
+      latvName: "Gyulai vár"
+    },
+    {
+      id: "del-alfold-06",
+      question: "Mi a Kiskunsági Nemzeti Park bugaci területének fő turisztikai vonzereje az atlasz szerint?",
+      answers: [
+        "Cseppkőbarlangok és földalatti tavak hálózata",
+        "A pusztai pásztorhagyomány és a csikósok látványos lovasbemutatói",
+        "Bazaltorgonás tanúhegyek és híres borvidék",
+        "Tengerszint alatti karsztforrásra épülő termálfürdő"
+      ],
+      correctIndex: 1,
+      explanation: "Bugac leírása szerint a homokpuszta a magyar pásztorhagyomány élő színtere, ahol a csikósok látványos lovasprodukciói – köztük a híres ötös fogat – elevenítik fel a pásztorkultúrát.",
+      regionSlug: "del-alfold",
+      latvId: 55,
+      latvName: "Kiskunsági Nemzeti Park – Bugac"
+    },
+    {
+      id: "del-alfold-07",
+      question: "Mi teszi különlegessé a kiskunhalasi Csipkeházban bemutatott halasi csipkét, ezt a magyar hungarikumot az atlasz szerint?",
+      answers: [
+        "Géppel, nagyüzemi tömeggyártással készül",
+        "Kizárólag a 21. században kifejlesztett, gépi technikával állítják elő",
+        "Kézzel, varrott technikával, finom öltésekből készül, és géppel nem utánozható",
+        "Fémszálból szőtt, festett kelme, amely néhány óra alatt elkészül"
+      ],
+      correctIndex: 2,
+      explanation: "A leírás szerint a halasi csipke különlegessége, hogy varrott technikával, kézzel, rendkívül finom öltésekből készül, géppel nem utánozható, és egy-egy darab hetekig, akár hónapokig készül.",
+      regionSlug: "del-alfold",
+      latvId: 133,
+      latvName: "Kiskunhalas – Csipkeház"
+    },
+    {
+      id: "del-alfold-08",
+      question: "Mi a fő különbség a gyulai Almásy-kastély és a szabadkígyósi Wenckheim-kastély atlaszbeli bemutatása között?",
+      answers: [
+        "Mindkettő középkori, gótikus stílusú végvár volt",
+        "A gyulai Almásy-kastély barokk, modern interaktív látogatóközpont, a szabadkígyósi Wenckheim-kastély Ybl Miklós tervezte neoreneszánsz főúri rezidencia",
+        "A gyulai Almásy-kastélyt Ybl Miklós tervezte, a szabadkígyósi Wenckheim-kastély ma gyógyfürdőként működik",
+        "Mindkettő ma a Munkácsy-gyűjteménynek ad otthont"
+      ],
+      correctIndex: 1,
+      explanation: "A gyulai Almásy-kastély 18. századi barokk rezidencia, amely 2018 óta modern, interaktív látogatóközpontként működik, míg a szabadkígyósi Wenckheim-kastélyt Ybl Miklós tervezte neoreneszánsz stílusban a Wenckheim grófi család számára.",
+      regionSlug: "del-alfold",
+      latvId: 137,
+      latvName: "Gyulai Almásy-kastély"
+    },
+    {
+      id: "del-alfold-09",
+      question: "Melyik magyar költő szülőháza és emlékmúzeuma látogatható az atlasz szerint Kiskőrösön?",
+      answers: [
+        "Arany János",
+        "József Attila",
+        "Petőfi Sándor",
+        "Vörösmarty Mihály"
+      ],
+      correctIndex: 2,
+      explanation: "A kiskőrösi, nádtetős parasztházban született 1823-ban Petőfi Sándor, a magyar romantika és a forradalmi líra legnagyobb költője.",
+      regionSlug: "del-alfold",
+      latvId: 131,
+      latvName: "Kiskőrös – Petőfi Sándor szülőháza"
+    },
+    {
+      id: "del-alfold-10",
+      question: "Az atlasz szerint melyik építész nevéhez fűződik a makói Hagymatikum, a magyar organikus építészet egyik legismertebb alkotása?",
+      answers: [
+        "Ybl Miklós",
+        "Lechner Ödön",
+        "Baumhorn Lipót",
+        "Makovecz Imre"
+      ],
+      correctIndex: 3,
+      explanation: "A Hagymatikum leírása szerint a 2012-ben átadott gyógyfürdőt Makovecz Imre, a magyar organikus építészet legnagyobb mestere tervezte.",
+      regionSlug: "del-alfold",
+      latvId: 135,
+      latvName: "Makói Hagymatikum"
+    }
   ]
 };
 
