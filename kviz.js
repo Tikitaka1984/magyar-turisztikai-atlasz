@@ -970,6 +970,158 @@ var KVIZ_QUESTIONS = {
       latvId: 135,
       latvName: "Makói Hagymatikum"
     }
+  ],
+  "kozep-dunantul": [
+    {
+      id: "kozep-dunantul-01",
+      question: "Az atlasz leírása szerint mi adja Székesfehérvár kiemelt történelmi jelentőségét a középkori Magyar Királyságban?",
+      answers: [
+        "Itt őrizték évszázadokon át, folyamatosan a magyar Szent Koronát",
+        "Innen indult meg a hódoltság végén a törökök kiűzése Magyarországról",
+        "Több mint ezer éven át itt koronázták és temették a magyar királyokat",
+        "Itt rendezték a reformkori országgyűléseket egészen 1848-ig"
+      ],
+      correctIndex: 2,
+      explanation: "Székesfehérvár leírása szerint a város a Magyar Királyság első és leghosszabb ideig fennálló koronázóvárosa volt, ahol több mint 1000 éven át 37 magyar királyt koronáztak és temettek el.",
+      regionSlug: "kozep-dunantul",
+      latvId: 221,
+      latvName: "Székesfehérvár – belváros és koronázástörténet"
+    },
+    {
+      id: "kozep-dunantul-02",
+      question: "Melyik világhírű zeneszerző töltött vendégként több alkalommal hosszabb időt a martonvásári Brunszvik-kastélyban, ahol ma emlékmúzeuma is működik?",
+      answers: [
+        "Liszt Ferenc",
+        "Erkel Ferenc",
+        "Joseph Haydn",
+        "Ludwig van Beethoven"
+      ],
+      correctIndex: 3,
+      explanation: "A Martonvásári Brunszvik-kastély leírása szerint Beethoven a Brunszvik-testvérek vendégeként több alkalommal töltött hosszabb időt a kastélyban, ahol ma Beethoven-múzeum működik.",
+      regionSlug: "kozep-dunantul",
+      latvId: 185,
+      latvName: "Martonvásári Brunszvik-kastély"
+    },
+    {
+      id: "kozep-dunantul-03",
+      question: "Melyik hungarikummá nyilvánított népi kézművesség egyetlen hazai múzeumának ad otthont a pápai Esterházy-kastély az atlasz szerint?",
+      answers: [
+        "A kékfestés, az indigós textilfestés hagyománya",
+        "A herendi porcelán kézi festése",
+        "A matyó hímzés",
+        "A kalocsai pingálás és hímzés"
+      ],
+      correctIndex: 0,
+      explanation: "A Pápai Esterházy-kastély és Kékfestő Múzeum leírása szerint a kastélyhoz kapcsolódó Kékfestő Múzeum egyedülálló Magyarországon: a kékfestés a hazai népi kézművesség hungarikummá nyilvánított hagyománya.",
+      regionSlug: "kozep-dunantul",
+      latvId: 220,
+      latvName: "Pápai Esterházy-kastély és Kékfestő Múzeum"
+    },
+    {
+      id: "kozep-dunantul-04",
+      question: "Mi teszi egyedülállóvá a székesfehérvári Bory-várat az atlasz leírása szerint?",
+      answers: [
+        "Mátyás király reneszánsz vadászkastélyaként emelték",
+        "Bory Jenő szobrászművész több mint négy évtizeden át, jórészt saját kezűleg, vasbetonból építette",
+        "Egy 16. századi törökverő várkapitány végváraként szolgált",
+        "Egy tó tükrében visszatükröződő, középkori gótikus vízivár"
+      ],
+      correctIndex: 1,
+      explanation: "A Bory-vár leírása szerint az épületet Bory Jenő szobrász- és építészművész több mint négy évtizeden át, jórészt saját kezűleg építette, és a kor új anyagát, a vasbetont is bátran alkalmazta.",
+      regionSlug: "kozep-dunantul",
+      latvId: 62,
+      latvName: "Bory-vár"
+    },
+    {
+      id: "kozep-dunantul-05",
+      question: "Az atlasz leírása szerint melyik történelmi személyiség menekült 1809-ben a tatai Esterházy-kastélyba, ahol rövid ideig szállást kapott?",
+      answers: [
+        "II. Rákóczi Ferenc",
+        "Ferenc József császár",
+        "I. Napóleon francia császár",
+        "Mária Terézia"
+      ],
+      correctIndex: 2,
+      explanation: "A Tatai Esterházy-kastély leírása szerint 1809-ben I. Napóleon a Habsburg-hatalom elől éppen ide menekült, és rövid ideig a kastély volt a szálláshelye.",
+      regionSlug: "kozep-dunantul",
+      latvId: 182,
+      latvName: "Tatai Esterházy-kastély"
+    },
+    {
+      id: "kozep-dunantul-06",
+      question: "Az atlasz leírása alapján mi jellemzi a komáromi erődrendszert?",
+      answers: [
+        "Egyetlen, kör alaprajzú reneszánsz vártorony a Duna egyik szigetén",
+        "A törökök által emelt, fennmaradt hódoltsági palánkvár",
+        "Egy ókori római legiótábor teljes egészében rekonstruált fapalánkja",
+        "Közép-Európa egyik legnagyobb, 14 erődből és épületrészből álló katonai erődítményegyüttese"
+      ],
+      correctIndex: 3,
+      explanation: "A Komáromi erődrendszer leírása szerint az együttes Közép-Európa egyik legnagyobb fennmaradt katonai erődítményegyüttese, amely összesen 14 erődöt és épületrészt foglal magába, 58 hektáros területen.",
+      regionSlug: "kozep-dunantul",
+      latvId: 181,
+      latvName: "Komáromi erődrendszer"
+    },
+    {
+      id: "kozep-dunantul-07",
+      question: "Melyik állítás IGAZ a Velencei-tóról az atlasz leírása alapján?",
+      answers: [
+        "Magyarország legnagyobb és legmélyebb természetes tava",
+        "Tengerszint alatti karsztforrásból táplálkozó termáltó",
+        "Magyarország második legnagyobb természetes tava és legjobban felmelegedő sekélyvizű üdülőtava",
+        "Energiatermelés céljából, duzzasztással létrehozott mesterséges tározó"
+      ],
+      correctIndex: 2,
+      explanation: "A Velencei-tó leírása szerint a tó Magyarország második legnagyobb természetes tava és az ország legjobban felmelegedő, legnagyobb sekélyvizű üdülőtava.",
+      regionSlug: "kozep-dunantul",
+      latvId: 219,
+      latvName: "Velencei-tó – Agárd és Gárdony"
+    },
+    {
+      id: "kozep-dunantul-08",
+      question: "Az atlasz szerint milyen szerzetesrend tagjai alapították és lakták a Vértes lábánál fekvő majki remeteség 18. századi celláit?",
+      answers: [
+        "Bencés szerzetesek",
+        "Kamalduli, némasági fogadalmat tartó szerzetesek",
+        "Ciszterci szerzetesek",
+        "Pálos szerzetesek"
+      ],
+      correctIndex: 1,
+      explanation: "A Majki remeteség leírása szerint az egyedülálló 18. századi komplexumot kamalduli, némaságot fogadalommal betartó szerzetesek alapították és lakták.",
+      regionSlug: "kozep-dunantul",
+      latvId: 183,
+      latvName: "Majki remeteség"
+    },
+    {
+      id: "kozep-dunantul-09",
+      question: "Az atlasz leírása szerint mi a zirci ciszterci apátság barokk épületének egyik leghíresebb látnivalója?",
+      answers: [
+        "A több tízezer kötetes, eredeti berendezésű Reguly Antal Műemlékkönyvtár",
+        "Beethoven egykori, fennmaradt martonvásári hangversenyterme",
+        "Az ország legnagyobb, kézzel festett porcelánból álló kastélykönyvtára",
+        "A magyar királyok koronázását ábrázoló középkori falfreskó"
+      ],
+      correctIndex: 0,
+      explanation: "A Zirci Ciszterci Apátság leírása szerint az apátság híres a Reguly Antal Műemlékkönyvtárról, amely több tízezer kötetes, eredeti berendezésű barokk könyvtárterem.",
+      regionSlug: "kozep-dunantul",
+      latvId: 65,
+      latvName: "Zirci Ciszterci Apátság"
+    },
+    {
+      id: "kozep-dunantul-10",
+      question: "Melyik közép-dunántúli településen alapították 1826-ban a világhírű, kézzel festett porcelán manufaktúráját az atlasz szerint?",
+      answers: [
+        "Zirc",
+        "Pápa",
+        "Várpalota",
+        "Herend"
+      ],
+      correctIndex: 3,
+      explanation: "A Herendi Porcelánmanufaktúra leírása szerint a világ egyik leghíresebb porcelánmárkájának otthonát 1826-ban alapították a Bakony lábánál fekvő Herenden.",
+      regionSlug: "kozep-dunantul",
+      latvId: 64,
+      latvName: "Herendi Porcelánmanufaktúra"
+    }
   ]
 };
 
