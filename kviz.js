@@ -516,100 +516,150 @@ var KVIZ_QUESTIONS = {
   "eszak-alfold": [
     {
       id: "eszak-alfold-01",
-      question: "Melyik észak-alföldi látványosság leírása említi a „kálvinista Róma” központját?",
-      answers: ["Déri Múzeum", "Debreceni Református Nagytemplom", "Máriapócsi nemzeti kegyhely", "Csarodai református templom"],
-      correctIndex: 1,
-      explanation: "A Debreceni Református Nagytemplom rövid leírása a magyar reformátusság jelképes templomaként és a „kálvinista Róma” központjaként azonosítja a helyszínt.",
+      question: "Melyik történelmi esemény kapcsolódik az atlasz szerint a Debreceni Református Nagytemplomhoz?",
+      answers: [
+        "1849-ben itt mondták ki Kossuth Lajos vezetésével a Habsburg-ház trónfosztását",
+        "Itt írták alá a Rákóczi-szabadságharcot lezáró szatmári békét",
+        "Falai között koronázták meg az utolsó erdélyi fejedelmet",
+        "Itt tett fogadalmat a város egy pusztító árvíz utáni újjáépítésre"
+      ],
+      correctIndex: 0,
+      explanation: "A Debreceni Református Nagytemplom leírása szerint 1849-ben itt ülésezett az országgyűlés, és falai között mondták ki Kossuth Lajos vezetésével a Habsburg-ház trónfosztását.",
       regionSlug: "eszak-alfold",
       latvId: 31,
       latvName: "Debreceni Református Nagytemplom"
     },
     {
       id: "eszak-alfold-02",
-      question: "Melyik helyszínhez kapcsolódik Povolny Ferenc terve és az 1827–1833 közötti építés az atlasz szerint?",
-      answers: ["Kengyeli szélmalom", "Hortobágyi Nemzeti Park – Kilenclyukú híd", "Tiszadobi Andrássy-kastély", "Tákosi református templom"],
-      correctIndex: 1,
-      explanation: "A Hortobágyi Nemzeti Park – Kilenclyukú híd rövid leírása szerint a Hortobágy jelképe Povolny Ferenc tervei alapján 1827–1833 között épült.",
+      question: "Melyik állítás IGAZ a Hortobágyi Nemzeti Parkról az atlasz leírása alapján?",
+      answers: [
+        "Mesterségesen telepített fenyveseiről és dombvidéki tájáról nevezetes",
+        "Magyarország legújabb, a rendszerváltás után létrehozott nemzeti parkja",
+        "Magyarország első, 1973-ban alapított nemzeti parkja, amely 1999 óta világörökségi kultúrtáj",
+        "Területén a természetvédelem miatt megszűnt minden hagyományos állattartás"
+      ],
+      correctIndex: 2,
+      explanation: "A Hortobágyi Nemzeti Park leírása szerint ez Magyarország első, 1973-ban alapított nemzeti parkja, amely a több ezer éves, fenntartható pásztorkodás emlékeként 1999 óta világörökségi kultúrtáj; pusztáin ma is legelnek az ősi magyar állatfajták, például a szürkemarha és a racka juh.",
       regionSlug: "eszak-alfold",
       latvId: 32,
       latvName: "Hortobágyi Nemzeti Park – Kilenclyukú híd"
     },
     {
       id: "eszak-alfold-03",
-      question: "Melyik látványosság található Nyíregyházán és kapcsolódik a Sóstó üdülőövezet tölgyerdei környezetéhez?",
-      answers: ["Nyíregyháza – Sóstó Állatpark", "Sóstói Múzeumfalu", "Máriapócsi nemzeti kegyhely", "Nyírbátori Báthori Várkastély és Panoptikum"],
-      correctIndex: 0,
-      explanation: "A Nyíregyháza – Sóstó Állatpark településmezője Nyíregyháza, leírása pedig a Sóstó üdülőövezet ősi tölgyerdejét említi.",
-      regionSlug: "eszak-alfold",
-      latvId: 33,
-      latvName: "Nyíregyháza – Sóstó Állatpark"
-    },
-    {
-      id: "eszak-alfold-04",
-      question: "Melyik helyszín kategóriája az atlaszban fürdő?",
-      answers: ["Nyíregyházi Állatpark (Sóstó Zoo)", "Hajdúszoboszlói gyógyfürdő", "Sóstói Múzeumfalu", "Déri Múzeum"],
+      question: "Az atlasz szerint milyen körülmények között bukkantak rá a hajdúszoboszlói gyógyvízre?",
+      answers: [
+        "Egy középkori kolostor szerzetesei tárták fel egy ősi forrás vizét",
+        "1925-ben, földgázkutatás közben találták meg",
+        "Római kori fürdővárosi maradványok feltárásakor bukkantak rá",
+        "A 19. századi Tisza-szabályozási munkák során fedezték fel"
+      ],
       correctIndex: 1,
-      explanation: "A Hajdúszoboszlói gyógyfürdő kategóriája az atlaszban: fürdő.",
+      explanation: "A Hajdúszoboszlói gyógyfürdő leírása szerint a termálvizet 1925-ben, földgázkutatás közben találták meg, és gyorsan kiderült a kivételes gyógyhatása; a várost gyógyvize miatt „a reuma Mekkájaként” is emlegetik.",
       regionSlug: "eszak-alfold",
       latvId: 34,
       latvName: "Hajdúszoboszlói gyógyfürdő"
     },
     {
-      id: "eszak-alfold-05",
-      question: "Melyik debreceni helyszínhez kapcsolódik Munkácsy Mihály monumentális Krisztus-trilógiája?",
-      answers: ["Debreceni Református Nagytemplom", "Déri Múzeum", "Jász Múzeum – Jászkürt", "Szolnoki RepTár – Repülőmúzeum"],
-      correctIndex: 1,
-      explanation: "A Déri Múzeum rövid leírása és részletes leírása is Munkácsy Mihály monumentális Krisztus-trilógiáját említi.",
+      id: "eszak-alfold-04",
+      question: "Az atlasz szerint melyik művészeti alkotás a debreceni Déri Múzeum legféltettebb kincse?",
+      answers: [
+        "Feszty Árpád honfoglalást ábrázoló körképe",
+        "Székely Bertalan történelmi falfestményei",
+        "Munkácsy Mihály monumentális bibliai (Krisztus-) trilógiája",
+        "Rippl-Rónai József festményei"
+      ],
+      correctIndex: 2,
+      explanation: "A Déri Múzeum leírása szerint a múzeum legnagyobb kincse Munkácsy Mihály monumentális bibliai trilógiája: a Krisztus Pilátus előtt, a Golgota és az Ecce Homo.",
       regionSlug: "eszak-alfold",
       latvId: 35,
       latvName: "Déri Múzeum"
     },
     {
-      id: "eszak-alfold-06",
-      question: "Melyik településen található a Báthori-templom az atlasz adatai szerint?",
-      answers: ["Máriapócs", "Csaroda", "Nyírbátor", "Tiszadob"],
-      correctIndex: 2,
-      explanation: "A Nyírbátor – Báthori-templom településmezője az atlaszban Nyírbátor.",
+      id: "eszak-alfold-05",
+      question: "Melyik építészeti stílus kiemelkedő, csarnoktemplom típusú emléke az atlasz szerint a nyírbátori Báthori-templom?",
+      answers: [
+        "A román kor",
+        "A barokk",
+        "A szecesszió",
+        "A késő gótika"
+      ],
+      correctIndex: 3,
+      explanation: "A Nyírbátor – Báthori-templom leírása szerint a 15. század végén, Báthori István országbíró megrendelésére épült templom a magyar késő gótikus építészet kiemelkedő, csarnoktemplom típusú alkotása.",
       regionSlug: "eszak-alfold",
       latvId: 36,
       latvName: "Nyírbátor – Báthori-templom"
     },
     {
-      id: "eszak-alfold-07",
-      question: "Melyik észak-alföldi kastély leírása említi a 365 szobát, 52 tornyot, 12 tornyot és 4 bejáratot?",
-      answers: ["Tiszadobi Andrássy-kastély", "Nyírbátori Báthori Várkastély és Panoptikum", "Debreceni Református Nagytemplom", "Jász Múzeum – Jászkürt"],
-      correctIndex: 0,
-      explanation: "A Tiszadobi Andrássy-kastély leírása szerint a 365 szoba az év napjait, az 52 torony a heteket, a 12 torony a hónapokat, a 4 bejárat pedig az évszakokat jelöli.",
+      id: "eszak-alfold-06",
+      question: "Az atlasz szerint ki építtette a tiszadobi Andrássy-kastélyt, és mit jelképez az épület 365 szobája?",
+      answers: [
+        "Tisza Kálmán; az ország 365 nemesi családját",
+        "Andrássy Gyula miniszterelnök; az év 365 napját",
+        "Az Andrássy-grófok katonai célból; a 365 itt szolgáló katonát",
+        "Széchenyi István; a Tisza 365 kilométeres szakaszát"
+      ],
+      correctIndex: 1,
+      explanation: "A Tiszadobi Andrássy-kastély leírása szerint az épületet Andrássy Gyula miniszterelnök építtette az 1880-as évek elején; a 365 szoba az év napjait, az 52 torony a heteket, a 12 torony a hónapokat, a 4 bejárat pedig az évszakokat jelképezi.",
       regionSlug: "eszak-alfold",
       latvId: 151,
       latvName: "Tiszadobi Andrássy-kastély"
     },
     {
-      id: "eszak-alfold-08",
-      question: "Melyik nemzeti kegyhely leírása említi az 1696-os és 1715-ös könnyezést?",
-      answers: ["Csarodai református templom", "Tákosi református templom", "Máriapócsi nemzeti kegyhely", "Debreceni Református Nagytemplom"],
+      id: "eszak-alfold-07",
+      question: "Az atlasz szerint melyik felekezet legjelentősebb hazai zarándokhelye Máriapócs, és mi alapozta meg a hírnevét?",
+      answers: [
+        "A római katolikus egyházé; egy itt eltemetett szent ereklyéi",
+        "A református egyházé; egy híres prédikátor működése",
+        "A görögkatolikus egyházé; a kegyképének kétszeri könnyezése",
+        "Az evangélikus egyházé; egy csodás gyógyulás emléke"
+      ],
       correctIndex: 2,
-      explanation: "A Máriapócsi nemzeti kegyhely leírása szerint az itt őrzött Mária-ikonon 1696-ban, majd 1715-ben is könnyezést észleltek.",
+      explanation: "A Máriapócsi nemzeti kegyhely leírása szerint a település Magyarország legjelentősebb görögkatolikus zarándokhelye, amelynek hírnevét az itt őrzött Mária-ikon 1696-os, majd 1715-ös könnyezése alapozta meg.",
       regionSlug: "eszak-alfold",
       latvId: 153,
       latvName: "Máriapócsi nemzeti kegyhely"
     },
     {
-      id: "eszak-alfold-09",
-      question: "Melyik helyszín a „mosolygó szentek temploma” az atlasz leírása alapján?",
-      answers: ["Csarodai református templom", "Tákosi református templom", "Nyírbátor – Báthori-templom", "Máriapócsi nemzeti kegyhely"],
+      id: "eszak-alfold-08",
+      question: "Az atlasz szerint miért nevezik a csarodai református templomot a „mosolygó szentek templomának”?",
+      answers: [
+        "Mert középkori falfestményein a szentek alakja különleges, vidám arckifejezésű",
+        "Mert festett kazettás mennyezetén mosolygó angyalok sorakoznak",
+        "Mert a falu lakóit vidám népszokásaikról ismerik",
+        "Mert a templomot a hagyomány szerint egy Mosolygó nevű mester festette ki"
+      ],
       correctIndex: 0,
-      explanation: "A Csarodai református templom rövid leírása a mosolygó szentek templomaként mutatja be a helyszínt.",
+      explanation: "A Csarodai református templom leírása szerint a kerek tornyú, román kori falusi templom gazdag középkori falfestményein a figurák különleges, vidám arckifejezése miatt kapta a „mosolygó szentek temploma” nevet.",
       regionSlug: "eszak-alfold",
       latvId: 154,
       latvName: "Csarodai református templom"
     },
     {
+      id: "eszak-alfold-09",
+      question: "Melyik állítás IGAZ a jászberényi Jász Múzeumról az atlasz leírása alapján?",
+      answers: [
+        "Legféltettebb kincse a Lehel-kürt, egy honfoglalás kori, aranyból készült kürt",
+        "Az ország legnagyobb, több tízezer tárgyat bemutató múzeuma",
+        "A reformkorban, egyházi gyűjteményként alapították",
+        "Az ország legrégebbi vidéki múzeuma, amely a Lehel-kürtöt őrzi"
+      ],
+      correctIndex: 3,
+      explanation: "A Jász Múzeum leírása szerint az 1873-ban alapított intézmény az ország legrégebbi vidéki múzeuma, legféltettebb kincse pedig a Lehel-kürt, egy elefántcsontból faragott, 12. századi bizánci munka.",
+      regionSlug: "eszak-alfold",
+      latvId: 157,
+      latvName: "Jász Múzeum – Jászkürt"
+    },
+    {
       id: "eszak-alfold-10",
-      question: "Melyik szolnoki helyszín mutatja be a hazai repülés és légierő történetét?",
-      answers: ["Jász Múzeum – Jászkürt", "Szolnoki RepTár – Repülőmúzeum", "Kengyeli szélmalom", "Déri Múzeum"],
+      question: "Az atlasz szerint mit mutat be a szolnoki RepTár, és mi teszi különlegessé a látogatók számára?",
+      answers: [
+        "A hazai vasúttörténetet; eredeti gőzmozdonyok vezethetők benne",
+        "A hazai repülés és légierő történetét; több légijármű közelről megfigyelhető és megérinthető",
+        "A magyar űrkutatás emlékeit; eredeti űrkabin látható benne",
+        "A tiszai folyami hajózás történetét; korhű gőzhajók sorakoznak benne"
+      ],
       correctIndex: 1,
-      explanation: "A Szolnoki RepTár – Repülőmúzeum leírása szerint a múzeum a hazai repülés és légierő történetét mutatja be.",
+      explanation: "A Szolnoki RepTár – Repülőmúzeum leírása szerint a múzeum a hazai repülés és légierő történetét mutatja be, és különlegessége, hogy több légijármű nem csupán kiállítási tárgy, hanem élménybemutatók keretében közelről megfigyelhető és megérinthető.",
       regionSlug: "eszak-alfold",
       latvId: 156,
       latvName: "Szolnoki RepTár – Repülőmúzeum"
