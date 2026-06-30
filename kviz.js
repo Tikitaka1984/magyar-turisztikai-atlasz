@@ -7,103 +7,153 @@ var KVIZ_QUESTIONS = {
   budapest: [
     {
       id: "budapest-01",
-      question: "Melyik látványosság található a Budapest, V. kerületben az atlasz adatai szerint?",
-      answers: ["Széchenyi gyógyfürdő", "Országház (Parlament)", "Aquincumi Múzeum", "Memento Park"],
-      correctIndex: 1,
-      explanation: "Az Országház rekordjában a településmező Budapest, V. kerületként szerepel.",
+      question: "Az atlasz szerint melyik építész tervei alapján és milyen stílusban épült az Országház?",
+      answers: [
+        "Ybl Miklós tervei alapján, neoreneszánsz stílusban",
+        "Pollack Mihály tervei alapján, klasszicista stílusban",
+        "Steindl Imre tervei alapján, neogótikus stílusban",
+        "Schulek Frigyes tervei alapján, neoromán stílusban"
+      ],
+      correctIndex: 2,
+      explanation: "Az Országház leírása szerint az épületet Steindl Imre tervei alapján, neogótikus stílusban építették 1885 és 1904 között. (A megtévesztő nevek más budapesti alkotásokhoz kötődnek: Ybl–Szent István-bazilika, Pollack–Nemzeti Múzeum, Schulek–Halászbástya.)",
       regionSlug: "budapest",
       latvId: 2,
       latvName: "Országház (Parlament)"
     },
     {
       id: "budapest-02",
-      question: "Melyik kategóriába tartozik a Széchenyi gyógyfürdő?",
-      answers: ["múzeum", "vallási", "fürdő", "vár"],
-      correctIndex: 2,
-      explanation: "A Széchenyi gyógyfürdő kategóriája az atlaszban: fürdő.",
+      question: "Melyik állítás IGAZ a Halászbástyáról az atlasz leírása alapján?",
+      answers: [
+        "Egykor a Duna felőli várfal valódi védelmi erődítménye volt",
+        "Sosem volt védelmi célú erőd: kilátónak és sétánynak épült, hét tornya a hét honfoglaló törzset jelképezi",
+        "Oszlopcsarnokában a hét honfoglaló vezér lovas szobra sorakozik",
+        "Tornyait még Hunyadi Mátyás építtette a 15. században"
+      ],
+      correctIndex: 1,
+      explanation: "A Halászbástya leírása szerint nem védelmi célú erődítmény: kezdettől kilátóként és sétányként szolgált, hét kúpos tornya pedig a hét honfoglaló magyar törzset jelképezi.",
+      regionSlug: "budapest",
+      latvId: 4,
+      latvName: "Halászbástya"
+    },
+    {
+      id: "budapest-03",
+      question: "A budapesti fürdők eltérő építészeti stílusban épültek. Melyik párosítás helyes az atlasz szerint?",
+      answers: [
+        "A Széchenyi gyógyfürdő szecessziós, a Gellért fürdő neobarokk épület",
+        "A Rudas fürdő szecessziós, a Gellért fürdő török kori épület",
+        "A Széchenyi gyógyfürdő török kori, a Rudas fürdő neobarokk épület",
+        "A Széchenyi gyógyfürdő neobarokk, a Gellért fürdő szecessziós épület"
+      ],
+      correctIndex: 3,
+      explanation: "Az atlasz szerint a Széchenyi gyógyfürdő monumentális neobarokk épületegyüttes, a Gellért fürdő szecessziós (art nouveau), a Rudas pedig eredeti, 16. századi török fürdő.",
       regionSlug: "budapest",
       latvId: 5,
       latvName: "Széchenyi gyógyfürdő"
     },
     {
-      id: "budapest-03",
-      question: "Melyik helyszín leírása említi Pannonia tartományi fővárosának romkertjét és múzeumát?",
-      answers: ["Aquincumi Múzeum", "Magyar Nemzeti Múzeum", "Szentendrei Skanzen", "Memento Park"],
-      correctIndex: 0,
-      explanation: "Az Aquincumi Múzeum rövid leírása a római kori Aquincum romkertjét és múzeumát nevezi meg.",
-      regionSlug: "budapest",
-      latvId: 13,
-      latvName: "Aquincumi Múzeum"
-    },
-    {
       id: "budapest-04",
-      question: "Melyik látványosság található Gödöllőn?",
-      answers: ["Gödöllői Királyi Kastély", "Esztergomi vár", "Visegrádi királyi palota és fellegvár", "Zsámbéki templomrom"],
-      correctIndex: 0,
-      explanation: "A Gödöllői Királyi Kastély települése az atlaszban Gödöllő.",
+      question: "Az atlasz szerint mi történt a budavári Mátyás-templommal a török hódoltság idején?",
+      answers: [
+        "A törökök felrobbantották, csak a déli tornya maradt meg",
+        "Dzsámivá (mecsetté) alakították",
+        "Református imaházként használták",
+        "Az érseki kincstár raktáraként falazták be"
+      ],
+      correctIndex: 1,
+      explanation: "A Mátyás-templom leírása szerint az épületet a török hódoltság idején dzsámivá alakították, majd a 19. század végén Schulek Frigyes restaurálta.",
       regionSlug: "budapest",
-      latvId: 14,
-      latvName: "Gödöllői Királyi Kastély"
+      latvId: 3,
+      latvName: "Mátyás-templom"
     },
     {
       id: "budapest-05",
-      question: "Melyik látványosság kapcsolódik a Szent Jobb őrzőhelyéhez?",
-      answers: ["Mátyás-templom", "Dohány utcai Zsinagóga", "Szent István-bazilika", "Gellért-hegyi Sziklatemplom"],
-      correctIndex: 2,
-      explanation: "A Szent István-bazilika rövid leírása szerint ez Budapest legnagyobb temploma és a Szent Jobb őrzőhelye.",
+      question: "Az atlasz a templomok méretéről két megállapítást tesz. Melyik IGAZ?",
+      answers: [
+        "Az esztergomi Bazilika Magyarország, a Szent István-bazilika Budapest legnagyobb temploma",
+        "A Szent István-bazilika Magyarország, az esztergomi Bazilika Budapest legnagyobb temploma",
+        "A Mátyás-templom Magyarország, a Szent István-bazilika Budapest legnagyobb temploma",
+        "Az esztergomi Bazilika Budapest, a Szent István-bazilika Magyarország legnagyobb temploma"
+      ],
+      correctIndex: 0,
+      explanation: "Az atlasz szerint az esztergomi Főszékesegyház (Bazilika) Magyarország legnagyobb temploma, a Szent István-bazilika pedig Budapest legnagyobb temploma.",
       regionSlug: "budapest",
       latvId: 101,
       latvName: "Szent István-bazilika"
     },
     {
       id: "budapest-06",
-      question: "Melyik helyszín az ország legnagyobb szabadtéri múzeuma?",
-      answers: ["Magyar Nemzeti Múzeum", "Szentendrei Skanzen", "Aquincumi Múzeum", "Fővárosi Állat- és Növénykert"],
-      correctIndex: 1,
-      explanation: "A Szentendrei Skanzen leírása az ország legnagyobb szabadtéri múzeumaként azonosítja a helyszínt.",
+      question: "Milyen céllal épült és mit mutat be a városligeti Vajdahunyad vára az atlasz szerint?",
+      answers: [
+        "Az 1896-os millenniumi kiállításra emelték, és a magyar építészet különböző korszakait – a román, gótikus, reneszánsz és barokk stílust – mutatja be",
+        "Középkori királyi rezidenciának épült, az Anjou-kor és Hunyadi Mátyás reneszánsz pompáját idézi",
+        "Az osztrákok emelték katonai erődnek a szabadságharc leverése után",
+        "A szocialista korszak köztéri szobrainak szabadtéri bemutatására hozták létre"
+      ],
+      correctIndex: 0,
+      explanation: "A Vajdahunyad vára leírása szerint az épületegyüttest az 1896-os millenniumi kiállításra emelték, és a magyar építészet román, gótikus, reneszánsz és barokk korszakait mutatja be.",
       regionSlug: "budapest",
-      latvId: 11,
-      latvName: "Szentendrei Skanzen"
+      latvId: 105,
+      latvName: "Vajdahunyad vára"
     },
     {
       id: "budapest-07",
-      question: "Melyik helyszín rövid leírása említi az első állandó dunai hidat?",
-      answers: ["Lánchíd", "Nagyvásárcsarnok", "Hősök tere", "Halászbástya"],
-      correctIndex: 0,
-      explanation: "A Lánchíd rekordja szerint Budapest jelképe és az első állandó dunai híd.",
+      question: "Melyik szerzetesrend alakította ki az atlasz szerint a Gellért-hegyi Sziklatemplomot?",
+      answers: [
+        "A bencés rend",
+        "A premontrei rend",
+        "A pálos rend, az egyetlen magyar alapítású szerzetesrend",
+        "A ferences rend"
+      ],
+      correctIndex: 2,
+      explanation: "A Sziklatemplom leírása szerint a kápolnát 1926-ban a pálos rend – az egyetlen magyar alapítású szerzetesrend – alakította ki, lourdes-i mintára.",
+      regionSlug: "budapest",
+      latvId: 104,
+      latvName: "Gellért-hegyi Sziklatemplom"
+    },
+    {
+      id: "budapest-08",
+      question: "Miért tekinthető a Lánchíd a reformkor jelképének az atlasz leírása szerint?",
+      answers: [
+        "Mert a millennium tiszteletére, 1896-ban adták át",
+        "Mert az első világháború utáni nemzeti újjáépítés jelképeként emelték",
+        "Mert a város első, kizárólag gyalogos és kerékpáros hídjának épült",
+        "Mert Széchenyi István kezdeményezésére ez lett az első állandó Duna-híd, Buda és Pest egyesítésének jelképe"
+      ],
+      correctIndex: 3,
+      explanation: "A Lánchíd leírása szerint a Széchenyi István kezdeményezésére épült híd 1849-ben az első állandó Duna-híd volt, és Buda és Pest egyesítésének, a reformkornak a jelképévé vált.",
       regionSlug: "budapest",
       latvId: 212,
       latvName: "Lánchíd"
     },
     {
-      id: "budapest-08",
-      question: "Melyik látványosság található Visegrádon?",
-      answers: ["Esztergomi Bazilika", "Visegrádi királyi palota és fellegvár", "Duna-Ipoly Nemzeti Park", "Vác – Székesegyház és belváros"],
-      correctIndex: 1,
-      explanation: "A Visegrádi királyi palota és fellegvár településmezője Visegrád.",
-      regionSlug: "budapest",
-      latvId: 9,
-      latvName: "Visegrádi királyi palota és fellegvár"
-    },
-    {
       id: "budapest-09",
-      question: "Melyik helyszín őrzi a Dunakanyar, a Pilis és az Ipoly-mente természeti értékeit?",
-      answers: ["Gellért-hegy és Citadella", "Duna-Ipoly Nemzeti Park", "Fővárosi Állat- és Növénykert", "Szentendrei Skanzen"],
+      question: "Az atlasz szerint melyik híres történelmi személy kedvelt nyári rezidenciájaként vált ismertté a gödöllői barokk kastély?",
+      answers: [
+        "Mária Terézia",
+        "Erzsébet királyné (Sisi)",
+        "Hunyadi Mátyás",
+        "Szent István"
+      ],
       correctIndex: 1,
-      explanation: "A Duna-Ipoly Nemzeti Park rövid leírása pontosan ezeket a természeti értékeket említi.",
-      regionSlug: "budapest",
-      latvId: 12,
-      latvName: "Duna-Ipoly Nemzeti Park"
-    },
-    {
-      id: "budapest-10",
-      question: "Melyik látványosság kategóriái között szerepel a kastély és az örökség?",
-      answers: ["Gödöllői Királyi Kastély", "Budai Vár és Várnegyed", "Magyar Tudományos Akadémia", "Vajdahunyad vára"],
-      correctIndex: 0,
-      explanation: "A Gödöllői Királyi Kastély kategóriái az atlaszban: kastély és örökség.",
+      explanation: "A Gödöllői Királyi Kastély leírása szerint az épület elsősorban Erzsébet királyné (Sisi) kedvelt magyarországi tartózkodási helyeként vált híressé.",
       regionSlug: "budapest",
       latvId: 14,
       latvName: "Gödöllői Királyi Kastély"
+    },
+    {
+      id: "budapest-10",
+      question: "Mi a váci belváros országosan egyedülálló nevezetessége az atlasz szerint?",
+      answers: [
+        "Az ország egyetlen épségben fennmaradt középkori városfala",
+        "Az Oszmán Birodalom legészakibb fennmaradt minaretje",
+        "A Kőkapu, Magyarország egyetlen diadalíve",
+        "Az ország legnagyobb összefüggő barokk főtere"
+      ],
+      correctIndex: 2,
+      explanation: "Vác leírása szerint a város különlegessége a Kőkapu (Diadalív), Magyarország egyetlen diadalíve, amelyet 1764-ben Mária Terézia látogatására emeltek.",
+      regionSlug: "budapest",
+      latvId: 108,
+      latvName: "Vác – Székesegyház és belváros"
     }
   ],
   balaton: [
