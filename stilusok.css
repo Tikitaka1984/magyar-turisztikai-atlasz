@@ -77,6 +77,13 @@ input[type=search]:focus{border-color:var(--accent)}
 .filter-btn:hover{border-color:var(--accent);color:var(--accent)}
 .filter-btn.active{background:var(--primary);border-color:var(--primary);color:#fff}
 .result-count{font-size:.8rem;color:var(--muted);margin-left:auto;white-space:nowrap}
+/* ── Természetföldrajzi összefoglaló doboz (régióoldal, kártyák felett) ── */
+.geo-wrap{max-width:1400px;margin:0 auto;padding:1.1rem 2rem 0}
+.geo-wrap+.controls{padding-top:.6rem}
+.geo-box{padding:1.1rem 1.4rem;background:var(--card);border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:var(--radius);box-shadow:var(--shadow)}
+.geo-box-cim{font-family:'Playfair Display',serif;font-size:.9rem;font-weight:700;color:var(--primary);margin-bottom:.4rem;display:flex;align-items:center;gap:.4rem;letter-spacing:.01em}
+.geo-box-ikon{font-size:1rem;line-height:1}
+.geo-box-szoveg{font-size:.84rem;color:var(--muted);line-height:1.7;margin:0}
 .split{max-width:1400px;margin:0 auto;padding:0 2rem 3rem;display:grid;grid-template-columns:1fr 420px;gap:1.5rem;align-items:start}
 .card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1rem}
 .card{background:var(--card);border-radius:var(--radius);border:1px solid var(--border);overflow:hidden;cursor:pointer;box-shadow:var(--shadow);transition:box-shadow .18s,transform .18s,border-color .15s}
