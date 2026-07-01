@@ -114,6 +114,7 @@ function renderRegio(slug){
       <p class="r-sub">A régió nevezetességei · 13. évfolyamos turisztikai technikusok számára</p>
       ${kvizKerdesek(slug).length?`<button class="region-quiz-btn" type="button" onclick="location.hash='#/kviz/${slug}'">Kvíz indítása ebben a régióban</button>`:''}
     </div></div>
+    ${termeszetfoldrajzDoboz(aktivR)}
     <div class="controls">
       <div class="search-wrap"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
         <input type="search" id="search" placeholder="Keresés helyszín neve alapján…" oninput="onSearch()"></div>
@@ -133,6 +134,20 @@ function renderRegio(slug){
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'© OpenStreetMap',maxZoom:18}).addTo(currentMap);
   renderMarkers(latvOf(slug));
   setTimeout(()=>currentMap&&currentMap.invalidateSize(),300);
+}
+
+/* Természetföldrajzi összefoglaló doboz a régió kártyái felett.
+   A szöveg a régió objektum termeszetfoldrajz mezőjéből származik (adatok.js).
+   Ha a mező hiányzik vagy üres, semmit nem jelenít meg (semmi sem törik). */
+function termeszetfoldrajzDoboz(regio){
+  const szoveg=regio&&regio.termeszetfoldrajz&&regio.termeszetfoldrajz.trim();
+  if(!szoveg)return '';
+  return `<div class="geo-wrap">
+      <section class="geo-box" aria-label="Természetföldrajzi összefoglaló">
+        <div class="geo-box-cim"><span class="geo-box-ikon" aria-hidden="true">🌍</span> Természetföldrajz</div>
+        <p class="geo-box-szoveg">${szoveg}</p>
+      </section>
+    </div>`;
 }
 
 function buildFilters(){
