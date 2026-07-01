@@ -159,100 +159,150 @@ var KVIZ_QUESTIONS = {
   balaton: [
     {
       id: "balaton-01",
-      question: "Melyik településen található a Tihanyi Bencés Apátság az atlasz adatai szerint?",
-      answers: ["Balatonfüred", "Tihany", "Keszthely", "Szigliget"],
+      question: "Miért tekinthető az atlasz szerint a Tihanyi Bencés Apátság 1055-ös alapítólevele kiemelkedő nyelvtörténeti emléknek?",
+      answers: [
+        "Mert ez a legrégebbi, teljes egészében magyar nyelven fogalmazott oklevél",
+        "Mert ez az első hiteles oklevél, amely a latin szöveg mellett magyar szavakat is megőrzött",
+        "Mert falai között nyomtatták ki az első magyar nyelvű könyvet",
+        "Mert lapjain maradt fenn az első magyar nyelvű bibliafordítás"
+      ],
       correctIndex: 1,
-      explanation: "A Tihanyi Bencés Apátság településmezője az atlaszban Tihany.",
+      explanation: "A Tihanyi Bencés Apátság leírása szerint az I. András király által 1055-ben alapított apátság alapítólevele az első olyan hiteles oklevél, amely – latin szövegbe ágyazva – magyar szavakat (köztük a híres „feheruuaru rea meneh hodu utu rea” szókapcsolatot) is megőrzött, ezért a magyar nyelvtörténet kiemelkedő emléke. (Az alapítólevél nyelve latin, az első magyar nyelvű nyomtatott könyv pedig Sárvárhoz köthető.)",
       regionSlug: "balaton",
       latvId: 71,
       latvName: "Tihanyi Bencés Apátság"
     },
     {
       id: "balaton-02",
-      question: "Melyik látványosság kategóriái között szerepel a kastély és az örökség?",
-      answers: ["Festetics-kastély", "Hévízi-tó", "Sümegi vár", "Tapolcai-tavasbarlang"],
-      correctIndex: 0,
-      explanation: "A Festetics-kastély kategóriái az atlaszban: kastély és örökség.",
+      question: "Az atlasz szerint milyen, a maga korában úttörő intézményt alapított Festetics György 1797-ben a keszthelyi kastély mellett?",
+      answers: [
+        "A Helikon Könyvtárat, az ország első nyilvános könyvtárát",
+        "Az ország első állandó kőszínházát",
+        "Az első hazai borászati szakiskolát a balatoni borvidékek számára",
+        "A Georgikont, Európa egyik első mezőgazdasági felsőfokú tanintézetét"
+      ],
+      correctIndex: 3,
+      explanation: "A Festetics-kastély leírása szerint a felvilágosult főúr, Festetics György 1797-ben itt alapította meg a Georgikont, Európa egyik első mezőgazdasági felsőfokú tanintézetét. (A Helikon Könyvtár a kastély értékes része, de nem ekkor alapított iskola; az első kőszínház Balatonfüredhez köthető.)",
       regionSlug: "balaton",
       latvId: 72,
       latvName: "Festetics-kastély"
     },
     {
       id: "balaton-03",
-      question: "Melyik helyszín rövid leírása nevezi a világ egyik legnagyobb biológiailag aktív termáltavának?",
-      answers: ["Badacsony", "Hévízi-tó", "Keszthely – belváros és strand", "Balatonfüred – Tagore sétány"],
-      correctIndex: 1,
-      explanation: "A Hévízi-tó rövid leírása szerint a helyszín a világ egyik legnagyobb biológiailag aktív termáltava.",
+      question: "Melyik állítás IGAZ a Hévízi-tóról az atlasz leírása alapján?",
+      answers: [
+        "Mesterségesen duzzasztott termáltó, amelyet a 19. században hoztak létre gyógyászati céllal",
+        "A Balaton egyik sekély öble, amelyet nádasok választanak el a tó fő medencéjétől",
+        "A világ egyik legnagyobb, biológiailag aktív természetes gyógytava, amelyet mélyből feltörő források táplálnak",
+        "Hideg, kénmentes karsztforrás, amelynek vizét elsősorban ivókúrára használják"
+      ],
+      correctIndex: 2,
+      explanation: "A Hévízi-tó leírása szerint a tó a világ egyik legnagyobb, biológiailag aktív természetes gyógytava, amelyet mélyből feltörő langyos és meleg források táplálnak, így vize télen is 23–25 °C. Kénes, enyhén radontartalmú vize és a tófenék gyógyiszapja elsősorban mozgásszervi és reumatikus panaszokra javallt.",
       regionSlug: "balaton",
       latvId: 73,
       latvName: "Hévízi-tó"
     },
     {
       id: "balaton-04",
-      question: "Melyik balatoni látványosság kapcsolódik bazaltorgonás tanúhegyhez és híres borvidékhez?",
-      answers: ["Balatonboglári Gömbkilátó", "Badacsony", "Fonyód – Várhegy és Balaton-part", "Szigligeti vár"],
-      correctIndex: 1,
-      explanation: "A Badacsony leírása bazaltorgonás tanúhegyként és híres borvidékként mutatja be a helyszínt.",
+      question: "Az atlasz szerint miként jöttek létre a Badacsony meredek oldalán látható, védett bazaltorgonák?",
+      answers: [
+        "Egy egykori vulkán megszilárdult lávájából formálódtak sokszögű kőoszlopokká",
+        "A Balaton hullámverése csiszolta ki őket a parti sziklafalból",
+        "A jégkorszaki gleccserek vájták ki őket a hegy oldalából",
+        "A mélyből feltörő termálvíz mésztufa-lerakódásából épültek fel"
+      ],
+      correctIndex: 0,
+      explanation: "A Badacsony leírása szerint a hegy egy egykori vulkán lepusztult maradványa (tanúhegy); meredek oldalain a megszilárdult láva sokszögű kőoszlopai, a bazaltorgonák emelkednek, amelyek védett geológiai értékek. (A termálvízből épülő mésztufa-képződés az egerszalóki sódombra jellemző.)",
       regionSlug: "balaton",
       latvId: 74,
       latvName: "Badacsony"
     },
     {
       id: "balaton-05",
-      question: "Melyik látványosság található Szigligeten?",
-      answers: ["Szigligeti vár", "Sümegi vár", "Somogyvári Szent Egyed-apátság romjai", "Tapolcai-tavasbarlang"],
-      correctIndex: 0,
-      explanation: "A Szigligeti vár településmezője az atlaszban Szigliget.",
+      question: "Az atlasz szerint mi lett a török korban végvárként szolgáló szigligeti vár sorsa a 18. században?",
+      answers: [
+        "A visszavonuló török sereg robbantotta fel",
+        "Egy villámcsapás okozta tűzvész pusztította el végleg",
+        "A birtokos főúri család barokk kastéllyá építtette át",
+        "A Habsburg-hatalom több más várral együtt leromboltatta"
+      ],
+      correctIndex: 3,
+      explanation: "A Szigligeti vár leírása szerint a 13. század közepén, a tatárjárás után épült, a török korban fontos végvárként szolgáló erődöt a 18. században a Habsburg-hatalom több más várral együtt leromboltatta; impozáns romjait az utóbbi évtizedekben részben helyreállították.",
       regionSlug: "balaton",
       latvId: 75,
       latvName: "Szigligeti vár"
     },
     {
       id: "balaton-06",
-      question: "Melyik helyszínhez kapcsolódik a Kossuth-forrás és a Tagore sétány?",
-      answers: ["Siófok", "Balatonföldvár – Hajózástörténeti Kilátó", "Balatonfüred – Tagore sétány", "Keszthely – belváros és strand"],
-      correctIndex: 2,
-      explanation: "A Balatonfüred – Tagore sétány leírása említi a Kossuth-forrást és a patinás Tagore sétányt.",
+      question: "Az atlasz szerint milyen egészségügyi panaszok kezelésére javallt Balatonfüred szénsavas gyógyvize, és milyen intézmény őrzi ma is ezt a hagyományt?",
+      answers: [
+        "Mozgásszervi és reumatikus panaszokra; egy gyógyiszap-fürdő",
+        "Szív- és érrendszeri panaszokra; az Állami Szívkórház",
+        "Légúti betegségekre; egy tüdőszanatórium",
+        "Emésztőszervi panaszokra; egy ivókúra-központ"
+      ],
+      correctIndex: 1,
+      explanation: "A Balatonfüred – Tagore sétány leírása szerint a város savanyúvíz-forrásainak (köztük a Kossuth-forrásnak) szénsavas gyógyvize szív- és érrendszeri panaszokra javallt, és ma is az Állami Szívkórház szakterülete. (A mozgásszervi, reumatikus panaszok gyógyiszapos kezelése inkább Hévíz jellemzője.)",
       regionSlug: "balaton",
       latvId: 76,
       latvName: "Balatonfüred – Tagore sétány"
     },
     {
       id: "balaton-07",
-      question: "Melyik helyszín kategóriája az atlaszban vár?",
-      answers: ["Sümegi vár", "Hévízi-tó", "Balatonboglári Gömbkilátó", "Festetics-kastély"],
-      correctIndex: 0,
-      explanation: "A Sümegi vár kategóriája az atlaszban: vár.",
+      question: "Az atlasz szerint mi volt a sümegi vár szerepe a középkorban, és mi ma a fő turisztikai vonzereje?",
+      answers: [
+        "A magyar királynék birtokközpontja volt; ma solymászmúzeum működik benne",
+        "A Festetics család vadászvára volt; ma hintómúzeumnak ad otthont",
+        "Veszprémi püspöki vár volt; ma látványos lovagi torna- és solymászbemutató a fő vonzereje",
+        "Tartósan oszmán kézre került végvár volt; ma török kori hadtörténeti kiállítás látható benne"
+      ],
+      correctIndex: 2,
+      explanation: "A Sümegi vár leírása szerint az erőd a középkorban veszprémi püspöki vár, a török korban pedig jelentős végvár volt, amely sosem került tartós oszmán kézre; mai fő vonzereje a vár udvarán megelevenedő, látványos középkori lovagi torna- és solymászbemutató.",
       regionSlug: "balaton",
       latvId: 77,
       latvName: "Sümegi vár"
     },
     {
       id: "balaton-08",
-      question: "Melyik balatoni helyszín leírása említi a vasbeton víztornyot és Kálmán Imre emlékét?",
-      answers: ["Siófok", "Keszthely – belváros és strand", "Balatonboglári Gömbkilátó", "Fonyód – Várhegy és Balaton-part"],
+      question: "Az atlasz szerint mi jellemzi a Balaton déli partjának – így Siófoknak – a vizét, és miért kedvelt emiatt a strand?",
+      answers: [
+        "Sekély, lassan mélyülő, gyorsan felmelegedő víz, amely ideális a kisgyermekes családoknak",
+        "Mély és gyorsan hűlő víz, amely a hosszútávúszóknak kedvez",
+        "Erős hullámzású, hűvös víz, amely elsősorban a vitorlázás terepe",
+        "Ásványi anyagokban gazdag, langyos gyógyvíz, amely fürdőkúrára alkalmas"
+      ],
       correctIndex: 0,
-      explanation: "Siófok részletes leírása a vasbeton víztornyot és Kálmán Imre emlékét is megemlíti.",
+      explanation: "Siófok leírása szerint a déli part jellegzetessége a sekély, lassan mélyülő, gyorsan felmelegedő víz, amely ideálissá teszi a strandolást, különösen a kisgyermekes családok számára; a várost éppen ezért gyakran „a Balaton fővárosaként” emlegetik.",
       regionSlug: "balaton",
       latvId: 78,
       latvName: "Siófok"
     },
     {
       id: "balaton-09",
-      question: "Melyik látványosság áll a Várdomb tetején Balatonbogláron?",
-      answers: ["Balatonföldvár – Hajózástörténeti Kilátó", "Balatonboglári Gömbkilátó", "Fonyód – Várhegy és Balaton-part", "Badacsony"],
+      question: "Az atlasz szerint milyen eredeti szerepben mutatták be a balatonboglári Gömbkilátó jellegzetes, gömb alakú alumínium szerkezetét?",
+      answers: [
+        "Egy Balaton-parti nagyszálló panorámatornyaként",
+        "„Magyar Atomium” néven, a magyar alumíniumipar jelképeként az 1958-as brüsszeli világkiállításon",
+        "Az 1896-os millenniumi kiállítás egyik ipari pavilonjaként",
+        "A balatoni hajózás vízi megfigyelőállomásaként"
+      ],
       correctIndex: 1,
-      explanation: "A Balatonboglári Gömbkilátó leírása szerint a gömb alakú kilátó a Várdomb tetején áll.",
+      explanation: "A Balatonboglári Gömbkilátó leírása szerint a teljes nevén Xantus János Gömbkilátó gömb alakú, alumínium szerkezetét eredetileg „Magyar Atomium” néven, a magyar alumíniumipar jelképeként mutatták be az 1958-as brüsszeli világkiállításon, majd 1959-ben szállították a Várdomb tetejére.",
       regionSlug: "balaton",
       latvId: 121,
       latvName: "Balatonboglári Gömbkilátó"
     },
     {
       id: "balaton-10",
-      question: "Melyik helyszín alatt húzódó barlangrendszer járatait lehet csónakkal bejárni?",
-      answers: ["Tapolcai-tavasbarlang", "Hévízi-tó", "Somogyvári Szent Egyed-apátság romjai", "Szigligeti vár"],
+      question: "Az atlasz szerint – a csónakázás különleges élményén túl – mitől működik gyógybarlangként is a Tapolcai-tavasbarlang?",
+      answers: [
+        "Gyógyklímás, pormentes levegője kedvező a légúti betegségekben szenvedőknek",
+        "Járataiban termálvizes gyógymedencéket alakítottak ki",
+        "Radontartalmú gyógyiszapja mozgásszervi panaszokat enyhít",
+        "Kénes gőzei elsősorban reumatikus betegek kezelését szolgálják"
+      ],
       correctIndex: 0,
-      explanation: "A Tapolcai-tavasbarlang leírása szerint a földalatti tóval kitöltött járatokat csónakkal lehet bejárni.",
+      explanation: "A Tapolcai-tavasbarlang leírása szerint a földalatti tóval kitöltött, csónakkal bejárható járatok mellett a barlang gyógyklímás, pormentes levegője is kedvező hatású a légúti betegségekben szenvedők számára, ezért gyógybarlangként is működik.",
       regionSlug: "balaton",
       latvId: 122,
       latvName: "Tapolcai-tavasbarlang"
