@@ -464,103 +464,153 @@ var KVIZ_QUESTIONS = {
   "del-dunantul": [
     {
       id: "del-dunantul-01",
-      question: "Melyik dél-dunántúli helyszín kapcsolódik a római kori Sopianae világörökségi temetőjéhez?",
-      answers: ["Pécs – Ókeresztény sírkamrák", "Gázi Kászim pasa dzsámija", "Pécsi Székesegyház", "Pécs – Zsolnay Kulturális Negyed"],
+      question: "Az atlasz szerint miért kiemelkedő a Paksi Atomerőmű Magyarország energiaellátásában?",
+      answers: [
+        "Magyarország egyetlen atomerőműve, amely az ország villamosenergia-szükségletének mintegy 40–50 százalékát fedezi",
+        "Az ország első vízerőműve, amely a Duna vízi energiáját alakítja árammá",
+        "Az ország legnagyobb naperőmű-parkja, amely teljes egészében megújuló energiát termel",
+        "Az ország egyetlen szénerőműve, amely a mecseki szénbányákra települt"
+      ],
       correctIndex: 0,
-      explanation: "A Pécs – Ókeresztény sírkamrák rekordja szerint a helyszín a római kori Sopianae világörökségi temetőjének része.",
+      explanation: "A Paksi Atomerőmű leírása szerint az erőmű Magyarország egyetlen atomerőműve, és az ország villamosenergia-szükségletének kb. 40–50 százalékát fedezi; négy szovjet VVER típusú reaktorblokkját 1982 és 1987 között helyezték üzembe.",
+      regionSlug: "del-dunantul",
+      latvId: 228,
+      latvName: "Paksi Atomerőmű – Atomenergetikai Múzeum"
+    },
+    {
+      id: "del-dunantul-02",
+      question: "Az atlasz szerint miért kerültek fel 2000-ben az UNESCO világörökségi listájára a pécsi ókeresztény sírkamrák?",
+      answers: [
+        "A római kori Sopianae 4. századi, bibliai jeleneteket ábrázoló festett sírkamrái, amelyek Európában is ritka ókeresztény emlékek",
+        "A magyarországi török hódoltság legnagyobb, épségben fennmaradt épületegyüttese",
+        "A honfoglalás kori magyar fejedelmek gazdagon felszerelt temetkezőhelyei",
+        "A középkori magyar királykoronázások egykori helyszínei"
+      ],
+      correctIndex: 0,
+      explanation: "A pécsi ókeresztény sírkamrák leírása szerint a helyszín a római kori Sopianae 4. századi temetője, bibliai jeleneteket (pl. Ádám és Éva, Dániel az oroszlánok vermében) ábrázoló festett sírkamráival; 2000 óta szerepel az UNESCO listáján, és Európában is ritka ókeresztény emlék.",
       regionSlug: "del-dunantul",
       latvId: 92,
       latvName: "Pécs – Ókeresztény sírkamrák"
     },
     {
-      id: "del-dunantul-02",
-      question: "Melyik látványosság áll az atlasz szerint Pécs főterén, a Széchenyi téren?",
-      answers: ["Pécs – Vasarely Múzeum", "Gázi Kászim pasa dzsámija", "Pécsi TV-torony (Misina-tető)", "Pécs – Csontváry Múzeum"],
-      correctIndex: 1,
-      explanation: "A Gázi Kászim pasa dzsámija leírása szerint az épület Pécs főterén, a Széchenyi téren áll.",
+      id: "del-dunantul-03",
+      question: "Az atlasz szerint mi jellemzi a pécsi Széchenyi téren álló Gázi Kászim pasa dzsámiját?",
+      answers: [
+        "A magyarországi török hódoltság legnagyobb fennmaradt épülete, amelyet a hódoltság után katolikus templommá alakítottak",
+        "A hódoltság legnagyobb temploma volt, amelyet a törökök kivonulásakor teljesen leromboltak",
+        "Eredetileg a 19. században keresztény templomnak épült, historizáló stílusban",
+        "Egy 4. századi ókeresztény épület, amelyet a hódoltság idején alakítottak mecsetté"
+      ],
+      correctIndex: 0,
+      explanation: "A Gázi Kászim pasa dzsámija leírása szerint az épület a magyarországi török hódoltság legnagyobb fennmaradt épülete, amelyet a 16. században egy korábbi keresztény templom köveiből emeltek, a hódoltság után pedig katolikus templommá alakítottak.",
       regionSlug: "del-dunantul",
       latvId: 93,
       latvName: "Gázi Kászim pasa dzsámija"
     },
     {
-      id: "del-dunantul-03",
-      question: "Melyik településen található a Villányi borvidék rekordja az atlaszban?",
-      answers: ["Szekszárd", "Villány", "Harkány", "Siklós"],
-      correctIndex: 1,
-      explanation: "A Villányi borvidék településmezője az atlaszban Villány.",
-      regionSlug: "del-dunantul",
-      latvId: 94,
-      latvName: "Villányi borvidék"
-    },
-    {
       id: "del-dunantul-04",
-      question: "Melyik dél-dunántúli látványosság kategóriája az atlaszban vár?",
-      answers: ["Harkányi gyógyfürdő", "Siklósi vár", "Abaligeti-barlang", "Szennai skanzen"],
-      correctIndex: 1,
-      explanation: "A Siklósi vár kategóriája az atlaszban: vár.",
-      regionSlug: "del-dunantul",
-      latvId: 95,
-      latvName: "Siklósi vár"
-    },
-    {
-      id: "del-dunantul-05",
-      question: "Melyik helyszín leírása említi, hogy gyógyvize magas kénhidrogén-tartalmú?",
-      answers: ["Abaligeti-barlang", "Harkányi gyógyfürdő", "Duna–Dráva Nemzeti Park – Gemenci-erdő", "Pécsi TV-torony (Misina-tető)"],
-      correctIndex: 1,
-      explanation: "A Harkányi gyógyfürdő leírása szerint a harkányi gyógyvíz magas kénhidrogén-tartalma a világon is ritka.",
-      regionSlug: "del-dunantul",
-      latvId: 96,
-      latvName: "Harkányi gyógyfürdő"
-    },
-    {
-      id: "del-dunantul-06",
-      question: "Melyik helyszínhez kapcsolódik a világhírű Zsolnay-porcelángyár egykori gyárterülete?",
-      answers: ["Pécs – Zsolnay Kulturális Negyed", "Pécs – Vasarely Múzeum", "Pécs – Csontváry Múzeum", "Szekszárd – belváros és borvidék"],
+      question: "Az atlasz szerint milyen következményekkel járt az 1526-os mohácsi csata, amelynek emlékét a Mohácsi Nemzeti Emlékhely őrzi?",
+      answers: [
+        "II. Lajos király életét vesztette, és a vereség a középkori Magyar Királyság széteséséhez, valamint a török hódoltság kezdetéhez vezetett",
+        "Zrínyi Miklós hősi várvédelme után az oszmán sereg visszavonult a déli végekről",
+        "A győztes magyar sereg megszilárdította a déli végvárrendszert",
+        "A csata a Rákóczi-szabadságharcot lezáró szatmári békéhez vezetett"
+      ],
       correctIndex: 0,
-      explanation: "A Pécs – Zsolnay Kulturális Negyed rekordja szerint a negyed a világhírű Zsolnay-porcelángyár egykori gyárterületén jött létre.",
-      regionSlug: "del-dunantul",
-      latvId: 141,
-      latvName: "Pécs – Zsolnay Kulturális Negyed"
-    },
-    {
-      id: "del-dunantul-07",
-      question: "Melyik dél-dunántúli emlékhely állít emléket az 1526. augusztus 29-i csata áldozatainak?",
-      answers: ["Szigetvári vár", "Mohácsi Nemzeti Emlékhely", "Dunaföldvári Csonka-torony", "Somogyvári Szent Egyed-apátság romjai"],
-      correctIndex: 1,
-      explanation: "A Mohácsi Nemzeti Emlékhely az 1526. augusztus 29-i mohácsi csata áldozatainak állít emléket.",
+      explanation: "A Mohácsi Nemzeti Emlékhely leírása szerint az 1526. augusztus 29-i csatában II. Lajos király életét vesztette, és a vereség a középkori Magyar Királyság széteséséhez, valamint a mintegy 150 éves török hódoltság kezdetéhez vezetett.",
       regionSlug: "del-dunantul",
       latvId: 145,
       latvName: "Mohácsi Nemzeti Emlékhely"
     },
     {
-      id: "del-dunantul-08",
-      question: "Melyik helyszín leírása említi Zrínyi Miklós 1566-os várvédelmét?",
-      answers: ["Siklósi vár", "Szigetvári vár", "Dunaföldvári Csonka-torony", "Pécsi Székesegyház"],
-      correctIndex: 1,
-      explanation: "A Szigetvári vár leírása szerint 1566-ban Zrínyi Miklós serege legendás várvédelmet vívott itt.",
+      id: "del-dunantul-05",
+      question: "Az atlasz szerint kinek a nevéhez fűződik a szigetvári vár 1566-os, oszmán túlerővel szembeni hősi védelme?",
+      answers: [
+        "Zrínyi Miklós",
+        "Dobó István",
+        "Hunyadi János",
+        "II. Rákóczi Ferenc"
+      ],
+      correctIndex: 0,
+      explanation: "A szigetvári vár leírása szerint 1566-ban Zrínyi Miklós serege vívott legendás várvédelmet a túlerőben lévő oszmán sereg ellen, mintegy 2500 katonával több mint egy hónapon át feltartóztatva I. Szulejmán szultán hadait.",
       regionSlug: "del-dunantul",
       latvId: 146,
       latvName: "Szigetvári vár"
     },
     {
-      id: "del-dunantul-09",
-      question: "Melyik településhez kapcsolódik a Rippl-Rónai Múzeum rekordja?",
-      answers: ["Kaposvár", "Szenna", "Szekszárd", "Paks"],
+      id: "del-dunantul-06",
+      question: "Az atlasz a Dél-Dunántúl két történelmi vörösborvidékét is bemutatja. Melyik állítás IGAZ a villányi és a szekszárdi borvidékről?",
+      answers: [
+        "A villányi Magyarország legdélibb történelmi borvidéke, a szekszárdi borvidék jellegzetes fajtája pedig a kadarka és a bikavér",
+        "Mindkét borvidék elsősorban fehérborairól híres, vörösbort nem termelnek",
+        "A villányi borvidék a kadarkájáról, a szekszárdi a mediterrán klímájú cabernet sauvignonjáról ismert",
+        "A szekszárdi Magyarország legdélibb borvidéke, a villányi pedig a Balaton-felvidéken fekszik"
+      ],
       correctIndex: 0,
-      explanation: "A Kaposvár – Rippl-Rónai Múzeum településmezője az atlaszban Kaposvár.",
+      explanation: "Az atlasz szerint a villányi borvidék Magyarország legdélibb történelmi borvidéke, testes vörösboraival, míg a szekszárdi borvidék jellegzetes fajtája a kadarka és a szekszárdi bikavér.",
       regionSlug: "del-dunantul",
-      latvId: 148,
-      latvName: "Kaposvár – Rippl-Rónai Múzeum"
+      latvId: 94,
+      latvName: "Villányi borvidék"
+    },
+    {
+      id: "del-dunantul-07",
+      question: "Az atlasz szerint mi teszi különlegessé a Duna–Dráva Nemzeti Park gemenci tájegységét?",
+      answers: [
+        "Magyarország legnagyobb ártéri erdeje, holtágakkal, ligeterdőkkel és világhírű gímszarvas-állománnyal",
+        "Az ország legmagasabb hegyvidéki bükköse, ahol a barnamedve is honos",
+        "Egy vulkanikus karsztfennsík, amelyet mélyre nyúló cseppkőbarlangok tagolnak",
+        "Az ország legnagyobb összefüggő homokpusztája, szikes tavakkal"
+      ],
+      correctIndex: 0,
+      explanation: "A Duna–Dráva Nemzeti Park gemenci tájegységének leírása szerint ez Magyarország legnagyobb ártéri erdeje, holtágakkal, szigetekkel és ligeterdőkkel, világhírű gímszarvas-állománnyal.",
+      regionSlug: "del-dunantul",
+      latvId: 230,
+      latvName: "Duna–Dráva Nemzeti Park – Gemenci-erdő"
+    },
+    {
+      id: "del-dunantul-08",
+      question: "Pécs több világhírű festőhöz kötődő múzeummal is büszkélkedik. Melyik párosítás helyes az atlasz szerint?",
+      answers: [
+        "A Vasarely Múzeum az op-art megteremtőjének, a Csontváry Múzeum a Magányos cédrust festő vizionárius mesternek az alkotásait őrzi",
+        "A Vasarely Múzeum Csontváry Kosztka Tivadar, a Csontváry Múzeum Rippl-Rónai József műveit állítja ki",
+        "Mindkét múzeum Zsolnay Vilmos eozinmázas kerámiáit mutatja be",
+        "A Csontváry Múzeum az op-art, a Vasarely Múzeum a szecesszió irányzatát képviseli"
+      ],
+      correctIndex: 0,
+      explanation: "Az atlasz szerint a Vasarely Múzeum Victor Vasarelynek, az op-art egyik megteremtőjének a műveit, a Csontváry Múzeum pedig Csontváry Kosztka Tivadarnak, a Magányos cédrus vizionárius festőjének a főműveit őrzi.",
+      regionSlug: "del-dunantul",
+      latvId: 143,
+      latvName: "Pécs – Csontváry Múzeum"
+    },
+    {
+      id: "del-dunantul-09",
+      question: "Az atlasz szerint Pécs melyik nagy kiterjedésű kulturális látványossága jött létre egy világhírű, eozinmázas kerámiáiról ismert gyár egykori területén?",
+      answers: [
+        "Pécs – Zsolnay Kulturális Negyed",
+        "Pécs – Vasarely Múzeum",
+        "Pécs – Csontváry Múzeum",
+        "Pécs – Ókeresztény sírkamrák"
+      ],
+      correctIndex: 0,
+      explanation: "A Zsolnay Kulturális Negyed leírása szerint a negyed a világhírű, eozinmázas kerámiáiról ismert Zsolnay-porcelángyár egykori, mintegy öthektáros gyárterületén jött létre.",
+      regionSlug: "del-dunantul",
+      latvId: 141,
+      latvName: "Pécs – Zsolnay Kulturális Negyed"
     },
     {
       id: "del-dunantul-10",
-      question: "Melyik dél-dunántúli helyszín nyerte el az atlasz leírása szerint az Europa Nostra-díjat?",
-      answers: ["Szennai skanzen", "Pécs – Csontváry Múzeum", "Abaligeti-barlang", "Duna–Dráva Nemzeti Park – Gemenci-erdő"],
+      question: "Az atlasz szerint a Dél-Dunántúl melyik fürdővárosának gyógyvize a világon is ritka, magas kénhidrogén-tartalmú, és a mozgásszervi panaszok mellett a pikkelysömör kezelésében is hatékony?",
+      answers: [
+        "Harkány",
+        "Siklós",
+        "Szigetvár",
+        "Abaliget"
+      ],
       correctIndex: 0,
-      explanation: "A Szennai skanzen leírása szerint a gyűjtemény kiemelkedő szakmai értékét az Europa Nostra-díj jelzi.",
+      explanation: "A Harkányi gyógyfürdő leírása szerint a harkányi gyógyvíz magas kénhidrogén-tartalma a világon is ritka, és elsősorban mozgásszervi, ízületi, valamint bőrgyógyászati panaszok – köztük a pikkelysömör – kezelésében bizonyult hatékonynak.",
       regionSlug: "del-dunantul",
-      latvId: 149,
-      latvName: "Szennai skanzen"
+      latvId: 96,
+      latvName: "Harkányi gyógyfürdő"
     }
   ],
   "eszak-alfold": [
