@@ -45,7 +45,11 @@ nav{background:var(--primary);padding:0 2rem;display:flex;align-items:center;hei
 .regio-card:hover{box-shadow:var(--shadow-h);transform:translateY(-3px)}
 .regio-card::before{position:absolute;top:10px;right:10px;font-size:.68rem;font-weight:700;padding:.2rem .6rem;border-radius:20px;z-index:2;color:#fff}
 .regio-card.kesz::before{content:"✓ "attr(data-count)" helyszín";background:var(--accent)}
-.regio-header{height:82px;display:flex;align-items:center;justify-content:center;font-size:2.4rem;position:relative}
+.regio-header{height:150px;display:flex;align-items:center;justify-content:center;font-size:2.4rem;position:relative;overflow:hidden}
+.regio-header-ikon{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:2.4rem}
+.regio-header-kep{position:absolute;inset:0}
+.regio-header-kep img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s}
+.regio-card:hover .regio-header-kep img{transform:scale(1.04)}
 .regio-header::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,transparent 50%,rgba(0,0,0,.16) 100%)}
 .regio-body{padding:.9rem 1rem 1rem;flex:1;display:flex;flex-direction:column}
 .regio-nev{font-family:'Playfair Display',serif;font-size:.97rem;font-weight:700;line-height:1.25;margin-bottom:.3rem}
@@ -160,6 +164,7 @@ footer strong{color:rgba(255,255,255,.68)}
   .card-tp{font-size:.82rem;line-height:1.45;align-items:flex-start}
   .card-leiras{font-size:.88rem;line-height:1.6;-webkit-line-clamp:4}
   .regio-card::before{font-size:.66rem;max-width:calc(100% - 1.2rem);white-space:normal;text-align:center}
+  .regio-header{height:130px}
   .regio-body{padding:1rem 1.05rem 1.1rem}
   .regio-nev{font-size:1.05rem}
   .regio-desc{font-size:.84rem;line-height:1.6}

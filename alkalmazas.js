@@ -53,7 +53,7 @@ function renderHome(){
   REGIOK.forEach(r=>{
     const n=latvOf(r.slug).length;
     cards+=`<button class="regio-card kesz" data-count="${n}" onclick="location.hash='#/regio/${r.slug}'">
-      <div class="regio-header" style="background:linear-gradient(135deg,${r.szin},${r.szin}cc)">${r.ikon}</div>
+      <div class="regio-header" style="background:linear-gradient(135deg,${r.szin},${r.szin}cc)"><span class="regio-header-ikon">${r.ikon}</span><span class="regio-header-kep" id="rhk-${r.slug}"></span></div>
       <div class="regio-body">
         <div class="regio-nev">${r.nev}</div>
         <div class="regio-desc">${r.leiras}</div>
@@ -91,6 +91,8 @@ function renderHome(){
     <footer><strong>Magyar Turisztikai Atlasz</strong> · 13. évfolyamos turisztikai technikusok számára<br>
     Tartalom: Donka Attila: Idegenforgalmi földrajz I. · Magyarország Országismeret 2. (tényadatok, saját megfogalmazás)<br>
     Térkép: © OpenStreetMap közreműködők · Képek: Wikimedia Commons (CC BY-SA)</footer>`;
+
+  REGIOK.forEach(r=>regioFejlecKep(r,document.getElementById('rhk-'+r.slug)));
 
   if(typeof L==='undefined'){document.getElementById('homeMap').innerHTML=mapHiba();return;}
   currentMap=L.map('homeMap').setView([47.16,19.40],7);
@@ -353,6 +355,29 @@ function kepetMutat(l, elem, meret) {
   }
 }
 
+/* ════════ RÉGIÓKÁRTYA FEJLÉCKÉP ════════ */
+/* A főoldali régiókártya fejlécébe tölt fotót ugyanazzal az ötszintű
+   Wikipédia/Commons automatával (kep_sajat elsőbbséggel). A siker a
+   .regio-header-kep tárolót tölti fel; a színátmenet és az emoji a fejléc
+   alatt marad, így hiba esetén minden a jelenlegi állapotban látszik. */
+function regioFejlecKep(r, elem){
+  if(!elem||!r)return;
+  const meret=500;
+  const megjelenit=url=>{
+    if(!url)return;
+    const img=document.createElement('img');
+    img.src=url;
+    img.alt=r.nev;
+    img.loading='lazy';
+    img.onerror=()=>{elem.innerHTML='';};
+    img.style.cssText='width:100%;height:100%;object-fit:cover;display:block';
+    elem.innerHTML='';
+    elem.appendChild(img);
+  };
+  if(r.kep_sajat && r.kep_sajat.trim()){megjelenit(r.kep_sajat.trim());return;}
+  betoltKep(r.kep, elem, meret, megjelenit);
+}
+
 /* ════════ WIKIPÉDIA KÉPBETÖLTŐ (pageimages) ════════ */
 /* A kep mező = Wikipédia-szócikk címe (magyar). A pageimages API a szócikk
    főképét adja vissza, így nincs fájlnév-találgatás. Ha a magyar Wikin nincs
@@ -370,11 +395,12 @@ function fetchTimeout(url,options={},timeoutMs=_FETCH_TIMEOUT_MS){
    3) magyar Wiki összes képe -> első valódi fotó (térkép/címer/ikon kiszűrve)
    4) angol Wiki összes képe -> első valódi fotó
    5) Wikimedia Commons közvetlen képkeresés a névre */
-function betoltKep(cim,elElem,meret){
+function betoltKep(cim,elElem,meret,megjelenit){
   if(!cim||!elElem)return;
+  const alkalmaz=megjelenit||(u=>_alkalmazKep(elElem,u,meret));
   const kulcs=cim+'@'+meret;
-  if(_kepCache[kulcs]){_alkalmazKep(elElem,_kepCache[kulcs],meret);return;}
-  const kesz=u=>{if(u){_kepCache[kulcs]=u;_alkalmazKep(elElem,u,meret);}};
+  if(_kepCache[kulcs]){alkalmaz(_kepCache[kulcs]);return;}
+  const kesz=u=>{if(u){_kepCache[kulcs]=u;alkalmaz(u);}};
   _lekerFokep('hu',cim,meret).then(u=>{
     if(u){kesz(u);return;}
     _lekerFokep('en',cim,meret).then(u2=>{
