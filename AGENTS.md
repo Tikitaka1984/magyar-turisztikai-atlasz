@@ -35,3 +35,16 @@ node --check kviz.js
 node --check alkalmazas.js
 node tools/validate-data.js
 ```
+
+## GitHub Actions workflow-k
+
+- Ha workflow-t érintesz, ne vezess be npm-et, csomagkezelőt vagy build rendszert külön kérés nélkül.
+- A kötelező ellenőrzések maradjanak ezek:
+
+```bash
+node --check adatok.js
+node --check kviz.js
+node --check alkalmazas.js
+node tools/validate-data.js
+```
+

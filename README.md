@@ -160,6 +160,15 @@ Egy új bejegyzésnél figyelni kell az alábbiakra:
 7. **Forrás:** a `forras` tömbben legyen feltüntetve, mire épül a leírás.
 
 
+## Automatikus ellenőrzések
+
+A repóhoz GitHub Actions ellenőrző workflow tartozik, amely minden pull requestnél
+és a `main` ágra történő push esetén fut. A workflow Node.js 20 környezetben
+ellenőrzi a JavaScript-fájlok szintaxisát, majd lefuttatja az adatvalidáló scriptet.
+
+A projekt továbbra is statikus HTML/CSS/JavaScript alkalmazás: az automatikus
+ellenőrzés nem használ `npm install` parancsot, npm-függőségeket vagy build lépést.
+
 ## Adatvalidáció
 
 A tartalmi adatok ellenőrzésére függőségmentes Node.js validáló script használható.
