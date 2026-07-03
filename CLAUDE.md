@@ -22,19 +22,21 @@ rendezett mappákba (css/, js/) szervezheti, ha szükséges.
 Statikus, fordítás nélküli weboldal. NINCS build-lépés, NINCS csomagkezelő,
 NINCS szerveroldali kód. A böngésző közvetlenül a fájlokat tölti be.
 
-- `index.html` — a váz; betölti a CSS-t és a két JS-fájlt (sorrend számít).
+- `index.html` — a váz; betölti a CSS-t és a JS-fájlokat (sorrend számít).
 - `stilusok.css` — minden stílus.
 - `adatok.js` — TARTALOM: a `REGIOK` (9 régió) és a `LATV` (157 nevezetesség)
   tömbök. Tartalmi bővítés KIZÁRÓLAG itt történik.
+- `kviz.js` — TARTALOM: statikus kvízkérdésbank régiónkénti kérdésekkel.
 - `alkalmazas.js` — MŰKÖDÉS: router, térkép (Leaflet), kártyák, kereső/szűrő,
-  modális ablak, ötszintű képbetöltő. Az `adatok.js` után töltődik be.
+  modális ablak, ötszintű képbetöltő és kvízvezérlés. Az `adatok.js` és
+  a `kviz.js` után töltődik be.
 - `kepek/` — a jövőbeli saját képtár helye (egyelőre üres).
 
 ## Betöltési sorrend (fontos)
 
-1. Leaflet (CDN) → 2. `adatok.js` → 3. `alkalmazas.js`
-Az `app.js` a `REGIOK` és `LATV` globális tömbökre épül, ezért az
-`adatok.js`-nek előbb kell betöltődnie.
+1. Leaflet (CDN) → 2. `adatok.js` → 3. `kviz.js` → 4. `alkalmazas.js`
+Az `alkalmazas.js` a `REGIOK`, `LATV` és `kvizKerdesek` globális adatokra épül,
+ezért az `adatok.js`-nek és a `kviz.js`-nek előbb kell betöltődnie.
 
 ## Adatséma — egy nevezetesség (LATV elem)
 
@@ -82,12 +84,12 @@ részesíteni, a Wikipédia csak tartalék marad.
 2. **Statikus marad:** ne vezess be build-lépést vagy szerveroldali
    függőséget, hacsak nincs kifejezett kérés rá.
 3. **Tartalom ≠ működés:** a nevezetességek adatai az `adatok.js`-ben,
-   a logika az `app.js`-ben marad.
+   a logika az `alkalmazas.js`-ben marad.
 4. **Idézőjelek:** a magyar nyitó idézőjel (U+201E) és az egyenes idézőjel
    keveredése korábban törte a JS-stringeket. Kódban következetesen
    egyenes idézőjelet kell használni.
 5. **Ellenőrzés:** módosítás után a JS szintaxist ellenőrizni kell
-   (`node --check`), publikálás előtt.
+   (`node --check adatok.js`, `node --check kviz.js`, `node --check alkalmazas.js`), publikálás előtt.
 6. **Források:** a leírások tankönyvi tényadatokra épülnek, saját
    megfogalmazásban; ne legyen szó szerinti átvétel.
 

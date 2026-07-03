@@ -20,10 +20,12 @@ magyar-turisztikai-atlasz/
 ├── index.html        A HTML-váz; betölti a CSS-t, a külső könyvtárakat és a JS-fájlokat.
 ├── stilusok.css      Minden megjelenési szabály: layout, kártyák, térkép, modális ablak, mobilnézet.
 ├── adatok.js         TARTALOM: a 9 régió és a 157 nevezetesség adatai.
-├── alkalmazas.js     MŰKÖDÉS: router, térkép, régióválasztás, szűrés, keresés, modális ablak, képbetöltő.
+├── kviz.js           TARTALOM: a statikus kvízkérdésbank régiónkénti kérdésekkel.
+├── alkalmazas.js     MŰKÖDÉS: router, térkép, régióválasztás, szűrés, keresés, modális ablak, képbetöltő és kvízvezérlés.
 ├── .nojekyll         GitHub Pages jelzés: ne fusson Jekyll-feldolgozás.
 ├── README.md         Projektleírás és használati dokumentáció.
-└── CLAUDE.md         Projektkontextus fejlesztőeszközök számára.
+├── CLAUDE.md         Projektkontextus fejlesztőeszközök számára.
+└── AGENTS.md         Fejlesztési irányelvek Codex és más ügynökök számára.
 ```
 
 ## Külső függőségek és szolgáltatások
