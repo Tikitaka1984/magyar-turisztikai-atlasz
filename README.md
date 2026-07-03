@@ -159,6 +159,26 @@ Egy új bejegyzésnél figyelni kell az alábbiakra:
    megadható `kep_sajat` is.
 7. **Forrás:** a `forras` tömbben legyen feltüntetve, mire épül a leírás.
 
+
+## Adatvalidáció
+
+A tartalmi adatok ellenőrzésére függőségmentes Node.js validáló script használható.
+
+Futtatás:
+
+```bash
+node tools/validate-data.js
+```
+
+A script ellenőrzi:
+
+- régiók;
+- látványosságok;
+- kategóriák;
+- koordináták;
+- kvízkérdések;
+- kvíz-hivatkozások.
+
 ## Hogyan publikálom GitHub Pages alatt?
 
 A repó gyökere közvetlenül publikálható GitHub Pages alatt. Mivel az alkalmazás

@@ -33,4 +33,5 @@ Minden módosítás után futtasd:
 node --check adatok.js
 node --check kviz.js
 node --check alkalmazas.js
+node tools/validate-data.js
 ```
