@@ -72,24 +72,27 @@ nav{background:var(--primary);padding:0 2rem;display:flex;align-items:center;hei
 .info-strip-text{font-size:.78rem;line-height:1.6;color:rgba(255,255,255,.58)}
 
 /* ───── RÉGIÓOLDAL (SPLIT) ───── */
-.r-header{background:var(--primary);color:#fff;padding:0 2rem}
-.r-header-inner{max-width:1400px;margin:0 auto;padding:1.3rem 0 0}
-.breadcrumb{font-size:.75rem;color:rgba(255,255,255,.55);letter-spacing:.06em;text-transform:uppercase;margin-bottom:.5rem}
+.r-header{background:radial-gradient(circle at 86% 12%,rgba(240,168,85,.24),transparent 28%),linear-gradient(135deg,#16304F 0%,var(--primary) 62%,#244D73 100%);color:#fff;padding:0 2rem;overflow:hidden}
+.r-header-inner{max-width:1400px;margin:0 auto;padding:1.45rem 0 1.2rem;position:relative}
+.r-header-inner::after{content:'';position:absolute;right:-120px;bottom:-150px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.08);pointer-events:none}
+.breadcrumb{position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:.35rem;align-items:center;width:max-content;max-width:100%;font-size:.72rem;color:rgba(255,255,255,.68);letter-spacing:.08em;text-transform:uppercase;margin-bottom:.75rem;padding:.34rem .7rem;border:1px solid rgba(255,255,255,.16);border-radius:999px;background:rgba(255,255,255,.08)}
 .breadcrumb a{color:rgba(255,255,255,.7);text-decoration:none;cursor:pointer}
 .breadcrumb a:hover{color:#fff}
-.r-header h1{font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:700;line-height:1.15;letter-spacing:-.02em}
+.breadcrumb a:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:999px}
+.r-header h1{position:relative;z-index:1;font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3.35rem);font-weight:700;line-height:1.06;letter-spacing:-.04em;max-width:920px;text-shadow:0 12px 32px rgba(0,0,0,.16)}
 .r-header h1 em{color:var(--gold);font-style:normal}
-.r-sub{font-size:.85rem;color:rgba(255,255,255,.6);margin-top:.35rem;margin-bottom:1rem}
-.controls{max-width:1400px;margin:0 auto;padding:1.1rem 2rem;display:flex;flex-wrap:wrap;gap:.9rem;align-items:center}
+.r-sub{position:relative;z-index:1;font-size:.98rem;color:rgba(255,255,255,.78);line-height:1.65;margin-top:.65rem;margin-bottom:1.1rem;max-width:680px}
+.controls{max-width:1400px;margin:0 auto;padding:1.15rem 2rem;display:flex;flex-wrap:wrap;gap:.9rem;align-items:center}
 .search-wrap{position:relative;flex:1;min-width:200px;max-width:340px}
 .search-wrap svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none}
-input[type=search]{width:100%;padding:.6rem .9rem .6rem 2.4rem;border:1.5px solid var(--border);border-radius:8px;font-family:inherit;font-size:.88rem;background:var(--card);color:var(--primary);outline:none}
-input[type=search]:focus{border-color:var(--accent)}
+input[type=search]{width:100%;min-height:44px;padding:.66rem .95rem .66rem 2.4rem;border:1.5px solid var(--border);border-radius:999px;font-family:inherit;font-size:.9rem;background:var(--card);color:var(--primary);outline:none;box-shadow:0 4px 14px rgba(26,58,92,.06)}
+input[type=search]:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(196,120,42,.18)}
 .filters{display:flex;flex-wrap:wrap;gap:.4rem}
-.filter-btn{padding:.35rem .85rem;border-radius:20px;border:1.5px solid var(--border);background:var(--card);font-family:inherit;font-size:.78rem;font-weight:500;color:var(--muted);cursor:pointer;white-space:nowrap}
+.filter-btn{min-height:40px;padding:.48rem .9rem;border-radius:999px;border:1.5px solid var(--border);background:var(--card);font-family:inherit;font-size:.8rem;font-weight:700;color:#4B5563;cursor:pointer;white-space:nowrap;box-shadow:0 3px 10px rgba(26,58,92,.04);transition:background .15s,border-color .15s,color .15s,box-shadow .15s,transform .15s}
 .filter-btn:hover{border-color:var(--accent);color:var(--accent)}
+.filter-btn:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-color:var(--accent)}
 .filter-btn.active{background:var(--primary);border-color:var(--primary);color:#fff}
-.result-count{font-size:.8rem;color:var(--muted);margin-left:auto;white-space:nowrap}
+.result-count{font-size:.8rem;font-weight:700;color:#4B5563;margin-left:auto;white-space:nowrap;background:#fff;border:1px solid rgba(226,221,214,.9);border-radius:999px;padding:.42rem .75rem}
 /* ── Természetföldrajzi összefoglaló doboz (régióoldal, kártyák felett) ── */
 .geo-wrap{max-width:1400px;margin:0 auto;padding:1.1rem 2rem 0}
 .geo-wrap+.controls{padding-top:.6rem}
@@ -97,7 +100,7 @@ input[type=search]:focus{border-color:var(--accent)}
 .geo-box-cim{font-family:'Playfair Display',serif;font-size:.9rem;font-weight:700;color:var(--primary);margin-bottom:.4rem;display:flex;align-items:center;gap:.4rem;letter-spacing:.01em}
 .geo-box-ikon{font-size:1rem;line-height:1}
 .geo-box-szoveg{font-size:.84rem;color:var(--muted);line-height:1.7;margin:0}
-.split{max-width:1400px;margin:0 auto;padding:0 2rem 3rem;display:grid;grid-template-columns:1fr 420px;gap:1.5rem;align-items:start}
+.split{max-width:1400px;margin:0 auto;padding:0 2rem 3rem;display:grid;grid-template-columns:minmax(0,1fr) minmax(320px,420px);gap:1.5rem;align-items:start}
 .card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1rem}
 .card{background:var(--card);border-radius:var(--radius);border:1px solid var(--border);overflow:hidden;cursor:pointer;box-shadow:var(--shadow);transition:box-shadow .18s,transform .18s,border-color .15s}
 .card:hover{box-shadow:var(--shadow-h);transform:translateY(-2px)}
@@ -113,8 +116,8 @@ input[type=search]:focus{border-color:var(--accent)}
 .card h3{font-family:'Playfair Display',serif;font-size:.98rem;font-weight:700;line-height:1.25;margin-bottom:.3rem}
 .card-tp{font-size:.76rem;color:var(--muted);margin-bottom:.4rem;display:flex;align-items:center;gap:.3rem}
 .card-leiras{font-size:.81rem;color:#4B5563;line-height:1.55;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
-.map-sticky{position:sticky;top:68px}
-.map-box{background:var(--card);border-radius:var(--radius);border:1px solid var(--border);overflow:hidden;box-shadow:var(--shadow)}
+.map-sticky{position:sticky;top:68px;min-width:0}
+.map-box{background:var(--card);border-radius:16px;border:1px solid rgba(226,221,214,.95);overflow:hidden;box-shadow:0 10px 28px rgba(26,58,92,.1)}
 .map-label{padding:.7rem 1rem;font-size:.76rem;font-weight:600;color:var(--muted);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:.4rem;text-transform:uppercase;letter-spacing:.06em}
 #regioMap{height:520px}
 .empty-state{grid-column:1/-1;text-align:center;padding:3rem 1rem;color:var(--muted)}
@@ -151,7 +154,7 @@ footer strong{color:rgba(255,255,255,.68)}
   .split{grid-template-columns:1fr;padding:0 1rem 2rem}
   .map-sticky{position:static}
   #regioMap{height:360px}#homeMap{height:320px}
-  .hero h1{font-size:2rem}.r-header h1{font-size:1.5rem}
+  .hero h1{font-size:2rem}.r-header h1{font-size:clamp(1.8rem,6vw,2.55rem)}
 }
 @media(max-width:580px){
   .regio-grid{grid-template-columns:1fr;gap:1rem}
@@ -164,7 +167,7 @@ footer strong{color:rgba(255,255,255,.68)}
   .search-wrap{flex:0 0 100%;min-width:0;max-width:none;width:100%}
   input[type=search]{min-height:44px;font-size:1rem;padding:.72rem .9rem .72rem 2.45rem}
   .filters{width:100%;gap:.55rem;overflow-x:hidden}
-  .filter-btn{min-height:42px;padding:.55rem .95rem;font-size:.84rem;line-height:1.2;white-space:normal;overflow-wrap:anywhere}
+  .filter-btn{min-height:44px;padding:.55rem .95rem;font-size:.84rem;line-height:1.2;white-space:normal;overflow-wrap:anywhere}
   .result-count{width:100%;margin-left:0}
   .card-grid{grid-template-columns:1fr;gap:.9rem}
   .card-body{padding:1rem}
@@ -247,19 +250,25 @@ footer strong{color:rgba(255,255,255,.68)}
 
   /* Régióoldal fejléc és vezérlők */
   .r-header{padding:0 1.2rem}
+  .r-header-inner{padding:1rem 0 .95rem}
+  .r-header-inner::after{right:-170px;bottom:-180px}
+  .breadcrumb{width:100%;font-size:.66rem;line-height:1.35;margin-bottom:.65rem;padding:.3rem .62rem}
+  .r-header h1{font-size:clamp(1.85rem,9vw,2.55rem);line-height:1.08}
+  .r-sub{font-size:.9rem;line-height:1.55;margin-top:.55rem;margin-bottom:.85rem}
   .controls{padding:.9rem 1.2rem;gap:.7rem}
   /* Kereső: teljes szélesség, 16px betűméret (nincs iOS-zoom) */
   .search-wrap{flex:1 1 100%;max-width:none;min-width:0}
   input[type=search]{font-size:16px;padding:.7rem .9rem .7rem 2.4rem}
   /* Kategória-szűrők: nagyobb érintőfelület, nem lógnak ki */
   .filters{width:100%;gap:.45rem}
-  .filter-btn{padding:.5rem .95rem;font-size:.8rem}
+  .filter-btn{min-height:44px;padding:.5rem .95rem;font-size:.8rem}
   .result-count{margin-left:0;width:100%}
 
   /* Kártyák: egy oszlop, kényelmes kép (object-fit miatt nem torzul) */
   .card-grid{grid-template-columns:1fr;gap:.9rem}
   .card-ph{height:180px}
-  #regioMap{height:340px}
+  .split{padding:0 1.2rem 2rem;gap:1rem}
+  #regioMap{height:340px;max-height:58vh}
 
   /* Modális ablak: olvasható, görgethető, könnyen bezárható */
   .modal-ov{padding:.5rem}
