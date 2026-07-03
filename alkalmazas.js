@@ -62,15 +62,32 @@ function renderHome(){
   });
   document.getElementById('app').innerHTML=`
     <section class="hero"><div class="hero-inner">
-      <div class="hero-eyebrow">13. évfolyamos turisztikai technikusok számára</div>
-      <h1>Magyar <em>Turisztikai Atlasz</em></h1>
-      <p class="hero-desc">Interaktív digitális segédeszköz Magyarország turisztikai régióinak, nevezetességeinek és látványosságainak megismeréséhez – térképpel, adatlapokkal és ellenőrzött forrásokkal.</p>
-      <div class="hero-stats">
-        <div><div class="hero-stat-val">9</div><div class="hero-stat-label">turisztikai<br>régió</div></div>
-        <div><div class="hero-stat-val">${total}</div><div class="hero-stat-label">látványosság<br>az atlaszban</div></div>
-        <div><div class="hero-stat-val">2</div><div class="hero-stat-label">forrás-<br>könyv</div></div>
+      <div class="hero-content">
+        <div class="hero-eyebrow">Digitális tananyag · 13. évfolyam</div>
+        <h1>Fedezd fel Magyarország turisztikai régióit!</h1>
+        <p class="hero-desc">Tanulj térképen, régiókártyákkal és rövid adatlapokkal. Az atlasz segít áttekinteni a legfontosabb hazai látványosságokat és gyakorlásra is ad lehetőséget.</p>
+        <div class="hero-badges" aria-label="Fő funkciók">
+          <span class="hero-badge">9 turisztikai régió</span>
+          <span class="hero-badge">${total} látványosság</span>
+          <span class="hero-badge">Interaktív térkép</span>
+        </div>
+        <div class="hero-actions">
+          <button class="hero-primary-btn" type="button" onclick="document.getElementById('homeMap').scrollIntoView({behavior:'smooth',block:'center'})">Interaktív térkép megnyitása</button>
+          <button class="hero-quiz-btn" type="button" onclick="location.hash='#/kviz'">Kvíz indítása</button>
+        </div>
       </div>
-      <button class="hero-quiz-btn" type="button" onclick="location.hash='#/kviz'">Kvíz indítása</button>
+      <div class="hero-panel" aria-hidden="true">
+        <div class="hero-panel-card">
+          <span class="hero-panel-kicker">Tanulási útvonal</span>
+          <strong>Régió kiválasztása</strong>
+          <span>Térképes áttekintés és látványosságok</span>
+        </div>
+        <div class="hero-panel-card">
+          <span class="hero-panel-kicker">Gyakorlás</span>
+          <strong>Kvízek régiónként</strong>
+          <span>Gyors önellenőrzés órai vagy otthoni tanuláshoz</span>
+        </div>
+      </div>
     </div></section>
     <div class="map-section">
       <div class="map-tooltip"><div class="map-tooltip-dot"></div><span>9 régió · kattints egy jelölőre a belépéshez</span></div>
