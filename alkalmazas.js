@@ -52,7 +52,7 @@ function renderHome(){
   let cards='';
   REGIOK.forEach(r=>{
     const n=latvOf(r.slug).length;
-    cards+=`<button class="regio-card kesz" data-count="${n}" onclick="location.hash='#/regio/${r.slug}'">
+    cards+=`<button class="regio-card kesz" data-count="${n}" aria-label="${r.nev} régió megnyitása, ${n} látványosság" onclick="location.hash='#/regio/${r.slug}'">
       <div class="regio-header" style="background:linear-gradient(135deg,${r.szin},${r.szin}cc)"><span class="regio-header-ikon">${r.ikon}</span><span class="regio-header-kep" id="rhk-${r.slug}"></span></div>
       <div class="regio-body">
         <div class="regio-nev">${r.nev}</div>
