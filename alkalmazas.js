@@ -87,10 +87,7 @@ function renderHome(){
         <div><div class="info-strip-icon">🗺️</div><div class="info-strip-title">Interaktív térkép</div><div class="info-strip-text">Leaflet + OpenStreetMap – ingyenes, kulcs nélküli, koordinátás jelölőkkel.</div></div>
         <div><div class="info-strip-icon">🎓</div><div class="info-strip-title">13. évfolyam számára</div><div class="info-strip-text">A turisztikai technikus képzés digitális kiegészítője, tankönyvként és órai segédeszközként.</div></div>
       </div>
-    </main>
-    <footer><strong>Magyar Turisztikai Atlasz</strong> · 13. évfolyamos turisztikai technikusok számára<br>
-    Tartalom: Donka Attila: Idegenforgalmi földrajz I. · Magyarország Országismeret 2. (tényadatok, saját megfogalmazás)<br>
-    Térkép: © OpenStreetMap közreműködők · Képek: Wikimedia Commons (CC BY-SA)</footer>`;
+    </main>`;
 
   REGIOK.forEach(r=>regioFejlecKep(r,document.getElementById('rhk-'+r.slug)));
 
