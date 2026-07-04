@@ -61,49 +61,83 @@ function renderHome(){
       </div></button>`;
   });
   document.getElementById('app').innerHTML=`
-    <section class="hero"><div class="hero-inner">
-      <div class="hero-content">
-        <div class="hero-eyebrow">Digitális tananyag · 13. évfolyam</div>
-        <h1>Fedezd fel Magyarország turisztikai régióit!</h1>
-        <p class="hero-desc">Tanulj térképen, régiókártyákkal és rövid adatlapokkal. Az atlasz segít áttekinteni a legfontosabb hazai látványosságokat és gyakorlásra is ad lehetőséget.</p>
-        <div class="hero-badges" aria-label="Fő funkciók">
-          <span class="hero-badge">9 turisztikai régió</span>
-          <span class="hero-badge">${total} látványosság</span>
-          <span class="hero-badge">Interaktív térkép</span>
+    <main class="portal-page">
+      <section class="portal-shell" aria-labelledby="portal-title">
+        <div class="portal-topbar" aria-label="Alkalmazás információ">
+          <div class="portal-brand">
+            <span class="portal-brand-mark" aria-hidden="true">MTA</span>
+            <div>
+              <strong>Magyar Turisztikai Atlasz</strong>
+              <span>Digitális tananyag · 13. évfolyam</span>
+            </div>
+          </div>
+          <span class="portal-note">Turisztikai technikus képzés</span>
         </div>
-        <div class="hero-actions">
-          <button class="hero-primary-btn" type="button" onclick="document.getElementById('homeMap').scrollIntoView({behavior:'smooth',block:'center'})">Interaktív térkép megnyitása</button>
-          <button class="hero-quiz-btn" type="button" onclick="location.hash='#/kviz'">Kvíz indítása</button>
+
+        <header class="portal-hero">
+          <div class="portal-hero-copy">
+            <div class="portal-eyebrow">Interaktív oktatási portál</div>
+            <h1 id="portal-title" class="portal-title">Magyarország turisztikai régiói</h1>
+            <p class="portal-desc">Interaktív térképes tananyag Magyarország turisztikai régióinak, látványosságainak és nevezetességeinek feldolgozásához.</p>
+          </div>
+          <div class="portal-pills" aria-label="Főoldali tartalmi összefoglaló">
+            <span class="portal-pill">9 turisztikai régió</span>
+            <span class="portal-pill">${total} látványosság</span>
+            <span class="portal-pill">Interaktív térkép</span>
+            <span class="portal-pill">Kvízes gyakorlás</span>
+          </div>
+        </header>
+
+        <div class="portal-layout">
+          <div class="portal-main-column">
+            <section class="portal-main-card" aria-label="Interaktív térkép">
+              <div class="portal-card-head">
+                <div>
+                  <span class="portal-section-label">Térképes áttekintés</span>
+                  <h2>Válassz régiót a térképen</h2>
+                </div>
+                <button class="portal-map-jump" type="button" onclick="document.getElementById('homeMap').scrollIntoView({behavior:'smooth',block:'center'})">Térkép fókuszba</button>
+              </div>
+              <div class="portal-map-wrap">
+                <div class="map-tooltip"><div class="map-tooltip-dot"></div><span>9 régió · kattints egy jelölőre a belépéshez</span></div>
+                <div id="homeMap"></div>
+              </div>
+            </section>
+
+            <section class="portal-section-card" aria-labelledby="regions-title">
+              <div class="portal-card-head portal-card-head-stacked">
+                <span class="portal-section-label">Magyarország 9 turisztikai régiója</span>
+                <h2 id="regions-title">Válassz régiót a felfedezéshez</h2>
+                <p>Minden régió saját interaktív térképet, kereshető látványosság-katalógust és részletes adatlapokat tartalmaz.</p>
+              </div>
+              <div class="regio-grid">${cards}</div>
+            </section>
+          </div>
+
+          <aside class="portal-side" aria-label="Tanulási segédpanel">
+            <section class="portal-side-card">
+              <span class="portal-section-label">Tanulási útvonal</span>
+              <h2>Haladj lépésről lépésre</h2>
+              <ol class="learning-steps">
+                <li>Válassz régiót.</li>
+                <li>Nézd meg a térképet.</li>
+                <li>Olvasd el az adatlapokat.</li>
+                <li>Ellenőrizd tudásod kvízzel.</li>
+              </ol>
+            </section>
+            <section class="portal-side-card portal-practice-card">
+              <span class="portal-section-label">Gyors gyakorlás</span>
+              <h2>Kvízes önellenőrzés</h2>
+              <p>Indíts rövid gyakorlást a régiók és látványosságok átismétléséhez.</p>
+              <button class="portal-quiz-btn" type="button" onclick="location.hash='#/kviz'">Kvíz indítása</button>
+            </section>
+            <section class="portal-side-card">
+              <span class="portal-section-label">Forrásalap</span>
+              <p class="portal-source-text">Tankönyvi alapú saját megfogalmazás, térképi és képi források jelölésével. A térképi megjelenítés OpenStreetMap-alapon segíti a helyszínek azonosítását.</p>
+            </section>
+          </aside>
         </div>
-      </div>
-      <div class="hero-panel" aria-hidden="true">
-        <div class="hero-panel-card">
-          <span class="hero-panel-kicker">Tanulási útvonal</span>
-          <strong>Régió kiválasztása</strong>
-          <span>Térképes áttekintés és látványosságok</span>
-        </div>
-        <div class="hero-panel-card">
-          <span class="hero-panel-kicker">Gyakorlás</span>
-          <strong>Kvízek régiónként</strong>
-          <span>Gyors önellenőrzés órai vagy otthoni tanuláshoz</span>
-        </div>
-      </div>
-    </div></section>
-    <div class="map-section">
-      <div class="map-tooltip"><div class="map-tooltip-dot"></div><span>9 régió · kattints egy jelölőre a belépéshez</span></div>
-      <div id="homeMap"></div>
-    </div>
-    <svg class="wave" viewBox="0 0 1400 34" preserveAspectRatio="none"><path d="M0,18 C300,4 500,32 700,18 C950,4 1150,32 1400,18 L1400,34 L0,34 Z" fill="#F7F4EF"/></svg>
-    <main class="home-main">
-      <div class="section-eyebrow">Magyarország 9 turisztikai régiója</div>
-      <h2 class="section-title">Válassz régiót a felfedezéshez</h2>
-      <p class="section-desc">Minden régió saját interaktív térképet, kereshető látványosság-katalógust és részletes adatlapokat tartalmaz.</p>
-      <div class="regio-grid">${cards}</div>
-      <div class="info-strip">
-        <div><div class="info-strip-icon">📚</div><div class="info-strip-title">Ellenőrzött tananyag</div><div class="info-strip-text">Donka Attila: Idegenforgalmi földrajz I. és Magyarország Országismeret 2. alapján, saját megfogalmazásban.</div></div>
-        <div><div class="info-strip-icon">🗺️</div><div class="info-strip-title">Interaktív térkép</div><div class="info-strip-text">Leaflet + OpenStreetMap – ingyenes, kulcs nélküli, koordinátás jelölőkkel.</div></div>
-        <div><div class="info-strip-icon">🎓</div><div class="info-strip-title">13. évfolyam számára</div><div class="info-strip-text">A turisztikai technikus képzés digitális kiegészítője, tankönyvként és órai segédeszközként.</div></div>
-      </div>
+      </section>
     </main>`;
 
   REGIOK.forEach(r=>regioFejlecKep(r,document.getElementById('rhk-'+r.slug)));
