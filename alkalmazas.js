@@ -325,11 +325,12 @@ function openModal(id){
   const rows=[pi.nyitvatartas?`<div class="info-item"><div class="info-label">Nyitvatartás</div><div class="info-val">${pi.nyitvatartas}</div></div>`:'',
     pi.megkozelites?`<div class="info-item"><div class="info-label">Megközelítés</div><div class="info-val">${pi.megkozelites}</div></div>`:''].filter(Boolean).join('');
   const reg=regioOf(l.r);
+  const modalTitleId=`modalTitle-${l.id}`;
   document.getElementById('modalContent').innerHTML=`
     <div class="modal-ph" id="mph-${l.id}"><span class="modal-ph-ikon">${ikonOf(l)}</span></div>
     <div class="modal-body">
       <div class="modal-kat">${l.kat.map(tagHtml).join('')}</div>
-      <h2 id="modalTitle">${l.nev}</h2>
+      <h2 id="${modalTitleId}">${l.nev}</h2>
       <div class="modal-meta">
         <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>${helyStr(l)}</span>
         <span>${reg?reg.ikon+' '+reg.rovid+' régió':''}</span>
@@ -341,6 +342,12 @@ function openModal(id){
   const modal=document.getElementById('modal');
   const dialog=modal.querySelector('.modal');
   const closeButton=modal.querySelector('.modal-close button');
+  if(dialog){
+    dialog.setAttribute('role','dialog');
+    dialog.setAttribute('aria-modal','true');
+    dialog.setAttribute('aria-labelledby',modalTitleId);
+  }
+  closeButton?.setAttribute('aria-label','Adatlap bezárása');
   elozoFokusz=document.activeElement;
   modal.classList.add('open');document.body.style.overflow='hidden';
   kepetMutat(l,document.getElementById('mph-'+l.id),800);
