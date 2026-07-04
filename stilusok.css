@@ -16,7 +16,7 @@ nav{background:var(--primary);padding:0 2rem;display:flex;align-items:center;hei
 
 /* általános */
 .wave{display:block;width:100%;height:34px}
-.tag{font-size:.68rem;font-weight:600;padding:.17rem .5rem;border-radius:12px;text-transform:uppercase;letter-spacing:.04em}
+.tag{display:inline-flex;align-items:center;max-width:100%;font-size:.66rem;font-weight:700;line-height:1.15;padding:.22rem .54rem;border-radius:999px;text-transform:uppercase;letter-spacing:.045em;overflow-wrap:anywhere}
 .tag-vár{background:#FEF3C7;color:#92400E}.tag-múzeum{background:#EDE9FE;color:#5B21B6}
 .tag-természet{background:#D1FAE5;color:#065F46}.tag-fürdő{background:#DBEAFE;color:#1E40AF}
 .tag-vallási{background:#FCE7F3;color:#9D174D}.tag-örökség{background:#FEE2E2;color:#991B1B}
@@ -101,21 +101,23 @@ input[type=search]:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(19
 .geo-box-ikon{font-size:1rem;line-height:1}
 .geo-box-szoveg{font-size:.84rem;color:var(--muted);line-height:1.7;margin:0}
 .split{max-width:1400px;margin:0 auto;padding:0 2rem 3rem;display:grid;grid-template-columns:minmax(0,1fr) minmax(320px,420px);gap:1.5rem;align-items:start}
-.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1rem}
-.card{background:var(--card);border-radius:var(--radius);border:1px solid var(--border);overflow:hidden;cursor:pointer;box-shadow:var(--shadow);transition:box-shadow .18s,transform .18s,border-color .15s}
-.card:hover{box-shadow:var(--shadow-h);transform:translateY(-2px)}
-.card:focus-visible{outline:3px solid var(--accent);outline-offset:3px;box-shadow:var(--shadow-h)}
-.card.hl{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent)}
-.card-ph{width:100%;height:120px;background:linear-gradient(135deg,#E8E3DB,#D4CFC7);display:flex;align-items:center;justify-content:center;font-size:2.1rem;overflow:hidden;position:relative}
-.card-ph img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s}
-.card:hover .card-ph img{transform:scale(1.04)}
-.card-ph-ikon{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:2.1rem}
-.kep-hiba{position:absolute;right:.45rem;bottom:.4rem;background:rgba(255,255,255,.82);color:var(--muted);font-size:.62rem;font-weight:600;border-radius:999px;padding:.16rem .45rem;box-shadow:0 1px 4px rgba(26,58,92,.12)}
-.card-body{padding:.85rem}
-.card-kat{display:flex;flex-wrap:wrap;gap:.3rem;margin-bottom:.45rem}
-.card h3{font-family:'Playfair Display',serif;font-size:.98rem;font-weight:700;line-height:1.25;margin-bottom:.3rem}
-.card-tp{font-size:.76rem;color:var(--muted);margin-bottom:.4rem;display:flex;align-items:center;gap:.3rem}
-.card-leiras{font-size:.81rem;color:#4B5563;line-height:1.55;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1.1rem;align-items:stretch}
+.card{background:linear-gradient(180deg,#fff 0%,#FFFEFC 100%);border-radius:18px;border:1px solid rgba(226,221,214,.92);overflow:hidden;cursor:pointer;box-shadow:0 8px 24px rgba(26,58,92,.08);transition:box-shadow .18s ease,transform .18s ease,border-color .18s ease;display:flex;flex-direction:column;min-width:0;text-align:left;color:inherit}
+.card:hover{box-shadow:0 14px 34px rgba(26,58,92,.14);transform:translateY(-2px);border-color:rgba(196,120,42,.32)}
+.card:focus-visible{outline:3px solid var(--gold);outline-offset:4px;box-shadow:0 14px 34px rgba(26,58,92,.16);border-color:var(--accent)}
+.card.hl{border-color:var(--accent);box-shadow:0 0 0 2px rgba(196,120,42,.36),0 12px 30px rgba(26,58,92,.12)}
+.card-ph{width:100%;height:148px;background:radial-gradient(circle at 78% 18%,rgba(240,168,85,.22),transparent 30%),linear-gradient(135deg,#ECE6DD,#D8D1C8);display:flex;align-items:center;justify-content:center;font-size:2.15rem;overflow:hidden;position:relative;isolation:isolate}
+.card-ph::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(26,58,92,0) 45%,rgba(26,58,92,.18) 100%);pointer-events:none;z-index:2}
+.card-ph img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .28s ease;will-change:transform;position:relative;z-index:1}
+.card:hover .card-ph img{transform:scale(1.035)}
+.card-ph-ikon{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:2.15rem;z-index:0;text-shadow:0 6px 18px rgba(26,58,92,.16);opacity:.9}
+.kep-hiba{position:absolute;right:.55rem;bottom:.5rem;background:rgba(255,255,255,.9);color:#4B5563;font-size:.62rem;font-weight:700;border-radius:999px;padding:.2rem .5rem;box-shadow:0 4px 12px rgba(26,58,92,.14);z-index:3}
+.card-body{padding:1rem 1.05rem 1.1rem;display:flex;flex-direction:column;flex:1;min-width:0}
+.card-kat{display:flex;flex-wrap:wrap;gap:.35rem;margin-bottom:.58rem;min-width:0}
+.card h3{font-family:'Playfair Display',serif;font-size:1.12rem;font-weight:700;line-height:1.18;letter-spacing:-.015em;color:var(--primary);margin-bottom:.42rem;overflow-wrap:anywhere}
+.card-tp{font-size:.78rem;color:var(--muted);margin-bottom:.55rem;display:flex;align-items:flex-start;gap:.34rem;line-height:1.45;overflow-wrap:anywhere}
+.card-tp svg{flex:0 0 auto;margin-top:.18rem;color:var(--accent)}
+.card-leiras{font-size:.84rem;color:#4B5563;line-height:1.62;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;margin-top:auto}
 .map-sticky{position:sticky;top:68px;min-width:0}
 .map-box{background:var(--card);border-radius:16px;border:1px solid rgba(226,221,214,.95);overflow:hidden;box-shadow:0 10px 28px rgba(26,58,92,.1)}
 .map-label{padding:.7rem 1rem;font-size:.76rem;font-weight:600;color:var(--muted);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:.4rem;text-transform:uppercase;letter-spacing:.06em}
@@ -169,10 +171,12 @@ footer strong{color:rgba(255,255,255,.68)}
   .filters{width:100%;gap:.55rem;overflow-x:hidden}
   .filter-btn{min-height:44px;padding:.55rem .95rem;font-size:.84rem;line-height:1.2;white-space:normal;overflow-wrap:anywhere}
   .result-count{width:100%;margin-left:0}
-  .card-grid{grid-template-columns:1fr;gap:.9rem}
+  .card-grid{grid-template-columns:1fr;gap:.95rem}
+  .card{border-radius:16px}
+  .card-ph{height:180px}
   .card-body{padding:1rem}
   .card-kat{gap:.35rem;margin-bottom:.55rem}
-  .card h3{font-size:1.05rem;line-height:1.3}
+  .card h3{font-size:1.16rem;line-height:1.25}
   .card-tp{font-size:.82rem;line-height:1.45;align-items:flex-start}
   .card-leiras{font-size:.88rem;line-height:1.6;-webkit-line-clamp:4}
   .regio-card{border-radius:16px}
