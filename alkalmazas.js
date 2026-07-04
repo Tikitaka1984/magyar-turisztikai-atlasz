@@ -189,7 +189,7 @@ function renderCards(){
   const grid=document.getElementById('grid');
   if(!lista.length){grid.innerHTML=`<div class="empty-state"><div style="font-size:2rem">🔍</div><p>Nincs találat erre a keresésre.</p></div>`;renderMarkers([]);return;}
   grid.innerHTML=lista.map(l=>`
-    <div class="card" id="card-${l.id}" role="button" tabindex="0" onclick="activateCard(${l.id})" onkeydown="onCardKey(event,${l.id})">
+    <div class="card" id="card-${l.id}" role="button" tabindex="0" aria-label="${l.nev} adatlapjának megnyitása" onclick="activateCard(${l.id})" onkeydown="onCardKey(event,${l.id})">
       <div class="card-ph" id="cph-${l.id}">${l.kep?`<span class="card-ph-ikon">${ikonOf(l)}</span>`:`<span class="card-ph-ikon">${ikonOf(l)}</span>`}</div>
       <div class="card-body">
         <div class="card-kat">${l.kat.map(tagHtml).join('')}</div>
