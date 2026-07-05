@@ -1,11 +1,26 @@
 <!DOCTYPE html>
-<html lang="hu">
+<html lang="hu" data-tema="vilagos">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Magyar Turisztikai Atlasz</title>
+
+<!-- Téma betöltése a CSS előtt, hogy ne villanjon (FOUC-védelem) -->
+<script>
+(function(){
+  try{
+    var t = localStorage.getItem('mta-tema');
+    if(t !== 'vilagos' && t !== 'sotet'){
+      t = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'sotet' : 'vilagos';
+    }
+    document.documentElement.setAttribute('data-tema', t);
+  }catch(e){ /* privát mód: marad az alapértelmezett világos téma */ }
+})();
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
 <link rel="stylesheet" href="stilusok.css">
 </head>
@@ -16,6 +31,11 @@
   <div class="nav-links">
     <button class="nav-link" onclick="location.hash='#/'">Főoldal</button>
     <button class="nav-link" onclick="location.hash='#/'">Régiók</button>
+    <button class="tema-valto" type="button" id="temaValto"
+            aria-label="Világos és sötét téma váltása" title="Téma váltása">
+      <span class="ikon-nap" aria-hidden="true">☀</span>
+      <span class="ikon-hold" aria-hidden="true">☾</span>
+    </button>
   </div>
 </nav>
 
@@ -36,6 +56,15 @@
     <div id="modalContent"></div>
   </div>
 </div>
+
+<!-- Témaváltó működése -->
+<script>
+document.getElementById('temaValto').addEventListener('click', function(){
+  var uj = document.documentElement.getAttribute('data-tema') === 'sotet' ? 'vilagos' : 'sotet';
+  document.documentElement.setAttribute('data-tema', uj);
+  try{ localStorage.setItem('mta-tema', uj); }catch(e){}
+});
+</script>
 
 <!-- Térkép könyvtár -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>

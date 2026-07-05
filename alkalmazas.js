@@ -148,7 +148,7 @@ function renderHome(){
   REGIOK.forEach(r=>{
     const n=latvOf(r.slug).length;
     const mk=L.marker(r.koord,{icon:makeIcon(r.ikon,r.szin)}).addTo(currentMap);
-    mk.bindPopup(`<div style="font-family:Inter,sans-serif;min-width:180px"><div style="font-weight:700;color:#1A3A5C;margin-bottom:3px">${r.ikon} ${r.nev}</div><div style="font-size:.75rem;color:#6B7280;margin-bottom:6px">${n} látványosság</div><div style="display:inline-block;background:#C4782A;color:#fff;font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;cursor:pointer" onclick="location.hash='#/regio/${r.slug}'">Belépés →</div></div>`);
+    mk.bindPopup(`<div style="font-family:'Instrument Sans',sans-serif;min-width:180px"><div style="font-weight:700;color:#1A3A5C;margin-bottom:3px">${r.ikon} ${r.nev}</div><div style="font-size:.75rem;color:#6B7280;margin-bottom:6px">${n} látványosság</div><div style="display:inline-block;background:#B3271E;color:#fff;font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;cursor:pointer" onclick="location.hash='#/regio/${r.slug}'">Belépés →</div></div>`);
     mk.on('click',()=>mk.openPopup());
   });
   setTimeout(()=>currentMap&&currentMap.invalidateSize(),300);
@@ -243,7 +243,7 @@ function renderMarkers(lista){
   if(!currentMap)return;
   lista.forEach(l=>{
     const m=L.marker([l.koord.lat,l.koord.lng],{icon:makeIcon(ikonOf(l),aktivR.szin)}).addTo(currentMap);
-    m.bindPopup(`<div style="font-family:Inter,sans-serif"><div style="font-weight:700;color:#1A3A5C">${l.nev}</div><div style="font-size:.75rem;color:#6B7280">${l.tp}</div></div>`);
+    m.bindPopup(`<div style="font-family:'Instrument Sans',sans-serif"><div style="font-weight:700;color:#1A3A5C">${l.nev}</div><div style="font-size:.75rem;color:#6B7280">${l.tp}</div></div>`);
     m.on('click',()=>{openModal(l.id);hlCard(l.id)});
     markers[l.id]=m;
   });
