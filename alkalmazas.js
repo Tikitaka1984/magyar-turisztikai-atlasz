@@ -159,7 +159,7 @@ function renderRegio(slug){
   aktivR=regioOf(slug);aktivSzuro="mind";aktivKereses="";
   document.getElementById('app').innerHTML=`
     <div class="r-header"><div class="r-header-inner">
-      <div class="breadcrumb"><a onclick="location.hash='#/'">Magyar Turisztikai Atlasz</a> › ${aktivR.rovid}</div>
+      <div class="breadcrumb"><a href="#/">Magyar Turisztikai Atlasz</a> › ${aktivR.rovid}</div>
       <h1>${aktivR.nev.replace(aktivR.rovid,'')||aktivR.nev}<em></em></h1>
       <p class="r-sub">A régió nevezetességei · 13. évfolyamos turisztikai technikusok számára</p>
       ${kvizKerdesek(slug).length?`<button class="region-quiz-btn" type="button" onclick="location.hash='#/kviz/${slug}'">Kvíz indítása ebben a régióban</button>`:''}
@@ -272,7 +272,7 @@ function renderKvizValaszto(uzenet){
   }).join('');
   document.getElementById('app').innerHTML=`
     <main class="quiz-page">
-      <div class="breadcrumb"><a onclick="location.hash='#/'">Magyar Turisztikai Atlasz</a> › Kvíz</div>
+      <div class="breadcrumb"><a href="#/">Magyar Turisztikai Atlasz</a> › Kvíz</div>
       <section class="quiz-card">
         ${uzenet?`<p class="quiz-feedback"><strong>${uzenet}</strong></p>`:''}
         <div class="section-eyebrow">Pilot kvízmodul</div>
@@ -291,7 +291,7 @@ function renderKviz(slug){
   kvizAllapot={slug,kerdesek,index:0,pont:0,valaszolt:false};
   document.getElementById('app').innerHTML=`
     <main class="quiz-page">
-      <div class="breadcrumb"><a onclick="location.hash='#/'">Magyar Turisztikai Atlasz</a> › <a onclick="location.hash='#/kviz'">Kvíz</a> › ${regio.nev}</div>
+      <div class="breadcrumb"><a href="#/">Magyar Turisztikai Atlasz</a> › <a href="#/kviz">Kvíz</a> › ${regio.nev}</div>
       <section class="quiz-card" id="quizBox"></section>
     </main>`;
   renderKvizKerdes();
