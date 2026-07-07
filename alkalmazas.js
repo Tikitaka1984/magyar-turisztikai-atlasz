@@ -353,6 +353,42 @@ function renderKvizEredmeny(){
 }
 
 /* ════════ MODÁL ════════ */
+function getModalFocusableElements(dialog){
+  if(!dialog)return [];
+  return Array.from(dialog.querySelectorAll('a[href],button:not([disabled]),input:not([disabled]),select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"])'))
+    .filter(el=>!el.hasAttribute('disabled')&&el.offsetParent!==null);
+}
+
+function handleModalFocusTrap(event){
+  if(event.key!=='Tab')return;
+  const modal=document.getElementById('modal');
+  if(!modal||!modal.classList.contains('open'))return;
+  const dialog=modal.querySelector('.modal');
+  const focusableElements=getModalFocusableElements(dialog);
+  if(!focusableElements.length){
+    event.preventDefault();
+    dialog?.focus();
+    return;
+  }
+
+  const firstElement=focusableElements[0];
+  const lastElement=focusableElements[focusableElements.length-1];
+  const activeElement=document.activeElement;
+
+  if(event.shiftKey){
+    if(activeElement===firstElement||!dialog.contains(activeElement)){
+      event.preventDefault();
+      lastElement.focus();
+    }
+    return;
+  }
+
+  if(activeElement===lastElement||!dialog.contains(activeElement)){
+    event.preventDefault();
+    firstElement.focus();
+  }
+}
+
 function openModal(id){
   const l=LATV.find(x=>x.id===id);if(!l)return;
   const pi=l.info||{};
@@ -539,9 +575,12 @@ function closeModal(){
   const modal=document.getElementById('modal');
   const nyitva=modal.classList.contains('open');
   modal.classList.remove('open');document.body.style.overflow='';
-  if(nyitva&&elozoFokusz&&typeof elozoFokusz.focus==='function'){elozoFokusz.focus()}
+  if(nyitva&&elozoFokusz&&elozoFokusz.isConnected&&typeof elozoFokusz.focus==='function'){elozoFokusz.focus()}
   elozoFokusz=null;
 }
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+document.addEventListener('keydown',e=>{
+  handleModalFocusTrap(e);
+  if(e.key==='Escape')closeModal();
+});
 
 function mapHiba(){return '<div style="height:100%;min-height:300px;display:flex;align-items:center;justify-content:center;padding:2rem;text-align:center;background:#EAE5DD;color:#1A3A5C"><div style="max-width:420px"><strong>A térkép nem tölthető be.</strong><br><br>Nyisd meg a fájlt webszerveren keresztül (Netlify Drop vagy <code>python3 -m http.server</code>), ne dupla kattintással.</div></div>'}
