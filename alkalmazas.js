@@ -474,11 +474,27 @@ function regioFejlecKep(r, elem){
    főképét adja vissza, így nincs fájlnév-találgatás. Ha a magyar Wikin nincs
    kép, az angolra esik vissza. */
 const _kepCache={};
+const _SESSION_KEP_CACHE_PREFIX='magyar-turisztikai-atlasz:kep:';
 const _FETCH_TIMEOUT_MS=6500;
 function fetchTimeout(url,options={},timeoutMs=_FETCH_TIMEOUT_MS){
   const controller=new AbortController();
   const timer=setTimeout(()=>controller.abort(),timeoutMs);
   return fetch(url,{...options,signal:controller.signal}).finally(()=>clearTimeout(timer));
+}
+function getSessionKepCache(kulcs){
+  try{
+    return sessionStorage.getItem(_SESSION_KEP_CACHE_PREFIX+kulcs)||null;
+  }catch(e){
+    return null;
+  }
+}
+function setSessionKepCache(kulcs,url){
+  if(!url)return;
+  try{
+    sessionStorage.setItem(_SESSION_KEP_CACHE_PREFIX+kulcs,url);
+  }catch(e){
+    /* A sessionStorage tiltása vagy quota hiba esetén a memóriacache marad. */
+  }
 }
 /* Ötszintű képkeresés:
    1) magyar Wiki pageimages (kijelölt főkép)
@@ -491,7 +507,9 @@ function betoltKep(cim,elElem,meret,megjelenit){
   const alkalmaz=megjelenit||(u=>_alkalmazKep(elElem,u,meret));
   const kulcs=cim+'@'+meret;
   if(_kepCache[kulcs]){alkalmaz(_kepCache[kulcs]);return;}
-  const kesz=u=>{if(u){_kepCache[kulcs]=u;alkalmaz(u);}};
+  const sessionUrl=getSessionKepCache(kulcs);
+  if(sessionUrl){_kepCache[kulcs]=sessionUrl;alkalmaz(sessionUrl);return;}
+  const kesz=u=>{if(u){_kepCache[kulcs]=u;setSessionKepCache(kulcs,u);alkalmaz(u);}};
   _lekerFokep('hu',cim,meret).then(u=>{
     if(u){kesz(u);return;}
     _lekerFokep('en',cim,meret).then(u2=>{
