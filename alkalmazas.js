@@ -371,7 +371,7 @@ function openModal(id){
       </div>
       <p class="modal-leiras">${l.reszletes}</p>
       ${rows?`<div class="modal-info">${rows}</div>`:''}
-      <div class="modal-forras"><strong>Forrás:</strong> ${(l.forras||[]).join(' · ')} · Képek: Wikimedia Commons (CC BY-SA)</div>
+      <div class="modal-forras"><strong>Forrás:</strong> ${(l.forras||[]).join(' · ')} · Képek: Wikimedia Commons, képenkénti licencfeltételek szerint.</div>
     </div>`;
   const modal=document.getElementById('modal');
   const dialog=modal.querySelector('.modal');
@@ -526,7 +526,7 @@ function _alkalmazKep(elem,url,meret){
   if(meret>400){
     const cap=document.createElement('span');
     cap.className='modal-ph-caption';
-    cap.textContent='© Wikimedia Commons (CC BY-SA)';
+    cap.textContent='Wikimedia Commons, képenkénti licencfeltételek szerint.';
     elem.innerHTML='';
     elem.appendChild(img);
     elem.appendChild(cap);
