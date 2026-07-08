@@ -256,6 +256,27 @@ function hlCard(id){document.querySelectorAll('.card').forEach(c=>c.classList.re
 
 
 /* ════════ KVÍZMODUL ════════ */
+function kever(tomb){
+  const a=tomb.slice();
+  for(let i=a.length-1;i>0;i--){
+    const j=Math.floor(Math.random()*(i+1));
+    [a[i],a[j]]=[a[j],a[i]];
+  }
+  return a;
+}
+
+function kevertKerdesek(slug){
+  const eredeti=window.KVIZ_QUESTIONS[slug]||[];
+  return kever(eredeti).map(q=>{
+    const indexek=kever(q.answers.map((_,i)=>i));
+    return {
+      ...q,
+      answers:indexek.map(i=>q.answers[i]),
+      correctIndex:indexek.indexOf(q.correctIndex)
+    };
+  });
+}
+
 function renderKvizValaszto(uzenet){
   kvizAllapot=null;
   const cards=REGIOK.map(r=>{
@@ -285,7 +306,7 @@ function renderKvizValaszto(uzenet){
 }
 
 function renderKviz(slug){
-  const kerdesek=kvizKerdesek(slug);
+  const kerdesek=kevertKerdesek(slug);
   const regio=regioOf(slug);
   if(!kerdesek.length||!regio){renderKvizValaszto('Ehhez a régióhoz még nincs elérhető kérdésbank. Válassz egy aktív kvízrégiót.');return;}
   kvizAllapot={slug,kerdesek,index:0,pont:0,valaszolt:false};
