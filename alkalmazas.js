@@ -517,7 +517,58 @@ function setSessionKepCache(kulcs,url){
     /* A sessionStorage tiltása vagy quota hiba esetén a memóriacache marad. */
   }
 }
-/* Ötszintű képkeresés:
+function torolSessionKepCache(kulcs){
+  try{
+    sessionStorage.removeItem(_SESSION_KEP_CACHE_PREFIX+kulcs);
+  }catch(e){
+    /* Tiltott sessionStorage esetén nincs mit törölni. */
+  }
+}
+/* ════════ TARTÓS KÉP-URL GYORSÍTÓTÁR (localStorage) ════════ */
+/* A feloldott kép-URL-ek 30 napig megőrződnek, így újralátogatáskor a képek
+   API-hívás nélkül, azonnal betöltődnek. A kulcs a kep mezőből (szócikkcím)
+   és a kért méretből áll, az érték {url, t} JSON. Privát böngészőmódban a
+   localStorage írása hibát dobhat — ilyenkor tárolás nélkül megy tovább. */
+const _LOCAL_KEP_CACHE_PREFIX='mta-kep:';
+const _LOCAL_KEP_CACHE_TTL_MS=30*24*60*60*1000; /* 30 nap */
+function getLocalKepCache(kulcs){
+  try{
+    const nyers=localStorage.getItem(_LOCAL_KEP_CACHE_PREFIX+kulcs);
+    if(!nyers)return null;
+    const adat=JSON.parse(nyers);
+    if(!adat||typeof adat.url!=='string'||!adat.url||typeof adat.t!=='number'||Date.now()-adat.t>_LOCAL_KEP_CACHE_TTL_MS){
+      torolLocalKepCache(kulcs);
+      return null;
+    }
+    return adat.url;
+  }catch(e){
+    return null;
+  }
+}
+function setLocalKepCache(kulcs,url){
+  if(!url)return;
+  try{
+    localStorage.setItem(_LOCAL_KEP_CACHE_PREFIX+kulcs,JSON.stringify({url:url,t:Date.now()}));
+  }catch(e){
+    /* Privát mód vagy quota hiba: a memória- és session-cache marad. */
+  }
+}
+function torolLocalKepCache(kulcs){
+  try{
+    localStorage.removeItem(_LOCAL_KEP_CACHE_PREFIX+kulcs);
+  }catch(e){
+    /* Tiltott localStorage esetén nincs mit törölni. */
+  }
+}
+/* A gyorsítótárból kiszolgált URL utólagos ellenőrzése: ha a kép már nem
+   tölthető be (pl. a Commons-fájlt átnevezték), a hibaKezelo érvényteleníti
+   a bejegyzést és visszaesik a normál API-láncra. */
+function _kepUrlProba(url,hibaKezelo){
+  const proba=new Image();
+  proba.onerror=hibaKezelo;
+  proba.src=url;
+}
+/* Ötszintű képkeresés (a memória-, session- és localStorage-cache után):
    1) magyar Wiki pageimages (kijelölt főkép)
    2) angol Wiki pageimages
    3) magyar Wiki összes képe -> első valódi fotó (térkép/címer/ikon kiszűrve)
@@ -527,10 +578,28 @@ function betoltKep(cim,elElem,meret,megjelenit){
   if(!cim||!elElem)return;
   const alkalmaz=megjelenit||(u=>_alkalmazKep(elElem,u,meret));
   const kulcs=cim+'@'+meret;
+  const kesz=u=>{if(u){_kepCache[kulcs]=u;setSessionKepCache(kulcs,u);setLocalKepCache(kulcs,u);alkalmaz(u);}};
   if(_kepCache[kulcs]){alkalmaz(_kepCache[kulcs]);return;}
   const sessionUrl=getSessionKepCache(kulcs);
   if(sessionUrl){_kepCache[kulcs]=sessionUrl;alkalmaz(sessionUrl);return;}
-  const kesz=u=>{if(u){_kepCache[kulcs]=u;setSessionKepCache(kulcs,u);alkalmaz(u);}};
+  const localUrl=getLocalKepCache(kulcs);
+  if(localUrl){
+    _kepCache[kulcs]=localUrl;
+    setSessionKepCache(kulcs,localUrl);
+    alkalmaz(localUrl);
+    _kepUrlProba(localUrl,()=>{
+      delete _kepCache[kulcs];
+      torolSessionKepCache(kulcs);
+      torolLocalKepCache(kulcs);
+      _kepApiLanc(cim,meret,kesz);
+    });
+    return;
+  }
+  _kepApiLanc(cim,meret,kesz);
+}
+/* Az ötszintű API-lánc kiemelve, hogy érvénytelenített cache-találat után is
+   újrahívható legyen — a szintek sorrendje és logikája változatlan. */
+function _kepApiLanc(cim,meret,kesz){
   _lekerFokep('hu',cim,meret).then(u=>{
     if(u){kesz(u);return;}
     _lekerFokep('en',cim,meret).then(u2=>{
