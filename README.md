@@ -130,12 +130,32 @@ Ha a `kep_sajat` létezik és nem üres, az alkalmazás ezt használja, és nem 
 Wikipédia / Commons képkeresést az adott látványossághoz. Ha a mező hiányzik
 vagy üres, marad az automatikus képkeresés a `kep` mező alapján.
 
-Fontos korlátok:
+A képbetöltés jelenlegi prioritási sorrendje:
 
-- A `kep_sajat` továbbra is elsőbbséget élvez minden automatikus
-  Wikipédia / Wikimedia / Commons találattal szemben.
-- Az automatikusan lekért képek URL-jeit az alkalmazás csak futás közben,
-  memóriában cache-eli; nincs `localStorage`-os vagy más tartós képcache.
+1. `kep_sajat`;
+2. memóriabeli `_kepCache`;
+3. `sessionStorage`;
+4. `localStorage`;
+5. magyar Wikipédia főkép;
+6. angol Wikipédia főkép;
+7. magyar Wikipédia képlista;
+8. angol Wikipédia képlista;
+9. Wikimedia Commons keresés.
+
+A `kep_sajat` továbbra is elsőbbséget élvez minden automatikus képkereséssel
+szemben. A feloldott automatikus kép-URL-eket az alkalmazás először memóriában,
+majd a böngészőfül munkamenetéig `sessionStorage`-ban, legfeljebb 30 napig pedig
+`localStorage`-ban is gyorsítótárazza. A `localStorage`-bejegyzés az URL-t és az
+időbélyeget tartalmazza; lejárt vagy sérült bejegyzés esetén az alkalmazás törli
+a hibás adatot. Ha a `localStorage`-ból visszaadott kép-URL már nem működik, az
+alkalmazás érvényteleníti az adott memória-, `sessionStorage`- és
+`localStorage`-bejegyzést, majd újraindítja a Wikipédia / Commons fallback-láncot.
+Privát mód, tiltott storage vagy quota hiba
+esetén az oldal nem áll le: a rövidebb cache-rétegekkel, vagy szükség esetén
+cache nélkül működik tovább.
+
+Fontos korlát:
+
 - A Wikimedia / Commons találatok jelenleg nem képenként auditált
   licencadatokkal jelennek meg, ezért publikálás előtt külön licenc- és
   forrásellenőrzés javasolt.
@@ -158,6 +178,18 @@ Egy új bejegyzésnél figyelni kell az alábbiakra:
 6. **Kép:** a `kep` mező Wikipédia-szócikkcímként működik; opcionálisan
    megadható `kep_sajat` is.
 7. **Forrás:** a `forras` tömbben legyen feltüntetve, mire épül a leírás.
+
+## Hogyan működik a kvíz?
+
+A kvíz régiónkénti statikus kérdésbankból dolgozik, amelyet a `kviz.js` tartalmaz.
+Minden indításkor megkeveri az adott régió kérdéseinek sorrendjét, és minden
+kérdésnél külön megkeveri a válaszlehetőségek sorrendjét is. A helyes válasz
+indexe a keverés után újraszámolódik, ezért a visszajelzés továbbra is a helyes
+válaszhoz kapcsolódik, miközben az eredeti `kviz.js` kérdésbank nem módosul.
+
+A kvíz jelenleg nem ment eredményt és nem használ időmérőt. Válaszadás után
+helyes/hibás visszajelzést és rövid magyarázatot jelenít meg; hibás válasz
+esetén külön megmutatja a helyes választ is.
 
 
 ## Automatikus ellenőrzések
