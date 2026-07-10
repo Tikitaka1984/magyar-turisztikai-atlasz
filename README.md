@@ -182,10 +182,12 @@ Egy új bejegyzésnél figyelni kell az alábbiakra:
 ## Hogyan működik a kvíz?
 
 A kvíz régiónkénti statikus kérdésbankból dolgozik, amelyet a `kviz.js` tartalmaz.
-Minden indításkor megkeveri az adott régió kérdéseinek sorrendjét, és minden
-kérdésnél külön megkeveri a válaszlehetőségek sorrendjét is. A helyes válasz
-indexe a keverés után újraszámolódik, ezért a visszajelzés továbbra is a helyes
-válaszhoz kapcsolódik, miközben az eredeti `kviz.js` kérdésbank nem módosul.
+Minden indításkor legfeljebb 5 kérdésből álló véletlen minta készül az adott
+régió kérdésbankjából, ismétlődő kérdés nélkül. Ha a kérdésbank 5 vagy annál
+kevesebb kérdésből áll, minden kérdés bekerül a kvízbe. A válaszlehetőségek
+sorrendje kérdésenként továbbra is külön megkeveredik. A helyes válasz indexe a
+keverés után újraszámolódik, ezért a visszajelzés továbbra is a helyes válaszhoz
+kapcsolódik, miközben az eredeti `kviz.js` kérdésbank nem módosul.
 
 A kvíz jelenleg nem ment eredményt és nem használ időmérőt. Válaszadás után
 helyes/hibás visszajelzést és rövid magyarázatot jelenít meg; hibás válasz

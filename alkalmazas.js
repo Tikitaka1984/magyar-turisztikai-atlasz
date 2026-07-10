@@ -256,6 +256,8 @@ function hlCard(id){document.querySelectorAll('.card').forEach(c=>c.classList.re
 
 
 /* ════════ KVÍZMODUL ════════ */
+const KVIZ_KERDES_LIMIT = 5;
+
 function kever(tomb){
   const a=tomb.slice();
   for(let i=a.length-1;i>0;i--){
@@ -267,14 +269,16 @@ function kever(tomb){
 
 function kevertKerdesek(slug){
   const eredeti=window.KVIZ_QUESTIONS[slug]||[];
-  return kever(eredeti).map(q=>{
-    const indexek=kever(q.answers.map((_,i)=>i));
-    return {
-      ...q,
-      answers:indexek.map(i=>q.answers[i]),
-      correctIndex:indexek.indexOf(q.correctIndex)
-    };
-  });
+  return kever(eredeti)
+    .slice(0,KVIZ_KERDES_LIMIT)
+    .map(q=>{
+      const indexek=kever(q.answers.map((_,i)=>i));
+      return {
+        ...q,
+        answers:indexek.map(i=>q.answers[i]),
+        correctIndex:indexek.indexOf(q.correctIndex)
+      };
+    });
 }
 
 function renderKvizValaszto(uzenet){
@@ -286,7 +290,7 @@ function renderKvizValaszto(uzenet){
       <div class="quiz-region-icon" style="background:linear-gradient(135deg,${r.szin},${r.szin}cc)">${r.ikon}</div>
       <div class="quiz-region-body">
         <h2>${r.nev}</h2>
-        <p>${aktiv?`${kerdesSzam} kérdéses kvíz érhető el ehhez a régióhoz.`:'Ehhez a régióhoz még készül a kérdésbank.'}</p>
+        <p>${aktiv?kerdesSzam>KVIZ_KERDES_LIMIT?`Minden indításkor ${KVIZ_KERDES_LIMIT} véletlen kérdés a ${kerdesSzam} kérdéses kérdésbankból.`:`${kerdesSzam} kérdéses kvíz érhető el ehhez a régióhoz.`:'Ehhez a régióhoz még készül a kérdésbank.'}</p>
         <button type="button" class="quiz-start-btn" ${aktiv?`onclick="location.hash='#/kviz/${r.slug}'"`:'disabled'}>${aktiv?'Kvíz indítása':'Készül'}</button>
       </div>
     </div>`;
