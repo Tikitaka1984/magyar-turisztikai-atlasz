@@ -100,10 +100,10 @@ A saját képtár és a képenkénti licencattribúció tervezett fejlesztés; a
 
 ## Tervezett fejlesztési fázisok
 
-- Kvízmodul: elkészült, működő régiós kérdésbankkal és kevert
-  kérdés-/válaszsorrenddel.
-- Következő kvízfejlesztés: kérdésbank bővítése, véletlen mintavétel és további
-  gyakorlási módok.
+- Kvízmodul: elkészült, működő régiós kérdésbankkal, indításonként legfeljebb
+  5 ismétlés nélküli véletlen kérdéssel és külön kevert válaszsorrenddel. Az
+  eredeti `kviz.js` kérdésbank nem módosul.
+- Következő kvízfejlesztés: kérdésbank bővítése és további gyakorlási módok.
 - Saját képtár és képenkénti licencattribúció: tervezett fejlesztés.
 - Offline/PWA működés: későbbi terv.
 - Folyamatos tartalombővítés és export: későbbi terv.
