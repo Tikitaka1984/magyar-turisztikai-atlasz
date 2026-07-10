@@ -28,8 +28,8 @@ NINCS szerveroldali kód. A böngésző közvetlenül a fájlokat tölti be.
   tömbök. Tartalmi bővítés KIZÁRÓLAG itt történik.
 - `kviz.js` — TARTALOM: statikus kvízkérdésbank régiónkénti kérdésekkel.
 - `alkalmazas.js` — MŰKÖDÉS: router, térkép (Leaflet), kártyák, kereső/szűrő,
-  modális ablak, ötszintű képbetöltő és kvízvezérlés. Az `adatok.js` és
-  a `kviz.js` után töltődik be.
+  modális ablak, képbetöltő, kvízvezérlés, valamint a kérdés- és
+  válaszsorrend keverése. Az `adatok.js` és a `kviz.js` után töltődik be.
 - `kepek/` — a jövőbeli saját képtár helye (egyelőre üres).
 
 ## Betöltési sorrend (fontos)
@@ -49,11 +49,17 @@ ezért az `adatok.js`-nek és a `kviz.js`-nek előbb kell betöltődnie.
 ## Képbetöltés
 
 A `kep` mező jelenleg egy Wikipédia-SZÓCIKKCÍM (nem fájlnév, nem URL).
-Az `alkalmazas.js` ötszintű kereséssel tölti be a képet:
+A képbetöltés sorrendje: `kep_sajat`, memória-cache, `sessionStorage`,
+30 napos `localStorage`, majd az ötszintű Wikipédia/Commons fallback.
+
+Az ötszintű fallback sorrendje:
 1. magyar Wiki főkép (pageimages) → 2. angol Wiki főkép →
 3. magyar Wiki bármely valódi fotója → 4. angol Wiki bármely fotója →
 5. Wikimedia Commons közvetlen képkeresés.
 A `_kizart` reguláris kifejezés kiszűri a térképeket, címereket, ikonokat.
+A `localStorage`-cache hibás vagy lejárt bejegyzés esetén érvénytelenítődik.
+Storage-hiba esetén az alkalmazás csendesen visszaesik a memória-/session-cache
+vagy a normál API-lánc használatára.
 
 ### Saját kép megadása egy helyszínhez (`kep_sajat`)
 
@@ -73,9 +79,8 @@ Ha `kep_sajat` meg van adva és nem üres, az alkalmazás azt jeleníti meg
 (és a Wikipédia-keresést kihagyja). Ha üres string vagy hiányzik, az automata
 marad érvényes — semmi sem törik.
 
-A 2. fázisban a saját képtár bevezetésekor a `kep` mező lokális fájlra
-fog mutatni (pl. `kepek/egri-var.jpg`), és a betöltő ezt fogja előnyben
-részesíteni, a Wikipédia csak tartalék marad.
+A saját képtár és a képenkénti licencattribúció tervezett fejlesztés; addig a
+`kep_sajat` mező biztosítja az egyedi kép felülírását.
 
 ## Fejlesztési alapelvek (KÖTELEZŐ betartani)
 
@@ -95,11 +100,13 @@ részesíteni, a Wikipédia csak tartalék marad.
 
 ## Tervezett fejlesztési fázisok
 
-- 1. fázis: rendezett szerkezet (KÉSZ — ez a mostani állapot).
-- 2. fázis: saját képtár (kepek/ feltöltése, betöltő átállítása).
-- 3. fázis: offline működés (PWA — telepíthető, offline képek).
-- 4. fázis: diák kvíz-/gyakorlómodul.
-- 5. fázis: folyamatos bővítés (új helyszínek, PDF-export).
+- Kvízmodul: elkészült, működő régiós kérdésbankkal és kevert
+  kérdés-/válaszsorrenddel.
+- Következő kvízfejlesztés: kérdésbank bővítése, véletlen mintavétel és további
+  gyakorlási módok.
+- Saját képtár és képenkénti licencattribúció: tervezett fejlesztés.
+- Offline/PWA működés: későbbi terv.
+- Folyamatos tartalombővítés és export: későbbi terv.
 
 ## Publikálás
 
