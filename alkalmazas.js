@@ -13,7 +13,7 @@ function helyStr(l){return l.megye==='Budapest'?l.tp:l.tp+' · '+l.megye+' várm
 function regioOf(slug){return REGIOK.find(r=>r.slug===slug)}
 function latvOf(slug){return LATV.filter(l=>l.r===slug)}
 function tagHtml(k){return `<span class="tag tag-${k}">${KAT_LABEL[k]||k}</span>`}
-function normalizaltKeresoszoveg(ertek){return String(ertek||'').toLowerCase().trim().normalize('NFD').replace(/[\u0300-\u036f]/g,'')}
+function normalizaltKeresoszoveg(ertek){return String(ertek||'').toLowerCase().trim().normalize('NFD').replace(/[̀-ͯ]/g,'')}
 function kereshetoMezo(ertek){
   if(Array.isArray(ertek))return ertek.join(' ');
   if(ertek&&typeof ertek==='object')return Object.values(ertek).join(' ');
@@ -32,12 +32,15 @@ let kvizAllapot=null;
 /* ════════ ROUTER ════════ */
 function router(){
   closeModal();clearMap();
+  document.title='Magyar Turisztikai Atlasz';
   const h=location.hash.replace(/^#/,'');
   if(h==='/kviz'){renderKvizValaszto()}
   else{
     const qm=h.match(/^\/kviz\/([^/]+)$/);
+    const nym=h.match(/^\/nyomtat\/(.+)$/);
     const m=h.match(/^\/regio\/(.+)$/);
     if(qm){renderKviz(qm[1])}
+    else if(nym&&regioOf(nym[1])){renderNyomtat(nym[1])}
     else if(m&&regioOf(m[1])){renderRegio(m[1])}
     else{renderHome()}
   }
@@ -165,6 +168,7 @@ function renderRegio(slug){
       ${kvizKerdesek(slug).length?`<button class="region-quiz-btn" type="button" onclick="location.hash='#/kviz/${slug}'">Kvíz indítása ebben a régióban</button>`:''}
     </div></div>
     ${termeszetfoldrajzDoboz(aktivR)}
+    <div class="print-cta-wrap"><a class="print-cta" href="#/nyomtat/${slug}">🖨 Nyomtatható változat</a></div>
     <div class="controls">
       <div class="search-wrap"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
         <input type="search" id="search" placeholder="Keresés helyszín neve alapján…" oninput="onSearch()"></div>
@@ -254,6 +258,62 @@ function onCardKey(e,id){if(e.key==='Enter'||e.key===' '){e.preventDefault();act
 function flyTo(id){const l=LATV.find(x=>x.id===id);if(l&&markers[id]&&currentMap){currentMap.flyTo([l.koord.lat,l.koord.lng],12,{duration:.7});setTimeout(()=>markers[id].openPopup(),750)}hlCard(id)}
 function hlCard(id){document.querySelectorAll('.card').forEach(c=>c.classList.remove('hl'));const c=document.getElementById('card-'+id);if(c)c.classList.add('hl')}
 
+
+/* ════════ NYOMTATÓBARÁT RÉGIÓLAP ════════ */
+/* A #/nyomtat/<regio-slug> útvonal letisztult, szöveg-központú tananyaglapot
+   ad egy régióról: természetföldrajz + minden látványosság teljes adatlapja.
+   Szándékosan KÉP NÉLKÜLI: a Wikipédia-képek nyomtatásban lassúak és
+   képenkénti licencfeltételekhez kötöttek. A tényleges nyomtatási
+   megjelenést a stilusok.css @media print blokkja adja. */
+function renderNyomtat(slug){
+  const r=regioOf(slug);
+  const lista=latvOf(slug);
+  const datum=new Date().toLocaleDateString('hu-HU',{year:'numeric',month:'long',day:'numeric'});
+  document.title=r.nev+' — nyomtatható tananyaglap';
+  const geo=r.termeszetfoldrajz&&r.termeszetfoldrajz.trim();
+  const latvHtml=lista.map((l,i)=>{
+    const pi=l.info||{};
+    const infoSorok=[
+      pi.nyitvatartas?`<div class="print-info-sor"><strong>Nyitvatartás:</strong> ${pi.nyitvatartas}</div>`:'',
+      pi.megkozelites?`<div class="print-info-sor"><strong>Megközelítés:</strong> ${pi.megkozelites}</div>`:''
+    ].filter(Boolean).join('');
+    return `<article class="print-latv">
+      <div class="print-latv-fej">
+        <h3>${i+1}. ${l.nev}</h3>
+        <div class="print-latv-meta">${helyStr(l)} · Kategória: ${l.kat.map(k=>KAT_LABEL[k]||k).join(', ')}</div>
+      </div>
+      <p class="print-latv-rovid">${l.rovid}</p>
+      <p class="print-latv-reszletes">${l.reszletes}</p>
+      ${infoSorok?`<div class="print-latv-info">${infoSorok}</div>`:''}
+      ${l.forras&&l.forras.length?`<div class="print-latv-forras">Forrás: ${l.forras.join(' · ')}</div>`:''}
+    </article>`;
+  }).join('');
+  document.getElementById('app').innerHTML=`
+    <main class="print-page">
+      <div class="print-toolbar">
+        <a class="print-vissza" href="#/regio/${slug}">← Vissza a régióhoz</a>
+        <button type="button" class="print-gomb" onclick="window.print()">🖨 Nyomtatás / mentés PDF-be</button>
+      </div>
+      <header class="print-fej">
+        <div class="print-felcim">Magyar Turisztikai Atlasz · Nyomtatható tananyaglap</div>
+        <h1>${r.nev}</h1>
+        <p class="print-lead">${r.leiras}</p>
+        <div class="print-osszegzes">${lista.length} látványosság · 13. évfolyam, turisztikai technikus képzés</div>
+      </header>
+      ${geo?`<section class="print-szakasz">
+        <h2>Természetföldrajz</h2>
+        <p class="print-geo">${geo}</p>
+      </section>`:''}
+      <section class="print-szakasz">
+        <h2>Látványosságok</h2>
+        ${latvHtml}
+      </section>
+      <footer class="print-lablec">
+        Forrás: turisztikai tankönyvi tényadatok alapján, saját oktatási célú megfogalmazásban · Térkép: OpenStreetMap.<br>
+        Magyar Turisztikai Atlasz — oktatási célú, nonprofit tananyag · Készült: ${datum}
+      </footer>
+    </main>`;
+}
 
 /* ════════ KVÍZMODUL ════════ */
 const KVIZ_KERDES_LIMIT = 5;

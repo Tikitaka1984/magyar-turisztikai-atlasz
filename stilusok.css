@@ -334,6 +334,58 @@ input[type=search]:focus{border-color:var(--accent);box-shadow:none}
 .geo-box-ikon{font-size:1rem;line-height:1}
 .geo-box-szoveg{font-size:.87rem;color:var(--ink-2);line-height:1.7;margin:0}
 
+/* ════════ NYOMTATÓBARÁT RÉGIÓLAP ════════ */
+/* gomb a régióoldalon */
+.print-cta-wrap{max-width:1400px;margin:0 auto;padding:.6rem 2rem 0;display:flex;justify-content:flex-end}
+.print-cta{
+  display:inline-flex;align-items:center;gap:.45rem;
+  font-size:.68rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--muted);text-decoration:none;padding:.5rem .85rem;
+  border:1px solid var(--hairline);border-radius:var(--radius);background:var(--surface);
+  transition:color .15s,border-color .15s;
+}
+.print-cta:hover{color:var(--accent-ink);border-color:var(--accent)}
+.print-cta:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+/* a nyomtatóoldal képernyős megjelenése */
+.print-page{max-width:860px;margin:0 auto;padding:2rem 1.5rem 3.5rem;color:var(--ink);overflow-wrap:anywhere}
+.print-toolbar{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;margin-bottom:1.8rem}
+.print-vissza{
+  font-size:.74rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--accent-ink);text-decoration:none;padding:.5rem 0;
+}
+.print-vissza:hover{color:var(--ink);text-decoration:underline}
+.print-vissza:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.print-gomb{
+  min-height:44px;border:1px solid var(--accent);border-radius:var(--radius);
+  background:var(--accent);color:#fff;font-family:inherit;font-weight:700;
+  font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;
+  padding:.75rem 1.2rem;transition:background .15s,border-color .15s,color .15s;
+}
+.print-gomb:hover{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.print-gomb:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.print-fej{border-bottom:2px solid var(--hairline-strong);padding-bottom:1.2rem;margin-bottom:1.5rem}
+.print-felcim{font-size:.66rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:.65rem}
+.print-fej h1{font-family:'Fraunces',serif;font-weight:500;font-size:2.2rem;line-height:1.1;letter-spacing:-.02em;color:var(--ink);margin:0 0 .55rem}
+.print-lead{font-size:1rem;line-height:1.65;color:var(--ink-2);margin:0 0 .55rem}
+.print-osszegzes{font-size:.74rem;color:var(--muted)}
+.print-szakasz{margin-bottom:1.8rem}
+.print-szakasz h2{
+  font-family:'Fraunces',serif;font-weight:600;font-size:1.3rem;color:var(--ink);
+  border-bottom:1px solid var(--hairline);padding-bottom:.35rem;margin:0 0 .9rem;
+}
+.print-geo{font-size:.92rem;line-height:1.7;color:var(--ink-2);margin:0}
+.print-latv{padding:.95rem 0;border-bottom:1px solid var(--hairline)}
+.print-latv:last-child{border-bottom:0}
+.print-latv h3{font-family:'Fraunces',serif;font-weight:600;font-size:1.12rem;color:var(--ink);margin:0 0 .2rem}
+.print-latv-meta{font-size:.74rem;color:var(--muted);margin-bottom:.5rem}
+.print-latv-rovid{font-size:.9rem;font-weight:600;line-height:1.55;color:var(--ink);margin:0 0 .4rem}
+.print-latv-reszletes{font-size:.9rem;line-height:1.65;color:var(--ink-2);margin:0 0 .5rem}
+.print-latv-info{font-size:.85rem;line-height:1.6;color:var(--ink-2);margin-bottom:.45rem}
+.print-info-sor+.print-info-sor{margin-top:.2rem}
+.print-latv-forras{font-size:.72rem;color:var(--muted)}
+.print-lablec{margin-top:2rem;padding-top:1rem;border-top:2px solid var(--hairline-strong);font-size:.74rem;line-height:1.7;color:var(--muted)}
+
 /* elrendezés + látványosságkártyák */
 .split{max-width:1400px;margin:0 auto;padding:0 2rem 3.5rem;display:grid;grid-template-columns:minmax(0,1fr) minmax(320px,420px);gap:1.6rem;align-items:start;min-width:0}
 .card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1.3rem;align-items:stretch}
@@ -673,4 +725,36 @@ footer strong{color:var(--ink);font-family:'Fraunces',serif;font-weight:600}
   html{scroll-behavior:auto}
   .card:hover,.regio-card:hover{transform:none}
   .card:hover .card-ph img,.regio-card:hover .regio-header-kep img{transform:none}
+}
+
+/* ════════ NYOMTATÁSI STÍLUS ════════ */
+/* Tintatakarékos, fekete-fehér, A4-re tördelt megjelenés. A nyomtatóbarát
+   régiólap (#/nyomtat/<slug>) erre épül, de a szabályok minden nézetre
+   érvényesek: navigáció, lábléc, kezelőgombok és térkép nyomtatásban rejtve. */
+@media print{
+  @page{size:A4;margin:16mm 15mm}
+  html,body{background:#fff!important;color:#000!important}
+  body{font-size:11pt}
+  /* képernyős kezelőelemek elrejtése */
+  nav,footer,.modal-ov,
+  .print-toolbar,.print-cta-wrap,
+  .controls,.map-sticky,.map-box,#homeMap,#regioMap,.map-tooltip,
+  .region-quiz-btn,.quiz-start-btn,.quiz-actions,.quiz-next,
+  .portal-quiz-btn,.portal-map-jump,.portal-map-wrap{display:none!important}
+  a{color:#000;text-decoration:none}
+  p{orphans:3;widows:3}
+  /* a nyomtatóbarát régiólap tördelése */
+  .print-page{max-width:none;padding:0;color:#000}
+  .print-fej{border-bottom:2px solid #000;padding-bottom:10pt;margin-bottom:12pt}
+  .print-fej h1{font-size:20pt;color:#000}
+  .print-felcim,.print-osszegzes,.print-latv-meta,.print-latv-forras,.print-lablec{color:#444}
+  .print-lead{font-size:11pt;color:#000}
+  .print-geo,.print-latv-rovid,.print-latv-reszletes,.print-latv-info{font-size:10.5pt;line-height:1.55;color:#000}
+  .print-szakasz{margin-bottom:12pt}
+  .print-szakasz h2{color:#000;border-bottom:1px solid #666;break-after:avoid;page-break-after:avoid}
+  .print-latv{border-bottom:1px solid #ccc;padding:8pt 0}
+  /* a látványosság címe és metasora ne szakadjon el, és a cím után ne törjön oldalt */
+  .print-latv-fej{break-inside:avoid;page-break-inside:avoid;break-after:avoid;page-break-after:avoid}
+  .print-latv h3{color:#000;break-after:avoid;page-break-after:avoid}
+  .print-lablec{border-top:2px solid #000;margin-top:14pt;padding-top:8pt}
 }
