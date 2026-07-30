@@ -56,8 +56,8 @@ let kvizAllapot=null;
 function frissitAktivNav(h){
   const nFo=document.getElementById('navFooldal'),nRe=document.getElementById('navRegiok');
   if(!nFo||!nRe)return;
-  const fooldalAktiv=h===''||h==='/'||/^\/nyomtat\//.test(h);
-  const regiokAktiv=/^\/regio\//.test(h);
+  const fooldalAktiv=h===''||h==='/';
+  const regiokAktiv=/^\/regio\//.test(h)||/^\/nyomtat\//.test(h);
   [[nFo,fooldalAktiv],[nRe,regiokAktiv]].forEach(([el,aktiv])=>{
     el.classList.toggle('active',aktiv);
     if(aktiv)el.setAttribute('aria-current','page');else el.removeAttribute('aria-current');
@@ -205,7 +205,7 @@ function renderHome(){
   REGIOK.forEach(r=>{
     const n=latvOf(r.slug).length;
     const mk=L.marker(r.koord,{icon:makeIcon(r.ikon,r.szin)}).addTo(currentMap);
-    mk.bindPopup(`<div style="font-family:'Instrument Sans',sans-serif;min-width:180px"><div style="font-weight:700;color:#1A3A5C;margin-bottom:3px">${r.ikon} ${r.nev}</div><div style="font-size:.75rem;color:#6B7280;margin-bottom:6px">${n} látványosság</div><div style="display:inline-block;background:#B3271E;color:#fff;font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;cursor:pointer" onclick="location.hash='#/regio/${r.slug}'">Belépés →</div></div>`);
+    mk.bindPopup(`<div style="font-family:'Instrument Sans',sans-serif;min-width:180px"><div style="font-weight:700;color:#1A3A5C;margin-bottom:3px">${r.ikon} ${r.nev}</div><div style="font-size:.75rem;color:#6B7280;margin-bottom:6px">${n} látványosság</div><a href="#/regio/${r.slug}" style="display:inline-block;background:#B3271E;color:#fff;font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;text-decoration:none">Belépés →</a></div>`);
     mk.on('click',()=>mk.openPopup());
   });
   setTimeout(()=>currentMap&&currentMap.invalidateSize(),300);
@@ -217,7 +217,7 @@ function renderRegio(slug){
   document.getElementById('app').innerHTML=`
     <div class="r-header"><div class="r-header-inner">
       <div class="breadcrumb"><a href="#/">Magyar Turisztikai Atlasz</a> › ${aktivR.rovid}</div>
-      <h1>${aktivR.nev.replace(aktivR.rovid,'')||aktivR.nev}<em></em></h1>
+      <h1>${aktivR.nev}</h1>
       <p class="r-sub">A régió nevezetességei · 13. évfolyamos turisztikai technikusok számára</p>
       ${kvizKerdesek(slug).length?`<button class="region-quiz-btn" type="button" onclick="location.hash='#/kviz/${slug}'">Kvíz indítása ebben a régióban</button>`:''}
     </div></div>
@@ -225,7 +225,7 @@ function renderRegio(slug){
     <div class="print-cta-wrap"><a class="print-cta" href="#/nyomtat/${slug}">🖨 Nyomtatható változat</a></div>
     <div class="controls">
       <div class="search-wrap"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-        <input type="search" id="search" placeholder="Keresés helyszín neve alapján…" oninput="onSearch()"></div>
+        <input type="search" id="search" aria-label="Keresés a régió látványosságai között" placeholder="Keresés helyszín neve alapján…" oninput="onSearch()"></div>
       <div class="filters" id="filters"></div>
       <span class="result-count" id="count"></span>
     </div>
@@ -282,7 +282,7 @@ function renderCards(){
   if(!lista.length){grid.innerHTML=`<div class="empty-state"><div style="font-size:2rem">🔍</div><p>Nincs találat erre a keresésre.</p></div>`;renderMarkers([]);return;}
   grid.innerHTML=lista.map(l=>`
     <div class="card" id="card-${l.id}" role="button" tabindex="0" aria-label="${l.nev} adatlapjának megnyitása" onclick="activateCard(${l.id})" onkeydown="onCardKey(event,${l.id})">
-      <div class="card-ph" id="cph-${l.id}">${l.kep?`<span class="card-ph-ikon">${ikonOf(l)}</span>`:`<span class="card-ph-ikon">${ikonOf(l)}</span>`}</div>
+      <div class="card-ph" id="cph-${l.id}"><span class="card-ph-ikon">${ikonOf(l)}</span></div>
       <div class="card-body">
         <div class="card-kat">${l.kat.map(tagHtml).join('')}</div>
         <h3>${l.nev}</h3>
