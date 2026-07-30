@@ -57,7 +57,7 @@ function frissitAktivNav(h){
   const nFo=document.getElementById('navFooldal'),nRe=document.getElementById('navRegiok');
   if(!nFo||!nRe)return;
   const fooldalAktiv=h===''||h==='/';
-  const regiokAktiv=/^\/regio\//.test(h)||/^\/nyomtat\//.test(h);
+  const regiokAktiv=h==='/regiok'||/^\/regio\//.test(h)||/^\/nyomtat\//.test(h);
   [[nFo,fooldalAktiv],[nRe,regiokAktiv]].forEach(([el,aktiv])=>{
     el.classList.toggle('active',aktiv);
     if(aktiv)el.setAttribute('aria-current','page');else el.removeAttribute('aria-current');
@@ -73,7 +73,17 @@ function router(){
     const qm=h.match(/^\/kviz\/([^/]+)$/);
     const nym=h.match(/^\/nyomtat\/(.+)$/);
     const m=h.match(/^\/regio\/(.+)$/);
-    if(qm){renderKviz(qm[1])}
+    if(h==='/regiok'){
+      renderHome();
+      requestAnimationFrame(()=>{
+        const regioCim=document.getElementById('regions-title');
+        const regioSzakasz=document.getElementById('regiok');
+        if(!regioSzakasz)return;
+        regioCim?.focus({preventScroll:true});
+        regioSzakasz.scrollIntoView({behavior:'smooth',block:'start'});
+      });
+    }
+    else if(qm){renderKviz(qm[1])}
     else if(nym&&regioOf(nym[1])){renderNyomtat(nym[1])}
     else if(m&&regioOf(m[1])){renderRegio(m[1])}
     else{renderHome()}
@@ -161,10 +171,10 @@ function renderHome(){
               </div>
             </section>
 
-            <section class="portal-section-card" aria-labelledby="regions-title">
+            <section class="portal-section-card" id="regiok" aria-labelledby="regions-title">
               <div class="portal-card-head portal-card-head-stacked">
                 <span class="portal-section-label">Magyarország 9 turisztikai régiója</span>
-                <h2 id="regions-title">Válassz régiót a felfedezéshez</h2>
+                <h2 id="regions-title" tabindex="-1">Válassz régiót a felfedezéshez</h2>
                 <p>Minden régió saját interaktív térképet, kereshető látványosság-katalógust és részletes adatlapokat tartalmaz.</p>
               </div>
               <div class="regio-grid">${cards}</div>
