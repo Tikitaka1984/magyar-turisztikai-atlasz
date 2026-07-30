@@ -11,7 +11,7 @@ A "Magyar Turisztikai Atlasz" egy ingyenes, statikus webes tananyag a
 régióját és 157 nevezetességét mutatja be interaktív térképen, kereshető
 kártyákkal és részletes adatlapokkal.
 
-Élő változat: https://rakoczi-turisztikai-atlasz.netlify.app
+Élő változat (elsődleges, aktuális publikus oldal): https://tikitaka1984.github.io/magyar-turisztikai-atlasz/#/
 
 ## Architektúra
 

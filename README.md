@@ -9,6 +9,8 @@ A projekt GitHub Pages alatt futó, statikus HTML/CSS/JS alkalmazás. Nincs
 szükség szerverre, adatbázisra, npm-re, build rendszerre vagy frameworkre:
 a böngésző közvetlenül a repóban lévő fájlokat tölti be.
 
+**Élő oldal:** https://tikitaka1984.github.io/magyar-turisztikai-atlasz/#/
+
 ## A projekt felépítése
 
 A jelenlegi projekt lapos fájlszerkezetű: minden működéshez szükséges fájl
