@@ -76,12 +76,19 @@ nav{
 .nav-logo span{color:var(--accent);font-style:italic;font-weight:500}
 .nav-links{display:flex;gap:.15rem;margin-left:auto;align-items:center}
 .nav-link{
+  position:relative;
   font-size:.74rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--muted);padding:.5rem .8rem;transition:color .15s;
+  color:var(--muted);padding:.5rem .8rem;transition:color .15s,transform .08s;
   cursor:pointer;background:none;border:none;font-family:inherit;
 }
-.nav-link:hover,.nav-link.active{color:var(--accent)}
+.nav-link:not(.active):hover{color:var(--accent)}
 .nav-link:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.nav-link.active,.nav-link[aria-current="page"]{color:var(--ink)}
+.nav-link.active::after,.nav-link[aria-current="page"]::after{
+  content:'';position:absolute;left:.8rem;right:.8rem;bottom:2px;
+  height:2px;background:var(--accent);
+}
+.nav-link:active{transform:translateY(1px);color:var(--accent-ink)}
 
 /* témaváltó gomb */
 .tema-valto{
@@ -89,12 +96,18 @@ nav{
   width:40px;height:40px;margin-left:.5rem;border-radius:50%;
   border:1px solid var(--hairline);background:var(--surface);
   color:var(--ink);cursor:pointer;font-size:1rem;line-height:1;
-  transition:border-color .15s,transform .15s;
+  transition:border-color .15s,transform .15s,background .15s,box-shadow .12s;
 }
 .tema-valto:hover{border-color:var(--accent);transform:rotate(15deg)}
 .tema-valto:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.tema-valto:active{
+  transform:scale(.94);background:var(--surface-2);
+  box-shadow:inset 0 2px 5px rgba(20,17,13,.14);
+}
+[data-tema="sotet"] .tema-valto:active{box-shadow:inset 0 2px 5px rgba(0,0,0,.4)}
+.tema-valto .ikon-nap,.tema-valto .ikon-hold{align-items:center;justify-content:center}
 .tema-valto .ikon-nap,[data-tema="sotet"] .tema-valto .ikon-hold{display:none}
-.tema-valto .ikon-hold,[data-tema="sotet"] .tema-valto .ikon-nap{display:inline}
+.tema-valto .ikon-hold,[data-tema="sotet"] .tema-valto .ikon-nap{display:inline-flex}
 
 /* ───── KATEGÓRIACÍMKÉK (editorial small caps) ───── */
 .tag{
@@ -132,41 +145,16 @@ nav{
   letter-spacing:.1em;text-transform:uppercase;white-space:nowrap;
 }
 
-/* hős-szekció — a magazin címlapja */
-.portal-hero{
-  display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,380px);
-  gap:2rem;align-items:end;padding:3.2rem 0 2.4rem;
-  border-bottom:3px solid var(--hairline-strong);
-}
-.portal-eyebrow,.portal-section-label,.section-eyebrow{
+/* hős-szekció fejlécei — a hero maga a portal-hero-grid (lásd lejjebb) */
+.portal-section-label,.section-eyebrow{
   display:flex;align-items:center;gap:.55rem;
   font-size:.7rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
   color:var(--accent-ink);margin-bottom:.9rem;
 }
-.portal-eyebrow::before,.portal-section-label::before,.section-eyebrow::before{
+.portal-section-label::before,.section-eyebrow::before{
   content:'';width:26px;height:2px;background:var(--accent);flex:0 0 auto;
 }
-.portal-title{
-  font-family:'Fraunces',serif;font-weight:400;
-  font-size:clamp(2.6rem,6.2vw,5.4rem);line-height:.98;letter-spacing:-.03em;
-  color:var(--ink);max-width:900px;margin-bottom:1.1rem;
-}
-.portal-title em,.portal-title i{font-style:italic;color:var(--accent)}
 .portal-desc{font-size:1.06rem;line-height:1.75;color:var(--ink-2);max-width:680px}
-.portal-pills{display:flex;flex-direction:column;align-items:stretch;gap:0;min-width:0;border-left:1px solid var(--hairline)}
-.portal-pill{
-  display:flex;align-items:baseline;gap:.6rem;min-height:0;max-width:100%;
-  border:0;border-bottom:1px solid var(--hairline);border-radius:0;background:transparent;
-  color:var(--ink-2);font-size:.86rem;font-weight:500;line-height:1.4;
-  padding:.7rem 0 .7rem 1.1rem;box-shadow:none;white-space:normal;
-}
-.portal-pill:last-child{border-bottom:0}
-.portal-pill::before{
-  content:'—';width:auto;height:auto;border-radius:0;background:none;
-  color:var(--accent);font-weight:700;margin-right:0;box-shadow:none;flex:0 0 auto;
-}
-
-.portal-hero-copy{min-width:0}
 
 /* fő elrendezés */
 .portal-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,320px);gap:2.2rem;align-items:start;padding-top:2.2rem}
@@ -185,9 +173,13 @@ nav{
   min-height:44px;border:1px solid var(--hairline-strong);border-radius:var(--radius);
   background:var(--ink);color:var(--paper);font-family:inherit;font-size:.74rem;font-weight:700;
   letter-spacing:.12em;text-transform:uppercase;cursor:pointer;padding:.7rem 1.2rem;
-  box-shadow:none;transition:background .15s ease,color .15s ease,border-color .15s ease;
+  box-shadow:none;transition:background .15s,border-color .15s,color .15s,transform .08s,box-shadow .12s;
 }
 .portal-map-jump:hover,.portal-quiz-btn:hover{background:var(--accent);border-color:var(--accent);color:#fff;filter:none;transform:none;box-shadow:none}
+.portal-map-jump:active,.portal-quiz-btn:active{
+  background:#000;border-color:#000;color:var(--paper);
+  transform:translateY(2px);box-shadow:inset 0 2px 6px rgba(0,0,0,.5);
+}
 .portal-map-jump:focus-visible,.portal-quiz-btn:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 
 .portal-map-wrap{position:relative;border:1px solid var(--hairline);border-radius:var(--radius-img);overflow:hidden;background:var(--surface-2);box-shadow:var(--shadow);margin-top:.1rem}
@@ -203,6 +195,7 @@ nav{
 .portal-source-text{margin-top:.25rem}
 .portal-quiz-btn{width:100%;margin-top:1.1rem;background:var(--accent);border-color:var(--accent);color:#fff}
 .portal-quiz-btn:hover{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.portal-quiz-btn:active{background:var(--accent-ink);border-color:var(--accent-ink);color:#fff;box-shadow:inset 0 2px 6px rgba(0,0,0,.32)}
 .portal-section-card .regio-grid{margin-top:.9rem}
 
 #homeMap{width:100%;height:440px}
@@ -223,8 +216,17 @@ nav{
   text-align:left;color:inherit;min-width:0;
   transition:box-shadow .2s ease,transform .2s ease,border-color .2s ease;
 }
-.regio-card:hover{box-shadow:var(--shadow-h);transform:translateY(-3px);border-color:var(--ink)}
+.regio-card:hover{box-shadow:var(--shadow-h);transform:translateY(-4px);border-color:var(--ink)}
+.regio-card:active{
+  transform:translateY(0);border-color:var(--accent-ink);
+  box-shadow:0 1px 2px rgba(20,17,13,.1);
+}
 .regio-card:focus-visible{outline:2px solid var(--accent);outline-offset:3px;box-shadow:var(--shadow-h)}
+.regio-index{
+  position:absolute;top:.75rem;left:.75rem;z-index:2;
+  font-family:'Fraunces',serif;font-size:.81rem;font-weight:600;
+  color:rgba(255,255,255,.92);text-shadow:0 2px 8px rgba(0,0,0,.4);
+}
 .regio-card::before{
   position:absolute;top:.7rem;right:.7rem;z-index:2;
   font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
@@ -233,7 +235,7 @@ nav{
 }
 .regio-card.kesz::before{content:attr(data-count)" helyszín"}
 .regio-header{
-  height:190px;display:flex;align-items:center;justify-content:center;
+  height:200px;display:flex;align-items:center;justify-content:center;
   font-size:2.5rem;position:relative;overflow:hidden;
   background-size:cover;background-position:center;background-color:var(--surface-2);
 }
@@ -241,8 +243,15 @@ nav{
 .regio-header-kep{position:absolute;inset:0;z-index:0}
 .regio-header-kep img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease;will-change:transform}
 .regio-card:hover .regio-header-kep img{transform:scale(1.05)}
-.regio-header::after{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(15,13,11,0) 55%,rgba(15,13,11,.42) 100%)}
-.regio-body{padding:1.1rem 1.15rem 1.15rem;flex:1;display:flex;flex-direction:column;min-width:0;border-top:3px solid var(--accent)}
+.regio-header::after{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(15,13,11,.28) 0%,rgba(15,13,11,0) 34%,rgba(15,13,11,.62) 100%)}
+.regio-sav{
+  position:absolute;left:0;right:0;bottom:0;z-index:2;
+  display:flex;align-items:center;gap:.35rem;
+  padding:.56rem .8rem;color:#fff;font-size:.625rem;font-weight:700;
+  letter-spacing:.13em;text-transform:uppercase;
+}
+.regio-sav svg{flex:0 0 auto;width:12px;height:12px}
+.regio-body{padding:1rem 1.06rem 1.06rem;flex:1;display:flex;flex-direction:column;min-width:0;border-top:3px solid var(--accent)}
 .regio-nev{
   font-family:'Fraunces',serif;font-size:1.32rem;font-weight:500;line-height:1.12;
   letter-spacing:-.015em;margin-bottom:.5rem;color:var(--ink);
@@ -255,10 +264,11 @@ nav{
 }
 .regio-meta span:first-child{min-width:0;overflow-wrap:anywhere}
 .regio-arrow{
-  display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;
-  font-size:.85rem;color:var(--accent);font-weight:700;border-radius:0;
+  display:inline-flex;align-items:center;gap:.3rem;flex:0 0 auto;
+  font-size:.7rem;color:var(--accent);font-weight:700;border-radius:0;
   background:transparent;padding:0;transition:transform .15s ease;
 }
+.regio-arrow svg{flex:0 0 auto}
 .regio-card:hover .regio-arrow{transform:translateX(4px);background:transparent}
 
 /* ════════ RÉGIÓOLDAL ════════ */
@@ -308,11 +318,16 @@ input[type=search]:focus{border-color:var(--accent);box-shadow:none}
   border:1px solid var(--hairline);background:transparent;font-family:inherit;
   font-size:.7rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
   color:var(--ink-2);cursor:pointer;white-space:nowrap;box-shadow:none;
-  transition:background .15s,border-color .15s,color .15s;
+  transition:background .15s,border-color .15s,color .15s,transform .08s,box-shadow .12s;
 }
 .filter-btn:hover{border-color:var(--accent);color:var(--accent)}
+.filter-btn:active{
+  background:var(--surface-2);transform:translateY(2px);
+  box-shadow:inset 0 2px 5px rgba(20,17,13,.12);
+}
 .filter-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .filter-btn.active{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.filter-btn.active:active{background:#000;box-shadow:inset 0 2px 6px rgba(0,0,0,.5)}
 .result-count{
   font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
   color:var(--muted);margin-left:auto;white-space:nowrap;
@@ -345,6 +360,7 @@ input[type=search]:focus{border-color:var(--accent);box-shadow:none}
   transition:color .15s,border-color .15s;
 }
 .print-cta:hover{color:var(--accent-ink);border-color:var(--accent)}
+.print-cta:active{background:var(--surface-2);transform:translateY(1px)}
 .print-cta:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 
 /* a nyomtatóoldal képernyős megjelenése */
@@ -360,9 +376,13 @@ input[type=search]:focus{border-color:var(--accent);box-shadow:none}
   min-height:44px;border:1px solid var(--accent);border-radius:var(--radius);
   background:var(--accent);color:#fff;font-family:inherit;font-weight:700;
   font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;
-  padding:.75rem 1.2rem;transition:background .15s,border-color .15s,color .15s;
+  padding:.75rem 1.2rem;transition:background .15s,border-color .15s,color .15s,transform .08s,box-shadow .12s;
 }
 .print-gomb:hover{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.print-gomb:active{
+  background:#000;border-color:#000;color:var(--paper);
+  transform:translateY(2px);box-shadow:inset 0 2px 6px rgba(0,0,0,.5);
+}
 .print-gomb:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 .print-fej{border-bottom:2px solid var(--hairline-strong);padding-bottom:1.2rem;margin-bottom:1.5rem}
 .print-felcim{font-size:.66rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:.65rem}
@@ -397,6 +417,7 @@ input[type=search]:focus{border-color:var(--accent);box-shadow:none}
   transition:box-shadow .2s ease,transform .2s ease,border-color .2s ease;
 }
 .card:hover{box-shadow:var(--shadow-h);transform:translateY(-3px);border-color:var(--ink)}
+.card:active{transform:translateY(0);border-color:var(--accent-ink);box-shadow:0 1px 2px rgba(20,17,13,.1)}
 .card:focus-visible{outline:2px solid var(--accent);outline-offset:3px;box-shadow:var(--shadow-h)}
 .card.hl{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent),var(--shadow-h)}
 .card-ph{
@@ -457,10 +478,14 @@ input[type=search]:focus{border-color:var(--accent);box-shadow:none}
 .modal-close button{
   display:inline-flex;align-items:center;justify-content:center;
   background:var(--surface);border:1px solid var(--hairline);border-radius:50%;
-  width:44px;height:44px;cursor:pointer;font-size:1.15rem;line-height:1;color:var(--ink);
-  box-shadow:var(--shadow);transition:background .15s ease,color .15s ease,border-color .15s ease;
+  width:44px;height:44px;cursor:pointer;line-height:1;color:var(--ink);
+  box-shadow:var(--shadow);transition:background .15s,color .15s,border-color .15s,transform .08s;
 }
 .modal-close button:hover{background:var(--accent);border-color:var(--accent);color:#fff;transform:none;box-shadow:var(--shadow)}
+.modal-close button:active{
+  background:var(--accent-ink);border-color:var(--accent-ink);color:#fff;
+  transform:scale(.93);box-shadow:inset 0 2px 5px rgba(20,17,13,.14);
+}
 .modal-close button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;box-shadow:var(--shadow)}
 .modal-ph{
   width:100%;height:clamp(230px,36vw,320px);background:var(--surface-2);
@@ -522,12 +547,17 @@ footer strong{color:var(--ink);font-family:'Fraunces',serif;font-weight:600}
   min-height:44px;border:1px solid var(--accent);border-radius:var(--radius);
   background:var(--accent);color:#fff;font-family:inherit;font-weight:700;
   font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;
-  padding:.75rem 1.2rem;box-shadow:none;transition:background .15s,border-color .15s,color .15s;
+  padding:.75rem 1.2rem;box-shadow:none;transition:background .15s,border-color .15s,color .15s,transform .08s,box-shadow .12s;
 }
 .region-quiz-btn{margin-bottom:1rem;background:transparent;color:var(--accent-ink)}
 .region-quiz-btn:hover,.quiz-start-btn:hover,.quiz-actions button:hover,.quiz-next:hover{
   background:var(--ink);border-color:var(--ink);color:var(--paper);filter:none;transform:none;
 }
+.region-quiz-btn:active,.quiz-start-btn:active,.quiz-actions button:active,.quiz-next:active{
+  background:#000;border-color:#000;color:var(--paper);
+  transform:translateY(2px);box-shadow:inset 0 2px 6px rgba(0,0,0,.5);
+}
+.region-quiz-btn:active{background:var(--surface-2);border-color:var(--accent);color:var(--accent-ink);box-shadow:inset 0 2px 5px rgba(20,17,13,.12)}
 .region-quiz-btn:focus-visible,.quiz-start-btn:focus-visible,.quiz-actions button:focus-visible,
 .quiz-next:focus-visible,.quiz-answer:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 .quiz-page{max-width:1040px;margin:0 auto;padding:2.2rem 1rem 3.5rem;overflow-x:hidden}
@@ -573,6 +603,7 @@ footer strong{color:var(--ink);font-family:'Fraunces',serif;font-weight:600}
 .quiz-actions{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1rem}
 .quiz-actions button{background:var(--ink);border-color:var(--ink);color:var(--paper)}
 .quiz-actions button:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+.quiz-actions button:active{background:var(--accent-ink);border-color:var(--accent-ink);color:#fff;box-shadow:inset 0 2px 6px rgba(0,0,0,.32)}
 .quiz-region-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.1rem}
 .quiz-region-card{
   background:var(--surface);border:1px solid var(--hairline);border-radius:var(--radius-img);
@@ -591,9 +622,7 @@ footer strong{color:var(--ink);font-family:'Fraunces',serif;font-weight:600}
 
 /* ════════ REszponzivitás ════════ */
 @media(max-width:980px){
-  .portal-hero,.portal-layout{grid-template-columns:1fr}
-  .portal-pills{border-left:0;border-top:1px solid var(--hairline);flex-direction:row;flex-wrap:wrap;gap:0 1.5rem;padding-top:.4rem}
-  .portal-pill{border-bottom:0;padding:.55rem 0;flex:0 1 auto}
+  .portal-layout{grid-template-columns:1fr}
   .portal-side{position:static;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.4rem}
   .portal-map-wrap #homeMap{height:380px;min-height:320px}
 }
@@ -602,10 +631,7 @@ footer strong{color:var(--ink);font-family:'Fraunces',serif;font-weight:600}
   .portal-shell,.portal-layout,.portal-main-column,.portal-side{max-width:100%;min-width:0}
   .portal-topbar{align-items:flex-start;flex-direction:column;gap:.7rem}
   .portal-note{white-space:normal;max-width:100%;overflow-wrap:anywhere}
-  .portal-hero{padding:2rem 0 1.5rem;gap:1.2rem}
-  .portal-title{font-size:clamp(2.1rem,11vw,3rem)}
   .portal-desc{font-size:.98rem;line-height:1.68}
-  .portal-pills{gap:0 1.2rem}
   .portal-layout{padding-top:1.6rem}
   .portal-main-column,.portal-side{gap:1.8rem}
   .portal-side{grid-template-columns:1fr}
@@ -725,6 +751,106 @@ footer strong{color:var(--ink);font-family:'Fraunces',serif;font-weight:600}
   html{scroll-behavior:auto}
   .card:hover,.regio-card:hover{transform:none}
   .card:hover .card-ph img,.regio-card:hover .regio-header-kep img{transform:none}
+  .card:active,.regio-card:active,.nav-link:active,.tema-valto:active,.modal-close button:active,
+  .portal-map-jump:active,.portal-quiz-btn:active,.filter-btn:active,.print-gomb:active,.print-cta:active,
+  .region-quiz-btn:active,.quiz-start-btn:active,.quiz-actions button:active,.quiz-next:active{transform:none}
+  /* a shimmer csökkentett mozgású változata a .kep-betolt szabályok UTÁN
+     szerepel (lásd lentebb) — azonos specificitásnál a későbbi szabály nyer */
+}
+
+/* ════════ KÉPBETÖLTÉSI ÁLLAPOT (shimmer) ════════ */
+@keyframes mtaShimmer{0%{background-position:-140% 0}100%{background-position:140% 0}}
+@keyframes mtaPulse{0%,100%{opacity:.22}50%{opacity:.55}}
+
+/* A shimmert kapó elemek (.card-ph, .modal-ph, .regio-header-kep) maguk
+   pozicionáltak, ezért itt NEM szabad position-t állítani: a position:relative
+   felülírná a .regio-header-kep abszolút pozicionálását, és a régiókártya
+   fejlécképe nulla méretűre esne össze. */
+.kep-betolt{
+  background:linear-gradient(100deg,var(--surface-2) 20%,var(--paper) 42%,var(--surface-2) 62%);
+  background-size:220% 100%;
+  animation:mtaShimmer 1.5s linear infinite;
+}
+/* betöltés közben a helyettesítő ikon elrejtőzik, hogy ne olvadjon össze
+   a „Kép betöltése” felirattal */
+.kep-betolt .card-ph-ikon,.kep-betolt .modal-ph-ikon{opacity:0}
+/* a régiófejléc ikonja a shimmer-elem TESTVÉRE, ezért nem rejthető el innen;
+   ott a felirat marad el, a shimmer-animáció önmagában jelzi a betöltést */
+.regio-header-kep.kep-betolt .kep-betolt-felirat{display:none}
+/* a top:auto kell: a .card-ph::after / .modal-ph::after inset:0 értéke
+   különben felülre szorítaná a 2 képpontos jelzőcsíkot */
+.kep-betolt::after{
+  content:'';position:absolute;left:0;right:0;bottom:0;top:auto;height:2px;
+  background:var(--accent);opacity:.45;
+}
+.kep-betolt-felirat{
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  font-size:.625rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ink);animation:mtaPulse 1.8s ease-in-out infinite;z-index:1;
+}
+@media(prefers-reduced-motion:reduce){
+  .kep-betolt{animation:none;background:var(--surface-2)}
+  .kep-betolt-felirat{animation:none;opacity:.55}
+}
+
+/* ════════ FŐOLDALI HERO — IMPRESSZUM-RÁCS ════════ */
+.portal-impresszum{
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.5rem 1.2rem;
+  border-top:6px solid var(--hairline-strong);margin-top:2.1rem;padding:.65rem 0 0;
+  font-size:.66rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+}
+.portal-impresszum-accent{color:var(--accent)}
+.portal-hero-grid{
+  display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);
+  gap:3rem;align-items:end;padding:2.9rem 0 2.1rem;
+  border-bottom:1px solid var(--hairline);
+}
+.portal-title-hero{
+  font-family:'Fraunces',serif;font-weight:300;
+  font-size:clamp(2.6rem,6.2vw,5.4rem);line-height:.9;letter-spacing:-.04em;
+  color:var(--ink);margin:0;
+}
+.portal-title-hero em{font-style:italic;font-weight:400;color:var(--accent)}
+.portal-hero-copy{min-width:0}
+.portal-hero-side{display:flex;flex-direction:column;gap:1.1rem;min-width:0}
+.portal-hero-actions{display:flex;flex-wrap:wrap;gap:.6rem}
+.portal-hero-actions button{white-space:nowrap}
+.portal-hero-btn-outline{
+  min-height:44px;border:1px solid var(--hairline-strong);border-radius:var(--radius);
+  background:transparent;color:var(--ink);font-family:inherit;font-size:.74rem;font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;cursor:pointer;padding:.7rem 1.2rem;
+  transition:background .15s,border-color .15s,color .15s,transform .08s,box-shadow .12s;
+}
+.portal-hero-btn-outline:hover{border-color:var(--accent);color:var(--accent)}
+.portal-hero-btn-outline:active{
+  background:var(--surface-2);transform:translateY(2px);
+  box-shadow:inset 0 2px 5px rgba(20,17,13,.12);
+}
+.portal-hero-btn-outline:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.portal-statrow{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  border-bottom:3px solid var(--hairline-strong);
+}
+.portal-stat{
+  display:flex;flex-direction:column;gap:.4rem;padding:1.15rem 1.4rem 1.15rem 0;
+}
+.portal-stat+.portal-stat{border-left:1px solid var(--hairline);padding-left:1.4rem}
+.portal-stat-label{font-size:.64rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-ink)}
+.portal-stat-val{font-family:'Fraunces',serif;font-size:1.9rem;font-weight:500;line-height:1;color:var(--ink)}
+.portal-stat-desc{font-size:.8rem;line-height:1.5;color:var(--muted)}
+
+@media(max-width:980px){
+  .portal-hero-grid{grid-template-columns:1fr;gap:1.2rem}
+  .portal-statrow{grid-template-columns:repeat(2,1fr)}
+  .portal-stat:nth-child(3){border-left:0}
+  .portal-stat:nth-child(3),.portal-stat:nth-child(4){padding-top:1.4rem;border-top:1px solid var(--hairline)}
+}
+@media(max-width:680px){
+  .portal-impresszum{margin-top:1.4rem;font-size:.6rem;gap:.4rem .8rem}
+  .portal-hero-grid{padding:1.6rem 0}
+  .portal-statrow{grid-template-columns:1fr}
+  .portal-stat{border-left:0!important;padding-left:0!important}
+  .portal-stat+.portal-stat{border-left:0;border-top:1px solid var(--hairline);padding-top:1rem}
 }
 
 /* ════════ NYOMTATÁSI STÍLUS ════════ */

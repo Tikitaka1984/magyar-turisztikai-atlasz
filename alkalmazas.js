@@ -20,6 +20,29 @@ function kereshetoMezo(ertek){
   return ertek||'';
 }
 
+/* ════════ KÉPBETÖLTÉSI (SHIMMER) ÁLLAPOT ════════ */
+function _kepBetoltIndit(elem){
+  if(!elem)return;
+  elem.classList.add('kep-betolt');
+  if(!elem.querySelector('.kep-betolt-felirat')){
+    const felirat=document.createElement('span');
+    felirat.className='kep-betolt-felirat';
+    felirat.textContent='Kép betöltése';
+    elem.appendChild(felirat);
+  }
+}
+function _kepBetoltVege(elem){
+  if(!elem)return;
+  elem.classList.remove('kep-betolt');
+  elem.querySelector('.kep-betolt-felirat')?.remove();
+}
+
+function hexRgb(hex){
+  const h=hex.replace('#','');
+  const n=parseInt(h.length===3?h.split('').map(c=>c+c).join(''):h,16);
+  return `${(n>>16)&255},${(n>>8)&255},${n&255}`;
+}
+
 let currentMap=null;
 function clearMap(){if(currentMap){currentMap.remove();currentMap=null}}
 function makeIcon(ikon,szin){return L.divIcon({html:`<div style="background:${szin};color:#fff;border-radius:50%;width:34px;height:34px;display:flex;align-items:center;justify-content:center;font-size:16px;box-shadow:0 2px 8px rgba(0,0,0,.28);border:2px solid #fff">${ikon}</div>`,className:'',iconSize:[34,34],iconAnchor:[17,34],popupAnchor:[0,-36]})}
@@ -30,10 +53,21 @@ let elozoFokusz=null;
 let kvizAllapot=null;
 
 /* ════════ ROUTER ════════ */
+function frissitAktivNav(h){
+  const nFo=document.getElementById('navFooldal'),nRe=document.getElementById('navRegiok');
+  if(!nFo||!nRe)return;
+  const fooldalAktiv=h===''||h==='/'||/^\/nyomtat\//.test(h);
+  const regiokAktiv=/^\/regio\//.test(h);
+  [[nFo,fooldalAktiv],[nRe,regiokAktiv]].forEach(([el,aktiv])=>{
+    el.classList.toggle('active',aktiv);
+    if(aktiv)el.setAttribute('aria-current','page');else el.removeAttribute('aria-current');
+  });
+}
 function router(){
   closeModal();clearMap();
   document.title='Magyar Turisztikai Atlasz';
   const h=location.hash.replace(/^#/,'');
+  frissitAktivNav(h);
   if(h==='/kviz'){renderKvizValaszto()}
   else{
     const qm=h.match(/^\/kviz\/([^/]+)$/);
@@ -50,17 +84,27 @@ window.addEventListener('hashchange',router);
 window.addEventListener('load',router);
 
 /* ════════ FŐOLDAL ════════ */
+const NYIL_SVG='<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M13 6l6 6-6 6"/></svg>';
+const HELY_SVG='<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.1 7-11.3A7 7 0 0 0 5 9.7C5 14.9 12 21 12 21z"/><circle cx="12" cy="9.7" r="2.4"/></svg>';
+
 function renderHome(){
   const total=LATV.length;
   let cards='';
-  REGIOK.forEach(r=>{
+  REGIOK.forEach((r,i)=>{
     const n=latvOf(r.slug).length;
+    const sorszam=String(i+1).padStart(2,'0');
+    const savHtml=r.sav?`<span class="regio-sav" style="background:linear-gradient(90deg,rgba(${hexRgb(r.szin)},.94),rgba(${hexRgb(r.szin)},.62))">${HELY_SVG}${r.sav}</span>`:'';
     cards+=`<button class="regio-card kesz" data-count="${n}" aria-label="${r.nev} régió megnyitása, ${n} látványosság" onclick="location.hash='#/regio/${r.slug}'">
-      <div class="regio-header" style="background:linear-gradient(135deg,${r.szin},${r.szin}cc)"><span class="regio-header-ikon">${r.ikon}</span><span class="regio-header-kep" id="rhk-${r.slug}"></span></div>
+      <div class="regio-header" style="background:linear-gradient(135deg,${r.szin},${r.szin}cc)">
+        <span class="regio-header-ikon">${r.ikon}</span>
+        <span class="regio-header-kep" id="rhk-${r.slug}"></span>
+        <span class="regio-index" aria-hidden="true">${sorszam}</span>
+        ${savHtml}
+      </div>
       <div class="regio-body">
         <div class="regio-nev">${r.nev}</div>
         <div class="regio-desc">${r.leiras}</div>
-        <div class="regio-meta"><span>📍 ${n} látványosság</span><span class="regio-arrow">Megnyitás →</span></div>
+        <div class="regio-meta"><span>📍 ${n} látványosság</span><span class="regio-arrow">Megnyitás ${NYIL_SVG}</span></div>
       </div></button>`;
   });
   document.getElementById('app').innerHTML=`
@@ -77,19 +121,29 @@ function renderHome(){
           <span class="portal-note">Turisztikai technikus képzés</span>
         </div>
 
-        <header class="portal-hero">
+        <div class="portal-impresszum">
+          <span>Interaktív oktatási portál</span>
+          <span>13. évfolyam · turisztikai technikus</span>
+          <span class="portal-impresszum-accent">2026 / tananyag</span>
+        </div>
+        <header class="portal-hero-grid" aria-labelledby="portal-title">
           <div class="portal-hero-copy">
-            <div class="portal-eyebrow">Interaktív oktatási portál</div>
-            <h1 id="portal-title" class="portal-title">Magyarország turisztikai régiói</h1>
-            <p class="portal-desc">Interaktív térképes tananyag Magyarország turisztikai régióinak, látványosságainak és nevezetességeinek feldolgozásához.</p>
+            <h1 id="portal-title" class="portal-title-hero">Kilenc régió,<br><em>${total} nevezetesség</em><br>egy atlaszban.</h1>
           </div>
-          <div class="portal-pills" aria-label="Főoldali tartalmi összefoglaló">
-            <span class="portal-pill">9 turisztikai régió</span>
-            <span class="portal-pill">${total} látványosság</span>
-            <span class="portal-pill">Interaktív térkép</span>
-            <span class="portal-pill">Kvízes gyakorlás</span>
+          <div class="portal-hero-side">
+            <p class="portal-desc">Interaktív térképes tananyag Magyarország turisztikai régióinak, látványosságainak és nevezetességeinek feldolgozásához.</p>
+            <div class="portal-hero-actions">
+              <button class="portal-hero-btn-outline" type="button" onclick="document.querySelector('.portal-section-card').scrollIntoView({behavior:'smooth',block:'start'})">Belépés a régiókhoz</button>
+              <button class="portal-quiz-btn" style="width:auto;margin-top:0" type="button" onclick="location.hash='#/kviz'">Kvíz indítása</button>
+            </div>
           </div>
         </header>
+        <div class="portal-statrow" aria-label="Az atlasz számokban">
+          <div class="portal-stat"><span class="portal-stat-label">01 / RÉGIÓ</span><span class="portal-stat-val">9</span><span class="portal-stat-desc">Turisztikai régió Magyarországon</span></div>
+          <div class="portal-stat"><span class="portal-stat-label">02 / NEVEZETESSÉG</span><span class="portal-stat-val">${total}</span><span class="portal-stat-desc">Feldolgozott látványosság saját adatlappal</span></div>
+          <div class="portal-stat"><span class="portal-stat-label">03 / KÉPFORRÁS</span><span class="portal-stat-val">5</span><span class="portal-stat-desc">Szintű Wikipédia/Commons képkereső automata</span></div>
+          <div class="portal-stat"><span class="portal-stat-label">04 / TÉRKÉP</span><span class="portal-stat-val">OSM</span><span class="portal-stat-desc">OpenStreetMap-alapú interaktív térkép</span></div>
+        </div>
 
         <div class="portal-layout">
           <div class="portal-main-column">
@@ -518,15 +572,18 @@ function kepetMutat(l, elem, meret) {
   elem.dataset.placeholder = `<span class="${meret>400?'modal':'card'}-ph-ikon">${ikonOf(l)}</span>`;
   elem.dataset.alt = l.nev + ' képe';
   if (l.kep_sajat && l.kep_sajat.trim()) {
+    _kepBetoltIndit(elem);
     const img = document.createElement('img');
     img.src = l.kep_sajat.trim();
     img.alt = elem.dataset.alt;
     img.loading = 'lazy';
+    img.onload = () => _kepBetoltVege(elem);
     img.onerror = () => _kepHibaPlaceholder(elem);
     img.style.cssText = 'width:100%;height:100%;object-fit:cover;display:block';
-    elem.innerHTML = '';
+    elem.querySelectorAll('img').forEach(i=>i.remove());
     elem.appendChild(img);
   } else if (l.kep) {
+    _kepBetoltIndit(elem);
     betoltKep(l.kep, elem, meret);
   }
 }
@@ -539,15 +596,17 @@ function kepetMutat(l, elem, meret) {
 function regioFejlecKep(r, elem){
   if(!elem||!r)return;
   const meret=500;
+  _kepBetoltIndit(elem);
   const megjelenit=url=>{
-    if(!url)return;
+    if(!url){_kepBetoltVege(elem);return;}
     const img=document.createElement('img');
     img.src=url;
     img.alt=r.nev;
     img.loading='lazy';
-    img.onerror=()=>{elem.innerHTML='';};
+    img.onload=()=>_kepBetoltVege(elem);
+    img.onerror=()=>{_kepBetoltVege(elem);elem.innerHTML='';};
     img.style.cssText='width:100%;height:100%;object-fit:cover;display:block';
-    elem.innerHTML='';
+    elem.querySelectorAll('img').forEach(i=>i.remove());
     elem.appendChild(img);
   };
   if(r.kep_sajat && r.kep_sajat.trim()){megjelenit(r.kep_sajat.trim());return;}
@@ -642,7 +701,11 @@ function betoltKep(cim,elElem,meret,megjelenit){
   if(!cim||!elElem)return;
   const alkalmaz=megjelenit||(u=>_alkalmazKep(elElem,u,meret));
   const kulcs=cim+'@'+meret;
-  const kesz=u=>{if(u){_kepCache[kulcs]=u;setSessionKepCache(kulcs,u);setLocalKepCache(kulcs,u);alkalmaz(u);}};
+  const kesz=u=>{
+    if(u){_kepCache[kulcs]=u;setSessionKepCache(kulcs,u);setLocalKepCache(kulcs,u);alkalmaz(u);}
+    else if(!megjelenit){_kepHibaPlaceholder(elElem);}
+    else{_kepBetoltVege(elElem);elElem.innerHTML='';}
+  };
   if(_kepCache[kulcs]){alkalmaz(_kepCache[kulcs]);return;}
   const sessionUrl=getSessionKepCache(kulcs);
   if(sessionUrl){_kepCache[kulcs]=sessionUrl;alkalmaz(sessionUrl);return;}
@@ -717,6 +780,7 @@ function _lekerBarmiKep(nyelv,cim,meret){
 }
 function _kepHibaPlaceholder(elem){
   if(!elem)return;
+  elem.classList.remove('kep-betolt');
   elem.innerHTML=elem.dataset.placeholder||'';
   const status=document.createElement('span');
   status.className='kep-hiba';
@@ -729,6 +793,7 @@ function _alkalmazKep(elem,url,meret){
   img.src=url;
   img.alt=elem.dataset.alt||'Látványosság képe';
   img.loading='lazy';
+  img.onload=()=>_kepBetoltVege(elem);
   img.onerror=()=>_kepHibaPlaceholder(elem);
   img.style.cssText='width:100%;height:100%;object-fit:cover;display:block';
   if(meret>400){
