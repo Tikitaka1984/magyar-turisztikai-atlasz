@@ -72,14 +72,17 @@ nav{
 .nav-logo{
   font-family:'Fraunces',serif;font-size:1.22rem;font-weight:600;
   letter-spacing:-.02em;color:var(--ink);cursor:pointer;line-height:1;
+  display:inline-flex;align-items:center;text-decoration:none;
 }
 .nav-logo span{color:var(--accent);font-style:italic;font-weight:500}
+.nav-logo:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 .nav-links{display:flex;gap:.15rem;margin-left:auto;align-items:center}
 .nav-link{
   position:relative;
   font-size:.74rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
   color:var(--muted);padding:.5rem .8rem;transition:color .15s,transform .08s;
   cursor:pointer;background:none;border:none;font-family:inherit;
+  display:inline-flex;align-items:center;text-decoration:none;
 }
 .nav-link:not(.active):hover{color:var(--accent)}
 .nav-link:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
