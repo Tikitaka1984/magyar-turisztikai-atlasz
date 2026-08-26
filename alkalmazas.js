@@ -97,6 +97,33 @@ window.addEventListener('load',router);
 const NYIL_SVG='<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M13 6l6 6-6 6"/></svg>';
 const HELY_SVG='<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.1 7-11.3A7 7 0 0 0 5 9.7C5 14.9 12 21 12 21z"/><circle cx="12" cy="9.7" r="2.4"/></svg>';
 
+/* ════════ "TUDTAD-E?" KÁRTYA ════════ */
+/* Betöltéskor véletlenszerűen kiválaszt egy mondatot valamelyik régió
+   termeszetfoldrajz mezőjéből vagy egy látványosság reszletes leírásából.
+   Csak a kellően hosszú (nem címszerű) mondatokat veszi figyelembe. */
+function mondatokraBont(szoveg){
+  return szoveg.split(/(?<=[.!?])\s+(?=[A-ZÁÉÍÓÖŐÚÜŰ])/).map(m=>m.trim()).filter(m=>m.length>=40);
+}
+function veletlenTudtadEMondat(){
+  const mondatok=[];
+  REGIOK.forEach(r=>{
+    if(r.termeszetfoldrajz&&r.termeszetfoldrajz.trim())mondatokraBont(r.termeszetfoldrajz).forEach(m=>mondatok.push(m));
+  });
+  LATV.forEach(l=>{
+    if(l.reszletes&&l.reszletes.trim())mondatokraBont(l.reszletes).forEach(m=>mondatok.push(m));
+  });
+  if(!mondatok.length)return '';
+  return mondatok[Math.floor(Math.random()*mondatok.length)];
+}
+function tudtadEDoboz(){
+  const mondat=veletlenTudtadEMondat();
+  if(!mondat)return '';
+  return `<section class="tudtad-box" aria-label="Tudtad-e érdekesség">
+    <div class="tudtad-cim"><span class="tudtad-ikon" aria-hidden="true">🔎</span> Tudtad-e?</div>
+    <p class="tudtad-szoveg">${mondat}</p>
+  </section>`;
+}
+
 function renderHome(){
   const total=LATV.length;
   let cards='';
@@ -148,6 +175,7 @@ function renderHome(){
             </div>
           </div>
         </header>
+        ${tudtadEDoboz()}
         <div class="portal-statrow" aria-label="Az atlasz számokban">
           <div class="portal-stat"><span class="portal-stat-label">01 / RÉGIÓ</span><span class="portal-stat-val">9</span><span class="portal-stat-desc">Turisztikai régió Magyarországon</span></div>
           <div class="portal-stat"><span class="portal-stat-label">02 / NEVEZETESSÉG</span><span class="portal-stat-val">${total}</span><span class="portal-stat-desc">Feldolgozott látványosság saját adatlappal</span></div>
@@ -382,6 +410,37 @@ function renderNyomtat(slug){
 /* ════════ KVÍZMODUL ════════ */
 const KVIZ_KERDES_LIMIT = 5;
 
+/* ════════ KVÍZ LEGJOBB EREDMÉNY (localStorage, régiónként) ════════ */
+/* Kulcs régiónként külön, hogy a régiók eredményei ne írják felül egymást.
+   Privát böngészőmódban a localStorage írása/olvasása hibát dobhat — ilyenkor
+   egyszerűen nem jelenik meg/mentődik eredmény, semmi sem törik. */
+const KVIZ_EREDMENY_PREFIX = 'mta-kviz-legjobb:';
+function getKvizLegjobb(slug){
+  try{
+    const nyers = localStorage.getItem(KVIZ_EREDMENY_PREFIX + slug);
+    if(!nyers)return null;
+    const adat = JSON.parse(nyers);
+    if(!adat || typeof adat.pont !== 'number' || typeof adat.ossz !== 'number' || adat.ossz <= 0)return null;
+    return adat;
+  }catch(e){
+    return null;
+  }
+}
+function frissitKvizLegjobb(slug, pont, ossz){
+  try{
+    const jelenlegi = getKvizLegjobb(slug);
+    if(jelenlegi && jelenlegi.pont / jelenlegi.ossz >= pont / ossz)return jelenlegi;
+    const uj = {pont, ossz};
+    localStorage.setItem(KVIZ_EREDMENY_PREFIX + slug, JSON.stringify(uj));
+    return uj;
+  }catch(e){
+    return {pont, ossz};
+  }
+}
+function kvizLegjobbSor(legjobb){
+  return legjobb ? `<p class="quiz-best">Eddigi legjobb eredményed ebben a régióban: <strong>${legjobb.pont}/${legjobb.ossz}</strong></p>` : '';
+}
+
 function kever(tomb){
   const a=tomb.slice();
   for(let i=a.length-1;i>0;i--){
@@ -415,6 +474,7 @@ function renderKvizValaszto(uzenet){
       <div class="quiz-region-body">
         <h2>${r.nev}</h2>
         <p>${aktiv?kerdesSzam>KVIZ_KERDES_LIMIT?`Minden indításkor ${KVIZ_KERDES_LIMIT} véletlen kérdés a ${kerdesSzam} kérdéses kérdésbankból.`:`${kerdesSzam} kérdéses kvíz érhető el ehhez a régióhoz.`:'Ehhez a régióhoz még készül a kérdésbank.'}</p>
+        ${aktiv?kvizLegjobbSor(getKvizLegjobb(r.slug)):''}
         <button type="button" class="quiz-start-btn" ${aktiv?`onclick="location.hash='#/kviz/${r.slug}'"`:'disabled'}>${aktiv?'Kvíz indítása':'Készül'}</button>
       </div>
     </div>`;
@@ -490,10 +550,12 @@ function kvizKovetkezo(){
 
 function renderKvizEredmeny(){
   const a=kvizAllapot;if(!a)return;
+  const legjobb=frissitKvizLegjobb(a.slug,a.pont,a.kerdesek.length);
   document.getElementById('quizBox').innerHTML=`
     <div class="section-eyebrow">Kvíz vége</div>
     <h1>${regioOf(a.slug).nev} kvíz</h1>
     <p class="quiz-score">Pontszám: <strong>${a.pont} / ${a.kerdesek.length}</strong></p>
+    ${kvizLegjobbSor(legjobb)}
     <div class="quiz-actions">
       <button type="button" onclick="renderKviz('${a.slug}')">Újrakezdés</button>
       <button type="button" onclick="location.hash='#/kviz'">Másik régió választása</button>
