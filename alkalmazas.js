@@ -13,7 +13,7 @@ function ikonOf(l){return KAT_IKON[l.kat[0]]||"📍"}
 function getLang(){return location.hash.replace(/^#/,'').startsWith('/en/')||location.hash==='#/en'?'en':'hu'}
 function ui(key){return window.UI_TEXT?.[getLang()]?.[key]||window.UI_TEXT?.hu?.[key]||key}
 function localizedPath(path){return `#${getLang()==='en'?'/en':''}${path}`}
-function helyStr(l){return l.megye==='Budapest'?l.tp:getLang()==='en'?`${l.tp} · ${l.megye}`:`${l.tp} · ${l.megye} vármegye`}
+function helyStr(l){return l.megye==='Budapest'?l.tp:getLang()==='en'?`${l.tp} · ${l.megye} County`:`${l.tp} · ${l.megye} vármegye`}
 function regioOf(slug){return REGIOK.find(r=>r.slug===slug)}
 function latvOf(slug){return LATV.filter(l=>l.r===slug)}
 function tagHtml(k){return `<span class="tag tag-${k}">${(getLang()==='en'?KAT_LABEL_EN:KAT_LABEL_HU)[k]||k}</span>`}
@@ -205,8 +205,8 @@ function veletlenTudtadEMondat(){
 function tudtadEDoboz(){
   const mondat=veletlenTudtadEMondat();
   if(!mondat)return '';
-  return `<section class="tudtad-box" aria-label="Tudtad-e érdekesség">
-    <div class="tudtad-cim"><span class="tudtad-ikon" aria-hidden="true">🔎</span> Tudtad-e?</div>
+  return `<section class="tudtad-box" aria-label="${ui('didYouKnowLabel')}">
+    <div class="tudtad-cim"><span class="tudtad-ikon" aria-hidden="true">🔎</span> ${getLang()==='en'?ui('didYouKnow'):'Tudtad-e?'}</div>
     <p class="tudtad-szoveg">${mondat}</p>
   </section>`;
 }
@@ -218,7 +218,7 @@ function renderHome(){
     const n=latvOf(r.slug).length;
     const sorszam=String(i+1).padStart(2,'0');
     const savHtml=r.sav?`<span class="regio-sav" style="background:linear-gradient(90deg,rgba(${hexRgb(r.szin)},.94),rgba(${hexRgb(r.szin)},.62))">${HELY_SVG}${r.sav}</span>`:'';
-    cards+=`<button class="regio-card kesz" data-count="${n}" aria-label="${r.nev} régió megnyitása, ${n} látványosság" onclick="location.hash='#/regio/${r.slug}'">
+    cards+=`<button class="regio-card kesz" data-count="${n}" aria-label="${getLang()==='en'?`${ui('regionCard')} ${r.nev}, ${n} ${ui('attractions')}`:`${r.nev} ${ui('regionCard')}, ${n} látványosság`}" onclick="location.hash='#/regio/${r.slug}'">
       <div class="regio-header" style="background:linear-gradient(135deg,${r.szin},${r.szin}cc)">
         <span class="regio-header-ikon">${r.ikon}</span>
         <span class="regio-header-kep" id="rhk-${r.slug}"></span>
@@ -406,7 +406,7 @@ function renderCards(){
   const grid=document.getElementById('grid');
   if(!lista.length){grid.innerHTML=`<div class="empty-state"><div style="font-size:2rem">🔍</div><p>${getLang()==='en'?'No results match this search.':'Nincs találat erre a keresésre.'}</p></div>`;renderMarkers([]);return;}
   grid.innerHTML=lista.map(l=>`
-    <div class="card" id="card-${l.id}" role="button" tabindex="0" aria-label="${l.nev} adatlapjának megnyitása" onclick="activateCard(${l.id})" onkeydown="onCardKey(event,${l.id})">
+    <div class="card" id="card-${l.id}" role="button" tabindex="0" aria-label="${getLang()==='en'?`${ui('attractionCard')} ${l.nev}`:`${l.nev} ${ui('attractionCard')}`}" onclick="activateCard(${l.id})" onkeydown="onCardKey(event,${l.id})">
       <div class="card-ph" id="cph-${l.id}"><span class="card-ph-ikon">${ikonOf(l)}</span></div>
       <div class="card-body">
         <div class="card-kat">${l.kat.map(tagHtml).join('')}</div>
@@ -454,8 +454,8 @@ function renderNyomtat(slug){
   const latvHtml=lista.map((l,i)=>{
     const pi=l.info||{};
     const infoSorok=[
-      pi.nyitvatartas?`<div class="print-info-sor"><strong>Nyitvatartás:</strong> ${pi.nyitvatartas}</div>`:'',
-      pi.megkozelites?`<div class="print-info-sor"><strong>Megközelítés:</strong> ${pi.megkozelites}</div>`:''
+      pi.nyitvatartas?`<div class="print-info-sor"><strong>${getLang()==='en'?ui('openingHours'):'Nyitvatartás'}:</strong> ${pi.nyitvatartas}</div>`:'',
+      pi.megkozelites?`<div class="print-info-sor"><strong>${getLang()==='en'?ui('access'):'Megközelítés'}:</strong> ${pi.megkozelites}</div>`:''
     ].filter(Boolean).join('');
     return `<article class="print-latv">
       <div class="print-latv-fej">
@@ -465,32 +465,32 @@ function renderNyomtat(slug){
       <p class="print-latv-rovid">${l.rovid}</p>
       <p class="print-latv-reszletes">${l.reszletes}</p>
       ${infoSorok?`<div class="print-latv-info">${infoSorok}</div>`:''}
-      ${l.forras&&l.forras.length?`<div class="print-latv-forras">Forrás: ${l.forras.join(' · ')}</div>`:''}
+      ${l.forras&&l.forras.length?`<div class="print-latv-forras">${getLang()==='en'?ui('source'):'Forrás'}: ${l.forras.join(' · ')}</div>`:''}
     </article>`;
   }).join('');
   document.getElementById('app').innerHTML=`
     <main class="print-page">
       <div class="print-toolbar">
-        <a class="print-vissza" href="#/regio/${slug}">← Vissza a régióhoz</a>
-        <button type="button" class="print-gomb" onclick="window.print()">🖨 Nyomtatás / mentés PDF-be</button>
+        <a class="print-vissza" href="${localizedPath(`/regio/${slug}`)}">${getLang()==='en'?'← Back to the region':'← Vissza a régióhoz'}</a>
+        <button type="button" class="print-gomb" onclick="window.print()">${getLang()==='en'?'🖨 Print / save as PDF':'🖨 Nyomtatás / mentés PDF-be'}</button>
       </div>
       <header class="print-fej">
-        <div class="print-felcim">Magyar Turisztikai Atlasz · Nyomtatható tananyaglap</div>
+        <div class="print-felcim">${ui('printableSheet')}</div>
         <h1>${r.nev}</h1>
         <p class="print-lead">${r.leiras}</p>
-        <div class="print-osszegzes">${lista.length} látványosság · 13. évfolyam, turisztikai technikus képzés</div>
+        <div class="print-osszegzes">${lista.length} ${getLang()==='en'?ui('attractions'):'látványosság'} · ${ui('printSummary')}</div>
       </header>
       ${geo?`<section class="print-szakasz">
-        <h2>Természetföldrajz</h2>
+        <h2>${getLang()==='en'?'Physical geography':'Természetföldrajz'}</h2>
         <p class="print-geo">${geo}</p>
       </section>`:''}
       <section class="print-szakasz">
-        <h2>Látványosságok</h2>
+        <h2>${getLang()==='en'?'Attractions':'Látványosságok'}</h2>
         ${latvHtml}
       </section>
       <footer class="print-lablec">
-        Forrás: turisztikai tankönyvi tényadatok alapján, saját oktatási célú megfogalmazásban · Térkép: OpenStreetMap.<br>
-        Magyar Turisztikai Atlasz — oktatási célú, nonprofit tananyag · Készült: ${datum}
+        ${ui('printFooter')}<br>
+        ${ui('nonprofitMaterial')} · ${ui('prepared')}: ${datum}
       </footer>
     </main>`;
   localizeRenderedUI();
@@ -527,7 +527,7 @@ function frissitKvizLegjobb(slug, pont, ossz){
   }
 }
 function kvizLegjobbSor(legjobb){
-  return legjobb ? `<p class="quiz-best">Eddigi legjobb eredményed ebben a régióban: <strong>${legjobb.pont}/${legjobb.ossz}</strong></p>` : '';
+  return legjobb ? `<p class="quiz-best">${ui('bestScore')} <strong>${legjobb.pont}/${legjobb.ossz}</strong></p>` : '';
 }
 
 function kever(tomb){

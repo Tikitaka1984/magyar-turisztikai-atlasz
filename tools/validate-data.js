@@ -112,6 +112,22 @@ function loadData() {
 
 function validateEnglishTranslations(REGIOK, LATV, KVIZ_QUESTIONS, EN_TRANSLATIONS, EN_QUIZ) {
   const group = 'Angol fordítások';
+  const translationsSource = fs.readFileSync(EN_TRANSLATIONS_PATH, 'utf8');
+  const forbiddenPlaceholders = [
+    'Answer option 1',
+    'Answer option 2',
+    'Answer option 3',
+    'Answer option 4',
+    'The atlas introduces its cultural, historical or natural significance',
+  ];
+  forbiddenPlaceholders.forEach(placeholder => {
+    if (translationsSource.includes(placeholder)) {
+      addError(group, `Tiltott helyőrző szöveg az angol fordításokban: "${placeholder}".`);
+    }
+  });
+  if (/LATV\s*\.\s*forEach|KVIZ_QUESTIONS[\s\S]{0,120}\.flat\(\)[\s\S]{0,80}\.forEach/.test(translationsSource)) {
+    addError(group, 'Az angol attrakció- és kvízfordításoknak explicit ID-alapú bejegyzéseknek kell lenniük, nem generálhatók a magyar tömbökből.');
+  }
   if (!isObject(EN_TRANSLATIONS) || !isObject(EN_TRANSLATIONS.regions) || !isObject(EN_TRANSLATIONS.attractions)) {
     addError(group, 'Az EN_TRANSLATIONS regions és attractions objektumai kötelezőek.');
     return;
@@ -129,7 +145,16 @@ function validateEnglishTranslations(REGIOK, LATV, KVIZ_QUESTIONS, EN_TRANSLATIO
   (LATV || []).forEach(attraction => {
     const translation = EN_TRANSLATIONS.attractions[attraction.id];
     if (!translation) addError(group, `${attraction.id}: hiányzó angol látványosság-fordítás.`);
-    else if (!isNonEmptyString(translation.nev)) addError(group, `${attraction.id}: üres angol látványosságnév.`);
+    else {
+      ['nev', 'rovid', 'reszletes'].forEach(field => {
+        if (!isNonEmptyString(translation[field])) addError(group, `${attraction.id}: üres angol ${field}.`);
+      });
+      Object.keys(attraction.info || {}).forEach(field => {
+        if (!isObject(translation.info) || !isNonEmptyString(translation.info[field])) {
+          addError(group, `${attraction.id}: hiányzó vagy üres angol info.${field}.`);
+        }
+      });
+    }
   });
   Object.keys(EN_TRANSLATIONS.attractions).forEach(id => {
     if (!attractionIds.has(String(id))) addError(group, `${id}: ismeretlen angol látványosság-ID.`);
@@ -145,7 +170,14 @@ function validateEnglishTranslations(REGIOK, LATV, KVIZ_QUESTIONS, EN_TRANSLATIO
     if (!translation) { addError(group, `${question.id}: hiányzó angol kvízfordítás.`); return; }
     if (!isNonEmptyString(translation.question)) addError(group, `${question.id}: üres angol question.`);
     if (!isNonEmptyString(translation.explanation)) addError(group, `${question.id}: üres angol explanation.`);
-    if (!Array.isArray(translation.answers) || translation.answers.length !== question.answers.length) addError(group, `${question.id}: az angol answers elemszáma nem egyezik a magyarral.`);
+    if (!Array.isArray(translation.answers) || translation.answers.length !== question.answers.length) {
+      addError(group, `${question.id}: az angol answers elemszáma nem egyezik a magyarral.`);
+    } else {
+      translation.answers.forEach((answer, index) => {
+        if (!isNonEmptyString(answer)) addError(group, `${question.id}: üres angol answers[${index}].`);
+      });
+    }
+    if ('latvName' in question && !isNonEmptyString(translation.latvName)) addError(group, `${question.id}: üres angol latvName.`);
   });
   Object.keys(EN_QUIZ).forEach(id => { if (!quizIds.has(id)) addError(group, `${id}: ismeretlen angol kvízkérdés-ID.`); });
 }
