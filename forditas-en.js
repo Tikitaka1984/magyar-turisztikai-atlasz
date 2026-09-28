@@ -9,7 +9,15 @@ const UI_TEXT = {
     printSummary: "13. évfolyam, turisztikai technikus képzés",
     printFooter: "Forrás: turisztikai tankönyvi tényadatok alapján, saját oktatási célú megfogalmazásban · Térkép: OpenStreetMap.",
     nonprofitMaterial: "Magyar Turisztikai Atlasz — oktatási célú, nonprofit tananyag",
-    prepared: "Készült"
+    prepared: "Készült", quizBankRandom: "Minden indításkor 5 véletlen kérdés a kérdésbankból.",
+    quizBankAvailable: "kérdéses kvíz érhető el ehhez a régióhoz.", quizBankSoon: "Ehhez a régióhoz még készül a kérdésbank.",
+    quizBankUnavailable: "Ehhez a régióhoz még nincs elérhető kérdésbank. Válassz egy aktív kvízrégiót.",
+    startQuiz: "Kvíz indítása", comingSoon: "Készül", pilotQuiz: "Pilot kvízmodul",
+    chooseQuizRegion: "Válassz kvízrégiót", quizIntro: "Válassz az aktív régiós kérdésbankok közül. A kvíz nem ment eredményt, nincs időmérő, és billentyűzettel is használható.",
+    backToAtlas: "Vissza az atlaszhoz", chooseOtherRegion: "Másik régió választása", question: "kérdés", quizLabel: "kvíz",
+    correct: "Helyes válasz.", incorrect: "Hibás válasz.", correctAnswer: "A helyes válasz:", nextQuestion: "Következő kérdés",
+    quizComplete: "Kvíz vége", score: "Pontszám:", restart: "Újrakezdés",
+    mapLoadError: "A térkép nem tölthető be.", mapLoadHelp: "Nyisd meg a fájlt webszerveren keresztül (Netlify Drop vagy python3 -m http.server), ne dupla kattintással."
   },
   en: {
     appTitle: "Hungarian Tourism Atlas",
@@ -28,6 +36,15 @@ const UI_TEXT = {
     printSummary: "Grade 13 Tourism Technician programme",
     printFooter: "Source: original educational wording based on tourism textbook facts · Map: OpenStreetMap.",
     nonprofitMaterial: "Hungarian Tourism Atlas — nonprofit educational material", prepared: "Prepared",
+    quizBankRandom: "Each attempt draws 5 random questions from the question bank.",
+    quizBankAvailable: "questions are available for this region.", quizBankSoon: "The question bank for this region is being prepared.",
+    quizBankUnavailable: "No question bank is available for this region yet. Choose a region with an active quiz.",
+    startQuiz: "Start quiz", comingSoon: "Coming soon", pilotQuiz: "Pilot quiz module",
+    chooseQuizRegion: "Choose a quiz region", quizIntro: "Choose one of the available regional question banks. Results are not saved, there is no timer, and the quiz is keyboard accessible.",
+    backToAtlas: "Back to the atlas", chooseOtherRegion: "Choose another region", question: "question", quizLabel: "quiz",
+    correct: "Correct answer.", incorrect: "Incorrect answer.", correctAnswer: "The correct answer is:", nextQuestion: "Next question",
+    quizComplete: "Quiz complete", score: "Score:", restart: "Restart",
+    mapLoadError: "The map could not be loaded.", mapLoadHelp: "Open the site through a web server (for example GitHub Pages), rather than by double-clicking the file.",
     mapUnavailable: "The map could not be loaded.",
     mapHelp: "Open the site through a web server (for example GitHub Pages), rather than by double-clicking the file.",
     footer: "Hungarian Tourism Atlas — free educational material for Grade 13 Tourism Technician students.",
@@ -44,63 +61,63 @@ const EN_TRANSLATIONS = {
       "rovid": "Budapest–Central Danube",
       "sav": "World Heritage · Danube Bend",
       "leiras": "The world-famous heritage of the capital and the Danube Bend: Buda Castle, the Parliament Building, Visegrád, Esztergom and Gödöllő.",
-      "termeszetfoldrajz": "The region is dominated by the middle section of the Danube. Between Vác and Visegrád the river is confined by mountains in the picturesque Danube Bend and turns almost at a right angle towards the south, before continuing through Budapest as a broad urban river. To the west rise the limestone and dolomite blocks of the Buda Hills and the karstic Pilis, whose highest point is Pilis-tető (756 m). To the east stand the volcanic Visegrád Mountains and the southern foothills of the Börzsöny. Warm karst water formed hydrothermal caves in the Buda Hills, including the Pál-völgy and Szemlő-hegy caves. The flat alluvial terraces of Pest, the Buda Hills and the loess-covered Gödöllő Hills meet along the river; below the capital the Danube encloses Csepel Island. The thermal springs emerging along fault lines feed Budapest’s renowned medicinal baths. The Danube Bend is also one of the river’s narrowest and most spectacular passages in the Carpathian Basin."
+      "termeszetfoldrajz": "The region is dominated by the middle section of the Danube. Between Vác and Visegrád, the river is confined by mountains in the picturesque Danube Bend and turns almost at a right angle towards the south, before continuing through Budapest as a broad urban river. To the west rise the Buda Hills and the karstic Pilis, limestone and dolomite blocks belonging to the Transdanubian Mountains; the Pilis reaches its highest point at Pilis-tető (756 m). To the east stand the volcanic Visegrád Mountains, built of andesite, and the southern foothills of the Börzsöny, facing the opposite bank. In the Buda Hills, the dissolving action of lukewarm karst water formed hydrothermal caves, including the Pál-völgy and Szemlő-hegy caves. The flat alluvial terraces of Pest, the Buda hills and the loess-covered Gödöllő Hills to the north-east meet along the river; below the capital, the Danube encloses Csepel Island. A natural feature of the region is the Buda thermal line: lukewarm and hot karst springs emerging along faults in the hills feed Budapest’s renowned medicinal baths. The Danube Bend is also one of the river’s narrowest and most spectacular passages through the Carpathian Basin."
     },
     "eszak-magyarorszag": {
       "nev": "Northern Hungary",
       "rovid": "Northern Hungary",
       "sav": "Wine Regions · Castles",
       "leiras": "Eger, Tokaj-Hegyalja, Hollókő and Aggtelek: wine regions, castles and UNESCO heritage between the Bükk and Mátra mountains.",
-      "termeszetfoldrajz": "The landscape is shaped by the west-to-east ranges of the North Hungarian Mountains: the Cserhát, Mátra, Bükk, Cserehát and Zemplén Mountains. Hungary’s highest point, Kékes (1,014 m), rises in the Mátra, while the plateau-like Bükk has limestone surfaces above 900 metres. The Mátra and Zemplén are volcanic, whereas the Bükk and Aggtelek Karst consist mainly of limestone and contain rich surface and underground karst features. Their World Heritage cave system includes the more than 25-kilometre-long Baradla Cave. The Sajó, Hernád, Bodrog and Zagyva rivers carry mountain waters south towards the Tisza. Volcanic soils, sunny southern slopes and distinctive microclimates have made the Tokaj and Eger wine regions famous. The Zemplén Mountains and Aggtelek Karst are among Hungary’s least developed, most natural landscapes."
+      "termeszetfoldrajz": "The landscape is shaped by the west-to-east ranges of the North Hungarian Mountains: the Cserhát, Mátra, Bükk, Cserehát and Zemplén Mountains. Hungary’s highest point, Kékes (1,014 m), rises in the Mátra, while the plateau-like Bükk has limestone plateaus above 900 metres. The Mátra and Zemplén are volcanic and consist of andesite and rhyolite tuff, whereas the Bükk and Aggtelek Karst consist of limestone and contain rich surface and underground karst features. The jewel of the latter’s World Heritage cave system is the more than 25-kilometre-long Baradla Cave, which is rich in dripstone formations. The Sajó, Hernád, Bodrog and Zagyva rivers carry mountain waters south towards the Tisza, while loess-covered basins and hills flank the foothills. Volcanic soils, sunny southern slopes and distinctive microclimates have made the Tokaj and Eger wine regions famous. The Zemplén Mountains and Aggtelek Karst are among Hungary’s least developed and most natural landscapes."
     },
     "eszak-alfold": {
       "nev": "Northern Great Plain",
       "rovid": "Northern Great Plain",
       "sav": "Puszta · Medicinal Spas",
-      "leiras": "Debrecen, Hortobágy and Nyíregyháza: civic traditions, a World Heritage puszta and medicinal spas.",
-      "termeszetfoldrajz": "The region lies entirely on the low, flat Great Plain, mostly 80–130 metres above sea level. Its characteristic landscapes include the saline Hortobágy, the wind-shaped sand dunes of the Nyírség and the fertile loess soils of the Hajdúság and Nagykunság. Its main river is the winding Tisza, joined by the Bodrog, Sajó, Kraszna and Berettyó. Before nineteenth-century river regulation, extensive floodplains, marshes and wetlands covered the area. Hortobágy is one of Europe’s largest continuous natural grasslands, known for vast pastures, saline lakes and summer mirages. Numerous oxbow lakes remain after regulation. Hot thermal water from deep underground supplies medicinal spas including Hajdúszoboszló and Debrecen. The region has one of Hungary’s driest and most continental climates."
+      "leiras": "Debrecen, Hortobágy and Nyíregyháza: a historic burgher city, a World Heritage puszta and medicinal spas.",
+      "termeszetfoldrajz": "The region lies entirely on the low, flat Great Plain, mostly 80–130 metres above sea level, and its terrain is barely dissected. Its characteristic landscapes include the saline Hortobágy, the wind-shaped sand dunes of the Nyírség and the fertile loess soils of the Hajdúság and Nagykunság. Its main river is the winding Tisza, joined by the Bodrog, Sajó, Kraszna and Berettyó; before nineteenth-century river regulation, extensive floodplains, marshes and wetlands covered the area. Hortobágy is one of Europe’s largest continuous natural grasslands, known for its vast pastures, saline lakes and frequent summer mirages. Numerous oxbow lakes remain after regulation. Hot thermal water from deep underground supplies medicinal spas including Hajdúszoboszló and Debrecen. The region is one of Hungary’s driest areas and has a continental climate."
     },
     "tisza-to": {
       "nev": "Lake Tisza",
       "rovid": "Lake Tisza",
       "sav": "Wetlands · Water Sports",
-      "leiras": "Hungary’s largest artificial lake: water tourism, an ecocentre and rich birdlife.",
-      "termeszetfoldrajz": "Lake Tisza is Hungary’s largest artificial body of standing water and its second-largest lake after Lake Balaton. It was created by the dam commissioned at Kisköre in 1973. The approximately 127 km² lake lies on the Great Plain and has an average depth of only about 1–2 metres. The Tisza continuously supplies and renews its water; reed beds, oxbows, shallow bays and marsh habitats line its shores. Willow-covered islands and floating marshes divide the water into a floodplain mosaic. Its shallow water supports exceptionally rich birdlife, and the Tiszavalk Basin is a strictly protected bird reserve. Great egrets, white-tailed eagles and several heron species nest or migrate here. The area is a major Hungarian centre for water sports, angling and ecotourism."
+      "leiras": "Hungary’s largest artificial lake: water tourism, an ecocentre and birdlife.",
+      "termeszetfoldrajz": "Lake Tisza is Hungary’s largest artificial body of standing water and its second-largest lake after Lake Balaton. It was created by the dam commissioned at Kisköre in 1973. The lake lies in the middle of the flat Great Plain, where the Heves Plain meets the Borsod Floodplain; it covers approximately 127 km² and has an average depth of only around 1–2 metres. The Tisza continuously supplies and renews its water, while extensive reed beds, oxbows, shallow bays and marsh habitats line its shores. Willow-covered islands and floating marshes divide the water into a mosaic resembling a vast floodplain rather than a single open lake. Its shallow, slowly warming water supports one of Central Europe’s richest bird populations, and a large part of the lake—the Tiszavalk Basin—is a strictly protected bird reserve. Great egrets, white-tailed eagles and several heron species nest or migrate here. The area is a major Hungarian centre for water sports, angling and ecotourism."
     },
     "del-alfold": {
       "nev": "Southern Great Plain",
       "rovid": "Southern Great Plain",
       "sav": "Art Nouveau · Puszta",
-      "leiras": "Szeged, Kecskemét and Ópusztaszer: Art Nouveau, a national historical memorial park and the puszta.",
-      "termeszetfoldrajz": "The region occupies the southern Great Plain between the Danube and Tisza, with the sandy ridge of the Danube–Tisza Interfluve between them. Wind-shaped dunes and saline lakes characterise this ridge. To the east are the fertile loess plains of the Tisza, Maros and Körös rivers. Hungary’s lowest point, about 78 metres above sea level, lies near Gyálarét by Szeged. This is among the country’s sunniest and driest landscapes, with hot summers and up to 2,000 hours of sunshine a year. Orchards, vineyards and arable fields shaped by the cultivation of sand and loess define its appearance. Abundant underground thermal water supports spa towns including Szeged, Gyula and Kecskemét."
+      "leiras": "Szeged, Kecskemét and Ópusztaszer: Art Nouveau, a historical memorial park and the puszta.",
+      "termeszetfoldrajz": "The region occupies the southern Great Plain between the Danube and Tisza, with the sandy ridge of the Danube–Tisza Interfluve between them. Wind-shaped sand dunes and mounds, together with saline lakes hidden among them—including the saline waters of the Kiskunság—characterise this ridge. To the east are the fertile loess plains of the Tisza, Maros and Körös rivers, among Hungary’s most important arable landscapes. Hungary’s lowest point, about 78 metres above sea level, lies near Gyálarét by Szeged. This is among the country’s sunniest and driest landscapes and has some of its hottest summers, with up to 2,000 hours of sunshine a year. The stabilisation and agricultural cultivation of the sand and loess ridges—with orchards, vineyards and arable fields—also define the landscape. Abundant underground thermal water supports spa towns including Szeged, Gyula and Kecskemét."
     },
     "kozep-dunantul": {
       "nev": "Central Transdanubia",
       "rovid": "Central Transdanubia",
       "sav": "Royal Cities · Porcelain",
       "leiras": "Székesfehérvár, Veszprém, Tata and Herend: royal cities, castles and porcelain art.",
-      "termeszetfoldrajz": "The core of the region is formed by the north-east to south-west ranges of the Transdanubian Mountains: the Bakony, Vértes, Gerecse and Velence Mountains. Most are limestone and dolomite fault blocks rich in karst features, caves, sinkholes and springs, separated by tectonic trenches such as the Mór Gap. In contrast, the Velence Mountains are a rare Hungarian granite landscape with rounded boulders and rocking stones. The highest summit is Kőris-hegy (709 m) in the Bakony. The Danube and lowlands lie to the north, while shallow, reed-fringed Lake Velence lies to the south. Besides the Danube, the Séd, Gaja and Által-ér drain the mountains. Karst springs and thermal waters around places such as Tata and Székesfehérvár feed numerous baths and lakes."
+      "termeszetfoldrajz": "The core of the region is formed by the north-east to south-west ranges of the Transdanubian Mountains: the Bakony, Vértes, Gerecse and Velence Mountains. Most are limestone and dolomite fault blocks rich in karst features, caves, sinkholes and springs, separated by tectonic trenches such as the Mór Gap. In contrast, the Velence Mountains are a rare Hungarian granite landscape with rounded boulders and rocking stones. The highest summit is Kőris-hegy (709 m) in the Bakony. The mountains are bordered to the north by the Danube and the plains between Tata and Székesfehérvár, and to the south by shallow, reed-fringed Lake Velence. Besides the Danube, the Séd, Gaja and Által-ér drain the mountains. Karst springs and thermal waters around places such as Tata and Székesfehérvár feed numerous baths and lakes."
     },
     "balaton": {
       "nev": "Lake Balaton Region",
       "rovid": "Lake Balaton",
       "sav": "Lake Country · Wine and Spas",
       "leiras": "Central Europe’s largest lake: Tihany, Keszthely, Hévíz and Badacsony, with wine and water tourism.",
-      "termeszetfoldrajz": "The region takes its name from Lake Balaton, Central Europe’s largest lake. It covers nearly 600 km², is about 77 kilometres long and averages only around 3 metres in depth, making it one of the world’s largest shallow lakes. The basin lies between the Balaton Uplands and the gently rolling southern shore. Basalt witness hills—including Badacsony, Szent György-hegy, Csobánc and Gulács—line the northern shore as remnants of former volcanic activity. The extinct geyser cones, two inner lakes and basalt-tuff landscape of the Tihany Peninsula are geological rarities. Lake Hévíz on the western shore is one of the world’s largest biologically active natural thermal lakes. The Zala brings most water into Balaton after passing through the wetlands of Kis-Balaton. The shallow water warms quickly, making the lake a leading destination for bathing, sailing and water tourism."
+      "termeszetfoldrajz": "The region takes its name from Lake Balaton, Central Europe’s largest lake. It covers nearly 600 km², is about 77 kilometres long and averages only around 3 metres in depth, making it one of the world’s largest shallow lakes. Its basin lies in a young trench formed by subsidence between the Balaton Uplands and the gently rolling southern shore of Somogy. Basalt witness hills—including Badacsony, Szent György-hegy, Csobánc and Gulács—line the northern shore as eroded remnants of former volcanic activity. The extinct geyser cones, two inner lakes—Belső-tó and Külső-tó—and basalt-tuff landscape of the Tihany Peninsula are geological rarities. Lake Hévíz on the western shore is one of the world’s largest biologically active natural thermal lakes, and its lukewarm water does not cool completely even in winter. The Zala brings most water into Balaton from the south-west after its water is filtered and purified through the marshes and bird habitats of Kis-Balaton. The shallow water warms quickly, making the lake a leading destination for bathing, sailing and water tourism."
     },
     "nyugat-dunantul": {
       "nev": "Western Transdanubia",
       "rovid": "Western Transdanubia",
-      "sav": "UNESCO Lake Landscape · Urban Heritage",
+      "sav": "UNESCO Lake Landscape · Urban History",
       "leiras": "Pannonhalma, Sopron, Kőszeg and Lake Fertő: ancient urban heritage and a UNESCO lake landscape.",
-      "termeszetfoldrajz": "The northern region includes the flat, gravelly alluvial Little Hungarian Plain, while the western edge belongs to the eastern foothills of the Alps. Írott-kő (882 m) in the Kőszeg Mountains is the highest point of Transdanubia. The Rába, Rábca, Répce, Lapincs and Zala are its main rivers, while the Danube created the branching island world of Szigetköz. Shallow, reed-fringed Lake Fertő is one of Europe’s westernmost steppe lakes and its level varies strongly with the weather. The formerly extensive marshes of the Hanság adjoin it. The wooded, small-village hills of the Őrség and Vasi-hegyhát occupy the south-west. Owing to the nearby Alps, the western borderland is among Hungary’s wettest, coolest and greenest areas."
+      "termeszetfoldrajz": "The northern region includes the flat, gravelly alluvial Little Hungarian Plain, while its western edge is formed by the West Hungarian Borderland, or Alpokalja, belonging to the eastern foothills of the Alps. Írott-kő (882 m) in the Kőszeg Mountains is the highest point of Transdanubia. The Rába, Rábca, Répce, Lapincs and Zala are its main rivers, while the Danube created the gravelly, branching island world of Szigetköz in Hungary’s north-western corner. Shallow, steppe-like Lake Fertő, fringed by extensive reed beds, is one of Europe’s westernmost saline lakes and its level varies strongly with the weather. Adjoining it is the Hanság, a largely drained former bogland that once connected Lake Fertő with the Little Hungarian Plain as a continuous marsh. The wooded, small-village hills of the Őrség and Vasi-hegyhát occupy the south-west. Owing to the nearby Alps, the western borderland is among Hungary’s wettest, coolest and greenest areas."
     },
     "del-dunantul": {
       "nev": "Southern Transdanubia",
       "rovid": "Southern Transdanubia",
       "sav": "Mediterranean Heritage · Thermal Spas",
       "leiras": "Pécs, Villány and Siklós: a Mediterranean atmosphere, Early Christian World Heritage and thermal tourism.",
-      "termeszetfoldrajz": "Most of the region consists of the loess-covered hills of Transdanubia, divided by broad parallel valleys: the Somogy, Tolna and Baranya Hills and the wooded Zselic. Two island-like mountain ranges rise above them: the Mecsek, whose highest point is Zengő (682 m), and the smaller Villány Mountains. The Dráva borders the west and south and the Danube the east, both forming broad floodplains with gallery forests. Caves, karst springs and sinkholes occur in the limestone Mecsek, while sub-Mediterranean vegetation grows on its southern slopes. The sunny climate, milder winters and long autumns favour fruit and grape growing, especially in the Villány and Szekszárd wine regions. Lakes and reservoirs include the Orfű lakes. This is one of Hungary’s most wooded and topographically varied regions."
+      "termeszetfoldrajz": "Most of the region consists of the loess-covered landscapes of the Transdanubian Hills, divided by broad parallel valleys: the Somogy, Tolna and Baranya Hills and the wooded Zselic with its deep valleys. Two island-like mountain ranges rise from these hills in Hungary’s southern, Mediterranean-influenced region: the block-like Mecsek, whose highest point is Zengő (682 m), and the smaller Villány Mountains, known for their warm slopes. The Dráva borders the west and south and the Danube the east; both formed broad floodplains that were once marshy and remain interspersed with gallery forests. Caves, karst springs and sinkholes occur in the limestone Mecsek, while sub-Mediterranean vegetation, including sweet-chestnut groves, grows on its southern slopes. The sunny climate, milder winters and long autumns favour grape and fruit growing, especially in the Villány and Szekszárd wine regions. Lakes and reservoirs of various sizes, including the Orfű lakes, lie among the hills. This is one of Hungary’s most wooded and topographically varied regions."
     }
   },
   "attractions": {
@@ -497,7 +514,7 @@ const EN_TRANSLATIONS = {
     "215": {
       "nev": "Szépasszony Valley, Eger",
       "rovid": "The birthplace of Egri Bikavér: a picturesque wine valley with 32 cellars.",
-      "reszletes": "Szépasszony Valley is one of Eger’s best-known and most visited attractions, with approximately 32 wine cellars standing side by side in an atmospheric valley on the edge of the city. The valley is the birthplace of the legendary Egri Bikavér and other Eger wines, including Kékfrankos, Kékoportó, Cabernet Sauvignon and Leányka. The cellars hold wine presentations and tastings, offering something for every enthusiast of wine culture. According to tradition, Szépasszony Valley has magical powers: anyone who drinks from it is said to long to return. The cellars remain open throughout the year, and the revival of local traditions is especially spectacular during the autumn harvest. The valley’s picturesque natural setting and atmospheric wine cellars make it one of Eger’s most frequently visited destinations.",
+      "reszletes": "Szépasszony Valley is one of Eger’s best-known and most visited attractions, with approximately 32 wine cellars standing side by side in an atmospheric valley on the edge of the city. The valley is the birthplace of the legendary Egri Bikavér and other Eger wines, including Kékfrankos, Kékoportó, Cabernet Sauvignon and Leányka. The cellars hold wine presentations and tastings, offering something for every enthusiast of wine culture. According to tradition, Szépasszony Valley has magical powers: anyone who drinks from it is said to long to return. The cellars are continuously extended throughout the year, and the revival of local traditions is especially spectacular during the autumn harvest. The valley’s picturesque natural setting and atmospheric wine cellars make it one of Eger’s most frequently visited destinations.",
       "info": {
         "megkozelites": "The valley can be reached from Eger on foot in approximately 20–25 minutes; buses 20 and 22 also stop nearby. Eger can be reached from Budapest by train."
       }
@@ -588,7 +605,7 @@ const EN_TRANSLATIONS = {
     "154": {
       "nev": "Csaroda Reformed Church",
       "rovid": "Home to the finest frescoes of the Upper Tisza region, known as the Church of the Smiling Saints.",
-      "reszletes": "The Reformed Church in Csaroda is an outstanding example of 13th-century rural Romanesque church architecture, renowned for its frescoes and smiling saints. The village church, with its rounded apse, shingled roof and round tower, is decorated with rich medieval murals; the figures’ distinctive, cheerful expressions gave it the name Church of the Smiling Saints. It is the best-preserved of the medieval churches in the Upper Tisza region that later became Reformed, and forms part of the Route of Medieval Churches in Central Europe. Its painted coffered ceiling and stone pulpit are also valuable historic features.",
+      "reszletes": "The Reformed Church in Csaroda is an outstanding example of 13th-century rural Romanesque church architecture, renowned for its frescoes and smiling saints. The village church, with its rounded apse, shingled roof and round tower, is decorated with rich medieval murals; the figures’ distinctive, cheerful expressions gave it the name Church of the Smiling Saints. It is the best-preserved of the medieval churches in the Upper Tisza region that later became Reformed, and forms part of the Route of Central European Churches. Its painted coffered ceiling and stone pulpit are also valuable historic features.",
       "info": {
         "megkozelites": "Csaroda can be reached by car from the Vásárosnamény area by turning off Main Road 41; a circular route connects this small village in the Bereg region with other villages that have notable churches."
       }
@@ -611,7 +628,7 @@ const EN_TRANSLATIONS = {
     },
     "157": {
       "nev": "Jász Museum – Jász Horn",
-      "rovid": "The country’s oldest provincial museum, housing the Horn of Lehel, the symbol of the Jász people.",
+      "rovid": "The country’s oldest museum, housing the Horn of Lehel, the symbol of the Jász people.",
       "reszletes": "The Jász Museum in Jászberény is the country’s oldest provincial museum, founded in 1873. Its most treasured possession is the Horn of Lehel, a 12th-century Byzantine work carved from ivory and revered as a symbol of Jász unity. According to legend, before his execution, the chieftain Lehel struck Emperor Conrad on the head with this horn. The museum has rich archaeological, historical, ethnographic and fine-art collections presenting the history and traditions of the Jász people. Jászberény is one of the important centres of cultural life in Jász-Nagykun-Szolnok County and is also made attractive by the annual Csángó Festival.",
       "info": {
         "megkozelites": "Jászberény can be reached from the Budapest–Debrecen railway line via the Hatvan–Jászberény branch line, by bus from Szolnok, or by car via Main Road 31."
@@ -685,7 +702,7 @@ const EN_TRANSLATIONS = {
     "201": {
       "nev": "Lake Tisza Bird Reserve",
       "rovid": "A strictly protected ecological area for endangered bird species in the lake’s northern basin.",
-      "reszletes": "The Bird Reserve, established in Tiszavalk Bay in the northern part of Lake Tisza, is one of the most important habitats and nesting grounds for waterbirds in the lake region. Thousands of birds breed here each year, including numerous endangered species that cannot find undisturbed nesting sites elsewhere. Entry to the reserve is permitted only by paddle boat and under organised conditions; however, the habitat can be observed very well from observation towers outside it: the Bölömbika, Fattyúszerkő and Küszvágó Csér observation towers. As a result of bird conservation, the populations of formerly endangered species are steadily increasing, and the area has become an important destination for nature enthusiasts.",
+      "reszletes": "The Bird Reserve, established in Tiszavalk Bay in the northern part of Lake Tisza, is one of the most important habitats and nesting grounds for waterbirds in the lake region. Thousands of birds breed here each year, including numerous endangered species that cannot find undisturbed nesting sites elsewhere. Entry to the reserve is permitted only by paddle boat and under organised conditions; however, the habitat can be observed very well from observation towers outside it: the Bölömbika, Fattyúszerkő and Küszvágó Csér observation towers. As a result of bird conservation, the number of formerly endangered species is steadily increasing, and the area has become an important destination for nature enthusiasts.",
       "info": {
         "megkozelites": "The Bird Reserve lies in the northern part of Tiszavalk Bay; the observation towers can be reached by car or bicycle from near Tiszafüred and the surrounding villages."
       }
@@ -760,7 +777,7 @@ const EN_TRANSLATIONS = {
       "rovid": "Central Europe’s only intact lowland brick castle.",
       "reszletes": "Gyula Castle is Central Europe’s only surviving intact lowland brick castle, built in the Gothic style in the 15th century. Protected by marshes and moats, the fortress was an important border stronghold during the Ottoman period and was captured by the Ottomans only after a lengthy siege. The well-preserved and restored castle now operates as a museum, presenting relics of life in the border fortresses. In summer, its courtyard provides a distinctive setting for the open-air performances of the Gyula Castle Theatre. Immediately beside the castle is the Gyula Castle Spa, whose thermal medicinal baths are one of the city’s principal attractions. With its Baroque historic centre and its status as the birthplace of Ferenc Erkel, Gyula is also a major tourist destination.",
       "info": {
-        "nyitvatartas": "Mon–Sun",
+        "nyitvatartas": "Á–V",
         "megkozelites": "Gyula can be reached by train on the Békéscsaba–Gyula railway line or by car via Main Road 44; the castle and Castle Spa are in the town centre."
       }
     },
@@ -1027,7 +1044,7 @@ const EN_TRANSLATIONS = {
     "73": {
       "nev": "Lake Hévíz",
       "rovid": "One of the world’s largest biologically active thermal lakes.",
-      "reszletes": "Lake Hévíz is one of the world’s largest biologically active natural spa lakes, located in the town of Hévíz, a few kilometres from Lake Balaton. The approximately 4.4-hectare lake is fed by warm and hot springs rising from deep underground, so its temperature remains 23–25 °C even in winter and can reach around 38 °C in summer. Its sulphurous, mildly radon-rich water and the therapeutic mud on the lake bed are recommended primarily for treating musculoskeletal, joint and rheumatic conditions. In summer, the lake’s surface is covered with Indian water lilies, creating a remarkable sight. The wooden bathhouse built over the water has been one of the centres of Hungarian bathing culture since the 19th century. Today, Hévíz is one of Hungary’s most important spa resorts and an international health-tourism destination.",
+      "reszletes": "Lake Hévíz is one of the world’s largest biologically active natural spa lakes, located in the town of Hévíz, a few kilometres from Lake Balaton. The approximately 4.4-hectare lake is fed by warm and hot springs rising from deep underground, so its temperature remains 23–25 °C even in winter and can reach around 38 °C in summer. Its sulphurous water, which contains a small amount of radon and the therapeutic mud on the lake bed are recommended primarily for treating musculoskeletal, joint and rheumatic conditions. In summer, the lake’s surface is covered with Indian water lilies, creating a remarkable sight. The wooden bathhouse built over the water has been one of the centres of Hungarian bathing culture since the 19th century. Today, Hévíz is one of Hungary’s most important spa resorts and an international health-tourism destination.",
       "info": {
         "nyitvatartas": "Daily",
         "megkozelites": "In the centre of Hévíz; the nearest railway station is in Keszthely, from where it is a few minutes by local bus, or by car via a turn-off from Main Road 71."
@@ -1149,7 +1166,7 @@ const EN_TRANSLATIONS = {
     "223": {
       "nev": "Balatonfüred – Spa Town and Tagore Promenade",
       "rovid": "The first spa town on Lake Balaton, home of the Anna Ball and Tagore Promenade.",
-      "reszletes": "Balatonfüred is Hungary’s first and most famous lakeside spa town, whose springs were already being used for medicinal purposes in the 18th century. The town’s principal attraction is Gyógy tér, home to the Kossuth Lajos drinking fountain and numerous historic buildings, including the former Horváth House, where the Anna Ball was held. Tagore Promenade is a romantic lakeside walkway named in memory of the 1926 visit by the Indian Nobel Prize-winning poet Rabindranath Tagore; sailing boats and ferries bob beside the promenade. During the Reform Era associated with Lajos Kossuth, Balatonfüred was an important intellectual and social centre. The first Anna Ball in Balatonfüred was held here in 1825 and subsequently became an annual tradition. The town also has a cardiac hospital and a climatic health resort.",
+      "reszletes": "Balatonfüred is Hungary’s first and most famous lakeside spa town, whose springs were already being used for medicinal purposes in the 18th century. The town’s principal attraction is Gyógy tér, home to the Kossuth Lajos drinking fountain and numerous historic buildings, including the former Horváth House, where the Anna Ball was held. Tagore Promenade is a romantic lakeside walkway named in memory of the 1926 visit by the Indian Nobel Prize-winning poet Rabindranath Tagore; sailing boats and ferries bob beside the promenade. During the Reform Era associated with Lajos Kossuth, Balatonfüred was an important intellectual and social centre. The first Anna Ball in Balatonfüred was held here in 1825 and subsequently became an annual tradition. The town also has a cardiac hospital and a climate station.",
       "info": {
         "megkozelites": "Balatonfüred can be reached by train on the Budapest–Tapolca railway line or by car from the M7 motorway via Main Road 71."
       }
@@ -1270,16 +1287,16 @@ const EN_TRANSLATIONS = {
       }
     },
     "93": {
-      "nev": "Mosque of Pasha Qasim",
+      "nev": "Mosque of Gazi Pasha Qasim",
       "rovid": "The largest surviving Ottoman-period building in Hungary, on Széchenyi Square.",
-      "reszletes": "The Mosque of Pasha Qasim is the largest surviving building from the period of Ottoman rule in Hungary and stands on Pécs’s main square, Széchenyi Square. It was built in the mid-sixteenth century, during Ottoman rule, using stone from an earlier Christian church; its distinctive dome and square massing display the features of classical Ottoman mosque architecture. After Ottoman rule ended, the mosque was converted into a Catholic church, but its original form has largely survived, and details from the Ottoman period can still be seen inside. The building remains an active church while also being the most significant physical monument of Hungary’s Ottoman heritage. Standing on the main square, the mosque is one of Pécs’s best-known landmarks. Together with the city’s other Ottoman monuments, it offers a unique presentation of the period of Ottoman rule.",
+      "reszletes": "The Mosque of Gazi Pasha Qasim is the largest surviving building from the period of Ottoman rule in Hungary and stands on Pécs’s main square, Széchenyi Square. It was built in the mid-sixteenth century, during Ottoman rule, using stone from an earlier Christian church; its distinctive dome and square massing display the features of classical Ottoman mosque architecture. After Ottoman rule ended, the mosque was converted into a Catholic church, but its original form has largely survived, and details from the Ottoman period can still be seen inside. The building remains an active church while also being the most significant physical monument of Hungary’s Ottoman heritage. Standing on the main square, the mosque is one of Pécs’s best-known landmarks. Together with the city’s other Ottoman monuments, it offers a unique presentation of the period of Ottoman rule.",
       "info": {
         "megkozelites": "In central Pécs, on Széchenyi Square; the city can be reached from Budapest by train and via the M6 motorway."
       }
     },
     "94": {
       "nev": "Villány Wine Region",
-      "rovid": "Hungary’s southernmost historic wine region, renowned for its red wines.",
+      "rovid": "Hungary’s southern historic wine region, renowned for its red wines.",
       "reszletes": "The Villány wine region is Hungary’s southernmost historic wine region and is best known for its full-bodied, high-quality red wines. The warm, Mediterranean-influenced climate and limestone soil provide excellent conditions for ripening red grape varieties, including Cabernet Sauvignon, Merlot, Cabernet Franc and Portugieser. The rows of cellars and press houses in Villány and Villánykövesd are centres of wine tourism, offering guests wine tastings and cellar visits. The wine region is one of the pioneers of the revival of Hungarian red-wine culture and boasts numerous internationally award-winning wineries. The Villány Wine Route was one of the country’s first established wine routes. The region’s cuisine and Swabian traditions further enrich the experience.",
       "info": {
         "megkozelites": "Villány can be reached from Pécs by train on the Pécs–Villány railway line or by car via roads 57 and 5701; the cellar rows are located within the settlement."
@@ -1486,11 +1503,11 @@ const EN_QUIZ = {
     "question": "According to the atlas, the Baroque palace at Gödöllő became known as the favourite summer residence of which famous historical figure?",
     "answers": [
       "Maria Theresa",
-      "Empress Elisabeth (Sisi)",
+      "Queen Elisabeth (Sisi)",
       "King Matthias Corvinus",
       "St Stephen"
     ],
-    "explanation": "According to the description of the Royal Palace of Gödöllő, the building became famous primarily as Empress Elisabeth's (Sisi's) favourite place to stay in Hungary.",
+    "explanation": "According to the description of the Royal Palace of Gödöllő, the building became famous primarily as Queen Elisabeth's (Sisi's) favourite place to stay in Hungary.",
     "latvName": "Royal Palace of Gödöllő"
   },
   "budapest-10": {
@@ -1520,7 +1537,7 @@ const EN_QUIZ = {
     "answers": [
       "The Helikon Library, the country’s first public library",
       "The country’s first permanent stone-built theatre",
-      "Hungary’s first specialist school of viticulture for the Balaton wine regions",
+      "Hungary’s first specialist school of winemaking for the Balaton wine regions",
       "The Georgikon, one of Europe’s first higher-education institutions for agriculture"
     ],
     "explanation": "According to the description of Festetics Palace, the enlightened aristocrat György Festetics founded the Georgikon here in 1797, one of Europe’s first higher-education institutions for agriculture. (The Helikon Library is a valuable part of the palace, but it was not a school founded at that time; the first stone-built theatre is associated with Balatonfüred.)",
@@ -1531,10 +1548,10 @@ const EN_QUIZ = {
     "answers": [
       "It is an artificially dammed thermal lake created for therapeutic purposes in the 19th century",
       "It is a shallow bay of Lake Balaton, separated from the lake’s main basin by reed beds",
-      "It is one of the world’s largest biologically active natural thermal lakes, fed by springs rising from deep underground",
+      "It is one of the world’s largest biologically active natural medicinal lakes, fed by springs rising from deep underground",
       "It is a cold, sulphur-free karst spring whose water is used primarily for drinking cures"
     ],
-    "explanation": "According to the description of Lake Hévíz, it is one of the world’s largest biologically active natural thermal lakes, fed by warm and hot springs rising from deep underground, so its water remains at 23–25°C even in winter. Its sulphurous, mildly radioactive water and the therapeutic mud on the lake bed are recommended primarily for musculoskeletal and rheumatic complaints.",
+    "explanation": "According to the description of Lake Hévíz, it is one of the world’s largest biologically active natural medicinal lakes, fed by lukewarm and hot springs rising from deep underground, so its water remains at 23–25°C even in winter. Its sulphurous water with a low radon content and the therapeutic mud on the lake bed are recommended primarily for musculoskeletal and rheumatic complaints.",
     "latvName": "Lake Hévíz"
   },
   "balaton-04": {
@@ -1685,7 +1702,7 @@ const EN_QUIZ = {
     "answers": [
       "King Louis the Great; it was the centre of the Hungarian queens' estates and was known as the ‘Castle of Queens’",
       "Matthias Corvinus; it served as a magnificent Renaissance summer residence",
-      "King Béla IV; it was a border fortress built after the Mongol invasion",
+      "King Béla IV; it was a stronghold of border defence after the Mongol invasion",
       "Francis II Rákóczi; it was the princely seat of the War of Independence"
     ],
     "explanation": "According to the description of Diósgyőr Castle, it acquired its present form, with four corner towers, during the reign of King Louis the Great in the 14th century. In the Middle Ages, it was traditionally the centre of the Hungarian queens' estates and is therefore also known as the ‘Castle of Queens’.",
@@ -2231,7 +2248,7 @@ const EN_QUIZ = {
     "latvName": "Kiskunság National Park – Bugac"
   },
   "del-alfold-07": {
-    "question": "According to the atlas, what makes Halas lace, the Hungarian speciality displayed at the Lace House in Kiskunhalas, unique?",
+    "question": "According to the atlas, what makes Halas lace, the Hungarikum displayed at the Lace House in Kiskunhalas, unique?",
     "answers": [
       "It is machine-made and mass-produced on an industrial scale",
       "It is produced exclusively using a machine technique developed in the 21st century",

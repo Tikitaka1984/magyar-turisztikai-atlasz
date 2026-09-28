@@ -67,10 +67,15 @@ alapszöveget használja, így a felület nem omlik össze.
 
    ```bash
    node tools/validate-data.js
+   node tools/smoke-i18n.js
    ```
 
 A validátor hibát jelez hiányzó vagy ismeretlen régió-, látványosság- és
 kvízazonosító, üres kötelező angol szöveg, illetve eltérő válaszszám esetén.
+A kétnyelvű smoke ellenőrzés a HU/EN route-felismerést, a nyelvváltáskor
+megőrzött tartalmi útvonalakat, régiónként két angol attrakció adatát, az
+angol keresést, a vármegyeformázást és mind a 90 kvízkérdés szerkezeti
+azonosságát is ellenőrzi.
 
 ## Külső függőségek és szolgáltatások
 
