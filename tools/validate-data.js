@@ -11,6 +11,7 @@ const vm = require('vm');
 const ROOT = path.resolve(__dirname, '..');
 const ADATOK_PATH = path.join(ROOT, 'adatok.js');
 const KVIZ_PATH = path.join(ROOT, 'kviz.js');
+const EN_TRANSLATIONS_PATH = path.join(ROOT, 'forditas-en.js');
 
 const LAT_MIN = 45.5;
 const LAT_MAX = 49.0;
@@ -32,6 +33,7 @@ const hibak = {
   'Régiók': [],
   'Látványosságok': [],
   'Kvízkérdések': [],
+  'Angol fordítások': [],
 };
 
 function addError(group, message) {
@@ -88,11 +90,64 @@ function loadData() {
     addError('Betöltési hibák', `Nem sikerült betölteni a kviz.js fájlt: ${error.message}`);
   }
 
+  try {
+    const translationsSource = fs.readFileSync(EN_TRANSLATIONS_PATH, 'utf8');
+    vm.runInContext(
+      `${translationsSource}\n\nglobalThis.__EN_TRANSLATIONS__ = EN_TRANSLATIONS;\nglobalThis.__EN_QUIZ__ = EN_QUIZ;`,
+      sandbox,
+      { filename: 'forditas-en.js' }
+    );
+  } catch (error) {
+    addError('Betöltési hibák', `Nem sikerült betölteni a forditas-en.js fájlt: ${error.message}`);
+  }
+
   return {
     REGIOK: sandbox.__REGIOK__,
     LATV: sandbox.__LATV__,
     KVIZ_QUESTIONS: sandbox.__KVIZ_QUESTIONS__,
+    EN_TRANSLATIONS: sandbox.__EN_TRANSLATIONS__,
+    EN_QUIZ: sandbox.__EN_QUIZ__,
   };
+}
+
+function validateEnglishTranslations(REGIOK, LATV, KVIZ_QUESTIONS, EN_TRANSLATIONS, EN_QUIZ) {
+  const group = 'Angol fordítások';
+  if (!isObject(EN_TRANSLATIONS) || !isObject(EN_TRANSLATIONS.regions) || !isObject(EN_TRANSLATIONS.attractions)) {
+    addError(group, 'Az EN_TRANSLATIONS regions és attractions objektumai kötelezőek.');
+    return;
+  }
+  const regionSlugs = new Set((REGIOK || []).map(region => region.slug));
+  const attractionIds = new Set((LATV || []).map(attraction => String(attraction.id)));
+  (REGIOK || []).forEach(region => {
+    const translation = EN_TRANSLATIONS.regions[region.slug];
+    if (!translation) addError(group, `${region.slug}: hiányzó angol régiófordítás.`);
+    else if (!isNonEmptyString(translation.nev)) addError(group, `${region.slug}: üres angol régiónév.`);
+  });
+  Object.keys(EN_TRANSLATIONS.regions).forEach(slug => {
+    if (!regionSlugs.has(slug)) addError(group, `${slug}: ismeretlen angol régióslug.`);
+  });
+  (LATV || []).forEach(attraction => {
+    const translation = EN_TRANSLATIONS.attractions[attraction.id];
+    if (!translation) addError(group, `${attraction.id}: hiányzó angol látványosság-fordítás.`);
+    else if (!isNonEmptyString(translation.nev)) addError(group, `${attraction.id}: üres angol látványosságnév.`);
+  });
+  Object.keys(EN_TRANSLATIONS.attractions).forEach(id => {
+    if (!attractionIds.has(String(id))) addError(group, `${id}: ismeretlen angol látványosság-ID.`);
+  });
+  if (!isObject(EN_QUIZ)) {
+    addError(group, 'Az EN_QUIZ objektum hiányzik.');
+    return;
+  }
+  const quizIds = new Set();
+  Object.values(KVIZ_QUESTIONS || {}).flat().forEach(question => {
+    quizIds.add(question.id);
+    const translation = EN_QUIZ[question.id];
+    if (!translation) { addError(group, `${question.id}: hiányzó angol kvízfordítás.`); return; }
+    if (!isNonEmptyString(translation.question)) addError(group, `${question.id}: üres angol question.`);
+    if (!isNonEmptyString(translation.explanation)) addError(group, `${question.id}: üres angol explanation.`);
+    if (!Array.isArray(translation.answers) || translation.answers.length !== question.answers.length) addError(group, `${question.id}: az angol answers elemszáma nem egyezik a magyarral.`);
+  });
+  Object.keys(EN_QUIZ).forEach(id => { if (!quizIds.has(id)) addError(group, `${id}: ismeretlen angol kvízkérdés-ID.`); });
 }
 
 function validateRegiok(REGIOK) {
@@ -289,9 +344,14 @@ function printResult() {
   return 1;
 }
 
-const { REGIOK, LATV, KVIZ_QUESTIONS } = loadData();
+const { REGIOK, LATV, KVIZ_QUESTIONS, EN_TRANSLATIONS, EN_QUIZ } = loadData();
 const regioSlugs = validateRegiok(REGIOK);
 const latvIds = validateLatv(LATV, regioSlugs);
 validateKviz(KVIZ_QUESTIONS, regioSlugs, latvIds);
+validateEnglishTranslations(REGIOK, LATV, KVIZ_QUESTIONS, EN_TRANSLATIONS, EN_QUIZ);
 
 process.exitCode = printResult();
+if (!process.exitCode) {
+  const quizCount = Object.values(KVIZ_QUESTIONS).reduce((sum, questions) => sum + questions.length, 0);
+  console.log(`Angol fordítási lefedettség: ${REGIOK.length}/${REGIOK.length} régió, ${LATV.length}/${LATV.length} látványosság, ${quizCount}/${quizCount} kvízkérdés (100%).`);
+}

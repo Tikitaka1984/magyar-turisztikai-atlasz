@@ -77,6 +77,10 @@ nav{
 .nav-logo span{color:var(--accent);font-style:italic;font-weight:500}
 .nav-logo:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 .nav-links{display:flex;gap:.15rem;margin-left:auto;align-items:center}
+.language-switch{display:flex;align-items:center;gap:.28rem;margin-left:.35rem;padding:.2rem .42rem;border:1px solid var(--hairline);border-radius:999px;font-size:.72rem;font-weight:700;letter-spacing:.06em;white-space:nowrap}
+.language-switch a{color:var(--muted);padding:.18rem .24rem;border-radius:999px;text-decoration:none}
+.language-switch a:hover,.language-switch a:focus-visible{color:var(--accent);outline:2px solid transparent;text-decoration:underline;text-underline-offset:3px}
+.language-switch a.active{background:var(--ink);color:var(--surface);text-decoration:none;cursor:default}
 .nav-link{
   position:relative;
   font-size:.74rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
