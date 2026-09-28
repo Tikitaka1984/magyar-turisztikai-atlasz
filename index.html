@@ -31,6 +31,9 @@
   <div class="nav-links">
     <a class="nav-link" id="navFooldal" href="#/">Főoldal</a>
     <a class="nav-link" id="navRegiok" href="#/regiok">Régiók</a>
+    <div class="language-switch" role="group" aria-label="Nyelvválasztás">
+      <a id="langHu" href="#/" lang="hu" hreflang="hu">HU</a><span aria-hidden="true">|</span><a id="langEn" href="#/en/" lang="en" hreflang="en">EN</a>
+    </div>
     <button class="tema-valto" type="button" id="temaValto"
             aria-label="Világos és sötét téma váltása" title="Téma váltása">
       <span class="ikon-nap" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><circle cx="12" cy="12" r="4.4"/><path d="M12 2.6v2.4M12 19v2.4M2.6 12H5M19 12h2.4M5.4 5.4 7 7M17 17l1.6 1.6M18.6 5.4 17 7M7 17l-1.6 1.6"/></svg></span>
@@ -71,6 +74,8 @@ document.getElementById('temaValto').addEventListener('click', function(){
 <!-- TARTALOM: előbb töltődik be (a régiók és nevezetességek adatai) -->
 <script src="adatok.js"></script>
 <script src="kviz.js"></script>
+<!-- ANGOL FORDÍTÁSI RÉTEG: csak szöveg, a közös azonosítók az alapadatokban maradnak -->
+<script src="forditas-en.js"></script>
 <!-- MŰKÖDÉS: az adatokra és a kvízkérdésekre épül, ezért utána jön -->
 <script src="alkalmazas.js"></script>
 

@@ -6,13 +6,96 @@
 
 /* ════════ SEGÉDFÜGGVÉNYEK ════════ */
 const KAT_LIST = ["mind","vár","kastély","múzeum","vallási","fürdő","természet","örökség","egyéb"];
-const KAT_LABEL = {mind:"Összes",vár:"Vár",kastély:"Kastély",múzeum:"Múzeum",vallási:"Vallási",fürdő:"Fürdő",természet:"Természet",örökség:"Örökség",egyéb:"Egyéb"};
+const KAT_LABEL_HU = {mind:"Összes",vár:"Vár",kastély:"Kastély",múzeum:"Múzeum",vallási:"Vallási",fürdő:"Fürdő",természet:"Természet",örökség:"Örökség",egyéb:"Egyéb"};
+const KAT_LABEL_EN = {mind:"All",vár:"Castle",kastély:"Palace",múzeum:"Museum",vallási:"Religious",fürdő:"Spa",természet:"Nature",örökség:"Heritage",egyéb:"Other"};
 const KAT_IKON = {vár:"🏰",kastély:"🏯",múzeum:"🏛️",vallási:"⛪",fürdő:"♨️",természet:"🌲",örökség:"🗿",egyéb:"📍"};
 function ikonOf(l){return KAT_IKON[l.kat[0]]||"📍"}
-function helyStr(l){return l.megye==='Budapest'?l.tp:l.tp+' · '+l.megye+' vármegye'}
+function getLang(){return location.hash.replace(/^#/,'').startsWith('/en/')||location.hash==='#/en'?'en':'hu'}
+function ui(key){return window.UI_TEXT?.[getLang()]?.[key]||window.UI_TEXT?.hu?.[key]||key}
+function localizedPath(path){return `#${getLang()==='en'?'/en':''}${path}`}
+function helyStr(l){return l.megye==='Budapest'?l.tp:getLang()==='en'?`${l.tp} · ${l.megye} County`:`${l.tp} · ${l.megye} vármegye`}
 function regioOf(slug){return REGIOK.find(r=>r.slug===slug)}
 function latvOf(slug){return LATV.filter(l=>l.r===slug)}
-function tagHtml(k){return `<span class="tag tag-${k}">${KAT_LABEL[k]||k}</span>`}
+function tagHtml(k){return `<span class="tag tag-${k}">${(getLang()==='en'?KAT_LABEL_EN:KAT_LABEL_HU)[k]||k}</span>`}
+
+const HU_REGIO_TEXT = new Map(REGIOK.map(r=>[r.slug,{nev:r.nev,rovid:r.rovid,sav:r.sav,leiras:r.leiras,termeszetfoldrajz:r.termeszetfoldrajz}]));
+const HU_LATV_TEXT = new Map(LATV.map(l=>[l.id,{nev:l.nev,megye:l.megye,tp:l.tp,rovid:l.rovid,reszletes:l.reszletes,info:{...(l.info||{})}}]));
+const HU_QUIZ_TEXT = new Map(Object.values(window.KVIZ_QUESTIONS||{}).flat().map(q=>[q.id,{question:q.question,answers:q.answers.slice(),explanation:q.explanation,latvName:q.latvName}]));
+function applyLanguage(lang){
+  REGIOK.forEach(r=>Object.assign(r,lang==='en'?(window.EN_TRANSLATIONS?.regions?.[r.slug]||HU_REGIO_TEXT.get(r.slug)):HU_REGIO_TEXT.get(r.slug)));
+  LATV.forEach(l=>Object.assign(l,lang==='en'?(window.EN_TRANSLATIONS?.attractions?.[l.id]||HU_LATV_TEXT.get(l.id)):HU_LATV_TEXT.get(l.id)));
+  Object.values(window.KVIZ_QUESTIONS||{}).flat().forEach(q=>Object.assign(q,lang==='en'?(window.EN_QUIZ?.[q.id]||HU_QUIZ_TEXT.get(q.id)):HU_QUIZ_TEXT.get(q.id)));
+}
+
+const EN_UI_PHRASES = new Map([
+  ['Főoldal','Home'],['Régiók','Regions'],['Kvíz','Quiz'],['Összes','All'],['Megnyitás','Open'],
+  ['Kép betöltése','Loading image'],['Kép nem elérhető','Image unavailable'],['Nyitvatartás','Opening hours'],['Megközelítés','Getting there'],
+  ['Tudtad-e?','Did you know?'],['Belépés a régiókhoz','Explore the regions'],['Kvíz indítása','Start quiz'],
+  ['Interaktív oktatási portál','Interactive learning portal'],['Turisztikai technikus képzés','Tourism Technician programme'],
+  ['13. évfolyam · turisztikai technikus','Grade 13 · Tourism Technician programme'],
+  ['Digitális tananyag · 13. évfolyam','Digital learning material · Grade 13'],['2026 / tananyag','2026 / learning material'],
+  ['Térképes áttekintés','Map overview'],['Válassz régiót a térképen','Choose a region on the map'],['Térkép fókuszba','Focus map'],
+  ['Magyarország 9 turisztikai régiója','Hungary’s 9 tourism regions'],['Válassz régiót a felfedezéshez','Choose a region to explore'],
+  ['Tanulási segédpanel','Learning guide'],['Tanulási útvonal','Learning path'],['Haladj lépésről lépésre','Proceed step by step'],
+  ['Válassz régiót.','Choose a region.'],['Nézd meg a térképet.','Explore the map.'],['Olvasd el az adatlapokat.','Read the information sheets.'],['Ellenőrizd tudásod kvízzel.','Check your knowledge with a quiz.'],
+  ['Gyors gyakorlás','Quick practice'],['Kvízes önellenőrzés','Quiz self-check'],['Forrásalap','Sources'],
+  ['Természetföldrajzi áttekintés','Physical geography overview'],['Vissza a régiókhoz','Back to regions'],['Nyomtatási nézet','Print view'],
+  ['Keresés név, település vagy leírás alapján…','Search by name, location or description…'],['Kategóriák','Categories'],
+  ['Pilot kvízmodul','Pilot quiz module'],['Válassz kvízrégiót','Choose a quiz region'],['Kvíz indítása','Start quiz'],['Készül','Coming soon'],
+  ['Vissza az atlaszhoz','Back to the atlas'],['Másik régió választása','Choose another region'],['Következő kérdés','Next question'],
+  ['Helyes válasz.','Correct answer.'],['Hibás válasz.','Incorrect answer.'],['Kvíz vége','Quiz complete'],['Újrakezdés','Restart'],
+  ['Forrás:','Source:'],['Látványosságok','Attractions'],['Interaktív térkép','Interactive map']
+  ,['Magyar Turisztikai Atlasz','Hungarian Tourism Atlas'],['Alkalmazás információ','Application information'],
+  ['Kilenc régió,','Nine regions,'],['egy atlaszban.','in one atlas.'],['157 nevezetesség','157 attractions'],
+  ['Interaktív térképes tananyag Magyarország turisztikai régióinak, látványosságainak és nevezetességeinek feldolgozásához.','An interactive map-based resource for studying Hungary’s tourism regions and attractions.'],
+  ['Az atlasz számokban','The atlas in figures'],['01 / RÉGIÓ','01 / REGION'],['02 / NEVEZETESSÉG','02 / ATTRACTION'],['03 / KÉPFORRÁS','03 / IMAGE SOURCE'],['04 / TÉRKÉP','04 / MAP'],
+  ['Turisztikai régió Magyarországon','Tourism regions in Hungary'],['Feldolgozott látványosság saját adatlappal','Attractions with individual information sheets'],['Szintű Wikipédia/Commons képkereső automata','stage Wikipedia/Commons image search'],['OpenStreetMap-alapú interaktív térkép','Interactive map based on OpenStreetMap'],
+  ['9 régió · kattints egy jelölőre a belépéshez','9 regions · select a marker to open one'],['Minden régió saját interaktív térképet, kereshető látványosság-katalógust és részletes adatlapokat tartalmaz.','Each region includes an interactive map, a searchable attraction catalogue and detailed information sheets.'],
+  ['Indíts rövid gyakorlást a régiók és látványosságok átismétléséhez.','Start a short exercise to review the regions and attractions.'],
+  ['Tankönyvi alapú saját megfogalmazás, térképi és képi források jelölésével. A térképi megjelenítés OpenStreetMap-alapon segíti a helyszínek azonosítását.','Original educational wording based on textbook material, with map and image credits. OpenStreetMap helps identify each location.'],
+  ['A régió nevezetességei · 13. évfolyamos turisztikai technikusok számára','Regional attractions · for Grade 13 Tourism Technician students'],['Kvíz indítása ebben a régióban','Start a quiz for this region'],['🖨 Nyomtatható változat','🖨 Printable version'],
+  ['Keresés helyszín neve alapján…','Search by attraction name…'],['Keresés a régió látványosságai között','Search the attractions in this region'],['Természetföldrajzi összefoglaló','Physical geography summary'],['Természetföldrajz','Physical geography'],
+  ['← Vissza a régióhoz','← Back to the region'],['🖨 Nyomtatás / mentés PDF-be','🖨 Print / save as PDF'],['Magyar Turisztikai Atlasz · Nyomtatható tananyaglap','Hungarian Tourism Atlas · Printable learning sheet'],
+  ['13. évfolyam, turisztikai technikus képzés','Grade 13 Tourism Technician programme'],['Válassz az aktív régiós kérdésbankok közül. A kvíz nem ment eredményt, nincs időmérő, és billentyűzettel is használható.','Choose one of the available regional question banks. There is no timer, and the quiz is keyboard accessible.'],
+  ['Ehhez a régióhoz még készül a kérdésbank.','The question bank for this region is being prepared.'],['Kvíz','Quiz'],['kérdés','question']
+]);
+function translateText(text){
+  const trimmed=text.trim(); if(!trimmed)return text;
+  let translated=EN_UI_PHRASES.get(trimmed);
+  if(!translated){
+    translated=trimmed
+      .replace(/(\d+) látványosság/g,'$1 attractions').replace(/(\d+) kérdés/g,'$1 questions')
+      .replace(/ kérdéses kvíz érhető el ehhez a régióhoz\./,'-question quiz is available for this region.')
+      .replace(/ kvíz$/,' quiz').replace(/^Pontszám:/,'Score:').replace(/^A helyes válasz:/,'The correct answer is:');
+  }
+  return text.replace(trimmed,translated);
+}
+function localizeRenderedUI(){
+  if(getLang()!=='en')return;
+  const app=document.getElementById('app');
+  const walker=document.createTreeWalker(app,NodeFilter.SHOW_TEXT);
+  const nodes=[];while(walker.nextNode())nodes.push(walker.currentNode);nodes.forEach(n=>n.nodeValue=translateText(n.nodeValue));
+  app.querySelectorAll('[aria-label],[title],[placeholder]').forEach(el=>['aria-label','title','placeholder'].forEach(a=>{if(el.hasAttribute(a))el.setAttribute(a,translateText(el.getAttribute(a)))}));
+  app.querySelectorAll('a[href^="#/"],button[onclick*="location.hash"]').forEach(el=>{
+    if(el.hasAttribute('href'))el.setAttribute('href',el.getAttribute('href').replace(/^#\/(?!en(?:\/|$))/,'#/en/'));
+    if(el.hasAttribute('onclick'))el.setAttribute('onclick',el.getAttribute('onclick').replace(/#\/(?!en(?:\/|$))/g,'#/en/'));
+  });
+}
+function updateChrome(lang,path){
+  document.documentElement.lang=lang;
+  document.getElementById('navFooldal').textContent=lang==='en'?'Home':'Főoldal';
+  document.getElementById('navRegiok').textContent=lang==='en'?'Regions':'Régiók';
+  document.querySelector('.nav-logo').innerHTML=lang==='en'?'Hungarian <span>Tourism Atlas</span>':'Magyar <span>Turisztikai Atlasz</span>';
+  document.querySelector('.nav-logo').href=lang==='en'?'#/en/':'#/';
+  document.getElementById('navFooldal').href=lang==='en'?'#/en/':'#/';document.getElementById('navRegiok').href=lang==='en'?'#/en/regiok':'#/regiok';
+  const hu=document.getElementById('langHu'),en=document.getElementById('langEn');
+  const clean=path==='/'?'/':path;hu.href='#'+clean;en.href='#/en'+clean;
+  [[hu,lang==='hu'],[en,lang==='en']].forEach(([el,active])=>{el.classList.toggle('active',active);if(active)el.setAttribute('aria-current','true');else el.removeAttribute('aria-current')});
+  document.querySelector('.language-switch').setAttribute('aria-label',lang==='en'?'Language selection':'Nyelvválasztás');
+  const theme=document.getElementById('temaValto');theme.setAttribute('aria-label',lang==='en'?ui('theme'):'Világos és sötét téma váltása');theme.title=lang==='en'?'Switch theme':'Téma váltása';
+  const footer=document.querySelector('footer');if(lang==='en')footer.innerHTML=`<strong>Hungarian Tourism Atlas</strong> — free educational material for Grade 13 Tourism Technician students.<br>${ui('footerContent')}<br>${ui('footerSources')}<br>${ui('footerCopyright')}`;else footer.innerHTML='<strong>Magyar Turisztikai Atlasz</strong> — ingyenes tananyag a 13. évfolyamos turisztikai technikus képzéshez.<br>Tartalom: turisztikai tankönyvi tényadatok alapján, saját oktatási célú megfogalmazásban.<br>Térkép: <strong>OpenStreetMap</strong> · Képek: <strong>Wikimedia / Wikipédia</strong>, képenkénti licencfeltételek szerint.<br>© 2026 — oktatási célú, nonprofit projekt.';
+  document.querySelector('#modal .modal-close button').setAttribute('aria-label',lang==='en'?ui('closeModal'):'Modális ablak bezárása');
+}
 function normalizaltKeresoszoveg(ertek){return String(ertek||'').toLowerCase().trim().normalize('NFD').replace(/[̀-ͯ]/g,'')}
 function kereshetoMezo(ertek){
   if(Array.isArray(ertek))return ertek.join(' ');
@@ -27,7 +110,7 @@ function _kepBetoltIndit(elem){
   if(!elem.querySelector('.kep-betolt-felirat')){
     const felirat=document.createElement('span');
     felirat.className='kep-betolt-felirat';
-    felirat.textContent='Kép betöltése';
+    felirat.textContent=getLang()==='en'?ui('imageLoading'):'Kép betöltése';
     elem.appendChild(felirat);
   }
 }
@@ -65,8 +148,11 @@ function frissitAktivNav(h){
 }
 function router(){
   closeModal();clearMap();
-  document.title='Magyar Turisztikai Atlasz';
-  const h=location.hash.replace(/^#/,'');
+  const raw=location.hash.replace(/^#/,'')||'/';
+  const lang=raw==='/en'||raw.startsWith('/en/')?'en':'hu';
+  const h=lang==='en'?(raw.replace(/^\/en(?=\/|$)/,'')||'/'):raw;
+  applyLanguage(lang);updateChrome(lang,h);
+  document.title=lang==='en'?'Hungarian Tourism Atlas':'Magyar Turisztikai Atlasz';
   frissitAktivNav(h);
   if(h==='/kviz'){renderKvizValaszto()}
   else{
@@ -88,6 +174,8 @@ function router(){
     else if(m&&regioOf(m[1])){renderRegio(m[1])}
     else{renderHome()}
   }
+  localizeRenderedUI();
+  const regioMatch=h.match(/^\/regio\/(.+)$/);if(regioMatch&&regioOf(regioMatch[1]))document.title=`${regioOf(regioMatch[1]).nev} | ${lang==='en'?'Hungarian Tourism Atlas':'Magyar Turisztikai Atlasz'}`;
   window.scrollTo(0,0);
 }
 window.addEventListener('hashchange',router);
@@ -118,8 +206,8 @@ function veletlenTudtadEMondat(){
 function tudtadEDoboz(){
   const mondat=veletlenTudtadEMondat();
   if(!mondat)return '';
-  return `<section class="tudtad-box" aria-label="Tudtad-e érdekesség">
-    <div class="tudtad-cim"><span class="tudtad-ikon" aria-hidden="true">🔎</span> Tudtad-e?</div>
+  return `<section class="tudtad-box" aria-label="${ui('didYouKnowLabel')}">
+    <div class="tudtad-cim"><span class="tudtad-ikon" aria-hidden="true">🔎</span> ${getLang()==='en'?ui('didYouKnow'):'Tudtad-e?'}</div>
     <p class="tudtad-szoveg">${mondat}</p>
   </section>`;
 }
@@ -131,7 +219,7 @@ function renderHome(){
     const n=latvOf(r.slug).length;
     const sorszam=String(i+1).padStart(2,'0');
     const savHtml=r.sav?`<span class="regio-sav" style="background:linear-gradient(90deg,rgba(${hexRgb(r.szin)},.94),rgba(${hexRgb(r.szin)},.62))">${HELY_SVG}${r.sav}</span>`:'';
-    cards+=`<button class="regio-card kesz" data-count="${n}" aria-label="${r.nev} régió megnyitása, ${n} látványosság" onclick="location.hash='#/regio/${r.slug}'">
+    cards+=`<button class="regio-card kesz" data-count="${n}" aria-label="${getLang()==='en'?`${ui('regionCard')} ${r.nev}, ${n} ${ui('attractions')}`:`${r.nev} ${ui('regionCard')}, ${n} látványosság`}" onclick="location.hash='#/regio/${r.slug}'">
       <div class="regio-header" style="background:linear-gradient(135deg,${r.szin},${r.szin}cc)">
         <span class="regio-header-ikon">${r.ikon}</span>
         <span class="regio-header-kep" id="rhk-${r.slug}"></span>
@@ -141,7 +229,7 @@ function renderHome(){
       <div class="regio-body">
         <div class="regio-nev">${r.nev}</div>
         <div class="regio-desc">${r.leiras}</div>
-        <div class="regio-meta"><span>📍 ${n} látványosság</span><span class="regio-arrow">Megnyitás ${NYIL_SVG}</span></div>
+        <div class="regio-meta"><span>📍 ${n} ${getLang()==='en'?ui('attractions'):'látványosság'}</span><span class="regio-arrow">${getLang()==='en'?ui('enter'):'Megnyitás'} ${NYIL_SVG}</span></div>
       </div></button>`;
   });
   document.getElementById('app').innerHTML=`
@@ -165,7 +253,7 @@ function renderHome(){
         </div>
         <header class="portal-hero-grid" aria-labelledby="portal-title">
           <div class="portal-hero-copy">
-            <h1 id="portal-title" class="portal-title-hero">Kilenc régió,<br><em>${total} nevezetesség</em><br>egy atlaszban.</h1>
+            <h1 id="portal-title" class="portal-title-hero">${getLang()==='en'?'Nine regions,':'Kilenc régió,'}<br><em>${total} ${getLang()==='en'?ui('attractions'):'nevezetesség'}</em><br>${getLang()==='en'?'in one atlas.':'egy atlaszban.'}</h1>
           </div>
           <div class="portal-hero-side">
             <p class="portal-desc">Interaktív térképes tananyag Magyarország turisztikai régióinak, látványosságainak és nevezetességeinek feldolgozásához.</p>
@@ -243,7 +331,7 @@ function renderHome(){
   REGIOK.forEach(r=>{
     const n=latvOf(r.slug).length;
     const mk=L.marker(r.koord,{icon:makeIcon(r.ikon,r.szin)}).addTo(currentMap);
-    mk.bindPopup(`<div style="font-family:'Instrument Sans',sans-serif;min-width:180px"><div style="font-weight:700;color:#1A3A5C;margin-bottom:3px">${r.ikon} ${r.nev}</div><div style="font-size:.75rem;color:#6B7280;margin-bottom:6px">${n} látványosság</div><a href="#/regio/${r.slug}" style="display:inline-block;background:#B3271E;color:#fff;font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;text-decoration:none">Belépés →</a></div>`);
+    mk.bindPopup(`<div style="font-family:'Instrument Sans',sans-serif;min-width:180px"><div style="font-weight:700;color:#1A3A5C;margin-bottom:3px">${r.ikon} ${r.nev}</div><div style="font-size:.75rem;color:#6B7280;margin-bottom:6px">${n} ${getLang()==='en'?'attractions':'látványosság'}</div><a href="${localizedPath(`/regio/${r.slug}`)}" style="display:inline-block;background:#B3271E;color:#fff;font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;text-decoration:none">${getLang()==='en'?'Open':'Belépés'} →</a></div>`);
     mk.on('click',()=>mk.openPopup());
   });
   setTimeout(()=>currentMap&&currentMap.invalidateSize(),300);
@@ -298,7 +386,7 @@ function termeszetfoldrajzDoboz(regio){
 
 function buildFilters(){
   document.getElementById('filters').innerHTML=KAT_LIST.map(k=>
-    `<button class="filter-btn${k===aktivSzuro?' active':''}" aria-pressed="${k===aktivSzuro?'true':'false'}" onclick="setSzuro('${k}')">${KAT_LABEL[k]}</button>`).join('');
+    `<button class="filter-btn${k===aktivSzuro?' active':''}" aria-pressed="${k===aktivSzuro?'true':'false'}" onclick="setSzuro('${k}')">${(getLang()==='en'?KAT_LABEL_EN:KAT_LABEL_HU)[k]}</button>`).join('');
 }
 function setSzuro(k){aktivSzuro=k;buildFilters();renderCards()}
 function onSearch(){aktivKereses=document.getElementById('search').value;renderCards()}
@@ -315,11 +403,11 @@ function szurtLista(){
 
 function renderCards(){
   const lista=szurtLista();
-  document.getElementById('count').textContent=`${lista.length} találat`;
+  document.getElementById('count').textContent=getLang()==='en'?`${lista.length} results`:`${lista.length} találat`;
   const grid=document.getElementById('grid');
-  if(!lista.length){grid.innerHTML=`<div class="empty-state"><div style="font-size:2rem">🔍</div><p>Nincs találat erre a keresésre.</p></div>`;renderMarkers([]);return;}
+  if(!lista.length){grid.innerHTML=`<div class="empty-state"><div style="font-size:2rem">🔍</div><p>${getLang()==='en'?'No results match this search.':'Nincs találat erre a keresésre.'}</p></div>`;renderMarkers([]);return;}
   grid.innerHTML=lista.map(l=>`
-    <div class="card" id="card-${l.id}" role="button" tabindex="0" aria-label="${l.nev} adatlapjának megnyitása" onclick="activateCard(${l.id})" onkeydown="onCardKey(event,${l.id})">
+    <div class="card" id="card-${l.id}" role="button" tabindex="0" aria-label="${getLang()==='en'?`${ui('attractionCard')} ${l.nev}`:`${l.nev} ${ui('attractionCard')}`}" onclick="activateCard(${l.id})" onkeydown="onCardKey(event,${l.id})">
       <div class="card-ph" id="cph-${l.id}"><span class="card-ph-ikon">${ikonOf(l)}</span></div>
       <div class="card-body">
         <div class="card-kat">${l.kat.map(tagHtml).join('')}</div>
@@ -331,6 +419,7 @@ function renderCards(){
   setTimeout(()=>{
     lista.forEach(l=>{kepetMutat(l,document.getElementById('cph-'+l.id),400);});
   },50);
+  localizeRenderedUI();
 }
 
 let markers={};
@@ -360,51 +449,52 @@ function hlCard(id){document.querySelectorAll('.card').forEach(c=>c.classList.re
 function renderNyomtat(slug){
   const r=regioOf(slug);
   const lista=latvOf(slug);
-  const datum=new Date().toLocaleDateString('hu-HU',{year:'numeric',month:'long',day:'numeric'});
-  document.title=r.nev+' — nyomtatható tananyaglap';
+  const datum=new Date().toLocaleDateString(getLang()==='en'?'en-GB':'hu-HU',{year:'numeric',month:'long',day:'numeric'});
+  document.title=getLang()==='en'?`${r.nev} — printable learning sheet`:`${r.nev} — nyomtatható tananyaglap`;
   const geo=r.termeszetfoldrajz&&r.termeszetfoldrajz.trim();
   const latvHtml=lista.map((l,i)=>{
     const pi=l.info||{};
     const infoSorok=[
-      pi.nyitvatartas?`<div class="print-info-sor"><strong>Nyitvatartás:</strong> ${pi.nyitvatartas}</div>`:'',
-      pi.megkozelites?`<div class="print-info-sor"><strong>Megközelítés:</strong> ${pi.megkozelites}</div>`:''
+      pi.nyitvatartas?`<div class="print-info-sor"><strong>${getLang()==='en'?ui('openingHours'):'Nyitvatartás'}:</strong> ${pi.nyitvatartas}</div>`:'',
+      pi.megkozelites?`<div class="print-info-sor"><strong>${getLang()==='en'?ui('access'):'Megközelítés'}:</strong> ${pi.megkozelites}</div>`:''
     ].filter(Boolean).join('');
     return `<article class="print-latv">
       <div class="print-latv-fej">
         <h3>${i+1}. ${l.nev}</h3>
-        <div class="print-latv-meta">${helyStr(l)} · Kategória: ${l.kat.map(k=>KAT_LABEL[k]||k).join(', ')}</div>
+        <div class="print-latv-meta">${helyStr(l)} · ${getLang()==='en'?'Category':'Kategória'}: ${l.kat.map(k=>(getLang()==='en'?KAT_LABEL_EN:KAT_LABEL_HU)[k]||k).join(', ')}</div>
       </div>
       <p class="print-latv-rovid">${l.rovid}</p>
       <p class="print-latv-reszletes">${l.reszletes}</p>
       ${infoSorok?`<div class="print-latv-info">${infoSorok}</div>`:''}
-      ${l.forras&&l.forras.length?`<div class="print-latv-forras">Forrás: ${l.forras.join(' · ')}</div>`:''}
+      ${l.forras&&l.forras.length?`<div class="print-latv-forras">${getLang()==='en'?ui('source'):'Forrás'}: ${l.forras.join(' · ')}</div>`:''}
     </article>`;
   }).join('');
   document.getElementById('app').innerHTML=`
     <main class="print-page">
       <div class="print-toolbar">
-        <a class="print-vissza" href="#/regio/${slug}">← Vissza a régióhoz</a>
-        <button type="button" class="print-gomb" onclick="window.print()">🖨 Nyomtatás / mentés PDF-be</button>
+        <a class="print-vissza" href="${localizedPath(`/regio/${slug}`)}">${getLang()==='en'?'← Back to the region':'← Vissza a régióhoz'}</a>
+        <button type="button" class="print-gomb" onclick="window.print()">${getLang()==='en'?'🖨 Print / save as PDF':'🖨 Nyomtatás / mentés PDF-be'}</button>
       </div>
       <header class="print-fej">
-        <div class="print-felcim">Magyar Turisztikai Atlasz · Nyomtatható tananyaglap</div>
+        <div class="print-felcim">${ui('printableSheet')}</div>
         <h1>${r.nev}</h1>
         <p class="print-lead">${r.leiras}</p>
-        <div class="print-osszegzes">${lista.length} látványosság · 13. évfolyam, turisztikai technikus képzés</div>
+        <div class="print-osszegzes">${lista.length} ${getLang()==='en'?ui('attractions'):'látványosság'} · ${ui('printSummary')}</div>
       </header>
       ${geo?`<section class="print-szakasz">
-        <h2>Természetföldrajz</h2>
+        <h2>${getLang()==='en'?'Physical geography':'Természetföldrajz'}</h2>
         <p class="print-geo">${geo}</p>
       </section>`:''}
       <section class="print-szakasz">
-        <h2>Látványosságok</h2>
+        <h2>${getLang()==='en'?'Attractions':'Látványosságok'}</h2>
         ${latvHtml}
       </section>
       <footer class="print-lablec">
-        Forrás: turisztikai tankönyvi tényadatok alapján, saját oktatási célú megfogalmazásban · Térkép: OpenStreetMap.<br>
-        Magyar Turisztikai Atlasz — oktatási célú, nonprofit tananyag · Készült: ${datum}
+        ${ui('printFooter')}<br>
+        ${ui('nonprofitMaterial')} · ${ui('prepared')}: ${datum}
       </footer>
     </main>`;
+  localizeRenderedUI();
 }
 
 /* ════════ KVÍZMODUL ════════ */
@@ -438,7 +528,7 @@ function frissitKvizLegjobb(slug, pont, ossz){
   }
 }
 function kvizLegjobbSor(legjobb){
-  return legjobb ? `<p class="quiz-best">Eddigi legjobb eredményed ebben a régióban: <strong>${legjobb.pont}/${legjobb.ossz}</strong></p>` : '';
+  return legjobb ? `<p class="quiz-best">${ui('bestScore')} <strong>${legjobb.pont}/${legjobb.ossz}</strong></p>` : '';
 }
 
 function kever(tomb){
@@ -473,34 +563,34 @@ function renderKvizValaszto(uzenet){
       <div class="quiz-region-icon" style="background:linear-gradient(135deg,${r.szin},${r.szin}cc)">${r.ikon}</div>
       <div class="quiz-region-body">
         <h2>${r.nev}</h2>
-        <p>${aktiv?kerdesSzam>KVIZ_KERDES_LIMIT?`Minden indításkor ${KVIZ_KERDES_LIMIT} véletlen kérdés a ${kerdesSzam} kérdéses kérdésbankból.`:`${kerdesSzam} kérdéses kvíz érhető el ehhez a régióhoz.`:'Ehhez a régióhoz még készül a kérdésbank.'}</p>
+        <p>${aktiv?kerdesSzam>KVIZ_KERDES_LIMIT?(getLang()==='en'?`Each attempt draws ${KVIZ_KERDES_LIMIT} random questions from the ${kerdesSzam}-question bank.`:`Minden indításkor ${KVIZ_KERDES_LIMIT} véletlen kérdés a ${kerdesSzam} kérdéses kérdésbankból.`):`${kerdesSzam} ${ui('quizBankAvailable')}`:ui('quizBankSoon')}</p>
         ${aktiv?kvizLegjobbSor(getKvizLegjobb(r.slug)):''}
-        <button type="button" class="quiz-start-btn" ${aktiv?`onclick="location.hash='#/kviz/${r.slug}'"`:'disabled'}>${aktiv?'Kvíz indítása':'Készül'}</button>
+        <button type="button" class="quiz-start-btn" ${aktiv?`onclick="location.hash='${localizedPath(`/kviz/${r.slug}`)}'"`:'disabled'}>${aktiv?ui('startQuiz'):ui('comingSoon')}</button>
       </div>
     </div>`;
   }).join('');
   document.getElementById('app').innerHTML=`
     <main class="quiz-page">
-      <div class="breadcrumb"><a href="#/">Magyar Turisztikai Atlasz</a> › Kvíz</div>
+      <div class="breadcrumb"><a href="${localizedPath('/')}">${getLang()==='en'?'Hungarian Tourism Atlas':'Magyar Turisztikai Atlasz'}</a> › ${getLang()==='en'?'Quiz':'Kvíz'}</div>
       <section class="quiz-card">
         ${uzenet?`<p class="quiz-feedback"><strong>${uzenet}</strong></p>`:''}
-        <div class="section-eyebrow">Pilot kvízmodul</div>
-        <h1>Válassz kvízrégiót</h1>
-        <p class="quiz-intro">Válassz az aktív régiós kérdésbankok közül. A kvíz nem ment eredményt, nincs időmérő, és billentyűzettel is használható.</p>
+        <div class="section-eyebrow">${ui('pilotQuiz')}</div>
+        <h1>${ui('chooseQuizRegion')}</h1>
+        <p class="quiz-intro">${ui('quizIntro')}</p>
       </section>
       <div class="quiz-region-grid">${cards}</div>
-      <div class="quiz-actions"><button type="button" onclick="location.hash='#/'">Vissza az atlaszhoz</button></div>
+      <div class="quiz-actions"><button type="button" onclick="location.hash='${localizedPath('/')}'">${ui('backToAtlas')}</button></div>
     </main>`;
 }
 
 function renderKviz(slug){
   const kerdesek=kevertKerdesek(slug);
   const regio=regioOf(slug);
-  if(!kerdesek.length||!regio){renderKvizValaszto('Ehhez a régióhoz még nincs elérhető kérdésbank. Válassz egy aktív kvízrégiót.');return;}
+  if(!kerdesek.length||!regio){renderKvizValaszto(ui('quizBankUnavailable'));return;}
   kvizAllapot={slug,kerdesek,index:0,pont:0,valaszolt:false};
   document.getElementById('app').innerHTML=`
     <main class="quiz-page">
-      <div class="breadcrumb"><a href="#/">Magyar Turisztikai Atlasz</a> › <a href="#/kviz">Kvíz</a> › ${regio.nev}</div>
+      <div class="breadcrumb"><a href="${localizedPath('/')}">${getLang()==='en'?'Hungarian Tourism Atlas':'Magyar Turisztikai Atlasz'}</a> › <a href="${localizedPath('/kviz')}">${getLang()==='en'?'Quiz':'Kvíz'}</a> › ${regio.nev}</div>
       <section class="quiz-card" id="quizBox"></section>
     </main>`;
   renderKvizKerdes();
@@ -511,15 +601,16 @@ function renderKvizKerdes(){
   if(a.index>=a.kerdesek.length){renderKvizEredmeny();return;}
   const q=a.kerdesek[a.index];
   document.getElementById('quizBox').innerHTML=`
-    <div class="quiz-progress">${a.index+1} / ${a.kerdesek.length} kérdés</div>
-    <h1>${regioOf(a.slug).nev} kvíz</h1>
+    <div class="quiz-progress">${a.index+1} / ${a.kerdesek.length} ${ui('question')}</div>
+    <h1>${regioOf(a.slug).nev} ${ui('quizLabel')}</h1>
     <p class="quiz-question">${q.question}</p>
     <div class="quiz-answers">${q.answers.map((ans,i)=>`<button type="button" class="quiz-answer" onclick="kvizValasz(${i})">${ans}</button>`).join('')}</div>
     <div class="quiz-feedback" aria-live="polite" id="quizFeedback"></div>
     <div class="quiz-actions">
-      <button type="button" onclick="location.hash='#/kviz'">Másik régió választása</button>
-      <button type="button" onclick="location.hash='#/'">Vissza az atlaszhoz</button>
+      <button type="button" onclick="location.hash='${localizedPath('/kviz')}'">${ui('chooseOtherRegion')}</button>
+      <button type="button" onclick="location.hash='${localizedPath('/')}'">${ui('backToAtlas')}</button>
     </div>`;
+  localizeRenderedUI();
 }
 
 function kvizValasz(index){
@@ -534,10 +625,11 @@ function kvizValasz(index){
     if(i===index&&!helyes)btn.classList.add('wrong');
   });
   document.getElementById('quizFeedback').innerHTML=`
-    <strong>${helyes?'Helyes válasz.':'Hibás válasz.'}</strong>
-    ${helyes?'':`<span>A helyes válasz: ${q.answers[q.correctIndex]}.</span>`}
+    <strong>${helyes?ui('correct'):ui('incorrect')}</strong>
+    ${helyes?'':`<span>${ui('correctAnswer')} ${q.answers[q.correctIndex]}.</span>`}
     <span>${q.explanation}</span>
-    <button type="button" class="quiz-next" onclick="kvizKovetkezo()">Következő kérdés</button>`;
+    <button type="button" class="quiz-next" onclick="kvizKovetkezo()">${ui('nextQuestion')}</button>`;
+  localizeRenderedUI();
   const next=document.querySelector('.quiz-next');if(next)next.focus();
 }
 
@@ -552,15 +644,16 @@ function renderKvizEredmeny(){
   const a=kvizAllapot;if(!a)return;
   const legjobb=frissitKvizLegjobb(a.slug,a.pont,a.kerdesek.length);
   document.getElementById('quizBox').innerHTML=`
-    <div class="section-eyebrow">Kvíz vége</div>
-    <h1>${regioOf(a.slug).nev} kvíz</h1>
-    <p class="quiz-score">Pontszám: <strong>${a.pont} / ${a.kerdesek.length}</strong></p>
+    <div class="section-eyebrow">${ui('quizComplete')}</div>
+    <h1>${regioOf(a.slug).nev} ${ui('quizLabel')}</h1>
+    <p class="quiz-score">${ui('score')} <strong>${a.pont} / ${a.kerdesek.length}</strong></p>
     ${kvizLegjobbSor(legjobb)}
     <div class="quiz-actions">
-      <button type="button" onclick="renderKviz('${a.slug}')">Újrakezdés</button>
-      <button type="button" onclick="location.hash='#/kviz'">Másik régió választása</button>
-      <button type="button" onclick="location.hash='#/'">Vissza az atlaszhoz</button>
+      <button type="button" onclick="renderKviz('${a.slug}')">${ui('restart')}</button>
+      <button type="button" onclick="location.hash='${localizedPath('/kviz')}'">${ui('chooseOtherRegion')}</button>
+      <button type="button" onclick="location.hash='${localizedPath('/')}'">${ui('backToAtlas')}</button>
     </div>`;
+  localizeRenderedUI();
 }
 
 /* ════════ MODÁL ════════ */
@@ -603,8 +696,8 @@ function handleModalFocusTrap(event){
 function openModal(id){
   const l=LATV.find(x=>x.id===id);if(!l)return;
   const pi=l.info||{};
-  const rows=[pi.nyitvatartas?`<div class="info-item"><div class="info-label">Nyitvatartás</div><div class="info-val">${pi.nyitvatartas}</div></div>`:'',
-    pi.megkozelites?`<div class="info-item"><div class="info-label">Megközelítés</div><div class="info-val">${pi.megkozelites}</div></div>`:''].filter(Boolean).join('');
+  const rows=[pi.nyitvatartas?`<div class="info-item"><div class="info-label">${getLang()==='en'?'Opening hours':'Nyitvatartás'}</div><div class="info-val">${pi.nyitvatartas}</div></div>`:'',
+    pi.megkozelites?`<div class="info-item"><div class="info-label">${getLang()==='en'?'Getting there':'Megközelítés'}</div><div class="info-val">${pi.megkozelites}</div></div>`:''].filter(Boolean).join('');
   const reg=regioOf(l.r);
   const modalTitleId=`modalTitle-${l.id}`;
   document.getElementById('modalContent').innerHTML=`
@@ -614,11 +707,11 @@ function openModal(id){
       <h2 id="${modalTitleId}">${l.nev}</h2>
       <div class="modal-meta">
         <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>${helyStr(l)}</span>
-        <span>${reg?reg.ikon+' '+reg.rovid+' régió':''}</span>
+        <span>${reg?reg.ikon+' '+reg.rovid+' '+(getLang()==='en'?'region':'régió'):''}</span>
       </div>
       <p class="modal-leiras">${l.reszletes}</p>
       ${rows?`<div class="modal-info">${rows}</div>`:''}
-      <div class="modal-forras"><strong>Forrás:</strong> ${(l.forras||[]).join(' · ')} · Képek: Wikimedia Commons, képenkénti licencfeltételek szerint.</div>
+      <div class="modal-forras"><strong>${getLang()==='en'?'Source:':'Forrás:'}</strong> ${(l.forras||[]).join(' · ')} · ${getLang()==='en'?'Images: Wikimedia Commons, subject to the licence terms of each image.':'Képek: Wikimedia Commons, képenkénti licencfeltételek szerint.'}</div>
     </div>`;
   const modal=document.getElementById('modal');
   const dialog=modal.querySelector('.modal');
@@ -628,7 +721,7 @@ function openModal(id){
     dialog.setAttribute('aria-modal','true');
     dialog.setAttribute('aria-labelledby',modalTitleId);
   }
-  closeButton?.setAttribute('aria-label','Adatlap bezárása');
+  closeButton?.setAttribute('aria-label',getLang()==='en'?ui('closeSheet'):'Adatlap bezárása');
   elozoFokusz=document.activeElement;
   modal.classList.add('open');document.body.style.overflow='hidden';
   kepetMutat(l,document.getElementById('mph-'+l.id),800);
@@ -642,7 +735,7 @@ function openModal(id){
 function kepetMutat(l, elem, meret) {
   if(!elem)return;
   elem.dataset.placeholder = `<span class="${meret>400?'modal':'card'}-ph-ikon">${ikonOf(l)}</span>`;
-  elem.dataset.alt = l.nev + ' képe';
+  elem.dataset.alt = getLang()==='en'?`Image of ${l.nev}`:l.nev + ' képe';
   if (l.kep_sajat && l.kep_sajat.trim()) {
     _kepBetoltIndit(elem);
     const img = document.createElement('img');
@@ -856,14 +949,14 @@ function _kepHibaPlaceholder(elem){
   elem.innerHTML=elem.dataset.placeholder||'';
   const status=document.createElement('span');
   status.className='kep-hiba';
-  status.textContent='Kép nem elérhető';
+  status.textContent=getLang()==='en'?ui('imageUnavailable'):'Kép nem elérhető';
   elem.appendChild(status);
 }
 function _alkalmazKep(elem,url,meret){
   if(!elem)return;
   const img=document.createElement('img');
   img.src=url;
-  img.alt=elem.dataset.alt||'Látványosság képe';
+  img.alt=elem.dataset.alt||(getLang()==='en'?ui('attractionImage'):'Látványosság képe');
   img.loading='lazy';
   img.onload=()=>_kepBetoltVege(elem);
   img.onerror=()=>_kepHibaPlaceholder(elem);
@@ -871,7 +964,7 @@ function _alkalmazKep(elem,url,meret){
   if(meret>400){
     const cap=document.createElement('span');
     cap.className='modal-ph-caption';
-    cap.textContent='Wikimedia Commons, képenkénti licencfeltételek szerint.';
+    cap.textContent=getLang()==='en'?'Wikimedia Commons, subject to the licence terms of each image.':'Wikimedia Commons, képenkénti licencfeltételek szerint.';
     elem.innerHTML='';
     elem.appendChild(img);
     elem.appendChild(cap);
@@ -892,4 +985,4 @@ document.addEventListener('keydown',e=>{
   if(e.key==='Escape')closeModal();
 });
 
-function mapHiba(){return '<div style="height:100%;min-height:300px;display:flex;align-items:center;justify-content:center;padding:2rem;text-align:center;background:#EAE5DD;color:#1A3A5C"><div style="max-width:420px"><strong>A térkép nem tölthető be.</strong><br><br>Nyisd meg a fájlt webszerveren keresztül (Netlify Drop vagy <code>python3 -m http.server</code>), ne dupla kattintással.</div></div>'}
+function mapHiba(){return `<div style="height:100%;min-height:300px;display:flex;align-items:center;justify-content:center;padding:2rem;text-align:center;background:#EAE5DD;color:#1A3A5C"><div style="max-width:420px"><strong>${ui('mapLoadError')}</strong><br><br>${ui('mapLoadHelp')}</div></div>`}

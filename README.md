@@ -23,12 +23,59 @@ magyar-turisztikai-atlasz/
 ├── stilusok.css      Minden megjelenési szabály: layout, kártyák, térkép, modális ablak, mobilnézet.
 ├── adatok.js         TARTALOM: a 9 régió és a 157 nevezetesség adatai.
 ├── kviz.js           TARTALOM: a statikus kvízkérdésbank régiónkénti kérdésekkel.
+├── forditas-en.js     FORDÍTÁS: angol UI-, régió-, látványosság- és kvízszövegek stabil azonosítók szerint.
 ├── alkalmazas.js     MŰKÖDÉS: router, térkép, régióválasztás, szűrés, keresés, modális ablak, képbetöltő és kvízvezérlés.
 ├── .nojekyll         GitHub Pages jelzés: ne fusson Jekyll-feldolgozás.
 ├── README.md         Projektleírás és használati dokumentáció.
 ├── CLAUDE.md         Projektkontextus fejlesztőeszközök számára.
 └── AGENTS.md         Fejlesztési irányelvek Codex és más ügynökök számára.
 ```
+
+## Magyar–angol nyelvi támogatás
+
+Az atlasz egyetlen közös alkalmazásként működik. A magyar tartalom a kanonikus
+alap, míg a fejléc **HU | EN** kapcsolója ugyanazon oldal angol változatára
+vált. A választott nyelv része a hash URL-nek, ezért minden nézet közvetlenül
+megosztható és GitHub Pagesen is szerveroldali átirányítás nélkül működik.
+
+| Nézet | Magyar | Angol |
+| --- | --- | --- |
+| Főoldal | `#/` | `#/en/` |
+| Régiók | `#/regiok` | `#/en/regiok` |
+| Régió | `#/regio/balaton` | `#/en/regio/balaton` |
+| Kvízválasztó | `#/kviz` | `#/en/kviz` |
+| Régiós kvíz | `#/kviz/balaton` | `#/en/kviz/balaton` |
+| Nyomtatás | `#/nyomtat/balaton` | `#/en/nyomtat/balaton` |
+
+A slugok és az adatkapcsolatok egyik nyelven sem változnak. Az `adatok.js`
+továbbra is az egyetlen forrása az ID-knak, koordinátáknak, kategóriakódoknak,
+képhivatkozásoknak és régiókapcsolatoknak. A `forditas-en.js` a régiókat slug,
+a látványosságokat és a kvízkérdéseket pedig ID alapján kapcsolja az angol
+szöveghez. Hiányzó fordításnál a renderelő biztonsági tartalékként a magyar
+alapszöveget használja, így a felület nem omlik össze.
+
+### Fordítás hozzáadása
+
+1. Új látványosság felvétele után adj hozzá az ID-jéhez bejegyzést az
+   `EN_TRANSLATIONS.attractions` objektumban. A fordítási rétegbe csak szöveges
+   mező kerüljön; koordinátát, kategóriát vagy képadatot ne másolj át.
+2. Új kvízkérdés után azonos ID-val adj hozzá `question`, `answers`,
+   `explanation` és szükség esetén `latvName` mezőt az `EN_QUIZ` objektumhoz.
+   Az angol válaszlista elemszáma és sorrendje egyezzen a magyarral, mert a
+   `correctIndex` továbbra is a közös magyar kérdésobjektumból származik.
+3. Futtasd a fordítási lefedettséget is ellenőrző validátort:
+
+   ```bash
+   node tools/validate-data.js
+   node tools/smoke-i18n.js
+   ```
+
+A validátor hibát jelez hiányzó vagy ismeretlen régió-, látványosság- és
+kvízazonosító, üres kötelező angol szöveg, illetve eltérő válaszszám esetén.
+A kétnyelvű smoke ellenőrzés a HU/EN route-felismerést, a nyelvváltáskor
+megőrzött tartalmi útvonalakat, régiónként két angol attrakció adatát, az
+angol keresést, a vármegyeformázást és mind a 90 kvízkérdés szerkezeti
+azonosságát is ellenőrzi.
 
 ## Külső függőségek és szolgáltatások
 

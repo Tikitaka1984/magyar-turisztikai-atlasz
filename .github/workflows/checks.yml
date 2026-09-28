@@ -29,5 +29,17 @@ jobs:
       - name: Check alkalmazas.js syntax
         run: node --check alkalmazas.js
 
+      - name: Check forditas-en.js syntax
+        run: node --check forditas-en.js
+
+      - name: Check data validator syntax
+        run: node --check tools/validate-data.js
+
+      - name: Check bilingual smoke test syntax
+        run: node --check tools/smoke-i18n.js
+
       - name: Validate project data
         run: node tools/validate-data.js
+
+      - name: Run bilingual smoke test
+        run: node tools/smoke-i18n.js
