@@ -777,7 +777,7 @@ const EN_TRANSLATIONS = {
       "rovid": "Central Europe’s only intact lowland brick castle.",
       "reszletes": "Gyula Castle is Central Europe’s only surviving intact lowland brick castle, built in the Gothic style in the 15th century. Protected by marshes and moats, the fortress was an important border stronghold during the Ottoman period and was captured by the Ottomans only after a lengthy siege. The well-preserved and restored castle now operates as a museum, presenting relics of life in the border fortresses. In summer, its courtyard provides a distinctive setting for the open-air performances of the Gyula Castle Theatre. Immediately beside the castle is the Gyula Castle Spa, whose thermal medicinal baths are one of the city’s principal attractions. With its Baroque historic centre and its status as the birthplace of Ferenc Erkel, Gyula is also a major tourist destination.",
       "info": {
-        "nyitvatartas": "Á–V",
+        "nyitvatartas": "Daily",
         "megkozelites": "Gyula can be reached by train on the Békéscsaba–Gyula railway line or by car via Main Road 44; the castle and Castle Spa are in the town centre."
       }
     },
@@ -1044,7 +1044,7 @@ const EN_TRANSLATIONS = {
     "73": {
       "nev": "Lake Hévíz",
       "rovid": "One of the world’s largest biologically active thermal lakes.",
-      "reszletes": "Lake Hévíz is one of the world’s largest biologically active natural spa lakes, located in the town of Hévíz, a few kilometres from Lake Balaton. The approximately 4.4-hectare lake is fed by warm and hot springs rising from deep underground, so its temperature remains 23–25 °C even in winter and can reach around 38 °C in summer. Its sulphurous water, which contains a small amount of radon and the therapeutic mud on the lake bed are recommended primarily for treating musculoskeletal, joint and rheumatic conditions. In summer, the lake’s surface is covered with Indian water lilies, creating a remarkable sight. The wooden bathhouse built over the water has been one of the centres of Hungarian bathing culture since the 19th century. Today, Hévíz is one of Hungary’s most important spa resorts and an international health-tourism destination.",
+      "reszletes": "Lake Hévíz is one of the world’s largest biologically active natural spa lakes, located in the town of Hévíz, a few kilometres from Lake Balaton. The approximately 4.4-hectare lake is fed by warm and hot springs rising from deep underground, so its temperature remains 23–25 °C even in winter and can reach around 38 °C in summer. Its sulphurous water, which contains a small amount of radon, and the therapeutic mud on the lake bed are recommended primarily for treating musculoskeletal, joint and rheumatic conditions. In summer, the lake’s surface is covered with Indian water lilies, creating a remarkable sight. The wooden bathhouse built over the water has been one of the centres of Hungarian bathing culture since the 19th century. Today, Hévíz is one of Hungary’s most important spa resorts and an international health-tourism destination.",
       "info": {
         "nyitvatartas": "Daily",
         "megkozelites": "In the centre of Hévíz; the nearest railway station is in Keszthely, from where it is a few minutes by local bus, or by car via a turn-off from Main Road 71."
