@@ -167,7 +167,7 @@ var KVIZ_QUESTIONS = {
         "Mert lapjain maradt fenn az első magyar nyelvű bibliafordítás"
       ],
       correctIndex: 1,
-      explanation: "A Tihanyi Bencés Apátság leírása szerint az I. András király által 1055-ben alapított apátság alapítólevele az első olyan hiteles oklevél, amely – latin szövegbe ágyazva – magyar szavakat (köztük a híres „feheruuaru rea meneh hodu utu rea” szókapcsolatot) is megőrzött, ezért a magyar nyelvtörténet kiemelkedő emléke. (Az alapítólevél nyelve latin, az első magyar nyelvű nyomtatott könyv pedig Sárvárhoz köthető.)",
+      explanation: "A Tihanyi Bencés Apátság leírása szerint az I. András király által 1055-ben alapított apátság alapítólevele az első olyan hiteles oklevél, amely – latin szövegbe ágyazva – magyar szavakat (köztük a híres „feheruuaru rea meneh hodu utu rea” szókapcsolatot) is megőrzött, ezért a magyar nyelvtörténet kiemelkedő emléke. (Az alapítólevél nyelve latin, az első Magyarországon nyomtatott magyar nyelvű könyv pedig Sárvárhoz köthető.)",
       regionSlug: "balaton",
       latvId: 71,
       latvName: "Tihanyi Bencés Apátság"
@@ -691,15 +691,15 @@ var KVIZ_QUESTIONS = {
     },
     {
       id: "eszak-alfold-06",
-      question: "Az atlasz szerint ki építtette a tiszadobi Andrássy-kastélyt, és mit jelképez az épület 365 szobája?",
+      question: "Az atlasz szerint mit jelképez a tiszadobi Andrássy-kastély 365 ablaka, 52 szobája, 12 tornya és 4 bejárata?",
       answers: [
-        "Tisza Kálmán; az ország 365 nemesi családját",
-        "Andrássy Gyula miniszterelnök; az év 365 napját",
-        "Az Andrássy-grófok katonai célból; a 365 itt szolgáló katonát",
-        "Széchenyi István; a Tisza 365 kilométeres szakaszát"
+        "Az Andrássy-birtokok számát és kiterjedését",
+        "A naptár egységeit: a napokat, heteket, hónapokat és az évszakokat",
+        "Az ott élő családtagok és szolgálók létszámát",
+        "Az építésben részt vevő mesterek és műhelyek számát"
       ],
       correctIndex: 1,
-      explanation: "A Tiszadobi Andrássy-kastély leírása szerint az épületet Andrássy Gyula miniszterelnök építtette az 1880-as évek elején; a 365 szoba az év napjait, az 52 torony a heteket, a 12 torony a hónapokat, a 4 bejárat pedig az évszakokat jelképezi.",
+      explanation: "A Tiszadobi Andrássy-kastély leírása szerint az épület a naptár egységeit jelképezi: a 365 ablak az év napjait, az 52 szoba a heteket, a 12 torony a hónapokat, a 4 bejárat pedig az évszakokat.",
       regionSlug: "eszak-alfold",
       latvId: 151,
       latvName: "Tiszadobi Andrássy-kastély"
@@ -738,13 +738,13 @@ var KVIZ_QUESTIONS = {
       id: "eszak-alfold-09",
       question: "Melyik állítás IGAZ a jászberényi Jász Múzeumról az atlasz leírása alapján?",
       answers: [
-        "Legféltettebb kincse a Lehel-kürt, egy honfoglalás kori, aranyból készült kürt",
+        "Legféltettebb kincse a Szent Korona hiteles másolata",
         "Az ország legnagyobb, több tízezer tárgyat bemutató múzeuma",
         "A reformkorban, egyházi gyűjteményként alapították",
-        "Az ország legrégebbi vidéki múzeuma, amely a Lehel-kürtöt őrzi"
+        "Az ország egyik legrégebbi vidéki múzeuma, amely a Lehel-kürtöt őrzi"
       ],
       correctIndex: 3,
-      explanation: "A Jász Múzeum leírása szerint az 1873-ban alapított intézmény az ország legrégebbi vidéki múzeuma, legféltettebb kincse pedig a Lehel-kürt, egy elefántcsontból faragott, 12. századi bizánci munka.",
+      explanation: "A Jász Múzeum leírása szerint az intézmény az ország egyik legrégebbi vidéki múzeuma, legféltettebb kincse pedig a Lehel-kürt, egy elefántcsontból faragott középkori kürt.",
       regionSlug: "eszak-alfold",
       latvId: 157,
       latvName: "Jász Múzeum – Jászkürt"
@@ -862,11 +862,11 @@ var KVIZ_QUESTIONS = {
       answers: [
         "Termálvizes élményfürdő tartozik hozzá",
         "Autóval körbejárható tanösvény vezet rajta a tó körül",
-        "A nyílt vízbe épített pallórendszer csak csónakkal érhető el, és szárazföldről megszerezhetetlen élményt ad",
+        "A nyílt vízbe épített pallórendszer csak vízi úton közelíthető meg, így a szárazföldről nem elérhető élményt ad",
         "Üvegfalú folyosójából a vándorló halak mozgása figyelhető meg"
       ],
       correctIndex: 2,
-      explanation: "A Vizi Sétány a tó nádasaiba és nyílt vizébe épített pallórendszer, amelyhez csak csónakkal lehet eljutni, és olyan élményt nyújt, amelyet szárazföldről nem lehetne megkapni.",
+      explanation: "A Vizi Sétány a tó nádasaiba és nyílt vizébe épített pallórendszer, amelyhez csak vízi úton (kishajóval) lehet eljutni, és olyan élményt nyújt, amelyet szárazföldről nem lehetne megkapni.",
       regionSlug: "tisza-to",
       latvId: 203,
       latvName: "Poroszlói Vizi Sétány"
@@ -953,12 +953,12 @@ var KVIZ_QUESTIONS = {
       question: "Az atlasz leírása szerint milyen művelődéstörténeti eseményről nevezetes a sárvári Nádasdy-vár?",
       answers: [
         "Itt alapították az ország első egyetemét",
-        "Itt nyomtatták 1541-ben az első, teljes egészében magyar nyelvű könyvet",
+        "Itt nyomtatták 1541-ben az első Magyarországon készült magyar nyelvű könyvet",
         "Itt állították össze az első magyar nyelvű szótárt",
         "Itt rendezték az első magyar nyelvű színházi előadást"
       ],
       correctIndex: 1,
-      explanation: "A Sárvár – Nádasdy-vár leírása szerint a várban működött Sylvester János nyomdája, ahol 1541-ben elkészült az első, teljes egészében magyar nyelvű nyomtatott könyv, az Újszövetség magyar fordítása.",
+      explanation: "A Sárvár – Nádasdy-vár leírása szerint a várban működött Sylvester János nyomdája, ahol 1541-ben elkészült az első Magyarországon nyomtatott magyar nyelvű könyv, az Újszövetség magyar fordítása (a korábbi magyar nyelvű nyomtatványok külföldön, Bécsben és Krakkóban jelentek meg).",
       regionSlug: "nyugat-dunantul",
       latvId: 86,
       latvName: "Sárvár – Nádasdy-vár"
@@ -1003,7 +1003,7 @@ var KVIZ_QUESTIONS = {
         "Lebontották a teljes magyar–osztrák határkerítést"
       ],
       correctIndex: 2,
-      explanation: "A Páneurópai Piknik Emlékhely leírása szerint 1989. augusztus 19-én itt nyitották ki rövid időre a vasfüggöny kapuját, és több száz kelet-német állampolgárnak sikerült átjutnia Ausztriába – ez volt az első tömegszökés a vasfüggöny mögül.",
+      explanation: "A Páneurópai Piknik Emlékhely leírása szerint 1989. augusztus 19-én itt nyitották ki rövid időre a vasfüggöny kapuját, és mintegy 700 kelet-német állampolgárnak sikerült átjutnia Ausztriába.",
       regionSlug: "nyugat-dunantul",
       latvId: 226,
       latvName: "Páneurópai Piknik Emlékhely"
@@ -1215,7 +1215,7 @@ var KVIZ_QUESTIONS = {
         "Makovecz Imre"
       ],
       correctIndex: 3,
-      explanation: "A Hagymatikum leírása szerint a 2012-ben átadott gyógyfürdőt Makovecz Imre, a magyar organikus építészet legnagyobb mestere tervezte.",
+      explanation: "A Hagymatikum leírása szerint a gyógyfürdőt Makovecz Imre, a magyar organikus építészet legnagyobb mestere tervezte.",
       regionSlug: "del-alfold",
       latvId: 135,
       latvName: "Makói Hagymatikum"
@@ -1228,11 +1228,11 @@ var KVIZ_QUESTIONS = {
       answers: [
         "Itt őrizték évszázadokon át, folyamatosan a magyar Szent Koronát",
         "Innen indult meg a hódoltság végén a törökök kiűzése Magyarországról",
-        "Több mint ezer éven át itt koronázták és temették a magyar királyokat",
+        "Mintegy fél évezreden át, 1543-ig itt koronázták a királyokat, és 15 uralkodót itt temettek el",
         "Itt rendezték a reformkori országgyűléseket egészen 1848-ig"
       ],
       correctIndex: 2,
-      explanation: "Székesfehérvár leírása szerint a város a Magyar Királyság első és leghosszabb ideig fennálló koronázóvárosa volt, ahol több mint 1000 éven át 37 magyar királyt koronáztak és temettek el.",
+      explanation: "Székesfehérvár leírása szerint a város a Magyar Királyság első és leghosszabb ideig fennálló koronázóvárosa volt, ahol a 11. század elejétől a török hódításig (1543) mintegy fél évezreden át koronázták a magyar királyokat (összesen 38-at), és 15 uralkodót temettek el.",
       regionSlug: "kozep-dunantul",
       latvId: 221,
       latvName: "Székesfehérvár – belváros és koronázástörténet"
@@ -1254,7 +1254,7 @@ var KVIZ_QUESTIONS = {
     },
     {
       id: "kozep-dunantul-03",
-      question: "Melyik hungarikummá nyilvánított népi kézművesség egyetlen hazai múzeumának ad otthont a pápai Esterházy-kastély az atlasz szerint?",
+      question: "Az atlasz szerint melyik, 2018 óta az UNESCO szellemi kulturális örökségének részét képező népi mesterség hagyományát mutatja be a pápai Kékfestő Múzeum?",
       answers: [
         "A kékfestés, az indigós textilfestés hagyománya",
         "A herendi porcelán kézi festése",
@@ -1262,7 +1262,7 @@ var KVIZ_QUESTIONS = {
         "A kalocsai pingálás és hímzés"
       ],
       correctIndex: 0,
-      explanation: "A Pápai Esterházy-kastély és Kékfestő Múzeum leírása szerint a kastélyhoz kapcsolódó Kékfestő Múzeum egyedülálló Magyarországon: a kékfestés a hazai népi kézművesség hungarikummá nyilvánított hagyománya.",
+      explanation: "A Pápai Esterházy-kastély és Kékfestő Múzeum leírása szerint a kastélyhoz kapcsolódó Kékfestő Múzeum a kékfestés hagyományát mutatja be, amely 2018 óta az UNESCO szellemi kulturális örökségének része.",
       regionSlug: "kozep-dunantul",
       latvId: 220,
       latvName: "Pápai Esterházy-kastély és Kékfestő Múzeum"
@@ -1284,15 +1284,15 @@ var KVIZ_QUESTIONS = {
     },
     {
       id: "kozep-dunantul-05",
-      question: "Az atlasz leírása szerint melyik történelmi személyiség menekült 1809-ben a tatai Esterházy-kastélyba, ahol rövid ideig szállást kapott?",
+      question: "Az atlasz leírása szerint melyik uralkodó tartózkodott 1809-ben, a napóleoni háborúk idején hónapokig a tatai Esterházy-kastélyban?",
       answers: [
         "II. Rákóczi Ferenc",
-        "Ferenc József császár",
         "I. Napóleon francia császár",
+        "I. Ferenc császár és király",
         "Mária Terézia"
       ],
       correctIndex: 2,
-      explanation: "A Tatai Esterházy-kastély leírása szerint 1809-ben I. Napóleon a Habsburg-hatalom elől éppen ide menekült, és rövid ideig a kastély volt a szálláshelye.",
+      explanation: "A Tatai Esterházy-kastély leírása szerint a napóleoni háborúk idején, 1809-ben I. Ferenc magyar király és császár hónapokig tartózkodott itt.",
       regionSlug: "kozep-dunantul",
       latvId: 182,
       latvName: "Tatai Esterházy-kastély"
