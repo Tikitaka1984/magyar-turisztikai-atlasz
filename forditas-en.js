@@ -580,8 +580,8 @@ const EN_TRANSLATIONS = {
     },
     "151": {
       "nev": "Andrássy Castle, Tiszadob",
-      "rovid": "An eclectic castle on the banks of the Tisza, symbolically featuring 365 rooms and serving as an events venue.",
-      "reszletes": "Andrássy Castle in Tiszadob was commissioned by Prime Minister Gyula Andrássy in the early 1880s as one of the most impressive aristocratic residences of the Andrássy counts. The building’s 365 rooms symbolise the days of the year, its 52 towers the weeks, its 12 towers the months, and its four entrances the seasons. Together with its park, the castle covers almost 1,000 hectares. Following renovation in recent decades, it has been opened to visitors with interactive exhibitions presenting the former aristocratic way of life. It also serves as a venue for conferences, weddings and events. Its location on the banks of the Tisza provides a picturesque natural backdrop.",
+      "rovid": "An eclectic castle on the banks of the Tisza with 365 windows and 52 rooms, serving as an events venue.",
+      "reszletes": "Andrássy Castle in Tiszadob is one of the most impressive aristocratic residences of the Andrássy family. The building symbolises the units of the calendar: its 365 windows stand for the days of the year, its 52 rooms for the weeks, its 12 towers for the months and its four entrances for the seasons. Together with its park, the castle covers almost 1,000 hectares. Following renovation in recent decades, it has been opened to visitors with interactive exhibitions presenting the former aristocratic way of life. It also serves as a venue for conferences, weddings and events. Its location on the banks of the Tisza provides a picturesque natural backdrop.",
       "info": {
         "megkozelites": "Tiszadob lies between Nyíregyháza and Tiszaújváros and can be reached by car via Main Road 37; the castle stands in a park on the edge of the village."
       }
@@ -628,8 +628,8 @@ const EN_TRANSLATIONS = {
     },
     "157": {
       "nev": "Jász Museum – Jász Horn",
-      "rovid": "The country’s oldest museum, housing the Horn of Lehel, the symbol of the Jász people.",
-      "reszletes": "The Jász Museum in Jászberény is the country’s oldest provincial museum, founded in 1873. Its most treasured possession is the Horn of Lehel, a 12th-century Byzantine work carved from ivory and revered as a symbol of Jász unity. According to legend, before his execution, the chieftain Lehel struck Emperor Conrad on the head with this horn. The museum has rich archaeological, historical, ethnographic and fine-art collections presenting the history and traditions of the Jász people. Jászberény is one of the important centres of cultural life in Jász-Nagykun-Szolnok County and is also made attractive by the annual Csángó Festival.",
+      "rovid": "One of the country’s oldest provincial museums, housing the Horn of Lehel, the symbol of the Jász people.",
+      "reszletes": "The Jász Museum in Jászberény is one of the country’s oldest provincial museums. Its most treasured possession is the Horn of Lehel, a medieval horn carved from ivory, revered as a symbol of Jász unity. According to legend, before his execution, the chieftain Lehel struck Emperor Conrad on the head with this horn. The museum has rich archaeological, historical, ethnographic and fine-art collections presenting the history and traditions of the Jász people. Jászberény is one of the important centres of cultural life in Jász-Nagykun-Szolnok County and is also made attractive by the annual Csángó Festival.",
       "info": {
         "megkozelites": "Jászberény can be reached from the Budapest–Debrecen railway line via the Hatvan–Jászberény branch line, by bus from Szolnok, or by car via Main Road 31."
       }
@@ -717,10 +717,10 @@ const EN_TRANSLATIONS = {
     },
     "203": {
       "nev": "Poroszló Water Boardwalk",
-      "rovid": "A system of boardwalks built over the open waters of Lake Tisza, accessible only by boat.",
-      "reszletes": "The Poroszló Water Boardwalk is one of the most remarkable destinations for nature lovers at Lake Tisza: a system of boardwalks built among the lake’s reed beds and open waters, which can only be reached by rowing boat. The water route from Fűzfa Marina passes through marshy, densely reed-covered stretches near the shore, offering a close-to-nature experience that could never be enjoyed from dry land. From the boardwalk, visitors can observe waterbirds, aquatic plants and the lake’s wildlife at close quarters. Maintaining the boardwalk system is one of the most successful ecotourism projects in the Lake Tisza region, and together with the Ecocentre it offers a distinctive lakeside leisure experience.",
+      "rovid": "A system of boardwalks built over the open waters of Lake Tisza, accessible only by water.",
+      "reszletes": "The Poroszló Water Boardwalk is one of the most remarkable destinations for nature lovers at Lake Tisza: a system of boardwalks built among the lake’s reed beds and open waters, which can only be reached by water, by small boat. The water route from Fűzfa Marina passes through marshy, densely reed-covered stretches near the shore, offering a close-to-nature experience that could not be enjoyed from dry land. From the boardwalk, visitors can observe waterbirds, aquatic plants and the lake’s wildlife at close quarters. Maintaining the boardwalk system is one of the most successful ecotourism projects in the Lake Tisza region, and together with the Ecocentre it offers a distinctive lakeside leisure experience.",
       "info": {
-        "megkozelites": "The Water Boardwalk can be reached from Poroszló on a boat trip; boat and kayak hire is organised at the Ecocentre."
+        "megkozelites": "The Water Boardwalk can only be reached by water, on boats departing from Fűzfa Marina in Poroszló."
       }
     },
     "219": {
@@ -733,16 +733,16 @@ const EN_TRANSLATIONS = {
     },
     "220": {
       "nev": "Esterházy Palace and Blue-Dyeing Museum, Pápa",
-      "rovid": "A Baroque aristocratic palace and Hungary’s only museum devoted to the Hungarikum tradition of blue dyeing.",
-      "reszletes": "The Esterházy Palace in Pápa is one of Transdanubia’s most beautiful and best-preserved Baroque palaces, completed for the Esterházy family in 1784. Today, the palace hosts events, weddings and cultural programmes and is open to visitors throughout the year. Closely associated with the palace is the Blue-Dyeing Museum, which is unique in Hungary: blue dyeing—the colouring of textiles with indigo and then using the resist-dyeing process—is a tradition of Hungarian folk craftsmanship designated as a Hungarikum. Through the Kluge dynasty, the Pápa blue-dyeing manufactory operated continuously from the late 18th century, and its textiles, patterns and machinery can be seen in their original condition at the museum. The museum also holds demonstrations where visitors can watch blue dyeing live.",
+      "rovid": "A Baroque aristocratic palace and the Blue-Dyeing Museum presenting the tradition of blue dyeing.",
+      "reszletes": "The Esterházy Palace in Pápa is one of Transdanubia’s most beautiful and best-preserved Baroque palaces, completed for the Esterházy family in 1784. Today, the palace hosts events, weddings and cultural programmes and is open to visitors throughout the year. Closely associated with the palace is the Blue-Dyeing Museum, which presents the tradition of blue dyeing—the colouring of textiles with indigo and then using the resist-dyeing process—inscribed since 2018 on UNESCO’s list of intangible cultural heritage (a joint nomination by Hungary, Austria, the Czech Republic, Germany and Slovakia). Through the Kluge dynasty, the Pápa blue-dyeing manufactory operated continuously from the late 18th century, and its textiles, patterns and machinery can be seen in their original condition at the museum. The museum also holds demonstrations where visitors can watch blue dyeing live.",
       "info": {
         "megkozelites": "Pápa can be reached from Győr and Veszprém by train or bus, and by car via Main Road 83."
       }
     },
     "221": {
       "nev": "Székesfehérvár – Historic Centre and Coronation History",
-      "rovid": "The former coronation city of the Kingdom of Hungary, where 37 kings were crowned and buried.",
-      "reszletes": "Székesfehérvár was the first and longest-standing royal seat and coronation city of the Kingdom of Hungary, where 37 Hungarian kings were crowned and buried over a period of more than 1,000 years. The Ruin Garden in the historic centre presents the excavated remains of the coronation basilica and royal burial site, including the royal sarcophagi; it is one of Hungary’s most important archaeological and historical monuments. The Orb sculpture in Városháza Square was created to mark the 1,000th anniversary of the foundation of the state by Saint Stephen. Székesfehérvár’s Baroque historic centre, the Bishop’s Palace, the Black Eagle Pharmacy and numerous medieval church ruins are all open to visitors. The city’s 800-year-old baptismal font is one of Europe’s oldest liturgical objects still in continuous use.",
+      "rovid": "A former coronation city of the Kingdom of Hungary, where 38 kings were crowned and 15 rulers were buried.",
+      "reszletes": "Székesfehérvár was the first and longest-standing royal seat and coronation city of the Kingdom of Hungary, where Hungarian kings were crowned for about half a millennium, from the early 11th century until the Ottoman conquest in 1543 (38 kings in all), and 15 rulers were buried. The Ruin Garden in the historic centre presents the excavated remains of the coronation basilica and royal burial site, including the royal sarcophagi; it is one of Hungary’s most important archaeological and historical monuments. The Orb sculpture in Városháza Square was created to mark the 1,000th anniversary of the foundation of the state by Saint Stephen. Székesfehérvár’s Baroque historic centre, the Bishop’s Palace, the Black Eagle Pharmacy and numerous medieval church ruins are all open to visitors. The city’s 800-year-old baptismal font is one of Europe’s oldest liturgical objects still in continuous use.",
       "info": {
         "megkozelites": "Székesfehérvár can be reached by train on the Budapest–Szombathely main railway line or by car via the M7 motorway."
       }
@@ -840,7 +840,7 @@ const EN_TRANSLATIONS = {
     "135": {
       "nev": "Hagymatikum, Makó",
       "rovid": "Thermal baths designed by Imre Makovecz, an outstanding work of organic architecture.",
-      "reszletes": "The Hagymatikum in Makó is one of the best-known works of Hungarian organic architecture, designed by Imre Makovecz, the style’s foremost master. Opened in 2012, the thermal baths are named after the city’s symbol, the famous Makó onion, while the building’s forms also follow organic motifs inspired by nature. The complex was developed around an earlier thermal well drilled in the 1950s; its medicinal water is recommended for musculoskeletal and rheumatic complaints. The baths include therapeutic, leisure and wellness facilities and operate throughout the year. In addition to its onions and baths, Makó boasts several other buildings by Makovecz, including the Hagymaház. The Hagymatikum represents an exceptional meeting of health tourism and contemporary Hungarian architecture.",
+      "reszletes": "The Hagymatikum in Makó is one of the best-known works of Hungarian organic architecture, designed by Imre Makovecz, the style’s foremost master. The thermal baths are named after the city’s symbol, the famous Makó onion, while the building’s forms also follow organic motifs inspired by nature. The complex was developed around an earlier thermal well drilled in the 1950s; its medicinal water is recommended for musculoskeletal and rheumatic complaints. The baths include therapeutic, leisure and wellness facilities and operate throughout the year. In addition to its onions and baths, Makó boasts several other buildings by Makovecz, including the Hagymaház. The Hagymatikum represents an exceptional meeting of health tourism and contemporary Hungarian architecture.",
       "info": {
         "megkozelites": "Makó can be reached from Szeged by car on Main Road 43 and by bus; the baths are in the town centre."
       }
@@ -961,8 +961,8 @@ const EN_TRANSLATIONS = {
     },
     "182": {
       "nev": "Tata Esterházy Palace",
-      "rovid": "The Baroque palace that hosted Napoleon, on the shore of Tata’s Old Lake.",
-      "reszletes": "Tata Esterházy Palace is an 18th-century Baroque aristocratic residence on the shore of Tata’s Old Lake, built by the Counts Esterházy around 1770. The building has a special historical role because Napoleon I fled here from Habsburg power in 1809, and the palace served briefly as his accommodation. Comparable in size to Schönbrunn Palace, the building forms a harmonious ensemble with its park and the lakeshore, and characteristic Baroque garden design can also be observed. Today the palace houses a hotel, a museum and an events hall; when walking along Tata’s lakeshore, the building can be seen from its most spectacular angle.",
+      "rovid": "A Baroque palace on the shore of Tata’s Old Lake, where Emperor and King Francis I stayed in 1809.",
+      "reszletes": "Tata Esterházy Palace is an 18th-century Baroque aristocratic residence on the shore of Tata’s Old Lake, built by the Counts Esterházy around 1770. The building has a special historical role because, during the Napoleonic Wars in 1809, Francis I, Emperor and King of Hungary, stayed here for several months. Comparable in size to Schönbrunn Palace, the building forms a harmonious ensemble with its park and the lakeshore, and characteristic Baroque garden design can also be observed. Today the palace houses a hotel, a museum and an events hall; when walking along Tata’s lakeshore, the building can be seen from its most spectacular angle.",
       "info": {
         "megkozelites": "Tata can be reached by train on the Budapest–Győr main railway line and by car via the M1 motorway; the palace stands on the shore of the Old Lake."
       }
@@ -1010,7 +1010,7 @@ const EN_TRANSLATIONS = {
     "226": {
       "nev": "Pan-European Picnic Memorial Site",
       "rovid": "19 August 1989 – the historic European site where the Iron Curtain was opened.",
-      "reszletes": "The Pan-European Picnic Memorial Site marks the location of one of the most famous events in modern European history. On 19 August 1989, during a picnic held here near the border at Fertőrákos, a gate in the Iron Curtain was briefly opened, allowing several hundred East German citizens to cross into western Hungary and then Austria. This was the first mass escape from behind the Iron Curtain and directly contributed to the fall of the Berlin Wall that November. A monument and open-air exhibition at the memorial site present the events leading up to the occasion, the participants' personal stories and its connections with the pan-European freedom movement. The site is a symbolic place of pilgrimage for European democracy.",
+      "reszletes": "The Pan-European Picnic Memorial Site marks the location of one of the most famous events in modern European history. On 19 August 1989, during a picnic held here near the border at Fertőrákos, a gate in the Iron Curtain was briefly opened, allowing several hundred East German citizens to cross into western Hungary and then Austria. Around 700 East Germans crossed the border, and the event directly contributed to the fall of the Berlin Wall that November. A monument and open-air exhibition at the memorial site present the events leading up to the occasion, the participants' personal stories and its connections with the pan-European freedom movement. The site is a symbolic place of pilgrimage for European democracy.",
       "info": {
         "megkozelites": "The site lies a few kilometres from Fertőrákos and can be reached by car on roads running towards the border; it is also readily accessible from Sopron."
       }
@@ -1223,8 +1223,8 @@ const EN_TRANSLATIONS = {
     },
     "86": {
       "nev": "Sárvár – Nádasdy Castle",
-      "rovid": "A Renaissance castle where the first book in the Hungarian language was printed.",
-      "reszletes": "Nádasdy Castle in Sárvár is a pentagonal Renaissance fortress with Italian-style bastions. In the 16th century, it was the centre of the Nádasdy family’s estates and an important centre of Hungarian culture. János Sylvester’s printing press operated in the castle, producing the first printed book written entirely in Hungarian in 1541, a Hungarian translation of the New Testament. The castle’s great hall is covered with monumental ceiling and wall frescoes depicting battles against the Ottomans and biblical scenes. The building now houses the Ferenc Nádasdy Museum. Beside the castle is Sárvár’s famous spa and leisure baths, the foundation of the town’s health tourism. The combination of historical heritage and thermal tourism makes Sárvár an attractive destination.",
+      "rovid": "A Renaissance castle where the first Hungarian-language book printed in Hungary was produced.",
+      "reszletes": "Nádasdy Castle in Sárvár is a pentagonal Renaissance fortress with Italian-style bastions. In the 16th century, it was the centre of the Nádasdy family’s estates and an important centre of Hungarian culture. János Sylvester’s printing press operated in the castle, producing in 1541 the first Hungarian-language book printed in Hungary, a Hungarian translation of the New Testament. The castle’s great hall is covered with monumental ceiling and wall frescoes depicting battles against the Ottomans and biblical scenes. The building now houses the Ferenc Nádasdy Museum. Beside the castle is Sárvár’s famous spa and leisure baths, the foundation of the town’s health tourism. The combination of historical heritage and thermal tourism makes Sárvár an attractive destination.",
       "info": {
         "megkozelites": "Sárvár can be reached by train on the Szombathely–Budapest railway line or by car via Main Road 84; both the castle and the baths are located in the town."
       }
@@ -1529,7 +1529,7 @@ const EN_QUIZ = {
       "Because the first Hungarian-language book was printed within its walls",
       "Because its pages preserve the first Hungarian translation of the Bible"
     ],
-    "explanation": "According to the description of Tihany Benedictine Abbey, the foundation charter of the abbey, founded by King Andrew I in 1055, is the first authentic charter to preserve Hungarian words embedded in a Latin text, including the famous phrase ‘feheruuaru rea meneh hodu utu rea’. It is therefore an outstanding monument of Hungarian linguistic history. (The charter is in Latin, while the first book printed in Hungarian is associated with Sárvár.)",
+    "explanation": "According to the description of Tihany Benedictine Abbey, the foundation charter of the abbey, founded by King Andrew I in 1055, is the first authentic charter to preserve Hungarian words embedded in a Latin text, including the famous phrase ‘feheruuaru rea meneh hodu utu rea’. It is therefore an outstanding monument of Hungarian linguistic history. (The charter is in Latin, while the first Hungarian-language book printed in Hungary is associated with Sárvár.)",
     "latvName": "Tihany Benedictine Abbey"
   },
   "balaton-02": {
@@ -1907,14 +1907,14 @@ const EN_QUIZ = {
     "latvName": "Nyírbátor – Báthori Church"
   },
   "eszak-alfold-06": {
-    "question": "According to the atlas, who commissioned Andrássy Castle in Tiszadob, and what do its 365 rooms symbolise?",
+    "question": "According to the atlas, what do the 365 windows, 52 rooms, 12 towers and four entrances of Andrássy Castle in Tiszadob symbolise?",
     "answers": [
-      "Kálmán Tisza; the country's 365 noble families",
-      "Prime Minister Gyula Andrássy; the 365 days of the year",
-      "The Counts Andrássy, for military purposes; the 365 soldiers stationed here",
-      "István Széchenyi; a 365-kilometre stretch of the River Tisza"
+      "The number and extent of the Andrássy estates",
+      "The units of the calendar: days, weeks, months and seasons",
+      "The number of family members and servants who lived there",
+      "The number of craftsmen and workshops involved in its construction"
     ],
-    "explanation": "According to the description of Andrássy Castle in Tiszadob, the building was commissioned by Prime Minister Gyula Andrássy in the early 1880s; its 365 rooms symbolise the days of the year, its 52 towers the weeks, its 12 towers the months, and its four entrances the seasons.",
+    "explanation": "According to the description of Andrássy Castle in Tiszadob, the building symbolises the calendar: its 365 windows represent the days of the year, its 52 rooms the weeks, its 12 towers the months and its four entrances the seasons.",
     "latvName": "Andrássy Castle, Tiszadob"
   },
   "eszak-alfold-07": {
@@ -1942,12 +1942,12 @@ const EN_QUIZ = {
   "eszak-alfold-09": {
     "question": "Which statement about the Jász Museum in Jászberény is TRUE according to the atlas?",
     "answers": [
-      "Its most treasured possession is Lehel's Horn, a gold horn dating from the time of the Hungarian Conquest",
+      "Its most treasured possession is an authentic copy of the Holy Crown",
       "It is the country's largest museum, displaying tens of thousands of objects",
       "It was founded during the Hungarian Reform Era as an ecclesiastical collection",
-      "It is the country's oldest provincial museum and houses Lehel's Horn"
+      "It is one of the country's oldest provincial museums and houses Lehel's Horn"
     ],
-    "explanation": "According to the description of the Jász Museum, the institution, founded in 1873, is the country's oldest provincial museum, and its most treasured possession is Lehel's Horn, a 12th-century Byzantine work carved from ivory.",
+    "explanation": "According to the description of the Jász Museum, the institution is one of the country's oldest provincial museums, and its most treasured possession is Lehel's Horn, a medieval horn carved from ivory.",
     "latvName": "Jász Museum – Lehel's Horn"
   },
   "eszak-alfold-10": {
@@ -2032,10 +2032,10 @@ const EN_QUIZ = {
     "answers": [
       "It includes a thermal adventure pool",
       "It has a nature trail around the lake that can be explored by car",
-      "Its system of boardwalks built over open water is accessible only by boat and offers an experience unavailable from dry land",
+      "Its system of boardwalks built over open water can only be reached by water and offers an experience unavailable from dry land",
       "The movements of migrating fish can be observed from its glass-walled corridor"
     ],
-    "explanation": "The Water Promenade is a system of boardwalks built among the lake's reed beds and over its open water. It can only be reached by boat and offers an experience that could not be gained from dry land.",
+    "explanation": "The Water Promenade is a system of boardwalks built among the lake's reed beds and over its open water. It can only be reached by water, by small boat, and offers an experience that could not be gained from dry land.",
     "latvName": "Poroszló Water Promenade"
   },
   "tisza-to-08": {
@@ -2097,11 +2097,11 @@ const EN_QUIZ = {
     "question": "According to the atlas, for which event in cultural history is Nádasdy Castle in Sárvár renowned?",
     "answers": [
       "The country's first university was founded here",
-      "The first book written entirely in Hungarian was printed here in 1541",
+      "The first Hungarian-language book printed in Hungary was produced here in 1541",
       "The first Hungarian-language dictionary was compiled here",
       "The first Hungarian-language theatrical performance was staged here"
     ],
-    "explanation": "According to the description of Sárvár – Nádasdy Castle, János Sylvester's printing press operated in the castle, where the first printed book written entirely in Hungarian, a Hungarian translation of the New Testament, was produced in 1541.",
+    "explanation": "According to the description of Sárvár – Nádasdy Castle, János Sylvester's printing press operated in the castle, where the first Hungarian-language book printed in Hungary, a Hungarian translation of the New Testament, was produced in 1541 (earlier Hungarian-language prints appeared abroad, in Vienna and Kraków).",
     "latvName": "Sárvár – Nádasdy Castle"
   },
   "nyugat-dunantul-04": {
@@ -2134,7 +2134,7 @@ const EN_QUIZ = {
       "A gate in the Iron Curtain was briefly opened, allowing several hundred East German citizens to cross into Austria",
       "The entire Hungarian–Austrian border fence was dismantled"
     ],
-    "explanation": "According to the description of the Pan-European Picnic Memorial Site, a gate in the Iron Curtain was briefly opened here on 19 August 1989, enabling several hundred East German citizens to cross into Austria – the first mass escape from behind the Iron Curtain.",
+    "explanation": "According to the description of the Pan-European Picnic Memorial Site, a gate in the Iron Curtain was briefly opened here on 19 August 1989, enabling around 700 East German citizens to cross into Austria.",
     "latvName": "Pan-European Picnic Memorial Site"
   },
   "nyugat-dunantul-07": {
@@ -2288,7 +2288,7 @@ const EN_QUIZ = {
       "Lipót Baumhorn",
       "Imre Makovecz"
     ],
-    "explanation": "According to the description of the Hagymatikum, the spa, opened in 2012, was designed by Imre Makovecz, the foremost master of Hungarian organic architecture.",
+    "explanation": "According to the description of the Hagymatikum, the spa was designed by Imre Makovecz, the foremost master of Hungarian organic architecture.",
     "latvName": "Hagymatikum, Makó"
   },
   "kozep-dunantul-01": {
@@ -2296,10 +2296,10 @@ const EN_QUIZ = {
     "answers": [
       "The Holy Crown of Hungary was kept here continuously for centuries",
       "The expulsion of the Ottomans from Hungary at the end of Ottoman rule began here",
-      "Hungarian kings were crowned and buried here for more than a thousand years",
+      "For about half a millennium, until 1543, kings were crowned here and 15 rulers were buried here",
       "The Diets of the Reform Era were held here until 1848"
     ],
-    "explanation": "According to the description of Székesfehérvár, the city was the first and longest-serving coronation city of the Kingdom of Hungary, where 37 Hungarian kings were crowned and buried over a period of more than 1,000 years.",
+    "explanation": "According to the description of Székesfehérvár, the city was the first and longest-serving coronation city of the Kingdom of Hungary, where Hungarian kings were crowned for about half a millennium, from the early 11th century until the Ottoman conquest in 1543 (38 kings in all), and 15 rulers were buried.",
     "latvName": "Székesfehérvár – city centre and coronation history"
   },
   "kozep-dunantul-02": {
@@ -2314,14 +2314,14 @@ const EN_QUIZ = {
     "latvName": "Brunszvik Mansion, Martonvásár"
   },
   "kozep-dunantul-03": {
-    "question": "According to the atlas, the Esterházy Mansion in Pápa is home to Hungary's only museum devoted to which form of folk craftsmanship designated as a Hungarikum?",
+    "question": "According to the atlas, the Blue-Dyeing Museum in Pápa presents which folk craft, on UNESCO’s list of intangible cultural heritage since 2018?",
     "answers": [
       "The tradition of blue-dyeing textiles with indigo",
       "The hand-painting of Herend porcelain",
       "Matyó embroidery",
       "Kalocsa decorative painting and embroidery"
     ],
-    "explanation": "According to the description of the Esterházy Mansion and Blue-Dyeing Museum in Pápa, the Blue-Dyeing Museum associated with the mansion is unique in Hungary: blue-dyeing is a tradition of Hungarian folk craftsmanship designated as a Hungarikum.",
+    "explanation": "According to the description of the Esterházy Mansion and Blue-Dyeing Museum in Pápa, the Blue-Dyeing Museum associated with the mansion presents the tradition of blue dyeing, which has been on UNESCO’s list of intangible cultural heritage since 2018.",
     "latvName": "Esterházy Mansion and Blue-Dyeing Museum, Pápa"
   },
   "kozep-dunantul-04": {
@@ -2336,14 +2336,14 @@ const EN_QUIZ = {
     "latvName": "Bory Castle"
   },
   "kozep-dunantul-05": {
-    "question": "According to the atlas, which historical figure fled to the Esterházy Mansion in Tata in 1809 and was accommodated there for a short time?",
+    "question": "According to the atlas, which ruler stayed at the Esterházy Mansion in Tata for several months in 1809, during the Napoleonic Wars?",
     "answers": [
       "Francis II Rákóczi",
-      "Emperor Franz Joseph",
       "Napoleon I, Emperor of the French",
+      "Francis I, Emperor and King",
       "Maria Theresa"
     ],
-    "explanation": "According to the description of the Esterházy Mansion in Tata, Napoleon I fled there from Habsburg power in 1809, and the mansion served as his accommodation for a short time.",
+    "explanation": "According to the description of the Esterházy Mansion in Tata, during the Napoleonic Wars in 1809, Francis I, Emperor and King of Hungary, stayed there for several months.",
     "latvName": "Esterházy Mansion, Tata"
   },
   "kozep-dunantul-06": {
